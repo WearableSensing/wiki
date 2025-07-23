@@ -6,4 +6,5 @@ These are examples of how to use third party libs
 :maxdepth: 2
 
 MNE <mne/index>
+LSL <lsl/index>
 ```
