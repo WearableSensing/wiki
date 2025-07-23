@@ -1,5 +1,7 @@
 # LSL
 
+The lab streaming layer (LSL) is a system for the unified collection of measurement time series in research experiments that handles both the networking, time-synchronization, near real-time access as well as optionally the centralized collection, viewing and disk recording of the data.
+
 Let's go over how to use Wearable Sensing data within LSL.
 
 Please visit our github to download the latest [```dsi2lslGUI```](https://github.com/WearableSensing/LSL) release.
@@ -10,6 +12,13 @@ If you wish to build the ```dsi2lslGUI``` from source, you can find it at LSL's 
 :class: attention
 The following tutorials are made on Windows 11. 
 ```
+
+## Resources
+
+For additional information and comprehensive documentation about LSL, please visit the following links:
+
+* [lsl-github](https://github.com/sccn/labstreaminglayer/)
+* [lsl-documentation](https://labstreaminglayer.readthedocs.io/)
 
 ```{toctree}
 :hidden:
