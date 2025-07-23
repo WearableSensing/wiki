@@ -8,8 +8,11 @@ Wearable Sensing has created some tools that can work with LabStreamingLayer. Yo
 2. While ```dsi2lslGUI``` is running, execute the ```receive.py``` script.
 
 This will create a ```.csv``` file with the data received from the headset.
-> [!NOTE]
-> There are program requirements to run ```receive.py```, they can be found in the README of [```lsl-tools```](https://github.com/WearableSensing/lsl-tools).
+
+```{admonition} Note
+:class: note
+There are program requirements to run ```receive.py```, they can be found in the README of [```lsl-tools```](https://github.com/WearableSensing/lsl-tools).
+```
 
 ```{code-block} sh
 :caption: Terminal Usage and Examples
