@@ -2,6 +2,9 @@
 
 It's important to be able to remove channels that are not relevant to your analysis, contain excessive noise, or are redundant. The following code snippet demonstrates how to remove unwanted channels from your data. Please see the previous section for how to load your data into the `raweegdata` object used below.
 
+
+The `raweegdata` object is assumed to be your loaded EEG data, as shown in the previous sections. See {doc}`MNE Load <../core/load>` for more details on loading EEG data.
+
 ## Remove Unwanted Channels
 
 ```{code-block} python
