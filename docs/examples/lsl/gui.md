@@ -1,6 +1,6 @@
 # Getting Started with dsi2lslGUI
 
-This will be a quick overview of how to use the Wearable Sensing LSL plugin and its features.
+This page documents how to use the dsi2lslGUI application and configure it for your DSI headset.
 
 ## Connecting the DSI Headset
 
@@ -10,15 +10,19 @@ Before you can start your LSL stream, make sure your headset is properly connect
 
 * A wired connection will be found under `Ports (COM & LPT)`.
 
-Go back to `dsi2lslGUI`, inside of **Port** enter **'COM'** followed by the number from your dropdown (e.g., `COM8`). You are now ready to start consuming the DSI data.
+## Starting dsi2lslGUI
 
-![alt text](../../_static/gui-1.png)
+Go back to `dsi2lslGUI`, inside of **Port** enter **'COM'** followed by the number from your dropdown (e.g., `COM8`). You are now ready to start consuming the DSI data.
 
 > Initial `dsi2lslGUI` window when first opened.
 
+![alt text](../../_static/gui-1.png)
+
+> `dsi2lslGUI` window after clicking `Start`. The blue indicator shows that the LSL stream is active. If there are any issues with the connection, an error message will appear in the terminal box.
+
+
 ![alt text](../../_static/gui-2.png)
 
-> `dsi2lslGUI` window after clicking `Start`.
 
 ```{admonition} GUI Buttons
 :class: tip
@@ -32,6 +36,8 @@ Go back to `dsi2lslGUI`, inside of **Port** enter **'COM'** followed by the numb
 `Impedance` - If checked, Impedance driver will be on after you click `Start`.
 
 ```
+
+Please note that older versions of the dsi2lslGUI may not have the `Impedance` checkbox or the `Reset` button. If you do not see this option, you can still use the application without it.
 
 ## Configuring Montage and Reference (Optional)
 

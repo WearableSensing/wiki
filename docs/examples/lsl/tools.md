@@ -1,6 +1,6 @@
 # LSL-Tools
 
-Wearable Sensing has created some tools that work with LabStreamingLayer. You can find them at Wearable Sensing's [github](https://github.com/WearableSensing/lsl-tools), where they are easy to clone and run.
+Wearable Sensing has created some examples to demonstrate working with LabStreamingLayer. You can find them at Wearable Sensing's [github](https://github.com/WearableSensing/lsl-tools), where they are easy to clone and run.
 
 ## Recording Data from DSI2LSL
 
@@ -21,7 +21,7 @@ If you have any issues running the GUI please refer to {doc}`How to Use <gui>`.
 
 ### 2. Run the Recording Script
 
-Make sure you virtual environment is active, then run the following in your terminal alongside your active LSL stream:
+Make sure your virtual environment is active and dependencies are installed, then run the following in your terminal alongside your active LSL stream:
 
 ```sh
 python tools/consume/receive.py
@@ -40,7 +40,7 @@ Usage:
           The duration in seconds for the data collection to run (default: 10).
 ```
 
-Client arguments that you can write in the terminal. This allows you to edit you recording configurations without having to change the code.
+This allows you to edit you recording configurations without having to change the code.
 
 ## Example
 
@@ -48,7 +48,7 @@ Client arguments that you can write in the terminal. This allows you to edit you
 python tools/consume/receive.py --output='./thisFolder' --stream='aStreamName' --duration=2
 ```
 
-This script will record a stream named **'aStreamName'** and save it to the path **'./thisFolder'** recording **2** seconds.
+This script will record a stream named **'aStreamName'** and save it to the path **'./thisFolder'** recording **2** seconds. The default stream name is **'WS-default'** and the default output path is the current working directory. The default duration is **10** seconds.
 
 ## Resources
 
