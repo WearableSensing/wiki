@@ -13,7 +13,7 @@ The following tutorials are made using mne version 1.9.0
 
 ```{toctree}
 :hidden:
-load
+Load Wearable Sensing Data <core/load>
 ```
 
 ## Resources
