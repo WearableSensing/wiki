@@ -63,7 +63,8 @@ html_theme_options = {
 html_favicon = "_static/favicon.png"
 html_sidebars = {
   "help/*": [],
-    "getting_started": [],
+  "getting_started": [],
+  "api/*": [],
 }
 
 html_static_path = ['_static']
