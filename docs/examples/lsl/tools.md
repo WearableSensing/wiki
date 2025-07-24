@@ -1,8 +1,6 @@
 # LSL-Tools
 
-Wearable Sensing has created some tools that can work with LabStreamingLayer. You can find them at Wearable Sensing's [github](https://github.com/WearableSensing/lsl-tools).
-
-This tool utilizes the ```pylsl``` interface to accomplish its task. For further information regarding ```pylsl``` please visit their official [page](https://github.com/labstreaminglayer/pylsl).
+Wearable Sensing has created some tools that work with LabStreamingLayer. You can find them at Wearable Sensing's [github](https://github.com/WearableSensing/lsl-tools), where they are easy to clone and run.
 
 ## Recording Data from DSI2LSL
 
@@ -15,11 +13,9 @@ This documentation only offers a brief decription on how to use this tool, pleas
 
 ### 1. Start the LSL Stream
 
-
-
 Ensure your Wearable Sensing device is properly connected to your computer.
 
-* Launch the ```dsi2lslGUI``` application to begin streaming EEG data using LabStreamingLayer: 
+* Launch the ```dsi2lslGUI``` application to begin streaming EEG data using LabStreamingLayer:
 
 If you have any issues running the GUI please refer to {doc}`How to Use <gui>`.
 
@@ -44,7 +40,7 @@ Usage:
           The duration in seconds for the data collection to run (default: 10).
 ```
 
-Client Arguments that you can write in the terminal, without having to manually edit the code.
+Client arguments that you can write in the terminal. This allows you to edit you recording configurations without having to change the code.
 
 ## Example
 
@@ -52,4 +48,16 @@ Client Arguments that you can write in the terminal, without having to manually 
 python tools/consume/receive.py --output='./thisFolder' --stream='aStreamName' --duration=2
 ```
 
-This script will record a stream named **'aStreamName'** and save it to the path **'./thisFolder'** recording 2 seconds.
+This script will record a stream named **'aStreamName'** and save it to the path **'./thisFolder'** recording **2** seconds.
+
+## Resources
+
+For additional information and comprehensive documentation about pylsl and LabStreamingLayer, please visit the following links:
+
+* [pylsl-example-usage](https://github.com/labstreaminglayer/pylsl/tree/main/src/pylsl/examples)
+
+* [pylsl-github](https://github.com/labstreaminglayer/pylsl)
+
+* [labstreaminglayer-documentation](https://labstreaminglayer.readthedocs.io/)
+
+* [labstreaminglayer-github](https://github.com/sccn/labstreaminglayer)
