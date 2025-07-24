@@ -3,7 +3,8 @@
 These are examples of how to use third party libs
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 1
 
 MNE <mne/index>
+LSL <lsl/index>
 ```
