@@ -16,12 +16,12 @@ author = 'Tab Memmott'
 extensions = [
     'myst_parser',
     'sphinx.ext.mathjax',
-        # builtin
     "sphinx.ext.graphviz",
     "sphinx.ext.todo",
-    # contrib
     "sphinx_copybutton",
-    "sphinx_design"]
+    "sphinx_design",
+    'sphinx.ext.intersphinx',
+    'sphinxcontrib.youtube']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
