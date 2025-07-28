@@ -14,7 +14,7 @@ This documentation is designed to provide you with comprehensive information abo
    API <api/index>
    Integrations <examples/index>
    FAQ <faq/index>
-   Contact <help/index>
+   Downloads <help/downloads/index>
    Tutorials <help/tutorials/index>
-
+   Contact <help/index>
 ```
