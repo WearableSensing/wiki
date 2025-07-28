@@ -2,7 +2,7 @@
 
 ```{admonition} Note
 :class: note
-*Click the links below to download drivers or software*
+*Please click the links below to download drivers or software.*
 ```
 
 ## Data Transmission Drivers
@@ -23,7 +23,12 @@ This section provides the necessary drivers for data transmission between Wearab
 ````
 
 ## Third Party Plugins
-This section provides links to third-party plugins and extensions that are developed by the community and can be integrated with Wearable Sensing's technology.
+This section provides links to third-party plugins and extensions that are developed by the community and can be integrated with Wearable Sensing's technology. 
+
+```{admonition} EEGLAB Extension Version
+:class: warning
+If importing data collected from DSI-Streamer 1.08.90 or above, use v.1.14; otherwise, use v.1.13 for older versions.
+```
 
 
 ````{grid} 3
