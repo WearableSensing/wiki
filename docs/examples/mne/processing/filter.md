@@ -32,8 +32,8 @@ For more advanced filtering options, you can specify additional parameters such 
 ```{code-block} python
 :caption: Advanced Filtering Options
 
-# Apply a notch filter at 50 Hz to remove power line noise
-raweegdata.notch_filter(freqs=50.0, filter_length='auto', phase='zero')
+# Apply a notch filter at 60 Hz to remove power line noise
+raweegdata.notch_filter(freqs=60.0, filter_length='auto', phase='zero')
 
 # Apply a band-pass filter with a custom filter window; the default is 'hamming'. 'blackman' is another common choice.
 raweegdata.filter(l_freq=1.0, h_freq=40.0, fir_window='hann')
