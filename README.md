@@ -15,7 +15,7 @@ You can manually build the code from within the docs folder and then navidate to
 A better approach is to use sphinx autobuild to spin up a server that re-builds everytime a file is added or changed in the docs directory.
 
 ```sh
-sphinx-autobuild docs docs/_build/html
+sphinx-autobuild docs docs/_build
 ```
 
 This should print several things to the terminal and if the build is scucceful a final message like this will appear where you can see the page,
