@@ -8,7 +8,6 @@ To filter your EEG data, you can use the `filter` method provided by MNE on any 
 
 We will filter the data between 1 Hz and 40 Hz, which is a common range for EEG analysis, especially for cognitive tasks. The `raweegdata` object is assumed to be your loaded EEG data, as shown in the previous sections, although this will work with any `Raw` or `Epochs` object you have defined. See {doc}`MNE Load <../core/load>` for more details on loading EEG data.
 
-```{admonition} Note
 
 ```{code-block} python
 :caption: Basic Filtering

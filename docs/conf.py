@@ -16,12 +16,12 @@ author = 'Tab Memmott'
 extensions = [
     'myst_parser',
     'sphinx.ext.mathjax',
-        # builtin
     "sphinx.ext.graphviz",
     "sphinx.ext.todo",
-    # contrib
     "sphinx_copybutton",
-    "sphinx_design"]
+    "sphinx_design",
+    'sphinx.ext.intersphinx',
+    'sphinxcontrib.youtube']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -63,7 +63,10 @@ html_theme_options = {
 html_favicon = "_static/favicon.png"
 html_sidebars = {
   "help/*": [],
-    "getting_started": [],
+  "getting_started": [],
+  "api/*": [],
+  "help/downloads/*": [],
+  "faq/*": [],
 }
 
 html_static_path = ['_static']

@@ -1,4 +1,4 @@
-# Getting help
+# Getting support
 
 For sales inquiries or technical support, please visit our main website or use the contact information below:
 
