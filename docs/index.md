@@ -1,5 +1,6 @@
 # Wearable Sensing
 
+Newly released technical documentation for Wearable Sensing's products and services.
 
 ```{admonition} Technical Documentation
 :class: hint
