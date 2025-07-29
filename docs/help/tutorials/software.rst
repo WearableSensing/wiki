@@ -1,7 +1,7 @@
 Software Tutorials
 ==================
 
-This section provides tutorials on how to use Wearable Sensing's DSIStreamer software, including how to set it up, configure it, and use it effectively.
+This section provides tutorials on how to use Wearable Sensing's DSI-Streamer software, including how to set it up, configure it, and use it effectively.
 
 Connection Guide
 ----------------
@@ -10,10 +10,10 @@ Overview on how to setup wireless and wired connections if DSI systems to the co
 
 ..  youtube:: B-sn_LRXB7A
 
-DSIStreamer Overview
+DSI-Streamer Overview
 ---------------------
 
-An overview of the DSIStreamer software, including its features and how to use it.
+An overview of the DSI-Streamer software, including its features and how to use it.
 
 ..  youtube:: fwekDusaxV8
 
