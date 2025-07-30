@@ -12,7 +12,7 @@ This tutorial explains how to send digital event markers from PsychoPy into an E
 The script below creates a basic LSL outlet stream, which serves as a simple example. For a real EEG experiment, this PsychoPy marker stream is intended to be recorded simultaneously alongside the separate data stream coming from your EEG amplifier. LSL automatically time-synchronizes both streams, allowing you to perfectly align your stimulus events with the neural data during analysis. You will require additional tools to record the data.
 
 ```{code-block} python
-:caption: Creating a lsl outlet
+:caption: Creating a LSL outlet
 from psychopy import visual, core
 from pylsl import StreamInfo, StreamOutlet
 
@@ -50,7 +50,7 @@ for trial in range(5):
     fixation.draw()
     # Show the stimulus and send the marker almost simultaneously
     win.flip()
-    outlet.push_sample([trial + 1]) # Send marker (e.g., 1 for trial 1, 2 for trial 2, etc.)
+    outlet.push_sample(1) # Send marker (e.g., 1 for trial 1, 2 for trial 2, etc.)
     core.wait(1.0) # fixation appears for 1 second
 
     # wait for 2s
@@ -61,14 +61,21 @@ win.close()
 core.quit()
 ```
 
+```{admonition} Latency
+:class: attention
+Depending on the complexity of your experiment, there might be latency in your marker. 
+```
+
+## Consumed Data
+
 ```{admonition} Consumed Data
 :class: sidebar note
-:wifth: 75%
-The image on the left is the recorded data using {doc}`LSL-Tools <tools>`. From this image, you can see the EventMarker channel defined in the code above, and the markers that got sent to the channels at there according time, around 3 seconds apart, 1 for the fixation, and the 2 idle time. 
+The image on the left is the recorded data using {doc}`LSL-Tools <../lsl/tools>`. From this image, you can see the EventMarker channel defined in the code above, and the markers that got sent to the channels at there according time, around 3 seconds apart, 1 for the fixation, and the 2 idle time. 
 ```
 
 ```{image} ../../_static/psychopy-mark.png
 :width: 50%
+:align: center
 ```
 
 ## Resources

@@ -76,11 +76,6 @@ win.flip() # Show the updated stimuli
 core.wait(2.0) # Wait for 2 seconds
 ```
 
-```{admonition} Latency
-:class: note
-Depending on the complexity of your experiment, there might be latency in your marker. 
-```
-
 <!-- ```{image} ../../_static/psychopy-stim.gif
 :alt: simple stim
 :class: center
