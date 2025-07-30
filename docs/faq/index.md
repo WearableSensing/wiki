@@ -31,3 +31,8 @@ You can find more information in the {doc}`API <../api/index>` section of our do
 :animate: fade-in
 If you need support, please contact our support team through the {doc}`Contact <../help/index>` page. We are here to help you with any issues or questions you may have.
 ```
+## Hardware
+```{dropdown} Are your dry electrodes active?
+:animate: fade-in
+Yes. Our dry sensors are active: there are amplifiers right behind the electrode tips.
+```
