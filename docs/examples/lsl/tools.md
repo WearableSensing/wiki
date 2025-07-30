@@ -8,7 +8,7 @@ Wearable Sensing has created some examples to demonstrate working with LabStream
 :class: attention
 The recording script, ```receive.py```, is compatible with any modern version of Python (3.8+).
 
-This documentation only offers a brief decription on how to use this tool, please refer to [```lsl-tools```](https://github.com/WearableSensing/lsl-tools) for more descriptive information.
+This documentation only offers a brief decription on how to use this tool, please refer to [```lsl-tools```](https://github.com/WearableSensing/lsl-tools) for more descriptive information. a
 ```
 
 ### 1. Start the LSL Stream
