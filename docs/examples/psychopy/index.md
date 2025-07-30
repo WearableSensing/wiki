@@ -4,6 +4,7 @@
 :hidden:
 Creating Stimulus <stimulus>
 Sending a Marker <marker>
+Using Serial Port <serial>
 ```
 
 PsychoPy is an open-source package that aids running experiements with python.
