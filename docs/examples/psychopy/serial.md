@@ -12,10 +12,7 @@ import serial
 
 port = serial.Serial('COM10') #Change the COM port to match your setup
 
-# Set up the PsychoPy Window and Stimuli
-win = visual.Window([800, 600], monitor="testMonitor", units="pix", color="gray")
-fixation = visual.TextStim(win, text="+")
-Trigger = 1 # trigger code must be between 1-255 
+Trigger = 1 # trigger code must be between 1-255
 ```
 
 ```{admonition} Trigger Value
@@ -23,7 +20,27 @@ Trigger = 1 # trigger code must be between 1-255
 If you are using multiple triggers on the trigger hub, then you need to set the Trigger value to one that is not being used. 
 ```
 
-## Sending
+## Experiment
+
+In this simple experiment, a fixation cross is displayed on the screen. A white box also appears in the top right corner to serve as a light trigger for a photodiode.
+
+```{code-block} python
+:caption: Setting up the experiment
+
+# Set up the PsychoPy Window and Stimuli
+win = visual.Window([800, 600], monitor="testMonitor", units="pix", color="gray")
+win_width, win_height = win.size
+# Rectangle to represent the trigger light
+rect_size = (100, 100)
+top_right_x = (win_width / 2) - (rect_size[0] / 2)
+top_right_y = (win_height / 2) - (rect_size[1] / 2)
+top_right_pos = (top_right_x, top_right_y)
+lightTrig = visual.Rect(win, size=rect_size, fillColor="white", pos=top_right_pos)
+
+fixation = visual.TextStim(win, text="+") # Fixation cross
+```
+
+## Sending the Signal
 
 ```{code-block} python
 :caption: Sending the signal
