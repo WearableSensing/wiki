@@ -13,8 +13,6 @@ BCI2000 includes a community-contributed module specfically for supporting Weara
 
 However, we will need to update the module's driver file with the latest version directly from the Wearable Sensing API. This is the only file you need to manually place.
 
-**Steps to Download the Latest API**
-
 1. Download the latest Wearable Sensing DSI API
    * [DSI API (Version 1.20.3)](https://wearablesensing.com/wp-content/uploads/2025/07/DSI_API_v1.20.3_06202025.zip)
 
