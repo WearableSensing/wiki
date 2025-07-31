@@ -12,10 +12,12 @@ Wearable Sensing's technology can be integrated with various third-party librari
 Below is a list of some of the third-party libraries that can be integrated with Wearable Sensing's technology with documentation on how to use them:
 
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 4
 
 MNE <mne/index>
 LSL <lsl/index>
+
+PsychoPy <psychopy/index>
 ```
 
 If you have a third-party library that you would like to integrate with Wearable Sensing's technology, please reach out to us. We are always looking to expand our integrations and provide more value to our users!
