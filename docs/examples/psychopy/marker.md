@@ -5,11 +5,11 @@
 The following tutorials will use pylsl in pair with PsychoPy
 ```
 
-This tutorial explains how to send digital event markers from PsychoPy into an EEG data stream. Sending these markers is the essential step for accurately synchronizing your stimuli with the recorded neural data.
+This tutorial explains how to send digital event markers from PsychoPy into an active EEG data stream. Sending these markers is the essential step for accurately synchronizing your stimuli with the recorded neural data.
 
 ## Setting up the Stream
 
-The script below creates a basic LSL outlet stream, which serves as a simple example. For a real EEG experiment, this PsychoPy marker stream is intended to be recorded simultaneously alongside the separate data stream coming from your EEG amplifier. LSL automatically time-synchronizes both streams, allowing you to perfectly align your stimulus events with the neural data during analysis. You will require additional tools to record the data.
+The script below creates a simple LSL outlet stream. For a real EEG experiment, this PsychoPy marker stream is intended to be recorded simultaneously alongside the separate data stream coming from your EEG amplifier. LSL automatically time-synchronizes both streams, allowing you to perfectly align your stimulus events with the neural data during analysis. You will need extra tools in order to collect the data.
 
 ```{code-block} python
 :caption: Creating a LSL outlet
@@ -63,21 +63,19 @@ core.quit()
 
 ```{admonition} Latency
 :class: attention
-Depending on the complexity of your experiment, there might be latency in your marker. 
+Depending on the complexity of your experiment, there might be [latency](https://discourse.psychopy.org/t/latency-issue-between-lsl-markers-hw-triggers-and-stimulus-presentation/37577) in your marker. 
 ```
 
 ## Consumed Data
 
-```{admonition} Consumed Data
-:class: sidebar note
-The image on the left is the recorded data using {doc}`LSL-Tools <../lsl/tools>`. From this image, you can see the EventMarker channel defined in the code above, and the markers that got sent to the channels at there according time, around 3 seconds apart, 1 for the fixation, and the 2 idle time. 
-```
+The image below is the recorded data using {doc}`LSL-Tools <../lsl/tools>`. From this image, you can see the EventMarker channel defined in the code above, and the markers that got sent to the channels at there according time, around 3 seconds apart, 1 for the fixation, and the 2 idle time.
 
 ```{image} ../../_static/psychopy-mark.png
 :width: 50%
-:align: center
 ```
 
 ## Resources
+
+For more in-depth documentation and API reference, please refer to:
 
 * [pylsl](https://github.com/labstreaminglayer/pylsl)

@@ -1,10 +1,13 @@
 # Displaying Stimulus
 
-In EEG research, it's crucial to link external events to the continuous stream of recorded brain activity. PsychoPy allows for the creation of precisely timed visual stimuli. Critically, as it presents a stimulus, PsychoPy can then send a corresponding digital 'marker' directly into the EEG data stream. This synchronization is the key that allows researchers to later isolate and analyze the exact brain responses time-locked to specific events.
-
 This will be a guide on displaying different kinds of visual stimulus with PsychoPy.
 
+PsychoPy allows for the creation of precisely timed visual stimuli.
+With these stimuli, corresponding digital 'marker' can be sent directly into the EEG data stream.
+
 ## Creating Visual Stimuli
+
+This code create visuals with the text "wearable" and a red rectangle.
 
 ```{code-block} python
 :caption: Creating Text and Shape
@@ -53,7 +56,7 @@ For managing timing, PsychoPy provides two main options. Use the straightforward
 
 ## Modifying Existing Stimuli
 
-For modification options, you can specify and alter specific attributes of the visuals. PsychoPy have various modification options depending on the visual you chose. See the PsychoPy documentation on visuals for more details: [https://www.psychopy.org/api/visual/index.html](https://www.psychopy.org/api/visual/index.html).
+For modification options, you can specify and alter specific attributes of the visuals. PsychoPy have various modification options depending on the visual you chose.
 
 ```{code-block} python
 :caption: Creating Text and Shape
@@ -83,6 +86,8 @@ core.wait(2.0) # Wait for 2 seconds
 ``` -->
 
 ## Resources
+
+For more in-depth documentation and API reference, please refer to:
 
 * [psychopy-stimuli](https://www.psychopy.org/coder/codeStimuli.html)
 * [psychopy-visuals](https://www.psychopy.org/api/visual/index.html)

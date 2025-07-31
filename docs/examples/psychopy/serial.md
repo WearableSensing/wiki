@@ -4,6 +4,8 @@ As an alternative to network-based synchronization like LSL, you can send trigge
 
 ## Connecting
 
+If you are using multiple triggers on the trigger hub, then you need to set the Trigger value to one that is not being used. If you are only using this serial trigger then it can be any value from 1-255.
+
 ```{code-block} python
 :caption: Connecting the port
 
@@ -13,11 +15,6 @@ import serial
 port = serial.Serial('COM10') #Change the COM port to match your setup
 
 Trigger = 1 # trigger code must be between 1-255
-```
-
-```{admonition} Trigger Value
-:class: note
-If you are using multiple triggers on the trigger hub, then you need to set the Trigger value to one that is not being used. 
 ```
 
 ## Experiment
@@ -41,6 +38,10 @@ fixation = visual.TextStim(win, text="+") # Fixation cross
 ```
 
 ## Sending the Signal
+
+* In this example, you will see a cross flash on the screen five times. Every time the cross flashes, the device sends a signal through the serial port.
+
+* Watch the screen: a cross will flash 5 times. A signal is sent out the serial port upon each flash.
 
 ```{code-block} python
 :caption: Sending the signal
@@ -70,5 +71,7 @@ This function will call a function immediately after the next win.flip() command
 The first argument should be the function to call, followed by the args exactly as you would for your normal call to the function.
 
 ## Resource
+
+For more in-depth documentation and API reference, please refer to:
 
 * [psychopy-serial-port](https://www.psychopy.org/hardware/serialPortInstr.html)

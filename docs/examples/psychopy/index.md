@@ -1,4 +1,4 @@
-# PSYCHOPY
+# PsychoPy
 
 ```{toctree}
 :hidden:
@@ -7,11 +7,11 @@ Sending a Marker <marker>
 Using Serial Port <serial>
 ```
 
-PsychoPy is an open-source package that aids running experiements with python.
+In EEG research, it's crucial to link external events to the continuous stream of recorded brain activity. PsychoPy is an open-source software package that supports running and creating experiments with Python to do such experiments.
 
 Let's go over how to use Wearable Sensing headsets with PsychoPy to perform experiments. The following tutorials will cover how to set up an experiment within PsychoPy, connecting with DSI-Headset, recording, and viewing the data.
 
-You can download the latest version of PsychoPy on its [download page](https://www.psychopy.org/download.html)
+You can download the latest version of PsychoPy [here](https://www.psychopy.org/download.html).
 
 ```{admonition} Psycho Version
 :class: attention
