@@ -5,11 +5,11 @@
 The following tutorials will use pylsl in pair with PsychoPy
 ```
 
-This tutorial explains how to send digital event markers from PsychoPy into an active EEG data stream. Sending these markers is the essential step for accurately synchronizing your stimuli with the recorded neural data.
+This tutorial will show you how to send digital event markers from PsychoPy into an active DSI data stream. Sending these markers is crucial for accurately synchronizing your stimuli with recorded neural activity.
 
 ## Setting up the Stream
 
-The script below creates a simple LSL outlet stream. For a real EEG experiment, this PsychoPy marker stream is intended to be recorded simultaneously alongside the separate data stream coming from your EEG amplifier. LSL automatically time-synchronizes both streams, allowing you to perfectly align your stimulus events with the neural data during analysis. You will need extra tools in order to collect the data.
+The script below creates a simple LSL outlet stream. For a real DSI EEG experiment, this PsychoPy marker stream is intended to be recorded simultaneously alongside the separate data stream coming from your DSI Headset. LSL automatically time-synchronizes both streams, allowing you to perfectly align your stimulus events with the neural data during analysis. You will need extra tools in order to collect the data.
 
 ```{code-block} python
 :caption: Creating a LSL outlet
@@ -50,9 +50,10 @@ for trial in range(5):
     fixation.draw()
     # Show the stimulus and send the marker almost simultaneously
     win.flip()
-    outlet.push_sample(1) # Send marker (e.g., 1 for trial 1, 2 for trial 2, etc.)
+    outlet.push_sample([1]) 
     core.wait(1.0) # fixation appears for 1 second
 
+    outlet.push_sample([0]) 
     # wait for 2s
     win.flip()
     core.wait(2.0) 
@@ -66,11 +67,11 @@ core.quit()
 Depending on the complexity of your experiment, there might be [latency](https://discourse.psychopy.org/t/latency-issue-between-lsl-markers-hw-triggers-and-stimulus-presentation/37577) in your marker. 
 ```
 
-## Consumed Data
+## Consume Data
 
-The image below is the recorded data using {doc}`LSL-Tools <../lsl/tools>`. From this image, you can see the EventMarker channel defined in the code above, and the markers that got sent to the channels at there according time, around 3 seconds apart, 1 for the fixation, and the 2 idle time.
+The image below is the recorded data using LabRecorder. It shows two graphs, the top one being the DSI EEG signal (it looks like a blob because it isn't on any one's head), and the bottom shows the marker signals that got sent.
 
-```{image} ../../_static/psychopy-mark.png
+```{image} ../../_static/psychopy-graph.png
 :width: 50%
 ```
 

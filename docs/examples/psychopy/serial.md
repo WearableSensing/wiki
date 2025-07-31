@@ -1,10 +1,10 @@
 # Sending Triggers Through a Serial Port
 
-As an alternative to network-based synchronization like LSL, you can send triggers directly to your EEG hardware for precise event marking. This method uses your computer's serial port to transmit a signal from PsychoPy to a trigger hub that connects to the EEG Headset. This tutorial provides a simple explaination on how to send these hardware triggers.
+Instead of using a network-based method like LabStreamingLayer (LSL) to send virtual markers, you can use a physical trigger hub to send real hardware triggers to your DSI headset. This method sends signals through your computer’s serial port using PsychoPy and MMBTS. This tutorial explains how to set that up in a simple and easy way.
 
 ## Connecting
 
-If you are using multiple triggers on the trigger hub, then you need to set the Trigger value to one that is not being used. If you are only using this serial trigger then it can be any value from 1-255.
+If you are using multiple triggers on the trigger hub, then you need to set the Trigger value to one that is not being used. If you are only using MMBTS then it can be any value. Depending on the headset you are using, the Trigger value will be limited. DSI-24 and EyeOn offer 8-bits(256), wheras DSI-Flex and DSI-7 only offer 4-bits(16).
 
 ```{code-block} python
 :caption: Connecting the port
@@ -12,9 +12,9 @@ If you are using multiple triggers on the trigger hub, then you need to set the 
 from psychopy import visual, core
 import serial
 
-port = serial.Serial('COM10') #Change the COM port to match your setup
+port = serial.Serial('COM10') #Change the COM port to match your MMBTS setup
 
-Trigger = 1 # trigger code must be between 1-255
+Trigger = 1 # trigger code must be within range of headset
 ```
 
 ## Experiment
