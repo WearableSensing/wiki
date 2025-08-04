@@ -1,4 +1,4 @@
-# Displaying Stimulus
+# Creating Stimuli
 
 This will be a guide on displaying different kinds of visual stimulus with PsychoPy.
 
@@ -7,7 +7,7 @@ With these stimuli, corresponding digital 'marker' can be sent directly into the
 
 ## Creating Visual Stimuli
 
-This code create visuals with the text "wearable" and a red rectangle.
+This code create visuals with the text "wearable" and a red rectangle. For more information on different stimuli, please refer to the [Resource](#resources) at the bottom on of the page.
 
 ```{code-block} python
 :caption: Creating Text and Shape
@@ -54,6 +54,8 @@ This function updates the display by swapping the hidden screen buffer (where yo
 
 For managing timing, PsychoPy provides two main options. Use the straightforward ```core.wait()``` command for simple, fixed pauses. For more complex or flexible scenarios, such as measuring response times, the [```Clock()```](https://www.psychopy.org/api/clock.html) object offers more advanced control.
 
+If you wish to use other methods for timing, it can be found [here](https://discourse.psychopy.org/t/how-to-organise-the-timing-for-event-triggers-stimulus-presentation-and-keypresses/25937).
+
 ## Modifying Existing Stimuli
 
 For modification options, you can specify and alter specific attributes of the visuals. PsychoPy have various modification options depending on the visual you chose.
@@ -79,11 +81,11 @@ win.flip() # Show the updated stimuli
 core.wait(2.0) # Wait for 2 seconds
 ```
 
-<!-- ```{image} ../../_static/psychopy-stim.gif
+```{image} ../../_static/psychopy-stim.gif
 :alt: simple stim
 :class: center
 :width: 200px
-``` -->
+```
 
 ## Resources
 

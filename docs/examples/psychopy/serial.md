@@ -1,10 +1,10 @@
 # Sending Triggers Through a Serial Port
 
-Instead of using a network-based method like LabStreamingLayer (LSL) to send virtual markers, you can use a physical trigger hub to send real hardware triggers to your DSI headset. This method sends signals through your computer’s serial port using PsychoPy and MMBTS. This tutorial explains how to set that up in a simple and easy way.
+Instead of using a network-based method like LabStreamingLayer (LSL) to send virtual markers, you can use a physical trigger hub to send real hardware triggers to your DSI headset. This method sends signals through your computer’s serial port using PsychoPy and [MMBTS](../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime). This tutorial explains how to set that up in a simple and easy way.
 
 ## Connecting
 
-If you are using multiple triggers on the trigger hub, then you need to set the Trigger value to one that is not being used. If you are only using MMBTS then it can be any value. Depending on the headset you are using, the Trigger value will be limited. DSI-24 and EyeOn offer 8-bits(256), wheras DSI-Flex and DSI-7 only offer 4-bits(16).
+If you are using multiple triggers on the trigger hub, then you need to set the Trigger value to one that is not being used. If you are only using MMBTS then it can be any value. Depending on the headset you are using, the Trigger value will be limited.
 
 ```{code-block} python
 :caption: Connecting the port
@@ -15,6 +15,11 @@ import serial
 port = serial.Serial('COM10') #Change the COM port to match your MMBTS setup
 
 Trigger = 1 # trigger code must be within range of headset
+```
+
+```{admonition} Trigger Value Range
+:class: attention
+DSI-24 and fNIRS offer 8-bits for the trigger value(0-255), wheras DSI-Flex, DSI-VR300, and DSI-7 only offer 4-bits(0-15).
 ```
 
 ## Experiment
@@ -65,10 +70,23 @@ core.quit()
 port.close()
 ```
 
+```{admonition} Latency
+:class: attention
+There exist [latency](https://discourse.psychopy.org/t/latency-between-port-signals-and-image-display/32556) between the stimulus appearing on the screen and the marker. This can be due to your device's refresh rate, but the latency seem to be consistent. 
+```
+
 ### Write to Port (```win.callOnFlip()```)
 
 This function will call a function immediately after the next win.flip() command.
 The first argument should be the function to call, followed by the args exactly as you would for your normal call to the function.
+
+## Result
+
+The image below shows the window where the experiment is being shown, as well as DSI-Streamer. At the bottom you can see the 'trigger" channel switching from 1 and 0 depending if the stimulus is on the screen or not.
+
+```{image} ../../_static/psychopy-serial.png
+:width: 50%
+```
 
 ## Resource
 

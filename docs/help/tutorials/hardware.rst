@@ -32,6 +32,7 @@ Instructions on how to use the DSI-24 headset with Meta Quest 2/3 for an enhance
 
 ..  youtube:: H6XeFiU_jWw
 
+.. _mmbt-s-trigger-box-setup-with-e-prime:
 
 MMBT-S Trigger Box Setup with E-Prime
 --------------------------------------

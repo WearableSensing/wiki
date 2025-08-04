@@ -1,4 +1,4 @@
-# Marker
+# Using PsychoPy to send a Marker
 
 ```{admonition} LSL
 :class: sidebar note
@@ -50,7 +50,7 @@ for trial in range(5):
     fixation.draw()
     # Show the stimulus and send the marker almost simultaneously
     win.flip()
-    outlet.push_sample([1]) 
+    outlet.push_sample([1]) # This value can only be an integer
     core.wait(1.0) # fixation appears for 1 second
 
     outlet.push_sample([0]) 
@@ -65,6 +65,18 @@ core.quit()
 ```{admonition} Latency
 :class: attention
 Depending on the complexity of your experiment, there might be [latency](https://discourse.psychopy.org/t/latency-issue-between-lsl-markers-hw-triggers-and-stimulus-presentation/37577) in your marker. 
+```
+
+## Result
+
+Your screen should have something like this. The first image shows the starting screen then a simple cross will flash on your screen every few seconds.
+
+```{image} ../../_static/psychopy-load.png
+:width: 32%
+```
+
+```{image} ../../_static/psychopy-cross.png
+:width: 25%
 ```
 
 ## Consume Data

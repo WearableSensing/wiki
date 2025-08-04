@@ -2,9 +2,9 @@
 
 ```{toctree}
 :hidden:
-Creating Stimulus <stimulus>
-Sending a Marker <marker>
-Using Serial Port <serial>
+Creating Stimuli <stimulus>
+Software Marker <marker>
+Hardware Marker <serial>
 ```
 
 In EEG research, it's crucial to link external events to the continuous stream of recorded brain activity. PsychoPy is an open-source software package that supports running and creating experiments with Python to do such experiments.
@@ -25,3 +25,10 @@ For additional information and comprehensive documentation about PsychoPy, pleas
 
 * [psychopy-official-page](https://www.psychopy.org/)
 * [psychopy-api](https://www.psychopy.org/api/index.html)
+
+## Examples
+
+Here are some examples of people using PsychoPy with our DSI Headset.
+
+* [Can your brain signals reveal your romantic emotions?](https://www.sciencedirect.com/science/article/abs/pii/S0010482525011059)
+* [Electroencephalographic Functional Connectivity...](https://direct.mit.edu/jocn/article-abstract/doi/10.1162/jocn_a_02338/130559/Electroencephalographic-Functional-Connectivity?redirectedFrom=fulltext)
