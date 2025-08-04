@@ -69,9 +69,9 @@ Depending on the complexity of your experiment, there might be [latency](https:/
 
 ## Consume Data
 
-The image below is the recorded data using LabRecorder. It shows two graphs, the top one being the DSI EEG signal (it looks like a blob because it isn't on any one's head), and the bottom shows the marker signals that got sent.
+The image below is the recorded data using [LabRecorder](https://github.com/labstreaminglayer/App-LabRecorder). It displays one of the DSI stream with the data collected from the DSI headset, as well as the markers from the marker stream.
 
-```{image} ../../_static/psychopy-graph.png
+```{image} ../../_static/psychopy-consume.png
 :width: 50%
 ```
 
