@@ -6,7 +6,7 @@ Let's go over how to connect and use your Wearable Sensing DSI headset with BCI2
 
 Please see the official BCI2000 page for how to install the latest version! [https://www.bci2000.org/mediawiki/index.php/DownloadBCI2000](https://www.bci2000.org/mediawiki/index.php/DownloadBCI2000)
 
-```{admonition} MNE Version
+```{admonition} BCI2000 Version and Compatibility
 :class: attention
 The following tutorials are made using Windows 11 and BCI2000 version 3.6
 ```
@@ -20,5 +20,5 @@ For additional information and comprehensive documentation about BCI2000, please
 
 ```{toctree}
 :hidden:
-bci2000viewer
+connect
 ```
