@@ -1,4 +1,4 @@
-# Using PsychoPy to send a Marker
+# Software Triggers
 
 ```{admonition} LSL
 :class: sidebar note

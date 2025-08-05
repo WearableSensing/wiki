@@ -1,6 +1,6 @@
-# Sending Triggers Through a Serial Port
+# Hardware Triggers
 
-Instead of using a network-based method like LabStreamingLayer (LSL) to send virtual markers, you can use a physical trigger hub to send real hardware triggers to your DSI headset. This method sends signals through your computer’s serial port using PsychoPy and [MMBTS](../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime). This tutorial explains how to set that up in a simple and easy way.
+Instead of using a network-based method like LabStreamingLayer (LSL) to send virtual markers, you can use a serial port to send trigger values to your DSI headset via the TriggerHub. This method sends signals through your computer’s serial port using PsychoPy and [MMBTS](../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime). This tutorial explains how to set that up in a simple and easy way.
 
 ## Connecting
 

@@ -1,6 +1,6 @@
 # Creating Stimuli
 
-This will be a guide on displaying different kinds of visual stimulus with PsychoPy.
+The following demonstrates how to create and time simple PsychoPy stimuli.
 
 PsychoPy allows for the creation of precisely timed visual stimuli.
 With these stimuli, corresponding digital 'marker' can be sent directly into the active EEG data stream.
