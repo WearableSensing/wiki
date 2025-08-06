@@ -8,7 +8,7 @@ Welcome to the technical documentation for Wearable Sensing's products and servi
 
 --------------------------------------------------------------------------------------
 
-````{grid} 3
+````{grid} 1
 
 ```{grid-item-card} Integrations
 :link: examples/index
@@ -16,18 +16,28 @@ Welcome to the technical documentation for Wearable Sensing's products and servi
 *Explore how to integrate Wearable Sensing's technology with third-party libraries and platforms.*
 ```
 
+````
+
+````{grid} 1
+
 ```{grid-item-card} Tutorials
 :link: help/tutorials/index
 :link-type: doc
 *Follow step-by-step guides to get started with Wearable Sensing's products and services.*
 ```
 
+````
+
+````{grid} 1
+
 ```{grid-item-card} Downloads
 :link: help/downloads/index
 :link-type: doc
 *Access drivers, software, and third-party plugins for Wearable Sensing's devices.*
 ```
-````  
+
+````
+
 --------------------------------------------------------------------------------------
 ## Who is this for?
 This documentation is intended for developers, researchers, and users who want to understand how to use Wearable Sensing's technology, integrate it with third-party libraries, and get support. It provides detailed information on how to install the necessary software, use our devices, and integrate with our APIs.

@@ -2,10 +2,7 @@
 
 This guide will walk you through how to connect your Wearable Sensing DSI headset to BCI2000 for data acquisition.
 
-```{admonition} Note
-:class: sidebar note
-Please ensure BCI2000 is already installed on your system. If you haven't installed it yet, you can find the download instructions [here](https://www.bci2000.org/mediawiki/index.php/DownloadBCI2000).
-```
+> **Note:** Please ensure BCI2000 is already installed on your system. If you haven't installed it yet, you can find the download instructions [here](https://www.bci2000.org/mediawiki/index.php/DownloadBCI2000).
 
 ## Configure the DSISerial Module
 
