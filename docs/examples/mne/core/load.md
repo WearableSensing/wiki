@@ -3,7 +3,7 @@
 This will be a guide on loading Wearable Sensing data using MNE-Python.
 
 ```{admonition} Experiment
-:class: sidebar note
+:class: note
 The data were collected using a DSI-24 at a sampling rate of 300Hz. There were two conditions in which the user was asked to close and open their eyes.
 ```
 

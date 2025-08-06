@@ -12,7 +12,7 @@ Wearable Sensing's technology can be integrated with various third-party librari
 Below is a list of some of the third-party libraries that can be integrated with Wearable Sensing's technology with documentation on how to use them:
 
 ```{toctree}
-:maxdepth: 4
+:maxdepth: 1
 
 MNE <mne/index>
 LSL <lsl/index>

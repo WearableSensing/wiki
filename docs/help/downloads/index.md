@@ -30,18 +30,25 @@ This section provides links to third-party plugins and extensions that are devel
 If importing data collected from DSI-Streamer 1.08.90 or above, use v.1.14; otherwise, use v.1.13 for older versions.
 ```
 
-
-````{grid} 3
+````{grid} 1
 
 ```{grid-item-card}  Lab Streaming Layer
 :link: https://github.com/labstreaminglayer/App-WearableSensing/releases/
 *released 9/16/2020*
 ```
 
+````
+
+````{grid} 1
+
 ```{grid-item-card}  EEGLAB Wearable Sensing Extension v1.14
 :link: https://wearablesensing.com/wp-content/uploads/2023/12/WearableSensing_1.14.zip
 *released 12/18/2023*
 ```
+
+````
+
+````{grid} 1
 
 ```{grid-item-card}  EEGLAB Wearable Sensing Extension v1.13
 :link: https://wearablesensing.com/wp-content/uploads/2023/12/WearableSensing_1.13.zip
