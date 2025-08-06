@@ -13,6 +13,7 @@ The following tutorials are made using mne version 1.9.0
 
 ```{toctree}
 :hidden:
+
 Load Wearable Sensing Data <core/load>
 Update Channel Information <core/update_channel>
 Update Reference Channel <core/update_ref>

@@ -18,6 +18,7 @@ Guidelines on how to clean and maintain your DSI hardware to ensure longevity an
 
 ..  youtube:: nTn2-z9ssmU
     :width: 75%
+
 DSI VR Adaptor Kit
 ------------------
 
@@ -33,6 +34,7 @@ Instructions on how to use the DSI-24 headset with Meta Quest 2/3 for an enhance
 
 ..  youtube:: H6XeFiU_jWw
     :width: 75%
+
 .. _mmbt-s-trigger-box-setup-with-e-prime:
 
 MMBT-S Trigger Box Setup with E-Prime

@@ -19,6 +19,7 @@ Trigger = 1 # trigger code must be within range of headset
 
 ```{admonition} Trigger Value Range
 :class: attention
+
 DSI-24 and fNIRS offer 8-bits for the trigger value(0-255), wheras DSI-Flex, DSI-VR300, and DSI-7 only offer 4-bits(0-15).
 ```
 

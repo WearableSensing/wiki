@@ -25,6 +25,7 @@ extensions = [
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+myst_heading_anchors = 3
 
 copybutton_prompt_text = r">>> |\.\.\. |\$ "
 copybutton_exclude = ".linenos, .gp"
