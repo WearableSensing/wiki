@@ -71,3 +71,13 @@ html_sidebars = {
 }
 
 html_static_path = ['_static']
+
+html_extra_path = ['_extra'] 
+
+html_js_files = [
+    'js/gate.js',
+]
+
+html_css_files = [
+    'css/password.css',
+]
