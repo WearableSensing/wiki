@@ -56,12 +56,12 @@ html_theme_options = {
     "navbar_align": "left",
     "back_to_top_button": False,
     "logo": {
-        "image_light": "_static/logo.png",
-        "image_dark": "_static/logo.png",
+        "image_light": "_static/images/logo.png",
+        "image_dark": "_static/images/logo.png",
         "text": "   ",
     },
 }
-html_favicon = "_static/favicon.png"
+html_favicon = "_static/images/favicon.png"
 html_sidebars = {
   "help/*": [],
   "getting_started": [],
@@ -71,3 +71,13 @@ html_sidebars = {
 }
 
 html_static_path = ['_static']
+
+html_extra_path = ['_extra'] 
+
+html_js_files = [
+    'js/gate.js',
+]
+
+html_css_files = [
+    'css/password.css',
+]

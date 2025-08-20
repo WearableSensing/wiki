@@ -85,7 +85,7 @@ The first argument should be the function to call, followed by the args exactly 
 
 The image below shows the window where the experiment is being shown, as well as DSI-Streamer. At the bottom you can see the 'trigger" channel switching from 1 and 0 depending if the stimulus is on the screen or not.
 
-```{image} ../../_static/psychopy-serial.png
+```{image} ../../_static/images/psychopy-serial.png
 :width: 50%
 ```
 

@@ -81,7 +81,7 @@ win.flip() # Show the updated stimuli
 core.wait(2.0) # Wait for 2 seconds
 ```
 
-```{image} ../../_static/psychopy-stim.gif
+```{image} ../../_static/images/psychopy-stim.gif
 :alt: simple stim
 :class: center
 :width: 200px

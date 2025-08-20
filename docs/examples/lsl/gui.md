@@ -16,11 +16,11 @@ Go back to `dsi2lslGUI`, inside of **Port** enter **'COM'** followed by the numb
 
 > Initial `dsi2lslGUI` window when first opened.
 
-![alt text](../../_static/gui-1.png)
+![alt text](../../_static/images/gui-1.png)
 
 > `dsi2lslGUI` window after clicking `Start`. The blue indicator shows that the LSL stream is active. If there are any issues with the connection, an error message will appear in the terminal box.
 
-![alt text](../../_static/gui-2.png)
+![alt text](../../_static/images/gui-2.png)
 
 ```{admonition} GUI Buttons
 :class: tip

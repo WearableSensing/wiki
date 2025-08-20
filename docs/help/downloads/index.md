@@ -1,13 +1,22 @@
 # Downloads
 
-```{admonition} Note
-:class: note
-*Please click the links below to download drivers or software.*
-```
+<div id="password-gate-container">
+  <p>
+  Please provide the password to unlock Wearable Sensing's Software, Data Acquisition and User Manuals. If you do not have one or forgot the password, please reach out for <a href="../index.html">support</a>.
+  </p>
+  <div class="input-group">
+    <input type="password" id="password-input" placeholder="Password">
+    <button onclick="checkPassword()">Unlock</button>
+  </div>
+  <p id="error-message" style="color:red; height: 1em;"> </p>
+</div>
+
+<div id="protected-content">
+</div>
 
 ## Data Transmission Drivers
 
-This section provides the necessary drivers for data transmission between Wearable Sensing devices and your computer. 
+This section provides the necessary drivers for data transmission between Wearable Sensing devices and your computer.
 
 ````{grid} 2
 
@@ -23,7 +32,8 @@ This section provides the necessary drivers for data transmission between Wearab
 ````
 
 ## Third Party Plugins
-This section provides links to third-party plugins and extensions that are developed by the community and can be integrated with Wearable Sensing's technology. 
+
+This section provides links to third-party plugins and extensions that are developed by the community and can be integrated with Wearable Sensing's technology.
 
 ```{admonition} EEGLAB Extension Version
 :class: warning

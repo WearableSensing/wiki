@@ -71,11 +71,11 @@ Depending on the complexity of your experiment, there might be [latency](https:/
 
 Your screen should have something like this. The first image shows the starting screen then a simple cross will flash on your screen every few seconds.
 
-```{image} ../../_static/psychopy-load.png
+```{image} ../../_static/images/psychopy-load.png
 :width: 32%
 ```
 
-```{image} ../../_static/psychopy-cross.png
+```{image} ../../_static/images/psychopy-cross.png
 :width: 25%
 ```
 
@@ -83,7 +83,7 @@ Your screen should have something like this. The first image shows the starting 
 
 The image below is the recorded data using [LabRecorder](https://github.com/labstreaminglayer/App-LabRecorder). It displays one of the DSI stream with the data collected from the DSI headset, as well as the markers from the marker stream.
 
-```{image} ../../_static/psychopy-consume.png
+```{image} ../../_static/images/psychopy-consume.png
 :width: 50%
 ```
 
