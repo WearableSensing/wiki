@@ -1,4 +1,3 @@
-// Simplified example of the updated JavaScript
 async function checkPassword() {
   const passResponse = await fetch('/key.txt');
   const correctPassword = await passResponse.text();
