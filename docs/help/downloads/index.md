@@ -1,12 +1,14 @@
 # Downloads
 
 <div id="password-gate-container">
-  <p>To download DSI-Streamer, QStates, API, TCP/IP Example Code, and the User Manuals, please fill in the password below.</p>
+  <p>
+  Please provide the password to unlock Wearable Sensing's Software, Data Acquisition and User Manuals. If you do not have one or forgot the password, please reach out for <a href="../index.html">support</a>.
+  </p>
   <div class="input-group">
     <input type="password" id="password-input" placeholder="Password">
     <button onclick="checkPassword()">Unlock</button>
   </div>
-  <p id="error-message" style="color:red; height: 1em;"></p>
+  <p id="error-message" style="color:red; height: 1em;"> </p>
 </div>
 
 <div id="protected-content">

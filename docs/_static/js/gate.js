@@ -2,6 +2,7 @@
 async function checkPassword() {
   const passResponse = await fetch('/key.txt');
   const correctPassword = await passResponse.text();
+  const errorMessage = document.getElementById("error-message");
   
   const enteredPassword = document.getElementById("password-input").value;
 
@@ -15,6 +16,7 @@ async function checkPassword() {
     document.getElementById("protected-content").style.display = "block";
     document.getElementById("password-gate-container").style.display = "none";
   } else {
-    // Handle incorrect password
+    errorMessage.textContent = "Incorrect password. Please try again.";
+    document.getElementById("password-input").value = "";
   }
 }
