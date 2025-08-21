@@ -2,9 +2,13 @@
 
 PsychoPy Photodiode Experiment for Clock Synchronization.
 
-This script displays a simple visual stimulus (e.g., a flashing square) intended to be captured by a photodiode. Its primary purpose is to generate events that can be used to measure and correct for timing offsets (clock drift) between the stimulus presentation computer and an LSL-streaming data acquisition system (e.g., a DSI headset).
+This [lsl-tool](https://github.com/WearableSensing/lsl-tools) displays a simple visual stimulus (e.g., a flashing square) intended to be captured by a photodiode. Its primary purpose is to generate events that can be used to measure and correct for timing offsets (clock drift) between the stimulus presentation computer and an LSL-streaming data acquisition system (e.g., a DSI headset).
 
-## How to Run
+## Hardware Setup
+
+You will need to set up a lightdiode as well as a MMBTS for this experiment. You can find instruction on that [here](../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime). Make sure to place the light lightdiode on the top right corner of the screen for this experiment.
+
+## How to Run the Software
 
 To start the experiment, run the main.py script from your terminal:
 
@@ -100,10 +104,12 @@ Do you want to record? (y/n): y
 
 ### Outcome of this example
 
-The experiment will connect to an MMBTS on COM10.
+- The experiment will connect to an MMBTS on COM10.
 
-It will create a software LSL stream named PsychoPyMarkers that sends the integer marker 3.
+- It will create a software LSL stream named PsychoPyMarkers that sends the integer marker 3.
 
-The photodiode will flash 10 times with a 0.25-second rate.
+- The photodiode will flash 10 times with a 0.25-second rate.
 
-The recorder script will launch in the background, recording both the hardware stream and the PsychoPyMarkers into a file named photodiode_exp.csv.
+- The recorder script will launch in the background, recording both the hardware stream and the PsychoPyMarkers into a file named photodiode_exp.csv.
+
+An analysis can be ran on the file created by this experiment. You can find it on the next page.
