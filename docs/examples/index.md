@@ -18,6 +18,7 @@ MNE <mne/index>
 LSL <lsl/index>
 PsychoPy <psychopy/index>
 BCI2000 <bci2000/index>
+Testing Setup <tooling/index>
 ```
 
 If you have a third-party library that you would like to integrate with Wearable Sensing's technology, please reach out to us. We are always looking to expand our integrations and provide more value to our users!

@@ -1,4 +1,4 @@
-# Wearable Sensing Techincal Documentation 
+# Wearable Sensing Techincal Documentation
 
 ## Install
 
