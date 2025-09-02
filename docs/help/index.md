@@ -1,16 +1,10 @@
 # Getting support
+---------------------
 
-For sales inquiries or technical support, please visit our main website or use the contact information below:
-
-
-## Main Website
-
-```{code-block} text
-:caption: Website
-www.wearablesensing.com
-```
+For sales inquiries or technical support, please visit our main website or use the contact information below.
 
 ## Contact Us
+
 
 ```{code-block} text
 :caption: Technical Support Email
@@ -30,4 +24,9 @@ sales@wearablesensing.com
 ```{code-block} text
 :caption: Sale Line
 +1 858-412-1812
+```
+
+```{code-block} text
+:caption: Website
+www.wearablesensing.com
 ```

@@ -1,4 +1,5 @@
 # PsychoPy
+--------------------------------------------------------------------------------------
 
 ```{toctree}
 :hidden:
@@ -20,6 +21,7 @@ The following tutorials are made using PsychoPy version 2024.2.4 (py3.10)
 ```
 
 ## Resources
+--------------------------------------------------------------------------------------
 
 For additional information and comprehensive documentation about PsychoPy, please visit the following links:
 
@@ -27,6 +29,7 @@ For additional information and comprehensive documentation about PsychoPy, pleas
 * [psychopy-api](https://www.psychopy.org/api/index.html)
 
 ## Examples
+--------------------------------------------------------------------------------------
 
 Here are some examples of people using PsychoPy with our DSI Headset.
 

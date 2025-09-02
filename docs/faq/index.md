@@ -1,8 +1,11 @@
 # Frequently Asked Questions
+--------------------------------------------------------------------------------------
+
 
 This page contains answers to some of the most common questions using Wearable Sensing's technology. If you have a question that is not answered here, please feel free to reach out to us. See {doc}`Contact <../help/index>` for contact information.
 
 ## General
+--------------------------------------------------------------------------------------
 
 ```{dropdown} Do these devices support real-time data streaming?
 :animate: fade-in
@@ -25,6 +28,7 @@ We have a distribution network spanning over 40 countries and can ship worldwide
 ```
 
 ## Software
+--------------------------------------------------------------------------------------
 
 ```{dropdown} Does the DSI-Streamer output raw or filtered data?
 :animate: fade-in
@@ -37,6 +41,8 @@ The DSI-Streamer supports various output formats including CSV, EDF, and our bin
 ```
 
 ## Integrations
+--------------------------------------------------------------------------------------
+
 
 ```{dropdown} Do the DSI devices work with Eye-Tracking or other hardware systems?
 :animate: fade-in
@@ -63,6 +69,8 @@ Yes, we provide a low-level API and SDK for developers who want to integrate our
 ```
 
 ## Hardware
+--------------------------------------------------------------------------------------
+
 
 ```{dropdown} Are your dry electrodes active?
 :animate: fade-in
@@ -91,6 +99,8 @@ The systems are cleaned with their supplied brushes and 70% isopropanol alcohol.
 ```
 
 ## Triggers
+--------------------------------------------------------------------------------------
+
 
 ```{dropdown} What type of external triggers are supported?
 :animate: fade-in
@@ -102,6 +112,8 @@ In addition, we support software triggering via Lab Streaming Library (LSL).
 ```
 
 ## Warranty
+--------------------------------------------------------------------------------------
+
 
 ```{dropdown} What is offered in terms of warranty and support?
 :animate: fade-in

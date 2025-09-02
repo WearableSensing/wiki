@@ -1,4 +1,5 @@
 # Downloads
+--------------------------------------------------------------------------------------
 
 <div id="password-gate-container">
   <p>
@@ -15,6 +16,7 @@
 </div>
 
 ## Data Transmission Drivers
+--------------------------------------------------------------------------------------
 
 This section provides the necessary drivers for data transmission between Wearable Sensing devices and your computer.
 
@@ -32,6 +34,7 @@ This section provides the necessary drivers for data transmission between Wearab
 ````
 
 ## Third Party Plugins
+--------------------------------------------------------------------------------------
 
 This section provides links to third-party plugins and extensions that are developed by the community and can be integrated with Wearable Sensing's technology.
 

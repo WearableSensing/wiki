@@ -1,12 +1,12 @@
 # Wearable Sensing
+--------------------------------------------------------------------------------------
+
 
 
 ```{admonition} Support Page
 :class: hint
 Welcome to the support page for Wearable Sensing's products and services!
 ```
-
---------------------------------------------------------------------------------------
 
 ````{grid} 1
 

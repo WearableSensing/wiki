@@ -1,4 +1,5 @@
 # LSL
+--------------------------------------------------------------------------------------
 
 The lab streaming layer (LSL) is a system for the unified collection of measurement time series in research experiments that handles both the networking, time-synchronization, near real-time access as well as optionally the centralized collection, viewing and disk recording of the data.
 
@@ -14,6 +15,7 @@ The following tutorials are made on Windows 11.
 ```
 
 ## Resources
+--------------------------------------------------------------------------------------
 
 For additional information and comprehensive documentation about LSL, please visit the following links:
 

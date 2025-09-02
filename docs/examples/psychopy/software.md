@@ -1,5 +1,5 @@
 # Software Triggers
-
+--------------------------------------------------------------------------------------
 ```{admonition} LSL
 :class: sidebar note
 The following tutorials will use pylsl in pair with PsychoPy
@@ -8,6 +8,7 @@ The following tutorials will use pylsl in pair with PsychoPy
 This tutorial will show you how to send digital event markers from PsychoPy into an active DSI data stream. Sending these markers is crucial for accurately synchronizing your stimuli with recorded neural activity.
 
 ## Setting up the Stream
+--------------------------------------------------------------------------------------
 
 The script below creates a simple LSL outlet stream. For a real DSI EEG experiment, this PsychoPy marker stream is intended to be recorded simultaneously alongside the separate data stream coming from your DSI Headset. LSL automatically time-synchronizes both streams, allowing you to perfectly align your stimulus events with the neural data during analysis. You will need extra tools in order to collect the data.
 
@@ -36,6 +37,7 @@ outlet = StreamOutlet(marker_stream_info)
 ```
 
 ## Sending Markers
+--------------------------------------------------------------------------------------
 
 This example runs a simple experiment that displays a fixation cross five times, each for one second. A corresponding marker is sent to the LSL outlet every time the fixation appears on screen. The ```win.flip()``` command is the precise moment the visual stimulus is displayed. By immediately pushing the marker with ```outlet.push_sample()```, you ensure that the marker's high-precision LSL timestamp is as close as possible to the actual time of the visual event.
 
@@ -68,6 +70,7 @@ Depending on the complexity of your experiment, there might be [latency](https:/
 ```
 
 ## Result
+--------------------------------------------------------------------------------------
 
 Your screen should have something like this. The first image shows the starting screen then a simple cross will flash on your screen every few seconds.
 
@@ -80,6 +83,7 @@ Your screen should have something like this. The first image shows the starting 
 ```
 
 ## Consume Data
+--------------------------------------------------------------------------------------
 
 The image below is the recorded data using [LabRecorder](https://github.com/labstreaminglayer/App-LabRecorder). It displays one of the DSI stream with the data collected from the DSI headset, as well as the markers from the marker stream.
 
@@ -88,6 +92,7 @@ The image below is the recorded data using [LabRecorder](https://github.com/labs
 ```
 
 ## Resources
+--------------------------------------------------------------------------------------
 
 For more in-depth documentation and API reference, please refer to:
 

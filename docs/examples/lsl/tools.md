@@ -1,8 +1,10 @@
 # LSL-Tools
+--------------------------------------------------------------------------------------
 
 Wearable Sensing has created some examples to demonstrate working with LabStreamingLayer. You can find them at Wearable Sensing's [github](https://github.com/WearableSensing/lsl-tools), where they are easy to clone and run.
 
 ## Recording Data from DSI2LSL
+--------------------------------------------------------------------------------------
 
 ```{admonition} Note
 :class: attention
@@ -43,6 +45,7 @@ Usage:
 This allows you to edit you recording configurations without having to change the code.
 
 ## Example
+--------------------------------------------------------------------------------------
 
 ```sh
 python tools/consume/receive.py --output='./thisFolder' --stream='aStreamName' --duration=2
@@ -51,6 +54,7 @@ python tools/consume/receive.py --output='./thisFolder' --stream='aStreamName' -
 This script will record a stream named **'aStreamName'** and save it to the path **'./thisFolder'** recording **2** seconds. The default stream name is **'WS-default'** and the default output path is the current working directory. The default duration is **10** seconds.
 
 ## Resources
+--------------------------------------------------------------------------------------
 
 For additional information and comprehensive documentation about pylsl and LabStreamingLayer, please visit the following links:
 
