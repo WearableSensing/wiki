@@ -16,10 +16,10 @@ Below is a list of some of the third-party libraries that can be integrated with
 ```{toctree}
 :maxdepth: 1
 
-MNE <mne/index>
 LSL <lsl/index>
-PsychoPy <psychopy/index>
+MNE <mne/index>
 BCI2000 <bci2000/index>
+PsychoPy <psychopy/index>
 Internal Tooling <tooling/index>
 ```
 

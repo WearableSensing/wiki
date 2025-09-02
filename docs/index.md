@@ -70,8 +70,8 @@ See our [website](https://wearablesensing.com) for more information about our pr
 :maxdepth: 2
 
    Integrations <examples/index>
-   FAQ <faq/index>
-   Downloads <help/downloads/index>
    Tutorials <help/tutorials/index>
+   Downloads <help/downloads/index>
    Contact <help/index>
+   FAQ <faq/index>
 ```

@@ -3,10 +3,12 @@
 
 <div id="password-gate-container">
   <p>
-  Please provide the password to unlock Wearable Sensing's Software, Data Acquisition and User Manuals. If you do not have one or forgot the password, please reach out for <a href="../index.html">support</a>.
+  Please provide the password to access Wearable Sensing's Software, Data Acquisition and User Manuals.
+  </br>
+  <i>If you do not have one or forgot the password, please reach out for <a href="../index.html">support</a>.</i>
   </p>
   <div class="input-group">
-    <input type="password" id="password-input" placeholder="Password">
+    <input type="password" id="password-input" placeholder="...">
     <button onclick="checkPassword()">Unlock</button>
   </div>
   <p id="error-message" style="color:red; height: 1em;"> </p>
