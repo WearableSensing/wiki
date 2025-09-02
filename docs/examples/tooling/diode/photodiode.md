@@ -6,7 +6,7 @@ This [lsl-tool](https://github.com/WearableSensing/lsl-tools) displays a simple 
 ## Hardware Setup
 --------------------------------------------------------------------------------------
 
-You will need to set up a lightdiode as well as a MMBT-S (a device used for sending hardware event markers in neuroscience experiments) for this experiment. You can find instructions on that [here](../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime) or visit the [MMBT-S documentation](https://wearablesensing.com/mmbt/). Make sure to place the lightdiode on the top right corner of the screen for this experiment.
+You will need to set up a lightdiode as well as a MMBT-S (a device used for sending hardware event markers in neuroscience experiments) for this experiment. You can find instructions on that [here](../../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime) or visit the [MMBT-S documentation](https://wearablesensing.com/mmbt/). Make sure to place the lightdiode on the top right corner of the screen for this experiment.
 
 ## How to Run the Software
 --------------------------------------------------------------------------------------
