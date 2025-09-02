@@ -1,4 +1,5 @@
 # MNE
+--------------------------------------------------------------------------------------
 
 MNE-Python is an open-source Python package for exploring, visualizing, and analyzing human neurophysiological data such as MEG, EEG, sEEG, ECoG, and more.
 
@@ -21,6 +22,7 @@ Filtering Data <processing/filter>
 ```
 
 ## Resources
+--------------------------------------------------------------------------------------
 
 For additional information and comprehensive documentation about MNE, please visit the following links:
 

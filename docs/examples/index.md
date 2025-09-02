@@ -1,8 +1,10 @@
 # Integrations
+--------------------------------------------------------------------------------------
 
 This page provides an overview of the integrations available with Wearable Sensing's technology. We offer a range of integrations with third-party libraries to enhance the functionality and usability of our products.
 
 ## Integrations with Third-Party Libraries
+--------------------------------------------------------------------------------------
 
 ```{admonition} Integrations
 :class: hint
@@ -18,7 +20,7 @@ MNE <mne/index>
 LSL <lsl/index>
 PsychoPy <psychopy/index>
 BCI2000 <bci2000/index>
-Testing Setup <tooling/index>
+Internal Tooling <tooling/index>
 ```
 
 If you have a third-party library that you would like to integrate with Wearable Sensing's technology, please reach out to us. We are always looking to expand our integrations and provide more value to our users!

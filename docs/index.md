@@ -1,12 +1,12 @@
 # Wearable Sensing
-
-
-```{admonition} Technical Documentation
-:class: hint
-Welcome to the technical documentation for Wearable Sensing's products and services!
-```
-
 --------------------------------------------------------------------------------------
+
+
+
+```{admonition} Support Page
+:class: hint
+Welcome to the support page for Wearable Sensing's products and services!
+```
 
 ````{grid} 1
 
@@ -40,12 +40,25 @@ Welcome to the technical documentation for Wearable Sensing's products and servi
 
 --------------------------------------------------------------------------------------
 ## Who is this for?
-This documentation is intended for developers, researchers, and users who want to understand how to use Wearable Sensing's technology, integrate it with third-party libraries, and get support. It provides detailed information on how to install the necessary software, use our devices, and integrate with our APIs.
+This documentation is intended for developers, researchers, and users interested in Wearable Sensing's technology. It explains how to install the necessary software, use our devices, and integrate with our APIs.
 
-Read on to learn how to get started with Wearable Sensing's technology, find answers to frequently asked questions, and explore the API reference.
+Read on to:
+- Learn how to get started with Wearable Sensing's technology
+- Find answers to frequently asked questions
+- Download software, drivers, and plugins
 
 ## About Us
-Wearable Sensing is a rapidly growing neurotechnology company that specializes in developing wearable sensors for brain activity monitoring. Our patented Dry Sensor Interface (DSI) technology ensures high signal quality and artifact-free physiological monitoring in easy-to-use, mobile form factors. By facilitating brain activity monitoring in real-world environments, our practical EEG headsets are revolutionizing the neuroscience research field and enabling innovative applications across various commercial domains, such as neurorehabilitation, brain computer interface (BCI), virtual reality, neurofeedback, neuromarketing, neuroeducation, and many more.
+Wearable Sensing is a rapidly growing neurotechnology company specializing in dry electrode sensors for brain activity monitoring. Our patented technology ensures high signal quality and artifact-free physiological monitoring in easy-to-use, mobile form factors. This makes it possible to reliably monitor brain activity in real-world environments using our practical EEG headsets.
+
+Wearable Sensing is revolutionizing neuroscience research and enabling innovative applications across various commercial domains. These include:
+
+- Neurorehabilitation
+- Brain computer interface (BCI)
+- Virtual reality
+- Neurofeedback
+- Neuromarketing
+- Neuroeducation
+- And many more.
 
 See our [website](https://wearablesensing.com) for more information about our products and services.
 
@@ -56,7 +69,6 @@ See our [website](https://wearablesensing.com) for more information about our pr
 ```{toctree}
 :maxdepth: 2
 
-   API <api/index>
    Integrations <examples/index>
    FAQ <faq/index>
    Downloads <help/downloads/index>

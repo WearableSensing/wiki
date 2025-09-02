@@ -65,7 +65,6 @@ html_favicon = "_static/images/favicon.png"
 html_sidebars = {
   "help/*": [],
   "getting_started": [],
-  "api/*": [],
   "help/downloads/*": [],
   "faq/*": [],
 }

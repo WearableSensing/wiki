@@ -1,14 +1,15 @@
 # Photodiode Experiment
+--------------------------------------------------------------------------------------
 
-PsychoPy Photodiode Experiment for Clock Synchronization.
-
-This [lsl-tool](https://github.com/WearableSensing/lsl-tools) displays a simple visual stimulus (e.g., a flashing square) intended to be captured by a photodiode. Its primary purpose is to generate events that can be used to measure and correct for timing offsets (clock drift) between the stimulus presentation computer and an LSL-streaming data acquisition system (e.g., a DSI headset).
+This [lsl-tool](https://github.com/WearableSensing/lsl-tools) displays a simple visual stimulus (e.g., a flashing square) intended to be captured by a photodiode. Its primary purpose is to generate events that can be used to measure and correct for timing offsets between the stimulus presentation computer and an LSL-streaming data acquisition system (e.g., a DSI headset).
 
 ## Hardware Setup
+--------------------------------------------------------------------------------------
 
-You will need to set up a lightdiode as well as a MMBTS for this experiment. You can find instruction on that [here](../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime). Make sure to place the light lightdiode on the top right corner of the screen for this experiment.
+You will need to set up a lightdiode as well as a MMBT-S (a device used for sending hardware event markers in neuroscience experiments) for this experiment. You can find instructions on that [here](../../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime) or visit the [MMBT-S documentation](https://wearablesensing.com/mmbt/). Make sure to place the lightdiode on the top right corner of the screen for this experiment.
 
 ## How to Run the Software
+--------------------------------------------------------------------------------------
 
 To start the experiment, run the main.py script from your terminal:
 
@@ -18,13 +19,9 @@ python main.py
 
 The script will present a menu. You can press ```Enter``` to select the default choice and begin the interactive setup.
 
-## Interactive Setup Arguments
+### 1. MMBT-S Hardware Triggers
 
-After launching, the script will ask a series of questions to configure the experiment. Pressing ```Enter``` without typing will select the default value shown in the prompt.
-
-### 1. MMBTS Hardware Triggers
-
-This configures the connection to an MMBTS device for sending hardware-timed event markers.
+This configures the connection to an MMBT-S device for sending hardware-timed event markers.
 
 > ```Do you want to connect a MMBTS? (y/n):```
 
@@ -80,6 +77,7 @@ This option automatically records the LSL streams you have configured.
 - The output is saved as photodiode_exp.csv in the same directory.
 
 ## Example Walkthrough
+--------------------------------------------------------------------------------------
 
 Here is an example of a complete interaction:
 
@@ -102,7 +100,8 @@ At what rate do you want to offset? ( DEFAULT: 0.0): [PRESS ENTER]
 Do you want to record? (y/n): y
 ```
 
-### Outcome of this example
+### Outcome of this experiment
+--------------------------------------------------------------------------------------
 
 - The experiment will connect to an MMBTS on COM10.
 
@@ -112,4 +111,4 @@ Do you want to record? (y/n): y
 
 - The recorder script will launch in the background, recording both the hardware stream and the PsychoPyMarkers into a file named photodiode_exp.csv.
 
-An analysis can be ran on the file created by this experiment. You can find it on the next page.
+An analysis can be run on the file created by this experiment. You can find it on the next page.

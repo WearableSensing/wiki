@@ -1,4 +1,5 @@
 # Channel Management and Reordering
+--------------------------------------------------------------------------------------
 
 It's important to be able to remove channels that are not relevant to your analysis, contain excessive noise, or are redundant. The following code snippet demonstrates how to remove unwanted channels from your data. Please see the previous section for how to load your data into the `raweegdata` object used below.
 
@@ -6,6 +7,7 @@ It's important to be able to remove channels that are not relevant to your analy
 The `raweegdata` object is assumed to be your loaded EEG data, as shown in the previous sections. See {doc}`MNE Load <../core/load>` for more details on loading EEG data.
 
 ## Remove Unwanted Channels
+--------------------------------------------------------------------------------------
 
 ```{code-block} python
 :caption: Remove Unwanted Channels
@@ -26,6 +28,7 @@ Here you can specify channels you want to remove. Remember to spell the Channel 
 This function modifies your raweegdata object by removing the specified channels from it, these dropped channels won't be visible anymore in your future EEG data processing or visualization. ['EEG X1:EMG-Pz', 'EEG X2:EOG-Pz','EEG X3:-Pz', 'CM'] are in the list, so they will not appear in the final plot.
 
 ## Reordering Channels
+--------------------------------------------------------------------------------------
 
 After dropping unwanted channels, it may be beneficial to reorder the remaining channels. This helps create easier-to-read plots and match the order of similar software such as DSI-Streamer.
 

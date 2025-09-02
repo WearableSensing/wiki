@@ -1,8 +1,13 @@
 # Running BCI2000
+--------------------------------------------------------------------------------------
 
 With all configuration complete, you're now ready to launch BCI2000 and verify your DSI headset connection by running a mock experiment. This test ensures that BCI2000 can successfully communicate with your headset and properly open the Source Signal and Timing visualization windows.
 
-## 1. Open the BCI2000 Launcher
+## Launch BCI2000
+
+Follow these steps to launch BCI2000 with your DSI headset:
+
+### 1. Open the BCI2000 Launcher
 
 * Navigate to your BCI2000 `prog` directory and open `BCI2000Launcher.exe`
 
@@ -60,7 +65,8 @@ With all configuration complete, you're now ready to launch BCI2000 and verify y
    Running DSISerial running DummySignalProcessing running DummyApplication running
    ```
 
-#### Resources
+## Resources
+--------------------------------------------------------------------------------------
 
 This documentation only covers setup. For full usage, configuration, and advanced module options, please visit following links:
 
