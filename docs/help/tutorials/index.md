@@ -1,4 +1,5 @@
-# Tutorials
+# Wearable Sensing Tutorials
+--------------------------------------------------------------------------------------
 
 Get started with Wearable Sensing's EEG technology through step-by-step guides covering software setup, hardware configuration, and third-party integrations.
 

@@ -20,6 +20,7 @@ LSL <lsl/index>
 MNE <mne/index>
 BCI2000 <bci2000/index>
 PsychoPy <psychopy/index>
+BCI2000 <bci2000/index>
 Internal Tooling <tooling/index>
 ```
 
