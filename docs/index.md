@@ -1,77 +1,63 @@
-# Wearable Sensing
---------------------------------------------------------------------------------------
+# Wearable Sensing Support
+---
+**Everything you need to work with our EEG technology!**  [Learn more about us →](help/about)
 
-
-
-```{admonition} Support Page
-:class: hint
-Welcome to the support page for Wearable Sensing's products and services!
+```{admonition} New here?
+:class: tip
+Start with our [tutorials](help/tutorials/index) or explore the **Quick Links** below to find what you need.
 ```
 
-````{grid} 1
+## Quick Links
 
-```{grid-item-card} Integrations
-:link: examples/index
-:link-type: doc
-*Explore how to integrate Wearable Sensing's technology with third-party libraries and platforms.*
-```
+````{grid} 2
+:gutter: 3
 
-````
-
-````{grid} 1
-
-```{grid-item-card} Tutorials
+```{grid-item-card} Get Started
 :link: help/tutorials/index
 :link-type: doc
-*Follow step-by-step guides to get started with Wearable Sensing's products and services.*
+:text-align: center
+
+Step-by-step hardware and internal software tutorials
 ```
-
-````
-
-````{grid} 1
 
 ```{grid-item-card} Downloads
 :link: help/downloads/index
 :link-type: doc
-*Access drivers, software, and third-party plugins for Wearable Sensing's devices.*
+:text-align: center
+
+Essential drivers, software tools, user guides, and third-party plugins
 ```
 
+```{grid-item-card} Integrations
+:link: examples/index
+:link-type: doc
+:text-align: center
+
+Connect with popular platforms and third-party libraries
+```
+
+```{grid-item-card} FAQ
+:link: faq/index
+:link-type: doc
+:text-align: center
+
+Common questions and answers
+```
+
+---
+
 ````
-
---------------------------------------------------------------------------------------
-## Who is this for?
-This documentation is intended for developers, researchers, and users interested in Wearable Sensing's technology. It explains how to install the necessary software, use our devices, and integrate with our APIs.
-
-Read on to:
-- Learn how to get started with Wearable Sensing's technology
-- Find answers to frequently asked questions
-- Download software, drivers, and plugins
-
-## About Us
-Wearable Sensing is a rapidly growing neurotechnology company specializing in dry electrode sensors for brain activity monitoring. Our patented technology ensures high signal quality and artifact-free physiological monitoring in easy-to-use, mobile form factors. This makes it possible to reliably monitor brain activity in real-world environments using our practical EEG headsets.
-
-Wearable Sensing is revolutionizing neuroscience research and enabling innovative applications across various commercial domains. These include:
-
-- Neurorehabilitation
-- Brain computer interface (BCI)
-- Virtual reality
-- Neurofeedback
-- Neuromarketing
-- Neuroeducation
-- And many more.
-
-See our [website](https://wearablesensing.com) for more information about our products and services.
-
-
-
-### Table of Contents
+````{dropdown} Navigation
 
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 3
 
+   About <help/about>
    Integrations <examples/index>
    Tutorials <help/tutorials/index>
    Downloads <help/downloads/index>
-   Contact <help/index>
    FAQ <faq/index>
+   Contact <help/index>
 ```
+
+````

@@ -22,7 +22,7 @@ sales@wearablesensing.com
 ```
 
 ```{code-block} text
-:caption: Sale Line
+:caption: Sales Line
 +1 858-412-1812
 ```
 
