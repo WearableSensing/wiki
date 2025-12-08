@@ -1,5 +1,5 @@
 # Wearable Sensing Support
----
+
 **Everything you need to work with our EEG technology!**  [Learn more about us →](help/about)
 
 ```{admonition} New here?
@@ -10,7 +10,7 @@ Start with our [tutorials](help/tutorials/index) or explore the **Quick Links** 
 ## Quick Links
 
 ````{grid} 2
-:gutter: 3
+:gutter: 4
 
 ```{grid-item-card} Get Started
 :link: help/tutorials/index
@@ -43,10 +43,9 @@ Connect with popular platforms and third-party libraries
 
 Common questions and answers
 ```
+````
 
 ---
-
-````
 ````{dropdown} Navigation
 
 ```{toctree}

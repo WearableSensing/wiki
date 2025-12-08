@@ -5,7 +5,7 @@
   <p>
   Please provide the password to access Wearable Sensing's Software, Data Acquisition and User Manuals.
   </br>
-  <i>If you do not have one or forgot the password, please reach out for <a href="../index.html">support</a>.</i>
+  <i>If you do not have one or forgot the password, please reach out to <a href="../index.html">support</a>.</i>
   </p>
   <div class="input-group">
     <input type="password" id="password-input" placeholder="...">
