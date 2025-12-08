@@ -1,32 +1,41 @@
-# Getting support
----------------------
+# Contact Us
+---
 
-For sales inquiries or technical support, please visit our main website or use the contact information below.
+Need help or have questions? Our team is here to assist you with technical support, sales inquiries, and product information.
 
-## Contact Us
+## Get in Touch
 
+````{grid} 2
+:gutter: 3
 
-```{code-block} text
-:caption: Technical Support Email
-support@wearablesensing.com
+```{grid-item-card} Technical Support
+
+For installation help, troubleshooting, and technical questions
+
+**Email:** support@wearablesensing.com
+
+**Phone:** +1 858-412-1817
 ```
 
-```{code-block} text
-:caption: Technical Support Line
-+1 858-412-1817
+```{grid-item-card} Sales
+
+For product information, quotes, and purchases
+
+**Email:** sales@wearablesensing.com
+
+**Phone:** +1 858-412-1812
 ```
 
-```{code-block} text
-:caption: Sales Email
-sales@wearablesensing.com
+````
+```{admonition} Support Hours
+:class: note
+Our support team typically responds within 24 hours during business days (Monday-Friday, 9AM-5PM PST).
 ```
 
-```{code-block} text
-:caption: Sales Line
-+1 858-412-1812
-```
+---
 
-```{code-block} text
-:caption: Website
-www.wearablesensing.com
-```
+## Additional Resources
+
+- **Website:** [www.wearablesensing.com](https://www.wearablesensing.com)
+- **Documentation:** Browse our [tutorials](tutorials/index) and [FAQ](../faq/index)
+- **GitHub:** [github.com/WearableSensing](https://github.com/WearableSensing)
