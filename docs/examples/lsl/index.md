@@ -1,4 +1,5 @@
 # Lab Streaming Layer (LSL) Integration
+---
 
 The Lab Streaming Layer (LSL) is a system for unified collection of measurement time series in research experiments that handles networking, time-synchronization, near real-time access, and optionally centralized collection, viewing, and disk recording of data.
 
@@ -6,8 +7,6 @@ The Lab Streaming Layer (LSL) is a system for unified collection of measurement 
 :class: note
 Download the latest [`dsi2lslGUI`](https://github.com/WearableSensing/LSL) release from our GitHub. To build from source, visit the [App-WearableSensing repository](https://github.com/WearableSensing/App-WearableSensing). These tutorials are created on Windows 11.
 ```
-
----
 
 ## Getting Started
 
