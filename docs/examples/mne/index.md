@@ -1,67 +1,77 @@
-# MNE-Python Integration
+# MNE Integration
 ---
 
-MNE-Python is an open-source Python package for exploring, visualizing, and analyzing human neurophysiological data such as MEG, EEG, sEEG, ECoG, and more.
+MNE is a comprehensive ecosystem for working with neurophysiological data. Use these integrations to analyze EEG data from Wearable Sensing devices with powerful Python tools.
 
-```{admonition} Installation Required
-:class: note
-Before starting, install MNE-Python following the [official installation guide](https://mne.tools/stable/install/index.html). These tutorials use MNE version 1.9.0.
-```
+## Choose Your Integration
 
-## Getting Started
-
-Learn how to work with Wearable Sensing data in MNE-Python through step-by-step tutorials covering data loading, processing, and visualization.
-
-### Quick Navigation
-
-````{grid} 2
+````{grid} 1 2 2 2
 :gutter: 3
 
-```{grid-item-card} General
-:link: core/load
+```{grid-item-card} MNE-Python
+:link: python/index
 :link-type: doc
 :text-align: center
 
-Load data and configure channels
+**Offline Analysis & Visualization**
+
+Open-source Python package for exploring, visualizing, and analyzing EEG, MEG, sEEG, and ECoG data.
+
+Perfect for: Post-processing, advanced analysis, research workflows
 ```
 
-```{grid-item-card} Processing
-:link: processing/filter
+```{grid-item-card} MNE-LSL
+:link: lsl/index
 :link-type: doc
 :text-align: center
 
-Filter and preprocess signals
+**Real-Time Streaming & Processing**
+
+Bridge between MNE-Python and Lab Streaming Layer for real-time data streaming and visualization.
+
+Perfect for: Live monitoring, real-time analysis, BCI applications
 ```
 
 ````
 
 ---
 
-(core-operations)=
-## General
+## Getting Started
 
-```{toctree}
-:maxdepth: 1
-
-Load Wearable Sensing Data <core/load>
-Update Channel Information <core/update_channel>
-Update Reference Channel <core/update_ref>
+```{admonition} Installation Required
+:class: note
+Each integration requires separate installation. Click on the cards above to access detailed setup instructions and tutorials.
 ```
 
-(data-processing)=
-## Data Processing
+### What Can You Do?
 
-```{toctree}
-:maxdepth: 1
+**With MNE-Python:**
+- Load and analyze EEG recordings
+- Apply advanced preprocessing and filtering
+- Perform time-frequency analysis and source localization
+- Create publication-ready visualizations
 
-Filtering Data <processing/filter>
-```
+**With MNE-LSL:**
+- Stream data in real-time from Wearable Sensing devices
+- Visualize EEG signals during data collection
+- Monitor signal quality in real-time
+- Implement online processing pipelines
 
 ---
 
 ## Additional Resources
 
 **Official MNE Documentation:**
-- [MNE GitHub Repository](https://github.com/mne-tools/mne-python)
-- [MNE Documentation](https://mne.tools/stable/documentation/index.html)
-- [MNE Tutorials](https://mne.tools/stable/auto_tutorials/index.html)
+- [MNE-Python Documentation](https://mne.tools/stable/index.html)
+- [MNE-LSL Documentation](https://mne.tools/mne-lsl/stable/index.html)
+
+**Related Integrations:**
+- {doc}`LSL Integration <../lsl/index>` - Set up LSL streaming with Wearable Sensing devices
+
+```{toctree}
+:maxdepth: 1
+:hidden:
+
+MNE-Python <python/index>
+MNE-LSL <lsl/index>
+```
