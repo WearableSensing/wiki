@@ -17,7 +17,7 @@ Learn how to work with Wearable Sensing data in MNE-Python through step-by-step 
 ````{grid} 2
 :gutter: 3
 
-```{grid-item-card} General
+```{grid-item-card} Core Operations
 :link: core/load
 :link-type: doc
 :text-align: center
@@ -25,7 +25,7 @@ Learn how to work with Wearable Sensing data in MNE-Python through step-by-step 
 Load data and configure channels
 ```
 
-```{grid-item-card} Processing
+```{grid-item-card} Data Processing
 :link: processing/filter
 :link-type: doc
 :text-align: center
@@ -37,24 +37,28 @@ Filter and preprocess signals
 
 ---
 
+## Tutorials
+
+Follow these step-by-step tutorials to work with Wearable Sensing data in MNE-Python:
+
 (core-operations)=
-## General
+### Core Operations
 
 ```{toctree}
 :maxdepth: 1
 
-Load Wearable Sensing Data <core/load>
-Update Channel Information <core/update_channel>
-Update Reference Channel <core/update_ref>
+core/load
+core/update_channel
+core/update_ref
 ```
 
 (data-processing)=
-## Data Processing
+### Data Processing
 
 ```{toctree}
 :maxdepth: 1
 
-Filtering Data <processing/filter>
+processing/filter
 ```
 
 ---

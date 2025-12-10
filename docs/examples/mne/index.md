@@ -69,7 +69,7 @@ Each integration requires separate installation. Click on the cards above to acc
 - {doc}`LSL Integration <../lsl/index>` - Set up LSL streaming with Wearable Sensing devices
 
 ```{toctree}
-:maxdepth: 1
+:maxdepth: 3
 :hidden:
 
 MNE-Python <python/index>
