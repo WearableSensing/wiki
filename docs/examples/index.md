@@ -69,6 +69,7 @@ See our main page for more complete list of supported integrations.
 
 LSL <lsl/index>
 MNE-Python <mne/index>
+MNE-LSL <mne-lsl/index>
 BCI2000 <bci2000/index>
 PsychoPy <psychopy/index>
 Internal Tooling <tooling/index>
