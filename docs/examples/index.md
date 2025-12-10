@@ -22,12 +22,12 @@ Have a third-party library you'd like to integrate? Reach out to us—we're alwa
 Real-time data streaming and synchronization
 ```
 
-```{grid-item-card} MNE-Python
+```{grid-item-card} MNE
 :link: mne/index
 :link-type: doc
 :text-align: center
 
-EEG analysis and visualization toolkit
+EEG analysis and real-time streaming
 ```
 
 ```{grid-item-card} BCI2000
@@ -68,7 +68,7 @@ See our main page for more complete list of supported integrations.
 :hidden:
 
 LSL <lsl/index>
-MNE-Python <mne/index>
+MNE <mne/index>
 BCI2000 <bci2000/index>
 PsychoPy <psychopy/index>
 Internal Tooling <tooling/index>
