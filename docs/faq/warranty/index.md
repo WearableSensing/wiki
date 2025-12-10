@@ -1,20 +1,16 @@
-# Warranty
----
+# Warranty FAQ
+
 Questions about warranty coverage and support packages.
 
+---
 
-## What is offered in terms of warranty and support?
+## Questions
 
-All systems come with a standard 90-day warranty and we offer annual Extended Support packages.
+```{toctree}
+:maxdepth: 1
 
-## What is the maximum warranty duration available?
-
-The maximum warranty available for purchase is 5 years.
-
-## What is covered under the warranty?
-
-Any damage resulting from normal wear and tear of the system is covered under warranty. The warranty also includes advanced technical support.
-
-## Are replacement electrodes covered under warranty?
-
-No. It is recommended to purchase replacement electrodes every 100 uses. The cost of replacement electrodes is comparable to the cost of gel for wet EEG systems per use.
+What is offered in terms of warranty and support? <questions/warranty-support>
+What is the maximum warranty duration available? <questions/warranty-duration>
+What is covered under the warranty? <questions/warranty-coverage>
+Are replacement electrodes covered under warranty? <questions/electrode-warranty>
+```

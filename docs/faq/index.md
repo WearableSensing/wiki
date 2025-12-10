@@ -68,7 +68,7 @@ Can't find what you're looking for? Visit our {doc}`Contact <../help/index>` pag
 
 ```{toctree}
 :hidden:
-:maxdepth: 3
+:maxdepth: 2
 
    General <general/index>
    Software <software/index>
