@@ -22,7 +22,7 @@ Have a third-party library you'd like to integrate? Reach out to us—we're alwa
 Real-time data streaming and synchronization
 ```
 
-```{grid-item-card} MNE (Python & LSL)
+```{grid-item-card} MNE
 :link: mne/index
 :link-type: doc
 :text-align: center
