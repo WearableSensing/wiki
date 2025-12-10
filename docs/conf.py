@@ -66,7 +66,7 @@ html_sidebars = {
   "help/*": [],
   "getting_started": [],
   "help/downloads/*": [],
-  "faq/*": [],
+  "faq/index": [],
 }
 
 html_static_path = ['_static']
