@@ -1,7 +1,8 @@
 docs/_build/*
-.venv/
+*venv*/
 *.pyc
 __pycache__/
+release/*
 readme.txt
 *.m
 

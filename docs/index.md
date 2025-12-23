@@ -35,11 +35,26 @@ Essential drivers, software tools, user guides, and third-party plugins
 Connect with popular platforms and third-party libraries
 ```
 
+
+```{grid-item-card} API Reference
+:link: api/index
+:link-type: doc
+
+Comprehensive DSI API documentation, guides, and error codes
+```
+
 ```{grid-item-card} FAQ
 :link: faq/index
 :link-type: doc
 
-Common questions and answers
+Common questions and troubleshooting tips
+```
+
+```{grid-item-card} Contact Support
+:link: help/index
+:link-type: doc
+
+Get in touch with our support team for personalized assistance
 ```
 ````
 
@@ -49,11 +64,12 @@ Common questions and answers
 ```{toctree}
 :maxdepth: 3
 
-   About <help/about>
+   API <api/index>
    Integrations <examples/index>
    Tutorials <help/tutorials/index>
    Downloads <help/downloads/index>
    FAQ <faq/index>
+   About <help/about>
    Contact <help/index>
 ```
 
