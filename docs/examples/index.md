@@ -30,6 +30,14 @@ Real-time data streaming and synchronization
 EEG analysis and real-time streaming
 ```
 
+```{grid-item-card} EEGLab
+:link: eeglab/index
+:link-type: doc
+:text-align: center
+
+EEGLab plugin integration
+```
+
 ```{grid-item-card} BCI2000
 :link: bci2000/index
 :link-type: doc
@@ -69,6 +77,7 @@ See our main page for more complete list of supported integrations.
 
 LSL <lsl/index>
 MNE <mne/index>
+EEGLab <eeglab/index>
 BCI2000 <bci2000/index>
 PsychoPy <psychopy/index>
 Internal Tooling <tooling/index>
