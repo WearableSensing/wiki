@@ -2,3 +2,7 @@ docs/_build/*
 .venv/
 *.pyc
 __pycache__/
+readme.txt
+*.m
+
+*.csv

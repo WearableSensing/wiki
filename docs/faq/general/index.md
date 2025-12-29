@@ -12,4 +12,5 @@ General questions about Wearable Sensing products and services.
 How do I get support? <questions/support>
 What is the expected delivery time? <questions/delivery-time>
 Where can you ship to? <questions/shipping>
+How much do the new electrodes cost and how long is the delivery time? <questions/electrode-tips>
 ```

@@ -10,6 +10,7 @@ Common questions about Wearable Sensing software tools and data acquisition.
 :maxdepth: 1
 
 Does the DSI-Streamer output raw or filtered data? <questions/raw-or-filtered>
+What operating systems does DSI-Streamer work on? <questions/os-compatibility>
 What types of output formats does the DSI-Streamer support? <questions/output-formats>
 ```
 
