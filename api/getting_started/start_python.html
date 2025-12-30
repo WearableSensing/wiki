@@ -1,0 +1,1459 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Started with Python &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/password.css?v=a096a895" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/getting_started/start_python';</script>
+    <script src="../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Getting Started with C/C++" href="start_c.html" />
+    <link rel="prev" title="Getting Started" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">   </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Start with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start_c.html">Start with C</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_reference.html">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../error_codes.html">Error Codes</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">DSI API Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Getting Started</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Getting Started with Python</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="getting-started-with-python">
+<h1>Getting Started with Python<a class="headerlink" href="#getting-started-with-python" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Python tutorial</strong> — Learn to connect, configure, and acquire EEG data using the DSI API in Python.</p>
+</div></blockquote>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#prerequisites">Prerequisites</a></p></li>
+<li><p><a class="reference internal" href="#quick-start">Quick Start</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-1-basic-connection">Tutorial 1: Basic Connection</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-2-channel-configuration">Tutorial 2: Channel Configuration</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-3-data-acquisition">Tutorial 3: Data Acquisition</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-4-background-acquisition">Tutorial 4: Background Acquisition</a></p></li>
+<li><p><a class="reference internal" href="#common-tasks">Common Tasks</a></p></li>
+<li><p><a class="reference internal" href="#next-steps">Next Steps</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<section id="required-components">
+<h3>Required Components<a class="headerlink" href="#required-components" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Python 2.6 or later (Python 3.x highly recommended)</p></li>
+<li><p>DSI API library (<code class="docutils literal notranslate"><span class="pre">DSI.dll</span></code> / <code class="docutils literal notranslate"><span class="pre">DSI.so</span></code> / <code class="docutils literal notranslate"><span class="pre">DSI.dylib</span></code>)</p></li>
+<li><p>Python wrapper and demo scripts (<code class="docutils literal notranslate"><span class="pre">DSI.py</span></code>)</p></li>
+</ul>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Download the latest API release from the <a class="reference internal" href="../../help/downloads/index.html"><span class="std std-doc">Downloads</span></a> page</p></li>
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">DSI.py</span></code> and the platform-specific library to your project directory:</p>
+<ul class="simple">
+<li><p><strong>Windows:</strong> <code class="docutils literal notranslate"><span class="pre">DSI.dll</span></code></p></li>
+<li><p><strong>Linux:</strong> <code class="docutils literal notranslate"><span class="pre">DSI.so</span></code></p></li>
+<li><p><strong>macOS:</strong> <code class="docutils literal notranslate"><span class="pre">DSI.dylib</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p>No additional packages are required - the Python wrapper uses only standard library components.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<p>This minimal example demonstrates the essential steps to connect to a headset, configure channels, and acquire data. Copy this code to get started quickly, then explore the detailed tutorials below for more information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">DSI</span> <span class="kn">import</span> <span class="n">Headset</span>
+
+<span class="c1"># Connect to headset</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">Headset</span><span class="p">()</span>
+<span class="n">h</span><span class="o">.</span><span class="n">Connect</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># None uses DSISerialPort environment variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Configure channels</span>
+<span class="c1"># Using &quot;&quot; for reference uses the default linked ears reference</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;P3,Pz,P4&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Start acquisition</span>
+<span class="n">h</span><span class="o">.</span><span class="n">StartDataAcquisition</span><span class="p">()</span>
+
+<span class="c1"># Collect data using Channels() helper</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">Idle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Process for 100ms</span>
+    
+    <span class="c1"># Read buffered samples from first channel</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">channels</span> <span class="ow">and</span> <span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetNumberOfBufferedSamples</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ReadBuffered</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> µV&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cleanup</span>
+<span class="n">h</span><span class="o">.</span><span class="n">StopDataAcquisition</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="quick-test">
+<h3>Quick Test<a class="headerlink" href="#quick-test" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">DSI.py</span></code> file is runnable as-is for quick testing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The default port is COM6 for Windows, or /dev/cu.DSI7-*.BluetoothSeri for macOS</span>
+<span class="c1"># You can edit the default_port variable in DSI.py if needed</span>
+python<span class="w"> </span>DSI.py
+
+<span class="c1"># Or pass port as command-line argument</span>
+python<span class="w"> </span>DSI.py<span class="w"> </span>COM4<span class="w">                                   </span><span class="c1"># Windows</span>
+python<span class="w"> </span>DSI.py<span class="w"> </span>/dev/ttyUSB0<span class="w">                           </span><span class="c1"># Linux</span>
+python<span class="w"> </span>DSI.py<span class="w"> </span>/dev/cu.DSI24-023-BluetoothSerial<span class="w">      </span><span class="c1"># macOS</span>
+
+<span class="c1"># Optional second argument for reference or impedance mode</span>
+python<span class="w"> </span>DSI.py<span class="w"> </span>COM4<span class="w"> </span>A1/2+A2/2<span class="w">  </span><span class="c1"># Use A1/2+A2/2 reference</span>
+python<span class="w"> </span>DSI.py<span class="w"> </span>COM4<span class="w"> </span>impedances<span class="w"> </span><span class="c1"># Run impedance test</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-1-basic-connection">
+<h2>Tutorial 1: Basic Connection<a class="headerlink" href="#tutorial-1-basic-connection" title="Link to this heading">#</a></h2>
+<p>This tutorial walks through establishing a connection to your DSI headset. You’ll learn how to import the API, specify serial ports, create headset objects, and handle errors using Python’s exception mechanism.</p>
+<section id="step-1-import-the-api">
+<h3>Step 1: Import the API<a class="headerlink" href="#step-1-import-the-api" title="Link to this heading">#</a></h3>
+<p>The Python wrapper provides a simple object-oriented interface to the DSI API. Start by importing the <code class="docutils literal notranslate"><span class="pre">Headset</span></code> class, which represents your EEG device.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">DSI</span> <span class="kn">import</span> <span class="n">Headset</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-specify-port-or-use-environment-variable">
+<h3>Step 2: Specify Port or Use Environment Variable<a class="headerlink" href="#step-2-specify-port-or-use-environment-variable" title="Link to this heading">#</a></h3>
+<p>The headset connects via a serial port, which varies by platform and connection type (Bluetooth, USB). You can either specify the port directly or use an environment variable for convenience.</p>
+<p><strong>Port specification by platform:</strong></p>
+<ul class="simple">
+<li><p><strong>Windows:</strong> COM ports (e.g., <code class="docutils literal notranslate"><span class="pre">'COM4'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COM5'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COM6'</span></code>)</p></li>
+<li><p><strong>Linux:</strong> <code class="docutils literal notranslate"><span class="pre">'/dev/ttyUSB0'</span></code>, <code class="docutils literal notranslate"><span class="pre">'/dev/ttyUSB1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'/dev/ttyACM0'</span></code>, <code class="docutils literal notranslate"><span class="pre">'/dev/ttyACM1'</span></code></p></li>
+<li><p><strong>macOS:</strong> <code class="docutils literal notranslate"><span class="pre">'/dev/cu.DSI24-xxxxx-BluetoothSerial'</span></code> or <code class="docutils literal notranslate"><span class="pre">'/dev/tty.usbserial-xxxxx'</span></code></p></li>
+<li><p><strong>Environment variable:</strong> Set <code class="docutils literal notranslate"><span class="pre">DSISerialPort</span></code> and pass <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Option 1: Use environment variable</span>
+<span class="n">port</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># None uses DSISerialPort env variable</span>
+
+<span class="c1"># Option 2: Specify port directly</span>
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;win&#39;</span><span class="p">):</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="s1">&#39;COM4&#39;</span>  <span class="c1"># Windows</span>
+<span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;darwin&#39;</span><span class="p">):</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="s1">&#39;/dev/cu.DSI24-023-BluetoothSerial&#39;</span>  <span class="c1"># macOS</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="s1">&#39;/dev/ttyUSB0&#39;</span>  <span class="c1"># Linux</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using port: </span><span class="si">{</span><span class="n">port</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;from DSISerialPort env var&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-create-and-connect-headset-object">
+<h3>Step 3: Create and Connect Headset Object<a class="headerlink" href="#step-3-create-and-connect-headset-object" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Create headset object</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Headset</span><span class="p">()</span>
+    
+    <span class="c1"># Connect to the serial port</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">Connect</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>  <span class="c1"># port can be None to use env variable</span>
+    
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to connect: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>What happens during connection:</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Headset()</span></code> allocates the headset object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.Connect(port)</span></code> opens serial port</p></li>
+<li><p>Queries hardware model and firmware</p></li>
+<li><p>Initializes communication</p></li>
+</ol>
+</section>
+<section id="step-4-verify-connection">
+<h3>Step 4: Verify Connection<a class="headerlink" href="#step-4-verify-connection" title="Link to this heading">#</a></h3>
+<p>After connecting, you can verify the connection status and retrieve device information. This is useful for logging and troubleshooting.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">h</span><span class="o">.</span><span class="n">IsConnected</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not connected!&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Get device information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">GetInfoString</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-error-handling">
+<h3>Step 5: Error Handling<a class="headerlink" href="#step-5-error-handling" title="Link to this heading">#</a></h3>
+<p>Python exceptions are raised automatically for errors. See <a class="reference internal" href="../error_codes.html"><span class="std std-doc">Error Codes</span></a> for details.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Headset</span><span class="p">()</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">Connect</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+    
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-connection-example">
+<h3>Complete Connection Example<a class="headerlink" href="#complete-connection-example" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">connect_to_headset</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Connect to DSI headset.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        port: Serial port path, or None to use DSISerialPort env variable</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Headset object if successful, None otherwise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Create and connect</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">Headset</span><span class="p">()</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">Connect</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>  <span class="c1"># None uses DSISerialPort env variable</span>
+        
+        <span class="c1"># Get device info</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">GetInfoString</span><span class="p">())</span>
+        
+        <span class="k">return</span> <span class="n">h</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Usage</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">connect_to_headset</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-2-channel-configuration">
+<h2>Tutorial 2: Channel Configuration<a class="headerlink" href="#tutorial-2-channel-configuration" title="Link to this heading">#</a></h2>
+<p>Channel configuration (also called montage selection) determines which electrodes to record from and how to reference them. This tutorial covers listing available electrodes, choosing references, and configuring both referential and bipolar montages.</p>
+<section id="understanding-montages">
+<h3>Understanding Montages<a class="headerlink" href="#understanding-montages" title="Link to this heading">#</a></h3>
+<p>A <strong>montage</strong> defines which electrodes to use and how to reference them.</p>
+<p><strong>Syntax:</strong> <code class="docutils literal notranslate"><span class="pre">&quot;electrode1,electrode2,electrode3&quot;</span></code></p>
+<p><strong>Common montage examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;P3,Pz,P4,O1,O2&quot;</span></code> — Five posterior channels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Fp1,Fp2,F3,F4,C3,C4&quot;</span></code> — Frontal and central channels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;&#64;1,&#64;2,&#64;3,&#64;4&quot;</span></code> — First four sensors (numbered indexing)</p></li>
+</ul>
+<p><strong>Available channels by model:</strong></p>
+<ul class="simple">
+<li><p><strong>DSI-24:</strong> Fp1, Fp2, Fz, F3, F4, F7, F8, Cz, C3, C4, T7/T3, T8/T4, Pz, P3, P4, P7/T5, P8/T6, O1, O2, A1, A2</p></li>
+<li><p><strong>DSI-7:</strong> F3, F4, C3, C4, P3, Pz, P4, LE</p></li>
+<li><p><strong>DSI-VR300:</strong> FCz, Pz, P3, P4, PO7, PO8, Oz, LE</p></li>
+</ul>
+</section>
+<section id="step-1-list-available-sources">
+<h3>Step 1: List Available Sources<a class="headerlink" href="#step-1-list-available-sources" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pythonic way: Use the Sources() helper method</span>
+<span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">Sources</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Or iterate by index</span>
+<span class="n">n_sources</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfSources</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total sources: </span><span class="si">{</span><span class="n">n_sources</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_sources</span><span class="p">):</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetSourceByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> The <code class="docutils literal notranslate"><span class="pre">Sources()</span></code> method is a Python helper that returns a list of all Source objects. This is more Pythonic than the C-style iteration pattern.</p>
+</section>
+<section id="step-2-choose-reference">
+<h3>Step 2: Choose Reference<a class="headerlink" href="#step-2-choose-reference" title="Link to this heading">#</a></h3>
+<p>The reference electrode determines the baseline for measuring voltage. <strong>By default, the API automatically uses linked ears (A1/2+A2/2 on DSI-24, LE on DSI-7/VR300) as the reference.</strong> You only need to call reference functions if you want to change from this default.</p>
+<section id="default-reference-automatic">
+<h4>Default Reference (Automatic)<a class="headerlink" href="#default-reference-automatic" title="Link to this heading">#</a></h4>
+<p>No API calls needed - just pass empty string <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">ChooseChannels()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uses default linked ears automatically</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;P3,Pz,P4&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Default reference by model:</strong></p>
+<ul class="simple">
+<li><p><strong>DSI-24:</strong> <code class="docutils literal notranslate"><span class="pre">A1/2+A2/2</span></code> (average of A1 and A2 channels)</p></li>
+<li><p><strong>DSI-7:</strong> <code class="docutils literal notranslate"><span class="pre">LE</span></code> (pre-averaged linked ear channel)</p></li>
+<li><p><strong>DSI-VR300:</strong> <code class="docutils literal notranslate"><span class="pre">LE</span></code> (pre-averaged linked ear channel)</p></li>
+</ul>
+</section>
+<section id="change-to-hardware-reference">
+<h4>Change to Hardware Reference<a class="headerlink" href="#change-to-hardware-reference" title="Link to this heading">#</a></h4>
+<p>To use the hardware/factory reference instead of linked ears:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: Use &quot;FACTORY&quot; keyword</span>
+<span class="n">h</span><span class="o">.</span><span class="n">SetDefaultReference</span><span class="p">(</span><span class="s2">&quot;FACTORY&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;P3,Pz,P4&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Option 2: Specify hardware reference electrode directly</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;P3,Pz,P4&quot;</span><span class="p">,</span> <span class="s2">&quot;Pz&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># DSI-24/DSI-7</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;P3,Pz,P4&quot;</span><span class="p">,</span> <span class="s2">&quot;P4&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># VR300</span>
+</pre></div>
+</div>
+<p><strong>Hardware reference by model:</strong></p>
+<ul class="simple">
+<li><p><strong>DSI-24:</strong> <code class="docutils literal notranslate"><span class="pre">Pz</span></code></p></li>
+<li><p><strong>DSI-7:</strong> <code class="docutils literal notranslate"><span class="pre">Pz</span></code></p></li>
+<li><p><strong>DSI-VR300:</strong> <code class="docutils literal notranslate"><span class="pre">P4</span></code></p></li>
+</ul>
+</section>
+<section id="change-to-custom-reference">
+<h4>Change to Custom Reference<a class="headerlink" href="#change-to-custom-reference" title="Link to this heading">#</a></h4>
+<p>To use any electrode as reference (e.g., P3, Cz):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: Set default reference, then configure channels</span>
+<span class="n">h</span><span class="o">.</span><span class="n">SetDefaultReference</span><span class="p">(</span><span class="s2">&quot;P3&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;Pz,P4,O1,O2&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Option 2: Specify directly in ChooseChannels</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;Pz,P4,O1,O2&quot;</span><span class="p">,</span> <span class="s2">&quot;P3&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>To check which reference is active:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetReferenceString</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current reference: </span><span class="si">{</span><span class="n">ref</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-3-configure-channels">
+<h3>Step 3: Configure Channels<a class="headerlink" href="#step-3-configure-channels" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ChooseChannels(montage, reference, autoswap)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;P3,Pz,P4,O1,O2&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># To use hardware reference instead, specify electrode explicitly:</span>
+<span class="c1"># h.ChooseChannels(&quot;P3,Pz,P4,O1,O2&quot;, &quot;Pz&quot;, True)  # DSI-24/DSI-7</span>
+<span class="c1"># h.ChooseChannels(&quot;P3,Pz,P4,O1,O2&quot;, &quot;P4&quot;, True)  # VR300</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configured </span><span class="si">{</span><span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfChannels</span><span class="p">()</span><span class="si">}</span><span class="s2"> channels&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">montage</span></code> — Comma-separated electrode names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code> — Reference electrode(s) specification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autoswap</span></code> — Automatically swap signal/reference if needed (use <code class="docutils literal notranslate"><span class="pre">True</span></code>)</p></li>
+</ul>
+<p><strong>Error handling:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;P3,Pz,P4,O1,O2&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Use auto-detected default</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Montage error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Troubleshoot: List available sources</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available sources:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">Sources</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-inspect-channels">
+<h3>Step 4: Inspect Channels<a class="headerlink" href="#step-4-inspect-channels" title="Link to this heading">#</a></h3>
+<p>Once channels are configured, you can iterate through them to inspect their properties. This helps verify your montage was set up correctly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_channels</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfChannels</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">):</span>
+    <span class="n">ch</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetChannelByIndex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="n">info</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Channel </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ch</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">IsReferentialEEG</span><span class="p">():</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot; (EEG)&quot;</span>
+    <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">IsTrigger</span><span class="p">():</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot; (Trigger)&quot;</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-access-channels">
+<h3>Step 5: Access Channels<a class="headerlink" href="#step-5-access-channels" title="Link to this heading">#</a></h3>
+<p>The Channels() helper method returns a list of all configured channels, making it easy to iterate and access channel data. This is the pattern used in DSI.py examples.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all channels as a list</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">()</span>
+
+<span class="c1"># Access first channel</span>
+<span class="k">if</span> <span class="n">channels</span><span class="p">:</span>
+    <span class="n">ch0</span> <span class="o">=</span> <span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First channel: </span><span class="si">{</span><span class="n">ch0</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Find a specific channel by name</span>
+<span class="n">pz</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Pz&quot;</span><span class="p">:</span>
+        <span class="n">pz</span> <span class="o">=</span> <span class="n">ch</span>
+        <span class="k">break</span>
+
+<span class="k">if</span> <span class="n">pz</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found channel: </span><span class="si">{</span><span class="n">pz</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Channel &#39;Pz&#39; not found&quot;</span><span class="p">)</span>
+
+<span class="c1"># Or use list comprehension (Pythonic)</span>
+<span class="n">pz_channels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span> <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Pz&quot;</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">pz_channels</span><span class="p">:</span>
+    <span class="n">pz</span> <span class="o">=</span> <span class="n">pz_channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-bipolar-montages">
+<h3>Advanced: Bipolar Montages<a class="headerlink" href="#advanced-bipolar-montages" title="Link to this heading">#</a></h3>
+<p>Bipolar montages record the voltage difference between pairs of electrodes. This is useful for certain EEG analyses like sleep staging or seizure detection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bipolar: Each channel is difference between two electrodes</span>
+<span class="c1"># Syntax: &quot;electrode1-electrode2&quot;</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="s2">&quot;Fp1-F3,F3-C3,C3-P3,P3-O1&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># This creates 4 channels:</span>
+<span class="c1"># - Fp1-F3 (voltage at Fp1 minus voltage at F3)</span>
+<span class="c1"># - F3-C3</span>
+<span class="c1"># - C3-P3</span>
+<span class="c1"># - P3-O1</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-montage-example">
+<h3>Complete Montage Example<a class="headerlink" href="#complete-montage-example" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">configure_montage</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configure a standard posterior montage.&quot;&quot;&quot;</span>
+    
+    <span class="c1"># Configure a standard posterior montage</span>
+    <span class="n">montage</span> <span class="o">=</span> <span class="s2">&quot;P3,Pz,P4,O1,O2&quot;</span>
+    <span class="n">reference</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Default linked ears</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Montage: </span><span class="si">{</span><span class="n">montage</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reference: </span><span class="si">{</span><span class="n">reference</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">ChooseChannels</span><span class="p">(</span><span class="n">montage</span><span class="p">,</span> <span class="n">reference</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configured </span><span class="si">{</span><span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfChannels</span><span class="p">()</span><span class="si">}</span><span class="s2"> channels&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Montage failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="c1"># Usage</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">configure_montage</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-3-data-acquisition">
+<h2>Tutorial 3: Data Acquisition<a class="headerlink" href="#tutorial-3-data-acquisition" title="Link to this heading">#</a></h2>
+<p>Once your headset is connected and channels are configured, you can start acquiring EEG data. This tutorial covers sampling rate configuration, buffer management, starting/stopping acquisition, and reading data from channels.</p>
+<section id="step-1-configure-sampling">
+<h3>Step 1: Configure Sampling<a class="headerlink" href="#step-1-configure-sampling" title="Link to this heading">#</a></h3>
+<p>The default sampling rate is 300 Hz. If the SampleRate feature is unlocked, all DSI headsets can configure rates up to 600 Hz.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: The default sampling rate is 300 Hz. If the SampleRate feature is unlocked,</span>
+<span class="c1"># all DSI headsets can configure rates up to 600 Hz. Check feature availability first:</span>
+<span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">GetFeatureAvailability</span><span class="p">(</span><span class="s2">&quot;SampleRate&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Custom sampling rates are available (up to 600 Hz)&quot;</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">ConfigureADC</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Use 600 Hz when unlocked</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using default sampling rate of 300 Hz (feature not unlocked)&quot;</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">ConfigureADC</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Default 300 Hz</span>
+
+<span class="c1"># Verify actual sampling rate</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetSamplingRate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sampling rate: </span><span class="si">{</span><span class="n">fs</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Filter modes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> - No filtering (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> - Low-pass filter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> - High-pass filter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> - Band-pass filter</p></li>
+</ul>
+</section>
+<section id="step-2-understanding-buffers">
+<h3>Step 2: Understanding Buffers<a class="headerlink" href="#step-2-understanding-buffers" title="Link to this heading">#</a></h3>
+<p>The API automatically manages ring buffers for each channel. Buffers store incoming samples until you read them with <code class="docutils literal notranslate"><span class="pre">ReadBuffered()</span></code>. Understanding buffer management helps prevent data loss.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Channel buffers are allocated automatically when you configure channels.</span>
+<span class="c1"># The default buffer size is sufficient for most real-time applications.</span>
+
+<span class="c1"># Manual buffer reallocation is only needed if:</span>
+<span class="c1"># 1. You need to store more than a few seconds of data</span>
+<span class="c1"># 2. You&#39;re using custom processing stages that require larger lookback windows</span>
+
+<span class="c1"># Example: Allocate 10 seconds for signal, 5 seconds for impedance</span>
+<span class="n">h</span><span class="o">.</span><span class="n">ReallocateBuffers</span><span class="p">(</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+
+<span class="c1"># Check buffer status during acquisition</span>
+<span class="n">buffered</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfBufferedSamples</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Buffered samples: </span><span class="si">{</span><span class="n">buffered</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-start-acquisition">
+<h3>Step 3: Start Acquisition<a class="headerlink" href="#step-3-start-acquisition" title="Link to this heading">#</a></h3>
+<p>Once configured, start the data acquisition process. This commands the headset to begin streaming EEG data over the serial connection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">StartDataAcquisition</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acquisition started&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to start acquisition: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-receive-data">
+<h3>Step 4: Receive Data<a class="headerlink" href="#step-4-receive-data" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Idle()</span></code> method processes incoming serial data and fills channel buffers. Call it regularly in your main loop, then read buffered samples from each channel.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fs</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetSamplingRate</span><span class="p">()</span>
+<span class="n">block_duration</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># 0.5 second blocks</span>
+
+<span class="n">acquiring</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">acquiring</span><span class="p">:</span>
+    <span class="c1"># Process events and receive data for specified time</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">Idle</span><span class="p">(</span><span class="n">block_duration</span><span class="p">)</span>
+    
+    <span class="c1"># Read buffered data from each channel (using Channels() helper)</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">():</span>
+        <span class="c1"># Get number of buffered samples</span>
+        <span class="n">buffered</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">GetNumberOfBufferedSamples</span><span class="p">()</span>
+        
+        <span class="c1"># Read buffered samples one at a time</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">buffered</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">ReadBuffered</span><span class="p">()</span>
+            <span class="n">process_data</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">GetName</span><span class="p">(),</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-stop-acquisition">
+<h3>Step 5: Stop Acquisition<a class="headerlink" href="#step-5-stop-acquisition" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">StopDataAcquisition</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acquisition stopped&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-acquisition-example">
+<h3>Complete Acquisition Example<a class="headerlink" href="#complete-acquisition-example" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">acquire_data</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">duration_seconds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Acquire data for specified duration.&quot;&quot;&quot;</span>
+    
+    <span class="n">block_duration</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># 100ms blocks</span>
+    <span class="n">num_blocks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration_seconds</span> <span class="o">/</span> <span class="n">block_duration</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acquiring </span><span class="si">{</span><span class="n">duration_seconds</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> seconds of data...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Start acquisition</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">StartDataAcquisition</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Start failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Collect data blocks</span>
+    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_blocks</span><span class="p">):</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">Idle</span><span class="p">(</span><span class="n">block_duration</span><span class="p">)</span>
+        
+        <span class="c1"># Show progress</span>
+        <span class="k">if</span> <span class="n">block</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">progress</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">block</span> <span class="o">/</span> <span class="n">num_blocks</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Progress: </span><span class="si">{</span><span class="n">progress</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># Check for alarms</span>
+        <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfAlarms</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">alarm</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetAlarm</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># True = remove from queue</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Alarm: </span><span class="si">{</span><span class="n">alarm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Acquisition complete&quot;</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">StopDataAcquisition</span><span class="p">()</span>
+
+<span class="c1"># Usage</span>
+<span class="n">acquire_data</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>  <span class="c1"># Acquire 10 seconds</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-4-background-acquisition">
+<h2>Tutorial 4: Background Acquisition<a class="headerlink" href="#tutorial-4-background-acquisition" title="Link to this heading">#</a></h2>
+<p>Background acquisition runs data collection in a separate thread, freeing your main application to perform other tasks (UI updates, analysis, etc.). This tutorial shows how to set up callbacks that execute automatically when new data arrives.</p>
+<section id="step-1-set-sample-callback">
+<h3>Step 1: Set Sample Callback<a class="headerlink" href="#step-1-set-sample-callback" title="Link to this heading">#</a></h3>
+<p><strong>Important:</strong> Callback functions must be decorated with <code class="docutils literal notranslate"><span class="pre">&#64;SampleCallback</span></code> or wrapped properly. The callback receives a raw pointer that must be wrapped in a <code class="docutils literal notranslate"><span class="pre">Headset</span></code> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">DSI</span> <span class="kn">import</span> <span class="n">Headset</span><span class="p">,</span> <span class="n">SampleCallback</span>
+
+<span class="nd">@SampleCallback</span>
+<span class="k">def</span> <span class="nf">my_sample_callback</span><span class="p">(</span><span class="n">headset_ptr</span><span class="p">,</span> <span class="n">packet_time</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Called automatically when new data arrives.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        headset_ptr: Raw headset pointer (must wrap with Headset())</span>
+<span class="sd">        packet_time: Timestamp of the data packet in seconds</span>
+<span class="sd">        user_data: Optional user data passed to SetSampleCallback</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Wrap the raw pointer to get a usable Headset object</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Headset</span><span class="p">(</span><span class="n">headset_ptr</span><span class="p">)</span>
+    
+    <span class="c1"># Read buffered samples from channels (using Channels() helper)</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">():</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">ReadBuffered</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ch</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> µV (time: </span><span class="si">{</span><span class="n">packet_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Register callback (None for user_data if not needed)</span>
+<span class="n">h</span><span class="o">.</span><span class="n">SetSampleCallback</span><span class="p">(</span><span class="n">my_sample_callback</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-start-background-acquisition">
+<h3>Step 2: Start Background Acquisition<a class="headerlink" href="#step-2-start-background-acquisition" title="Link to this heading">#</a></h3>
+<p>Background acquisition creates a separate thread that continuously processes serial data and calls your callback function. This frees your main thread for other tasks.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">StartBackgroundAcquisition</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Background acquisition running...&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Background acquisition failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-application-continues">
+<h3>Step 3: Application Continues<a class="headerlink" href="#step-3-application-continues" title="Link to this heading">#</a></h3>
+<p>With background acquisition running, your main application thread is free to perform other tasks like updating a UI, running analyses, or monitoring system health.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Your application can continue other work</span>
+<span class="c1"># Data collection happens in background thread</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="c1"># Do other work</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Main loop iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    
+    <span class="c1"># Check buffer status</span>
+    <span class="n">buffered</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfBufferedSamples</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Buffered samples: </span><span class="si">{</span><span class="n">buffered</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-stop-background-acquisition">
+<h3>Step 4: Stop Background Acquisition<a class="headerlink" href="#step-4-stop-background-acquisition" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">StopBackgroundAcquisition</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Background acquisition stopped&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-background-acquisition-example">
+<h3>Complete Background Acquisition Example<a class="headerlink" href="#complete-background-acquisition-example" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">DSI</span> <span class="kn">import</span> <span class="n">Headset</span><span class="p">,</span> <span class="n">SampleCallback</span>
+
+<span class="c1"># Global flag to control acquisition</span>
+<span class="n">g_acquiring</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nd">@SampleCallback</span>
+<span class="k">def</span> <span class="nf">sample_callback</span><span class="p">(</span><span class="n">headset_ptr</span><span class="p">,</span> <span class="n">packet_time</span><span class="p">,</span> <span class="n">user_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process each sample as it arrives.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">sample_count</span>
+    <span class="n">sample_count</span> <span class="o">=</span> <span class="n">sample_count</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">if</span> <span class="s1">&#39;sample_count&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="k">else</span> <span class="mi">1</span>
+    
+    <span class="c1"># Wrap the raw headset pointer</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Headset</span><span class="p">(</span><span class="n">headset_ptr</span><span class="p">)</span>
+    
+    <span class="c1"># Get channel data using ReadBuffered() like DSI.py examples</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">()</span>
+    <span class="n">pz</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ch</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Pz&quot;</span><span class="p">:</span>
+            <span class="n">pz</span> <span class="o">=</span> <span class="n">ch</span>
+            <span class="k">break</span>
+    
+    <span class="k">if</span> <span class="n">pz</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">pz</span><span class="o">.</span><span class="n">ReadBuffered</span><span class="p">()</span>
+        
+        <span class="c1"># Print every 100 samples</span>
+        <span class="k">if</span> <span class="n">sample_count</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample </span><span class="si">{</span><span class="n">sample_count</span><span class="si">}</span><span class="s2">: Pz = </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> µV&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">g_acquiring</span>
+    
+    <span class="c1"># Connect and configure</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">connect_to_headset</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">configure_montage</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Set callback and start</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">SetSampleCallback</span><span class="p">(</span><span class="n">sample_callback</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">StartBackgroundAcquisition</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acquiring... Press Ctrl+C to stop&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Main loop: monitor health</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">g_acquiring</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span>
+            
+            <span class="c1"># Check for overflow</span>
+            <span class="n">overflow</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfOverflowedSamples</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">overflow</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING: </span><span class="si">{</span><span class="n">overflow</span><span class="si">}</span><span class="s2"> samples lost!&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># Check for alarms</span>
+            <span class="k">while</span> <span class="n">h</span><span class="o">.</span><span class="n">GetNumberOfAlarms</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">alarm</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetAlarm</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># True = remove from queue</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Alarm: </span><span class="si">{</span><span class="n">alarm</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Stopping acquisition...&quot;</span><span class="p">)</span>
+    
+    <span class="n">h</span><span class="o">.</span><span class="n">StopBackgroundAcquisition</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="common-tasks">
+<h2>Common Tasks<a class="headerlink" href="#common-tasks" title="Link to this heading">#</a></h2>
+<p>These practical examples demonstrate frequently needed operations: saving data to files, checking electrode impedances, monitoring battery levels, and integrating with NumPy for numerical analysis.</p>
+<section id="task-save-data-to-csv-file">
+<h3>Task: Save Data to CSV File<a class="headerlink" href="#task-save-data-to-csv-file" title="Link to this heading">#</a></h3>
+<p>Export EEG data to CSV format for analysis in other tools. This example saves data in a simple time-series format with one row per sample.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">save_to_csv</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save data to CSV file.&quot;&quot;&quot;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="c1"># Write header</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Sample&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">():</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;,</span><span class="si">{</span><span class="n">ch</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Acquire and save data</span>
+        <span class="n">fs</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetSamplingRate</span><span class="p">()</span>
+        <span class="n">samples_per_block</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fs</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">num_blocks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="mf">0.1</span><span class="p">)</span>
+        
+        <span class="n">h</span><span class="o">.</span><span class="n">StartDataAcquisition</span><span class="p">()</span>
+        
+        <span class="n">sample_number</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_blocks</span><span class="p">):</span>
+            <span class="n">h</span><span class="o">.</span><span class="n">Idle</span><span class="p">(</span><span class="n">samples_per_block</span> <span class="o">/</span> <span class="n">fs</span><span class="p">)</span>  <span class="c1"># Process one block duration</span>
+            
+            <span class="c1"># Read buffered samples (using Channels() helper)</span>
+            <span class="n">channels</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">()</span>
+            <span class="n">buffered</span> <span class="o">=</span> <span class="n">channels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">GetNumberOfBufferedSamples</span><span class="p">()</span>
+            
+            <span class="k">for</span> <span class="n">samp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">buffered</span><span class="p">):</span>
+                <span class="c1"># Write sample number</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sample_number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                
+                <span class="c1"># Write channel values</span>
+                <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">ReadBuffered</span><span class="p">()</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;,</span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">sample_number</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="n">h</span><span class="o">.</span><span class="n">StopDataAcquisition</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Usage</span>
+<span class="n">save_to_csv</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="s2">&quot;eeg_data.csv&quot;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>  <span class="c1"># Save 10 seconds</span>
+</pre></div>
+</div>
+</section>
+<section id="task-check-impedances">
+<h3>Task: Check Impedances<a class="headerlink" href="#task-check-impedances" title="Link to this heading">#</a></h3>
+<p>Electrode impedance testing verifies proper skin contact. Lower impedances (below 1MΩ) generally provide better signal quality. Run this before each recording session.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">check_impedances</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check electrode impedances.&quot;&quot;&quot;</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting impedance test...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Start impedance driver</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">StartImpedanceDriver</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to start impedance driver: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Wait for readings to stabilize</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+    
+    <span class="c1"># Read impedances using Sources() helper (more Pythonic)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Impedance readings:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Electrode&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Impedance&#39;</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">24</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">Sources</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">src</span><span class="o">.</span><span class="n">IsReferentialEEG</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">src</span><span class="o">.</span><span class="n">IsFactoryReference</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">GetName</span><span class="p">()</span>
+            <span class="n">impedance</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">GetImpedanceEEG</span><span class="p">()</span>
+            
+            <span class="c1"># Quality indicator (thresholds in Ohms)</span>
+            <span class="k">if</span> <span class="n">impedance</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="p">:</span>
+                <span class="n">quality</span> <span class="o">=</span> <span class="s2">&quot;Good&quot;</span>
+            <span class="k">elif</span> <span class="n">impedance</span> <span class="o">&lt;</span> <span class="mi">2000000</span><span class="p">:</span>
+                <span class="n">quality</span> <span class="o">=</span> <span class="s2">&quot;Fair&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">quality</span> <span class="o">=</span> <span class="s2">&quot;Poor&quot;</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">impedance</span><span class="o">/</span><span class="mf">1000.0</span><span class="si">:</span><span class="s2">8.0f</span><span class="si">}</span><span class="s2"> kΩ </span><span class="si">{</span><span class="n">quality</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Get common-mode fault metric</span>
+    <span class="n">cmf</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetImpedanceCMF</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Common-mode fault: </span><span class="si">{</span><span class="n">cmf</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">h</span><span class="o">.</span><span class="n">StopImpedanceDriver</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Impedance test complete&quot;</span><span class="p">)</span>
+
+<span class="c1"># Usage</span>
+<span class="n">check_impedances</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="task-monitor-battery-level">
+<h3>Task: Monitor Battery Level<a class="headerlink" href="#task-monitor-battery-level" title="Link to this heading">#</a></h3>
+<p>Monitoring battery level helps prevent unexpected disconnections during recordings. Check battery status before long recording sessions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">monitor_battery</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Monitor battery level.&quot;&quot;&quot;</span>
+    
+    <span class="c1"># Send battery query</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">SendBatteryQuery</span><span class="p">()</span>
+    
+    <span class="c1"># Wait for response</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    
+    <span class="c1"># Read level (0 = main battery)</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetBatteryLevel</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">10.0</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;CRITICAL - Charge now!&quot;</span>
+    <span class="k">elif</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mf">20.0</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;LOW - Charge soon&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;OK&quot;</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Battery: </span><span class="si">{</span><span class="n">level</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Usage</span>
+<span class="n">monitor_battery</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="task-integration-with-numpy">
+<h3>Task: Integration with NumPy<a class="headerlink" href="#task-integration-with-numpy" title="Link to this heading">#</a></h3>
+<p>For signal processing and analysis, NumPy arrays provide efficient operations. This function acquires data directly into a NumPy array ready for filtering, FFT, or machine learning.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">acquire_to_numpy</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Acquire data and return as NumPy array.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        h: Connected Headset object</span>
+<span class="sd">        duration: Duration in seconds</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: (data array of shape (n_samples, n_channels), sampling_rate)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Start acquisition</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">StartDataAcquisition</span><span class="p">()</span>
+    
+    <span class="c1"># Get acquisition parameters</span>
+    <span class="n">fs</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">GetSamplingRate</span><span class="p">()</span>
+    <span class="n">channels</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Channels</span><span class="p">()</span>
+    <span class="n">n_channels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fs</span> <span class="o">*</span> <span class="n">duration</span><span class="p">)</span>
+    
+    <span class="c1"># Preallocate array (samples × channels)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+    
+    <span class="c1"># Acquire data</span>
+    <span class="n">samples_collected</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">samples_collected</span> <span class="o">&lt;</span> <span class="n">n_samples</span><span class="p">:</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">Idle</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+        
+        <span class="c1"># Read from each channel</span>
+        <span class="k">for</span> <span class="n">ch_idx</span><span class="p">,</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">channels</span><span class="p">):</span>
+            <span class="n">buffered</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">GetNumberOfBufferedSamples</span><span class="p">()</span>
+            
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">buffered</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">samples_collected</span> <span class="o">&lt;</span> <span class="n">n_samples</span><span class="p">:</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">samples_collected</span><span class="p">,</span> <span class="n">ch_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ch</span><span class="o">.</span><span class="n">ReadBuffered</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">ch_idx</span> <span class="o">==</span> <span class="n">n_channels</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">samples_collected</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="n">h</span><span class="o">.</span><span class="n">StopDataAcquisition</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">fs</span>
+
+<span class="c1"># Usage</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">acquire_to_numpy</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>  <span class="c1"># 5 seconds</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acquired data shape: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sampling rate: </span><span class="si">{</span><span class="n">fs</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<section id="explore-advanced-features">
+<h3>Explore Advanced Features<a class="headerlink" href="#explore-advanced-features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../quick_reference.html"><span class="std std-doc">Quick Reference</span></a> - Quick lookup guide for all API functions</p></li>
+<li><p><a class="reference internal" href="../error_codes.html"><span class="std std-doc">Error Codes</span></a> - Complete error code reference</p></li>
+<li><p><a class="reference internal" href="start_c.html"><span class="std std-doc">C Getting Started</span></a> - C version of this guide</p></li>
+</ul>
+</section>
+<section id="integration-examples">
+<h3>Integration Examples<a class="headerlink" href="#integration-examples" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../examples/mne/python/index.html"><span class="std std-doc">MNE-Python Integration</span></a> - Use DSI headsets with MNE-Python</p></li>
+<li><p><a class="reference internal" href="../../examples/lsl/index.html"><span class="std std-doc">LSL Integration</span></a> - Stream data via Lab Streaming Layer</p></li>
+</ul>
+</section>
+<section id="sample-code">
+<h3>Sample Code<a class="headerlink" href="#sample-code" title="Link to this heading">#</a></h3>
+<p>Check the <code class="docutils literal notranslate"><span class="pre">DSI.py</span></code> file in the release package for a complete working example with additional features.</p>
+</section>
+<section id="support">
+<h3>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h3>
+<p><strong>Technical support:</strong> Contact WearableSensing support team via the <a class="reference internal" href="../../help/index.html"><span class="std std-doc">contact page</span></a>.</p>
+<hr class="docutils" />
+<p><a class="reference internal" href="index.html"><span class="std std-doc">Back to Getting Started</span></a> | <a class="reference internal" href="../index.html"><span class="std std-doc">Back to API Index</span></a></p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting Started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="start_c.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started with C/C++</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Wearable Sensing.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

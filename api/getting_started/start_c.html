@@ -1,0 +1,1449 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Started with C/C++ &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/password.css?v=a096a895" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/getting_started/start_c';</script>
+    <script src="../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Quick Reference" href="../quick_reference.html" />
+    <link rel="prev" title="Getting Started with Python" href="start_python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">   </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="start_python.html">Start with Python</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Start with C</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_reference.html">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../error_codes.html">Error Codes</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">DSI API Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Getting Started</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Getting Started with C/C++</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="getting-started-with-c-c">
+<h1>Getting Started with C/C++<a class="headerlink" href="#getting-started-with-c-c" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>C/C++ tutorial</strong> — Learn to connect, configure, and acquire EEG data using the DSI API in C/C++.</p>
+</div></blockquote>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#prerequisites">Prerequisites</a></p></li>
+<li><p><a class="reference internal" href="#quick-start">Quick Start</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-1-basic-connection">Tutorial 1: Basic Connection</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-2-channel-configuration">Tutorial 2: Channel Configuration</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-3-data-acquisition">Tutorial 3: Data Acquisition</a></p></li>
+<li><p><a class="reference internal" href="#tutorial-4-background-acquisition">Tutorial 4: Background Acquisition</a></p></li>
+<li><p><a class="reference internal" href="#common-tasks">Common Tasks</a></p></li>
+<li><p><a class="reference internal" href="#next-steps">Next Steps</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<section id="required-components">
+<h3>Required Components<a class="headerlink" href="#required-components" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>DSI API library (<code class="docutils literal notranslate"><span class="pre">DSI.dll</span></code> / <code class="docutils literal notranslate"><span class="pre">DSI.so</span></code> / <code class="docutils literal notranslate"><span class="pre">DSI.dylib</span></code>)</p></li>
+<li><p>Header file (<code class="docutils literal notranslate"><span class="pre">DSI.h</span></code>)</p></li>
+<li><p>API loader (<code class="docutils literal notranslate"><span class="pre">DSI_API_Loader.c</span></code>)</p></li>
+<li><p>C/C++ compiler</p></li>
+</ul>
+<p><strong>Important:</strong> Before using any DSI API functions, you must:</p>
+<ol class="arabic simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">DSI_API_Loader.c</span></code> to your project</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">Load_DSI_API(NULL)</span></code> at program startup</p></li>
+<li><p>Check the return value (0 = success, non-zero = error)</p></li>
+</ol>
+</section>
+<section id="platform-specific-requirements">
+<h3>Platform-Specific Requirements<a class="headerlink" href="#platform-specific-requirements" title="Link to this heading">#</a></h3>
+<p><strong>Windows:</strong></p>
+<ul class="simple">
+<li><p>Visual Studio 2015+ or MinGW</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DSI.dll</span></code> and <code class="docutils literal notranslate"><span class="pre">DSI.lib</span></code></p></li>
+</ul>
+<p><strong>Linux:</strong></p>
+<ul class="simple">
+<li><p>GCC 4.8+, GLIBC 2.14+</p></li>
+<li><p>USB permissions configured</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DSI.so</span></code></p></li>
+</ul>
+<p><strong>macOS:</strong></p>
+<ul class="simple">
+<li><p>Xcode Command Line Tools</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DSI.dylib</span></code></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<p>This minimal example demonstrates the essential steps to connect to a headset, configure channels, and acquire data. Copy this code to get started quickly, then explore the detailed tutorials below for more information.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DSI.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Load the API (must be first!)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Load_DSI_API</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to load DSI API</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Create and connect to headset</span>
+<span class="w">    </span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w">  </span><span class="c1">// NULL uses DSISerialPort env variable</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">h</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Connected!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Configure channels (montage)</span>
+<span class="w">    </span><span class="c1">// Using &quot;&quot; for reference uses the default linked ears reference</span>
+<span class="w">    </span><span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Start acquisition</span>
+<span class="w">    </span><span class="n">DSI_Headset_StartDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Collect data</span>
+<span class="w">    </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">pz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByName</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz&quot;</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Process for 100ms</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Read latest value</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_GetSignal</span><span class="p">(</span><span class="n">pz</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sample %d: Pz = %.2f µV</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Cleanup</span>
+<span class="w">    </span><span class="n">DSI_Headset_StopDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="compiling">
+<h3>Compiling<a class="headerlink" href="#compiling" title="Link to this heading">#</a></h3>
+<p><strong>Windows (Visual Studio):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cl<span class="w"> </span>quick_start.c<span class="w"> </span>DSI_API_Loader.c<span class="w"> </span>DSI.lib
+</pre></div>
+</div>
+<p><strong>Linux:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc<span class="w"> </span>quick_start.c<span class="w"> </span>DSI_API_Loader.c<span class="w"> </span>-L.<span class="w"> </span>-lDSI<span class="w"> </span>-ldl<span class="w"> </span>-o<span class="w"> </span>quick_start
+</pre></div>
+</div>
+<p><strong>macOS:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>clang<span class="w"> </span>quick_start.c<span class="w"> </span>DSI_API_Loader.c<span class="w"> </span>-L.<span class="w"> </span>-lDSI<span class="w"> </span>-o<span class="w"> </span>quick_start
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-1-basic-connection">
+<h2>Tutorial 1: Basic Connection<a class="headerlink" href="#tutorial-1-basic-connection" title="Link to this heading">#</a></h2>
+<p>This tutorial walks through establishing a connection to your DSI headset. You’ll learn how to properly initialize the API, specify serial ports, create headset objects, and handle errors.</p>
+<section id="step-0-load-the-api">
+<h3>Step 0: Load the API<a class="headerlink" href="#step-0-load-the-api" title="Link to this heading">#</a></h3>
+<p>Before calling any DSI functions, you must load the dynamic library. This step locates the platform-specific library file and imports all API functions into your program’s memory space.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DSI.h&quot;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Load the DSI API library</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Load_DSI_API</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to load DSI API</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Now you can use DSI functions...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>What <code class="docutils literal notranslate"><span class="pre">Load_DSI_API</span></code> does:</strong></p>
+<ul class="simple">
+<li><p>Locates and loads the platform-specific dynamic library (<code class="docutils literal notranslate"><span class="pre">DSI.dll</span></code>, <code class="docutils literal notranslate"><span class="pre">DSI.so</span></code>, or <code class="docutils literal notranslate"><span class="pre">DSI.dylib</span></code>)</p></li>
+<li><p>Imports all DSI API functions</p></li>
+<li><p>Returns 0 on success, negative if library not found, positive if function import failed</p></li>
+</ul>
+<p><strong>Note:</strong> You must add <code class="docutils literal notranslate"><span class="pre">DSI_API_Loader.c</span></code> to your project for this function to be available.</p>
+</section>
+<section id="step-1-include-the-api">
+<h3>Step 1: Include the API<a class="headerlink" href="#step-1-include-the-api" title="Link to this heading">#</a></h3>
+<p>Include the DSI header file and standard C libraries needed for your application. The DSI.h header defines all API functions and data types.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DSI.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-specify-port-or-use-environment-variable">
+<h3>Step 2: Specify Port or Use Environment Variable<a class="headerlink" href="#step-2-specify-port-or-use-environment-variable" title="Link to this heading">#</a></h3>
+<p>The serial port identifier varies by platform and connection method. You can specify it directly or use an environment variable for flexibility across different systems.</p>
+<p><strong>Port specification by platform:</strong></p>
+<ul class="simple">
+<li><p><strong>Windows:</strong> COM ports (e.g., <code class="docutils literal notranslate"><span class="pre">COM4</span></code>, <code class="docutils literal notranslate"><span class="pre">COM5</span></code>, <code class="docutils literal notranslate"><span class="pre">COM6</span></code>)</p></li>
+<li><p><strong>Linux:</strong> <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB0</span></code>, <code class="docutils literal notranslate"><span class="pre">/dev/ttyUSB1</span></code>, <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM0</span></code>, <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM1</span></code></p></li>
+<li><p><strong>macOS:</strong> <code class="docutils literal notranslate"><span class="pre">/dev/cu.DSI24-xxxxx-BluetoothSerial</span></code> or <code class="docutils literal notranslate"><span class="pre">/dev/tty.usbserial-xxxxx</span></code></p></li>
+<li><p><strong>Environment variable:</strong> Set <code class="docutils literal notranslate"><span class="pre">DSISerialPort</span></code> and pass <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Option 1: Use environment variable (set DSISerialPort)</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w">  </span><span class="c1">// NULL uses DSISerialPort env variable</span>
+
+<span class="c1">// Option 2: Specify port directly</span>
+<span class="cp">#ifdef _WIN32</span>
+<span class="w">    </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;COM4&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Windows</span>
+<span class="cp">#elif defined(__APPLE__)</span>
+<span class="w">    </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/dev/cu.DSI24-023-BluetoothSerial&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// macOS</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/dev/ttyUSB0&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Linux</span>
+<span class="cp">#endif</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Using port: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;from DSISerialPort env var&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-create-and-connect-headset-object">
+<h3>Step 3: Create and Connect Headset Object<a class="headerlink" href="#step-3-create-and-connect-headset-object" title="Link to this heading">#</a></h3>
+<p>Creating and connecting involves two separate steps: first allocate the headset object, then establish the serial connection. Always check for errors after each step.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create headset object (does not connect yet)</span>
+<span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to create headset: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Connect to the serial port</span>
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to connect: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>What happens during connection:</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DSI_Headset_New(NULL)</span></code> allocates the headset object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DSI_Headset_Connect(h,</span> <span class="pre">port)</span></code> opens serial port</p></li>
+<li><p>Queries hardware model and firmware</p></li>
+<li><p>Initializes communication</p></li>
+</ol>
+</section>
+<section id="step-4-verify-connection">
+<h3>Step 4: Verify Connection<a class="headerlink" href="#step-4-verify-connection" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Headset_IsConnected</span><span class="p">(</span><span class="n">h</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Not connected!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Get device information</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Headset_GetInfoString</span><span class="p">(</span><span class="n">h</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-error-handling">
+<h3>Step 5: Error Handling<a class="headerlink" href="#step-5-error-handling" title="Link to this heading">#</a></h3>
+<p>Always check for errors after critical operations. See <a class="reference internal" href="../error_codes.html"><span class="std std-doc">Error Codes</span></a> for a complete reference.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// ALWAYS check for errors after critical operations</span>
+<span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">h</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to create headset: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Connection failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Optional: Set error callback for automatic logging</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">errorCallback</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[Level %d] %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// Continue execution</span>
+<span class="p">}</span>
+
+<span class="n">DSI_SetErrorCallback</span><span class="p">(</span><span class="n">errorCallback</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-connection-example">
+<h3>Complete Connection Example<a class="headerlink" href="#complete-connection-example" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">connectToHeadset</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="o">*</span><span class="w"> </span><span class="n">pHeadset</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Create headset object</span>
+<span class="w">    </span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to create headset</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Connect to serial port (NULL uses DSISerialPort env variable)</span>
+<span class="w">    </span><span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Connection failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Verify connection</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Headset_IsConnected</span><span class="p">(</span><span class="n">h</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Connection verification failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Get device info</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Headset_GetInfoString</span><span class="p">(</span><span class="n">h</span><span class="p">));</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="o">*</span><span class="n">pHeadset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-2-channel-configuration">
+<h2>Tutorial 2: Channel Configuration<a class="headerlink" href="#tutorial-2-channel-configuration" title="Link to this heading">#</a></h2>
+<p>Channel configuration (also called montage selection) determines which electrodes to record from and how to reference them. This tutorial covers listing available electrodes, choosing references, and configuring both referential and bipolar montages.</p>
+<section id="understanding-montages">
+<h3>Understanding Montages<a class="headerlink" href="#understanding-montages" title="Link to this heading">#</a></h3>
+<p>A <strong>montage</strong> defines which electrodes to use and how to reference them.</p>
+<p><strong>Syntax:</strong> <code class="docutils literal notranslate"><span class="pre">&quot;electrode1,electrode2,electrode3&quot;</span></code></p>
+<p><strong>Common montage examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;P3,Pz,P4,O1,O2&quot;</span></code> — Five posterior channels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Fp1,Fp2,F3,F4,C3,C4&quot;</span></code> — Frontal and central channels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;&#64;1,&#64;2,&#64;3,&#64;4&quot;</span></code> — First four sensors (numbered indexing)</p></li>
+</ul>
+<p><strong>Available channels by model:</strong></p>
+<ul class="simple">
+<li><p><strong>DSI-24:</strong> Fp1, Fp2, Fz, F3, F4, F7, F8, Cz, C3, C4, T7/T3, T8/T4, Pz, P3, P4, P7/T5, P8/T6, O1, O2, A1, A2</p></li>
+<li><p><strong>DSI-7:</strong> F3, F4, C3, C4, P3, Pz, P4, LE</p></li>
+<li><p><strong>DSI-VR300:</strong> FCz, Pz, P3, P4, PO7, PO8, Oz, LE</p></li>
+</ul>
+</section>
+<section id="step-1-list-available-sources">
+<h3>Step 1: List Available Sources<a class="headerlink" href="#step-1-list-available-sources" title="Link to this heading">#</a></h3>
+<p>Before configuring channels, it’s helpful to see which electrodes are available on your headset. Sources represent individual sensors that can be combined into channels.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Iterate through all sources to see what&#39;s available</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">nSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfSources</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Total sources: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nSources</span><span class="p">);</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSources</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DSI_Source</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSourceByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Source_GetName</span><span class="p">(</span><span class="n">src</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-choose-reference">
+<h3>Step 2: Choose Reference<a class="headerlink" href="#step-2-choose-reference" title="Link to this heading">#</a></h3>
+<p>The reference electrode determines the baseline for measuring voltage. <strong>By default, the API automatically uses linked ears (A1/2+A2/2 on DSI-24, LE on DSI-7/VR300) as the reference.</strong> You only need to call reference functions if you want to change from this default.</p>
+<section id="default-reference-automatic">
+<h4>Default Reference (Automatic)<a class="headerlink" href="#default-reference-automatic" title="Link to this heading">#</a></h4>
+<p>No API calls needed - just pass empty string <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> to <code class="docutils literal notranslate"><span class="pre">ChooseChannels()</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Uses default linked ears automatically</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Default reference by model:</strong></p>
+<ul class="simple">
+<li><p><strong>DSI-24:</strong> <code class="docutils literal notranslate"><span class="pre">A1/2+A2/2</span></code> (average of A1 and A2 channels)</p></li>
+<li><p><strong>DSI-7:</strong> <code class="docutils literal notranslate"><span class="pre">LE</span></code> (pre-averaged linked ear channel)</p></li>
+<li><p><strong>DSI-VR300:</strong> <code class="docutils literal notranslate"><span class="pre">LE</span></code> (pre-averaged linked ear channel)</p></li>
+</ul>
+</section>
+<section id="change-to-hardware-reference">
+<h4>Change to Hardware Reference<a class="headerlink" href="#change-to-hardware-reference" title="Link to this heading">#</a></h4>
+<p>To use the hardware/factory reference instead of linked ears:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Option 1: Use &quot;FACTORY&quot; keyword</span>
+<span class="n">DSI_Headset_SetDefaultReference</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FACTORY&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Option 2: Specify hardware reference electrode directly</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// DSI-24/DSI-7</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// VR300</span>
+</pre></div>
+</div>
+<p><strong>Hardware reference by model:</strong></p>
+<ul class="simple">
+<li><p><strong>DSI-24:</strong> <code class="docutils literal notranslate"><span class="pre">Pz</span></code></p></li>
+<li><p><strong>DSI-7:</strong> <code class="docutils literal notranslate"><span class="pre">Pz</span></code></p></li>
+<li><p><strong>DSI-VR300:</strong> <code class="docutils literal notranslate"><span class="pre">P4</span></code></p></li>
+</ul>
+</section>
+<section id="change-to-custom-reference">
+<h4>Change to Custom Reference<a class="headerlink" href="#change-to-custom-reference" title="Link to this heading">#</a></h4>
+<p>To use any electrode as reference (e.g., P3, Cz):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Option 1: Set default reference, then configure channels</span>
+<span class="n">DSI_Headset_SetDefaultReference</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz,P4,O1,O2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// Option 2: Specify directly in ChooseChannels</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz,P4,O1,O2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>To check which reference is active:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetReferenceString</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Current reference: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ref</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-3-configure-channels">
+<h3>Step 3: Configure Channels<a class="headerlink" href="#step-3-configure-channels" title="Link to this heading">#</a></h3>
+<p>After choosing your montage and reference, configure the channels using <code class="docutils literal notranslate"><span class="pre">ChooseChannels()</span></code>. This function validates electrode names and sets up the signal processing pipeline.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// ChooseChannels(headset, montage, reference, autoswap)</span>
+
+<span class="c1">// Recommended: Use empty string for default linked ear reference</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4,O1,O2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// To use hardware reference instead, specify electrode explicitly:</span>
+<span class="c1">// DSI_Headset_ChooseChannels(h, &quot;P3,Pz,P4,O1,O2&quot;, &quot;Pz&quot;, 1);  // DSI-24/DSI-7</span>
+<span class="c1">// DSI_Headset_ChooseChannels(h, &quot;P3,Pz,P4,O1,O2&quot;, &quot;P4&quot;, 1);  // VR300</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Montage error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Troubleshoot: List available sources</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Available sources:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfSources</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSources</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Source</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSourceByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;  %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Source_GetName</span><span class="p">(</span><span class="n">src</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Verify configuration</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Configured %d channels</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfChannels</span><span class="p">(</span><span class="n">h</span><span class="p">));</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">montage</span></code> — Comma-separated electrode names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reference</span></code> — Reference electrode(s) specification</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">autoswap</span></code> — Automatically swap signal/reference if needed (use <code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></li>
+</ul>
+</section>
+<section id="step-4-inspect-channels">
+<h3>Step 4: Inspect Channels<a class="headerlink" href="#step-4-inspect-channels" title="Link to this heading">#</a></h3>
+<p>After configuration, iterate through channels to verify your montage. Channel properties help you distinguish EEG signals from triggers and auxiliary inputs.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">nChannels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfChannels</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nChannels</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Channel %d: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Channel_GetName</span><span class="p">(</span><span class="n">ch</span><span class="p">));</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Channel_IsReferentialEEG</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; (EEG)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Channel_IsTrigger</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; (Trigger)&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-access-channels-by-name">
+<h3>Step 5: Access Channels by Name<a class="headerlink" href="#step-5-access-channels-by-name" title="Link to this heading">#</a></h3>
+<p>Accessing channels by name makes code more readable and maintainable than using indices. The function returns <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if the channel doesn’t exist.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Preferred: Access by name</span>
+<span class="n">DSI_Channel</span><span class="w"> </span><span class="n">pz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByName</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pz</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Channel &#39;Pz&#39; not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Found channel: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Channel_GetName</span><span class="p">(</span><span class="n">pz</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Alternative: Access by index</span>
+<span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-bipolar-montages">
+<h3>Advanced: Bipolar Montages<a class="headerlink" href="#advanced-bipolar-montages" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Bipolar: Each channel is difference between two electrodes</span>
+<span class="c1">// Syntax: &quot;electrode1-electrode2&quot;</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Fp1-F3,F3-C3,C3-P3,P3-O1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// This creates 4 channels:</span>
+<span class="c1">// - Fp1-F3 (voltage at Fp1 minus voltage at F3)</span>
+<span class="c1">// - F3-C3</span>
+<span class="c1">// - C3-P3</span>
+<span class="c1">// - P3-O1</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-montage-example">
+<h3>Complete Montage Example<a class="headerlink" href="#complete-montage-example" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">configureMontage</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Configure a standard posterior montage</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">montage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4,O1,O2&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Default linked ears</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Montage: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">montage</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Reference: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reference</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">montage</span><span class="p">,</span><span class="w"> </span><span class="n">reference</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Montage failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Configured %d channels</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">           </span><span class="n">DSI_Headset_GetNumberOfChannels</span><span class="p">(</span><span class="n">h</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-3-data-acquisition">
+<h2>Tutorial 3: Data Acquisition<a class="headerlink" href="#tutorial-3-data-acquisition" title="Link to this heading">#</a></h2>
+<p>Once your headset is connected and channels are configured, you can start acquiring EEG data. This tutorial covers sampling rate configuration, buffer management, starting/stopping acquisition, and reading data from channels.</p>
+<section id="step-1-configure-sampling">
+<h3>Step 1: Configure Sampling<a class="headerlink" href="#step-1-configure-sampling" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Set sampling rate and filter mode</span>
+<span class="c1">// DSI_Headset_ConfigureADC(h, samplesPerSecond, filterMode)</span>
+
+<span class="c1">// NOTE: The default sampling rate is 300 Hz. If the SampleRate feature is unlocked,</span>
+<span class="c1">// all DSI headsets can configure rates up to 600 Hz. Check feature availability first:</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Headset_GetFeatureAvailability</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SampleRate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Custom sampling rates are available (up to 600 Hz)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_ConfigureADC</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Use 600 Hz when unlocked</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Using default sampling rate of 300 Hz (feature not unlocked)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_ConfigureADC</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Default 300 Hz</span>
+<span class="p">}</span>
+
+<span class="c1">// Verify actual sampling rate</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSamplingRate</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sampling rate: %.0f Hz</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Filter modes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> - No filtering (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> - Low-pass filter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> - High-pass filter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> - Band-pass filter</p></li>
+</ul>
+</section>
+<section id="step-2-understanding-buffers">
+<h3>Step 2: Understanding Buffers<a class="headerlink" href="#step-2-understanding-buffers" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Channel buffers are allocated automatically when you configure channels.</span>
+<span class="c1">// The default buffer size is sufficient for most real-time applications.</span>
+
+<span class="c1">// Manual buffer reallocation is only needed if:</span>
+<span class="c1">// 1. You need to store more than a few seconds of data</span>
+<span class="c1">// 2. You&#39;re using custom processing stages that require larger lookback windows</span>
+
+<span class="c1">// Example: Allocate 10 seconds for signal, 5 seconds for impedance</span>
+<span class="n">DSI_Headset_ReallocateBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">);</span>
+
+<span class="c1">// Check buffer status during acquisition</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="n">buffered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfBufferedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Buffered samples: %zu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">buffered</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-start-acquisition">
+<h3>Step 3: Start Acquisition<a class="headerlink" href="#step-3-start-acquisition" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DSI_Headset_StartDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to start acquisition: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Acquisition started</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-receive-data">
+<h3>Step 4: Receive Data<a class="headerlink" href="#step-4-receive-data" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSamplingRate</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">blockDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0.5 second blocks</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">acquiring</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Process events and receive data for specified time</span>
+<span class="w">    </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">blockDuration</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Read buffered data from each channel</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nChannels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfChannels</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nChannels</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Get number of buffered samples</span>
+<span class="w">        </span><span class="kt">size_t</span><span class="w"> </span><span class="n">buffered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_GetNumberOfBufferedSamples</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Read buffered samples one at a time</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">buffered</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_ReadBuffered</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+<span class="w">            </span><span class="n">processData</span><span class="p">(</span><span class="n">DSI_Channel_GetName</span><span class="p">(</span><span class="n">ch</span><span class="p">),</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-stop-acquisition">
+<h3>Step 5: Stop Acquisition<a class="headerlink" href="#step-5-stop-acquisition" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DSI_Headset_StopDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Acquisition stopped</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-acquisition-example">
+<h3>Complete Acquisition Example<a class="headerlink" href="#complete-acquisition-example" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">acquireData</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">durationSeconds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">blockDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 100ms blocks</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">numBlocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">durationSeconds</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">blockDuration</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Acquiring %.1f seconds of data...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">durationSeconds</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Start acquisition</span>
+<span class="w">    </span><span class="n">DSI_Headset_StartDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Start failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Collect data blocks</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numBlocks</span><span class="p">;</span><span class="w"> </span><span class="n">block</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">blockDuration</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Show progress</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">block</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Progress: %.0f%%</span><span class="se">\r</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                   </span><span class="mf">100.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">numBlocks</span><span class="p">);</span>
+<span class="w">            </span><span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Check for errors/alarms</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Headset_GetNumberOfAlarms</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">alarm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetAlarm</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// 1 = remove from queue</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Alarm: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alarm</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Acquisition complete</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_StopDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tutorial-4-background-acquisition">
+<h2>Tutorial 4: Background Acquisition<a class="headerlink" href="#tutorial-4-background-acquisition" title="Link to this heading">#</a></h2>
+<p>Background acquisition runs data collection in a separate thread, freeing your main application to perform other tasks (UI updates, analysis, etc.). This tutorial shows how to set up callbacks that execute automatically when new data arrives.</p>
+<section id="step-1-set-sample-callback">
+<h3>Step 1: Set Sample Callback<a class="headerlink" href="#step-1-set-sample-callback" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">mySampleCallback</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">packetTime</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This function is called automatically when new data arrives</span>
+<span class="w">    </span><span class="c1">// userData can be used to pass application-specific data to the callback</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Get first channel</span>
+<span class="w">    </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Read buffered sample (callback context - samples are buffered)</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_ReadBuffered</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;New sample: %.2f µV (time: %.3f)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">packetTime</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Register callback (NULL for userData if not needed)</span>
+<span class="n">DSI_Headset_SetSampleCallback</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">mySampleCallback</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-start-background-acquisition">
+<h3>Step 2: Start Background Acquisition<a class="headerlink" href="#step-2-start-background-acquisition" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Headset_StartBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Background acquisition failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Background acquisition running...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-application-continues">
+<h3>Step 3: Application Continues<a class="headerlink" href="#step-3-application-continues" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Your application can continue other work</span>
+<span class="c1">// Data collection happens in background thread</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Do other work</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Main loop iteration %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span><span class="w">  </span><span class="c1">// Process events for 100ms</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Check buffer status</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">buffered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfBufferedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;  Buffered samples: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">buffered</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-stop-background-acquisition">
+<h3>Step 4: Stop Background Acquisition<a class="headerlink" href="#step-4-stop-background-acquisition" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DSI_Headset_StopBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Background acquisition stopped</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-background-acquisition-example">
+<h3>Complete Background Acquisition Example<a class="headerlink" href="#complete-background-acquisition-example" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Global flag to control acquisition</span>
+<span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">g_acquiring</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">sampleCallback</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">packetTime</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">userData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sampleCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sampleCount</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Get channel data</span>
+<span class="w">    </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">pz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByName</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pz</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_ReadBuffered</span><span class="p">(</span><span class="n">pz</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Print every 100 samples</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sampleCount</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sample %d: Pz = %.2f µV</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sampleCount</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* ... connect and configure ... */</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Set callback and start (NULL for userData)</span>
+<span class="w">    </span><span class="n">DSI_Headset_SetSampleCallback</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">sampleCallback</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_StartBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Acquiring... Press Ctrl+C to stop</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Main loop: monitor health</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">g_acquiring</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">);</span><span class="w">  </span><span class="c1">// Process events for 5 seconds</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Check for overflow</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfOverflowedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overflow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WARNING: %d samples lost!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overflow</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Check for alarms</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Headset_GetNumberOfAlarms</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">alarm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetAlarm</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// 1 = remove from queue</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Alarm: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alarm</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">DSI_Headset_StopBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="common-tasks">
+<h2>Common Tasks<a class="headerlink" href="#common-tasks" title="Link to this heading">#</a></h2>
+<p>These practical examples demonstrate frequently needed operations: saving data to files, checking electrode impedances, and monitoring battery levels.</p>
+<section id="task-save-data-to-csv-file">
+<h3>Task: Save Data to CSV File<a class="headerlink" href="#task-save-data-to-csv-file" title="Link to this heading">#</a></h3>
+<p>Exporting EEG data to CSV format enables analysis in tools like MATLAB, Python, or Excel. This example writes time-synchronized samples with proper column headers.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">saveToCSV</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">FILE</span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cannot open %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Write header</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Time&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nChannels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfChannels</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nChannels</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;,%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Channel_GetName</span><span class="p">(</span><span class="n">ch</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Acquire and save data</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSamplingRate</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">samplesPerBlock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">fs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">numBlocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">duration</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">DSI_Headset_StartDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_SecondsSinceConnection</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numBlocks</span><span class="p">;</span><span class="w"> </span><span class="n">block</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">samplesPerBlock</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="p">);</span><span class="w">  </span><span class="c1">// Process one block duration</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Read buffered samples</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nChannels</span><span class="p">;</span><span class="w"> </span><span class="n">ch</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">channel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">size_t</span><span class="w"> </span><span class="n">buffered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_GetNumberOfBufferedSamples</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">samp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">samp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">buffered</span><span class="p">;</span><span class="w"> </span><span class="n">samp</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// Write time only once per row</span>
+<span class="w">                    </span><span class="kt">double</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_SecondsSinceConnection</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">startTime</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%.6f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span>
+<span class="w">                </span><span class="kt">double</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_ReadBuffered</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
+<span class="w">                </span><span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;,%.6f&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+<span class="w">                </span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nChannels</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">DSI_Headset_StopDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Saved %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="task-check-impedances">
+<h3>Task: Check Impedances<a class="headerlink" href="#task-check-impedances" title="Link to this heading">#</a></h3>
+<p>Impedance testing measures electrode-skin contact quality. Good impedances (below 1MΩ) are critical for clean recordings. Run this before each session to verify sensor placement.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">checkImpedances</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Starting impedance test...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Start impedance driver</span>
+<span class="w">    </span><span class="n">DSI_Headset_StartImpedanceDriver</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to start impedance driver: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Wait for readings to stabilize</span>
+<span class="w">    </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Read impedances</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">nSources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfSources</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Impedance readings:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%-10s %10s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Electrode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Impedance&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;------------------------</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nSources</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Source</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSourceByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Source_IsReferentialEEG</span><span class="p">(</span><span class="n">src</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Source_GetName</span><span class="p">(</span><span class="n">src</span><span class="p">);</span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">impedance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Source_GetImpedanceEEG</span><span class="p">(</span><span class="n">src</span><span class="p">);</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%-10s %8.0f kΩ&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">impedance</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">);</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="c1">// Quality indicator</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">impedance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1000000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; ✓ Good</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">impedance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2000000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; ⚠ Fair</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; ✗ Poor</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Get common-mode fault metric</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">cmf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetImpedanceCMF</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Common-mode fault: %.1f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cmf</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">DSI_Headset_StopImpedanceDriver</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Impedance test complete</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="task-monitor-battery-level">
+<h3>Task: Monitor Battery Level<a class="headerlink" href="#task-monitor-battery-level" title="Link to this heading">#</a></h3>
+<p>Monitoring battery prevents unexpected disconnections. Query battery status periodically during long recordings to ensure data integrity.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">monitorBattery</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Send battery query</span>
+<span class="w">    </span><span class="n">DSI_Headset_SendBatteryQuery</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Wait for response</span>
+<span class="w">    </span><span class="n">DSI_Headset_Idle</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Read level (0 = main battery)</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetBatteryLevel</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery: %.1f%%&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; CRITICAL - Charge now!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">20.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; LOW - Charge soon</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot; OK</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<section id="explore-advanced-features">
+<h3>Explore Advanced Features<a class="headerlink" href="#explore-advanced-features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../quick_reference.html"><span class="std std-doc">Quick Reference</span></a> - Quick lookup guide for all API functions</p></li>
+<li><p><a class="reference internal" href="../error_codes.html"><span class="std std-doc">Error Codes</span></a> - Complete error code reference</p></li>
+<li><p><a class="reference internal" href="start_python.html"><span class="std std-doc">Python Getting Started</span></a> - Python version of this guide</p></li>
+</ul>
+</section>
+<section id="sample-code">
+<h3>Sample Code<a class="headerlink" href="#sample-code" title="Link to this heading">#</a></h3>
+<p>Check the <code class="docutils literal notranslate"><span class="pre">release/demo.c</span></code> file in the release package for a complete working example.</p>
+</section>
+<section id="support">
+<h3>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h3>
+<p><strong>Technical support:</strong> Contact WearableSensing support team via the <a class="reference internal" href="../../help/index.html"><span class="std std-doc">contact page</span></a>.</p>
+<hr class="docutils" />
+<p><a class="reference internal" href="index.html"><span class="std std-doc">Back to Getting Started</span></a> | <a class="reference internal" href="../index.html"><span class="std std-doc">Back to API Index</span></a></p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="start_python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting Started with Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../quick_reference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quick Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Wearable Sensing.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

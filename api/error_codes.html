@@ -1,0 +1,1468 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Error Codes &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/password.css?v=a096a895" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/error_codes';</script>
+    <script src="../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Quick Reference" href="quick_reference.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">   </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting_started/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/start_python.html">Start with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/start_c.html">Start with C</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_reference.html">Quick Reference</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Error Codes</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">DSI API Documentation</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Error Codes</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="error-codes">
+<h1>Error Codes<a class="headerlink" href="#error-codes" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Complete error catalog</strong> — All error messages, causes, and recovery strategies. Includes detection patterns and best practices for robust error handling in DSI API applications.</p>
+</div></blockquote>
+<p>If you are new to the DSI API, please start with the <a class="reference internal" href="getting_started/index.html"><span class="std std-doc">Getting Started Guide</span></a> and refer to the <a class="reference internal" href="quick_reference.html"><span class="std std-doc">Quick Reference</span></a> for function lookups. If an error occurs that you cannot resolve, please contact Wearable Sensing support via the <a class="reference internal" href="../help/index.html"><span class="std std-doc">contact page</span></a>.</p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#error-system-overview">Error System Overview</a></p></li>
+<li><p><a class="reference internal" href="#error-categories">Error Categories</a></p>
+<ul>
+<li><p><a class="reference internal" href="#connection-errors">Connection Errors</a></p></li>
+<li><p><a class="reference internal" href="#configuration-errors">Configuration Errors</a></p></li>
+<li><p><a class="reference internal" href="#runtime-errors">Runtime Errors</a></p></li>
+<li><p><a class="reference internal" href="#resource-errors">Resource Errors</a></p></li>
+<li><p><a class="reference internal" href="#file-i-o-errors">File I/O Errors</a></p></li>
+<li><p><a class="reference internal" href="#index-range-errors">Index/Range Errors</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#error-detection-patterns">Error Detection Patterns</a></p></li>
+<li><p><a class="reference internal" href="#best-practices">Best Practices</a></p></li>
+<li><p><a class="reference internal" href="#common-error-scenarios">Common Error Scenarios</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="error-system-overview">
+<h2>Error System Overview<a class="headerlink" href="#error-system-overview" title="Link to this heading">#</a></h2>
+<p>The DSI API uses a global error string system for error reporting:</p>
+<section id="error-propagation-flow">
+<h3>Error Propagation Flow<a class="headerlink" href="#error-propagation-flow" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Setting Errors:</strong> Internal functions set a global error string when errors occur</p></li>
+<li><p><strong>Checking Errors:</strong> Call <code class="docutils literal notranslate"><span class="pre">DSI_Error()</span></code> to check if an error occurred (non-destructive)</p></li>
+<li><p><strong>Clearing Errors:</strong> Call <code class="docutils literal notranslate"><span class="pre">DSI_ClearError()</span></code> to retrieve and clear the error state</p></li>
+<li><p><strong>Callbacks:</strong> Set <code class="docutils literal notranslate"><span class="pre">DSI_SetErrorCallback()</span></code> for automatic error notifications</p></li>
+</ol>
+</section>
+<section id="key-functions">
+<h3>Key Functions<a class="headerlink" href="#key-functions" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">                        </span><span class="c1">// Check error (non-destructive)</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">                   </span><span class="c1">// Retrieve and clear error</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">DSI_SetErrorCallback</span><span class="p">(</span><span class="n">DSI_MessageCallback</span><span class="w"> </span><span class="n">func</span><span class="p">)</span><span class="w"> </span><span class="c1">// Register error callback</span>
+</pre></div>
+</div>
+</section>
+<section id="error-callback-signature">
+<h3>Error Callback Signature<a class="headerlink" href="#error-callback-signature" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">DSI_MessageCallback</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">debugLevel</span><span class="p">);</span>
+
+<span class="c1">// debugLevel values:</span>
+<span class="c1">// 0 = Critical</span>
+<span class="c1">// 1 = Error</span>
+<span class="c1">// 2 = Warning</span>
+<span class="c1">// 3 = Info</span>
+<span class="c1">// 4 = Debug</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="error-categories">
+<h2>Error Categories<a class="headerlink" href="#error-categories" title="Link to this heading">#</a></h2>
+<p>Errors are organized by functional area to help quickly identify the source of problems. Each category includes the error message, root cause, and recommended recovery steps.</p>
+<section id="connection-errors">
+<h3>Connection Errors<a class="headerlink" href="#connection-errors" title="Link to this heading">#</a></h3>
+<p>Serial port and communication errors that occur during device connection and data transmission.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Recovery</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Port</span> <span class="pre">not</span> <span class="pre">found&quot;</span></code></p></td>
+<td><p>Serial port doesn’t exist</p></td>
+<td><p>Verify port name, check device connection</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Port</span> <span class="pre">in</span> <span class="pre">use&quot;</span></code></p></td>
+<td><p>Port already opened by another process</p></td>
+<td><p>Close other applications, use different port</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Communication</span> <span class="pre">timeout&quot;</span></code></p></td>
+<td><p>No response from headset within timeout period</p></td>
+<td><p>Check cables, power, try reconnecting</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Device</span> <span class="pre">not</span> <span class="pre">responding&quot;</span></code></p></td>
+<td><p>Headset connected but not communicating</p></td>
+<td><p>Power cycle headset, check battery</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">device&quot;</span></code></p></td>
+<td><p>Connected device is not a DSI headset</p></td>
+<td><p>Verify correct device, check firmware</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Bluetooth</span> <span class="pre">initialization</span> <span class="pre">failed&quot;</span></code></p></td>
+<td><p>Cannot initialize Bluetooth subsystem</p></td>
+<td><p>Check Bluetooth drivers, permissions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;the</span> <span class="pre">serial</span> <span class="pre">port</span> <span class="pre">name</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">given</span> <span class="pre">explicitly,</span> <span class="pre">because</span> <span class="pre">the</span> <span class="pre">DSISerialPort</span> <span class="pre">environment</span> <span class="pre">variable</span> <span class="pre">is</span> <span class="pre">empty&quot;</span></code></p></td>
+<td><p>No default port configured</p></td>
+<td><p>Provide explicit port name or set DSISerialPort</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Cannot</span> <span class="pre">resynchronize:</span> <span class="pre">serial</span> <span class="pre">connection</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">open&quot;</span></code></p></td>
+<td><p>Attempted operation on closed port</p></td>
+<td><p>Connect first using <code class="docutils literal notranslate"><span class="pre">DSI_Headset_Connect()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Cannot</span> <span class="pre">send</span> <span class="pre">commands</span> <span class="pre">to</span> <span class="pre">headset:</span> <span class="pre">serial-port</span> <span class="pre">connection</span> <span class="pre">not</span> <span class="pre">yet</span> <span class="pre">established&quot;</span></code></p></td>
+<td><p>Commands sent before connection</p></td>
+<td><p>Wait for connection to complete</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Cannot</span> <span class="pre">read</span> <span class="pre">from</span> <span class="pre">headset:</span> <span class="pre">serial-port</span> <span class="pre">connection</span> <span class="pre">not</span> <span class="pre">yet</span> <span class="pre">established&quot;</span></code></p></td>
+<td><p>Read attempted before connection</p></td>
+<td><p>Ensure <code class="docutils literal notranslate"><span class="pre">DSI_Headset_IsConnected()</span></code> returns true</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Detection Pattern:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Helper function for error checking (from demo.c)</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">CheckError</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#define CHECK  if (CheckError() != 0) return -1;</span>
+
+<span class="c1">// Use in connection code</span>
+<span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span><span class="w"> </span><span class="n">CHECK</span>
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM3&quot;</span><span class="p">);</span><span class="w"> </span><span class="n">CHECK</span>
+
+<span class="c1">// Or check explicitly without macro</span>
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM4&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Connection failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="c1">// Try alternative approach</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="configuration-errors">
+<h3>Configuration Errors<a class="headerlink" href="#configuration-errors" title="Link to this heading">#</a></h3>
+<p>Errors from setting up channels, montages, sampling rates, and device features.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Recovery</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">sampling</span> <span class="pre">rate&quot;</span></code></p></td>
+<td><p>Requested rate not supported by hardware</p></td>
+<td><p>Use model-appropriate rate (DSI-7: 300Hz, DSI-24: up to 1200Hz)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">filter</span> <span class="pre">mode&quot;</span></code></p></td>
+<td><p>Filter mode not recognized</p></td>
+<td><p>Use valid filter mode (0-3)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Unsupported</span> <span class="pre">feature&quot;</span></code></p></td>
+<td><p>Feature not available on this model</p></td>
+<td><p>Check <code class="docutils literal notranslate"><span class="pre">DSI_Headset_GetFeatureAvailability()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">montage</span> <span class="pre">specification&quot;</span></code></p></td>
+<td><p>Malformed channel specification</p></td>
+<td><p>Check syntax: “Ch1,Ch2,Ch3” or “Ch1-Ch2”</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;could</span> <span class="pre">not</span> <span class="pre">interpret</span> <span class="pre">\&quot;...\&quot;</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">channel</span> <span class="pre">specification&quot;</span></code></p></td>
+<td><p>Parsing error in montage string</p></td>
+<td><p>Verify electrode names, check separator usage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Source</span> <span class="pre">name</span> <span class="pre">not</span> <span class="pre">found&quot;</span></code></p></td>
+<td><p>Electrode name doesn’t exist</p></td>
+<td><p>Use <code class="docutils literal notranslate"><span class="pre">DSI_Headset_GetSourceNames()</span></code> to list valid names</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Failed</span> <span class="pre">to</span> <span class="pre">match</span> <span class="pre">desired</span> <span class="pre">source</span> <span class="pre">\&quot;...\&quot;&quot;</span></code></p></td>
+<td><p>Name doesn’t match any known sensors</p></td>
+<td><p>Check spelling, verify source is active</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;The</span> <span class="pre">name</span> <span class="pre">\&quot;...\&quot;</span> <span class="pre">matches</span> <span class="pre">more</span> <span class="pre">than</span> <span class="pre">one</span> <span class="pre">source&quot;</span></code></p></td>
+<td><p>Ambiguous electrode specification</p></td>
+<td><p>Use full unique name or index</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">source</span> <span class="pre">number</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Source index out of range</p></td>
+<td><p>Use index 1 to N (not 0-based)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Cannot</span> <span class="pre">construct</span> <span class="pre">channel&quot;</span></code></p></td>
+<td><p>Invalid bipolar/reference combination</p></td>
+<td><p>Verify both sources exist and are compatible</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cannot</span> <span class="pre">rename</span> <span class="pre">Source</span> <span class="pre">...</span> <span class="pre">because</span> <span class="pre">there</span> <span class="pre">is</span> <span class="pre">another</span> <span class="pre">Source</span> <span class="pre">already</span> <span class="pre">called</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Naming conflict</p></td>
+<td><p>Choose different name or rename conflicting source</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;\&quot;...\&quot;</span> <span class="pre">matches</span> <span class="pre">more</span> <span class="pre">than</span> <span class="pre">one</span> <span class="pre">Source,</span> <span class="pre">and</span> <span class="pre">hence</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">set</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">list</span> <span class="pre">of</span> <span class="pre">aliases&quot;</span></code></p></td>
+<td><p>Ambiguous alias specification</p></td>
+<td><p>Use unique identifiers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Unrecognized</span> <span class="pre">electrode</span> <span class="pre">naming</span> <span class="pre">scheme</span> <span class="pre">\&quot;...\&quot;&quot;</span></code></p></td>
+<td><p>Invalid naming scheme</p></td>
+<td><p>Use “10-20”, “BIOSEMI”, “NUMBERED”, or “FACTORY”</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cannot</span> <span class="pre">set</span> <span class="pre">code</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">common</span> <span class="pre">mode</span> <span class="pre">position&quot;</span></code></p></td>
+<td><p>Invalid common mode reference selection</p></td>
+<td><p>Use valid sensor index for reference</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;must</span> <span class="pre">read</span> <span class="pre">calibration</span> <span class="pre">memory</span> <span class="pre">completely</span> <span class="pre">before</span> <span class="pre">attempting</span> <span class="pre">to</span> <span class="pre">write</span> <span class="pre">it&quot;</span></code></p></td>
+<td><p>Incomplete calibration read</p></td>
+<td><p>Read all pages before writing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cannot</span> <span class="pre">write</span> <span class="pre">to</span> <span class="pre">page</span> <span class="pre">number</span> <span class="pre">...:</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">in</span> <span class="pre">range</span> <span class="pre">0</span> <span class="pre">to</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Calibration page out of range</p></td>
+<td><p>Use valid page index</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;failed</span> <span class="pre">to</span> <span class="pre">change</span> <span class="pre">accelerometer</span> <span class="pre">rate</span> <span class="pre">to</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Headset rejected accelerometer configuration</p></td>
+<td><p>Use supported rate (0, 10, 50, 100 Hz)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Detection Pattern:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Helper function for error checking (from demo.c)</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">CheckError</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#define CHECK  if (CheckError() != 0) return -1;</span>
+
+<span class="c1">// Use CHECK macro for montage configuration</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A1+A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">CHECK</span>
+
+<span class="c1">// Or check explicitly for troubleshooting</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A1+A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Montage error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// List available sources using iteration pattern</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Available sources:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfSources</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Source</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSourceByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;  %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Source_GetName</span><span class="p">(</span><span class="n">src</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Try simpler montage</span>
+<span class="w">    </span><span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;@1,@2,@3,@4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;@A1+@A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="runtime-errors">
+<h3>Runtime Errors<a class="headerlink" href="#runtime-errors" title="Link to this heading">#</a></h3>
+<p>Errors that occur during active data acquisition, including buffer management and data integrity issues.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Recovery</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Buffer</span> <span class="pre">overflow&quot;</span></code></p></td>
+<td><p>Data arriving faster than being read</p></td>
+<td><p>Increase buffer size, optimize processing</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;buffer</span> <span class="pre">underflow&quot;</span></code></p></td>
+<td><p>Attempted to read from empty buffer</p></td>
+<td><p>Wait for samples, check acquisition status</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cannot</span> <span class="pre">read</span> <span class="pre">from</span> <span class="pre">unallocated</span> <span class="pre">buffer&quot;</span></code></p></td>
+<td><p>Buffer not initialized</p></td>
+<td><p>Call <code class="docutils literal notranslate"><span class="pre">DSI_Headset_ReallocateBuffers()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cannot</span> <span class="pre">look</span> <span class="pre">back</span> <span class="pre">N</span> <span class="pre">steps:</span> <span class="pre">buffer</span> <span class="pre">size</span> <span class="pre">is</span> <span class="pre">M&quot;</span></code></p></td>
+<td><p>LookBack exceeds buffer capacity</p></td>
+<td><p>Increase buffer size or reduce lookback</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cannot</span> <span class="pre">look</span> <span class="pre">back</span> <span class="pre">N</span> <span class="pre">steps:</span> <span class="pre">M</span> <span class="pre">samples</span> <span class="pre">available&quot;</span></code></p></td>
+<td><p>Not enough samples buffered yet</p></td>
+<td><p>Wait for more samples to accumulate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Data</span> <span class="pre">corruption</span> <span class="pre">(CRC</span> <span class="pre">failure)&quot;</span></code></p></td>
+<td><p>Packet checksum failed</p></td>
+<td><p>Check cables, reduce EMI, replace cable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Block</span> <span class="pre">failed</span> <span class="pre">consistency</span> <span class="pre">check&quot;</span></code></p></td>
+<td><p>Data packet corrupted</p></td>
+<td><p>Verify signal integrity, check grounding</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Packet</span> <span class="pre">size</span> <span class="pre">mismatch&quot;</span></code></p></td>
+<td><p>Unexpected packet length</p></td>
+<td><p>May indicate firmware/API mismatch</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Command</span> <span class="pre">failed&quot;</span></code></p></td>
+<td><p>Headset rejected command</p></td>
+<td><p>Check command validity for this model</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Command</span> <span class="pre">failed</span> <span class="pre">too</span> <span class="pre">many</span> <span class="pre">times&quot;</span></code></p></td>
+<td><p>Exceeded retry limit (20 attempts)</p></td>
+<td><p>Power cycle headset, check communication</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Write</span> <span class="pre">to</span> <span class="pre">serial</span> <span class="pre">port</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">errno</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Low-level write failure</p></td>
+<td><p>Check USB connection, drivers, permissions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Could</span> <span class="pre">not</span> <span class="pre">send</span> <span class="pre">complete</span> <span class="pre">command</span> <span class="pre">(sent</span> <span class="pre">X</span> <span class="pre">of</span> <span class="pre">Y</span> <span class="pre">bytes)&quot;</span></code></p></td>
+<td><p>Partial transmission</p></td>
+<td><p>Retry command, check port stability</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Serial</span> <span class="pre">port</span> <span class="pre">read</span> <span class="pre">error&quot;</span></code></p></td>
+<td><p>USB communication failure</p></td>
+<td><p>Reconnect cable, check USB hub/port</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Detection Pattern:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Monitor buffer health</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfOverflowedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overflow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WARNING: Lost %zu samples!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overflow</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Increase buffer</span>
+<span class="w">    </span><span class="n">DSI_Headset_StopBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_ReallocateBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 20 seconds</span>
+<span class="w">    </span><span class="n">DSI_Headset_FlushBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_StartBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Check for data corruption</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CRC&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Data corruption detected: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_ClearError</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// Log incident, continue acquisition</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="resource-errors">
+<h3>Resource Errors<a class="headerlink" href="#resource-errors" title="Link to this heading">#</a></h3>
+<p>System resource allocation failures including memory, threads, and OS primitives.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Recovery</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Memory</span> <span class="pre">allocation</span> <span class="pre">failure&quot;</span></code></p></td>
+<td><p>Out of memory</p></td>
+<td><p>Reduce buffer sizes, close other applications</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Thread</span> <span class="pre">creation</span> <span class="pre">failure&quot;</span></code></p></td>
+<td><p>Cannot create background thread</p></td>
+<td><p>Check system resources, thread limits</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Buffer</span> <span class="pre">reallocation</span> <span class="pre">failed&quot;</span></code></p></td>
+<td><p>Insufficient memory for buffers</p></td>
+<td><p>Use smaller buffer sizes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;CreateWaitableTimer</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">error</span> <span class="pre">code</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Windows timer creation failed</p></td>
+<td><p>Check system resources, restart application</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;SetWaitableTimer</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">error</span> <span class="pre">code</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Windows timer configuration failed</p></td>
+<td><p>Verify timer parameters, check permissions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;WaitForSingleObject</span> <span class="pre">failed</span> <span class="pre">with</span> <span class="pre">error</span> <span class="pre">code</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Windows synchronization primitive failed</p></td>
+<td><p>Check system state, restart application</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;NULL</span> <span class="pre">&lt;type&gt;</span> <span class="pre">pointer&quot;</span></code></p></td>
+<td><p>NULL pointer passed to C interface</p></td>
+<td><p>Verify handle validity before function calls</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Detection Pattern:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">allocateBuffers</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">seconds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DSI_Headset_ReallocateBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">seconds</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Buffer allocation failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Try smaller buffer</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">reduced</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seconds</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Trying smaller buffer: %.1f seconds</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reduced</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_Headset_ReallocateBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">reduced</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cannot allocate even minimal buffer</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="file-i-o-errors">
+<h3>File I/O Errors<a class="headerlink" href="#file-i-o-errors" title="Link to this heading">#</a></h3>
+<p>Errors related to reading and writing calibration files and other persistent data.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Recovery</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;failed</span> <span class="pre">to</span> <span class="pre">open</span> <span class="pre">\&quot;...\&quot;</span> <span class="pre">to</span> <span class="pre">dump</span> <span class="pre">calibration</span> <span class="pre">memory&quot;</span></code></p></td>
+<td><p>Cannot write calibration file</p></td>
+<td><p>Check permissions, disk space, path validity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;failed</span> <span class="pre">to</span> <span class="pre">open</span> <span class="pre">\&quot;...\&quot;</span> <span class="pre">to</span> <span class="pre">read</span> <span class="pre">calibration</span> <span class="pre">memory&quot;</span></code></p></td>
+<td><p>Cannot read calibration file</p></td>
+<td><p>Verify file exists, check permissions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;failed</span> <span class="pre">to</span> <span class="pre">read</span> <span class="pre">N</span> <span class="pre">8-bit</span> <span class="pre">decimal-formatted</span> <span class="pre">values</span> <span class="pre">from</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Calibration file read error</p></td>
+<td><p>Verify file format, check for corruption</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;failed</span> <span class="pre">to</span> <span class="pre">read</span> <span class="pre">N</span> <span class="pre">8-bit</span> <span class="pre">hex-formatted</span> <span class="pre">values</span> <span class="pre">from</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Calibration file format error</p></td>
+<td><p>Re-export calibration from headset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;failed</span> <span class="pre">to</span> <span class="pre">read</span> <span class="pre">N</span> <span class="pre">raw</span> <span class="pre">bytes</span> <span class="pre">(after</span> <span class="pre">'BIN\n'</span> <span class="pre">header)</span> <span class="pre">from</span> <span class="pre">...&quot;</span></code></p></td>
+<td><p>Binary calibration file corrupted</p></td>
+<td><p>Use backup calibration file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;file</span> <span class="pre">\&quot;...\&quot;</span> <span class="pre">has</span> <span class="pre">unexpected</span> <span class="pre">format</span> <span class="pre">-</span> <span class="pre">expected</span> <span class="pre">it</span> <span class="pre">to</span> <span class="pre">begin</span> <span class="pre">with</span> <span class="pre">'DEC\n',</span> <span class="pre">'HEX\n'</span> <span class="pre">or</span> <span class="pre">'BIN\n'&quot;</span></code></p></td>
+<td><p>Invalid calibration file format</p></td>
+<td><p>Check file header, use correct format</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;unrecognized</span> <span class="pre">dump</span> <span class="pre">file</span> <span class="pre">format</span> <span class="pre">\&quot;...\&quot;&quot;</span></code></p></td>
+<td><p>Invalid format specifier</p></td>
+<td><p>Use “DEC”, “HEX”, or “BIN”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Detection Pattern:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">calFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;calibration.bin&quot;</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">readCalibration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">calFile</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Calibration read failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Try alternative formats</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">formats</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;calibration.dec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;calibration.hex&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">};</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">formats</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readCalibration</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">formats</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Loaded from %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">formats</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">DSI_ClearError</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="index-range-errors">
+<h3>Index/Range Errors<a class="headerlink" href="#index-range-errors" title="Link to this heading">#</a></h3>
+<p>Array bounds and lookup errors when accessing channels, sources, or processing stages.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Error Message</p></th>
+<th class="head"><p>Cause</p></th>
+<th class="head"><p>Recovery</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Channel</span> <span class="pre">index</span> <span class="pre">N</span> <span class="pre">is</span> <span class="pre">out</span> <span class="pre">of</span> <span class="pre">range</span> <span class="pre">(M</span> <span class="pre">channels</span> <span class="pre">available)&quot;</span></code></p></td>
+<td><p>Channel index exceeds count</p></td>
+<td><p>Use valid index 0 to M-1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Source</span> <span class="pre">index</span> <span class="pre">N</span> <span class="pre">is</span> <span class="pre">out</span> <span class="pre">of</span> <span class="pre">range</span> <span class="pre">(M</span> <span class="pre">sources</span> <span class="pre">available)&quot;</span></code></p></td>
+<td><p>Source index exceeds count</p></td>
+<td><p>Use valid index 0 to M-1</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;ProcessingStage</span> <span class="pre">index</span> <span class="pre">N</span> <span class="pre">is</span> <span class="pre">out</span> <span class="pre">of</span> <span class="pre">range</span> <span class="pre">(M</span> <span class="pre">stages</span> <span class="pre">available)&quot;</span></code></p></td>
+<td><p>Stage index exceeds count</p></td>
+<td><p>Verify stage count before access</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;Channel</span> <span class="pre">index</span> <span class="pre">N</span> <span class="pre">is</span> <span class="pre">out</span> <span class="pre">of</span> <span class="pre">range</span> <span class="pre">(M</span> <span class="pre">channels</span> <span class="pre">available</span> <span class="pre">in</span> <span class="pre">ProcessingStage</span> <span class="pre">\&quot;...\&quot;)&quot;</span></code></p></td>
+<td><p>Stage-specific channel index error</p></td>
+<td><p>Check channel count for specific stage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;failed</span> <span class="pre">to</span> <span class="pre">match</span> <span class="pre">processing</span> <span class="pre">stage</span> <span class="pre">\&quot;...\&quot;&quot;</span></code></p></td>
+<td><p>Stage name not found</p></td>
+<td><p>Use correct stage name from creation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;cannot</span> <span class="pre">add</span> <span class="pre">ProcessingStage</span> <span class="pre">\&quot;...\&quot;</span> <span class="pre">because</span> <span class="pre">this</span> <span class="pre">name</span> <span class="pre">already</span> <span class="pre">exists</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">cascade&quot;</span></code></p></td>
+<td><p>Duplicate stage name</p></td>
+<td><p>Use unique stage names</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Detection Pattern:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">nChannels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfChannels</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Available channels: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nChannels</span><span class="p">);</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nChannels</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Invalid channel index %d: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Channel %d: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Channel_GetName</span><span class="p">(</span><span class="n">ch</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="error-detection-patterns">
+<h2>Error Detection Patterns<a class="headerlink" href="#error-detection-patterns" title="Link to this heading">#</a></h2>
+<p>Proven code patterns for detecting and handling errors in DSI API applications. These patterns demonstrate the best practices used in demo.c and recommended for production code.</p>
+<section id="pattern-1-check-after-critical-operations">
+<h3>Pattern 1: Check After Critical Operations<a class="headerlink" href="#pattern-1-check-after-critical-operations" title="Link to this heading">#</a></h3>
+<p>The most basic pattern: check errors immediately after operations that could fail.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to create headset: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM3&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Connection failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4,O1,O2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A1+A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Montage error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="c1">// Try alternative montage</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-2-callback-for-automatic-logging">
+<h3>Pattern 2: Callback for Automatic Logging<a class="headerlink" href="#pattern-2-callback-for-automatic-logging" title="Link to this heading">#</a></h3>
+<p>Register a callback to receive all errors automatically, useful for comprehensive logging.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">errorLogger</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">levelStr</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;CRITICAL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ERROR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WARNING&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;INFO&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DEBUG&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[%s] %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">levelStr</span><span class="p">[</span><span class="n">level</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;UNKNOWN&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">msg</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Log to file</span>
+<span class="w">    </span><span class="kt">FILE</span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopen</span><span class="p">(</span><span class="s">&quot;dsi_errors.log&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">time_t</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s [%s] %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="n">ctime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                </span><span class="n">levelStr</span><span class="p">[</span><span class="n">level</span><span class="p">],</span><span class="w"> </span>
+<span class="w">                </span><span class="n">msg</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Continue execution</span>
+<span class="p">}</span>
+
+<span class="n">DSI_SetErrorCallback</span><span class="p">(</span><span class="n">errorLogger</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-3-validate-return-values">
+<h3>Pattern 3: Validate Return Values<a class="headerlink" href="#pattern-3-validate-return-values" title="Link to this heading">#</a></h3>
+<p>Always verify pointer returns before dereferencing, as NULL indicates failure.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByName</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Channel error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_ClearError</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Channel &#39;Pz&#39; not found (no error set)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-4-monitor-buffer-overflow">
+<h3>Pattern 4: Monitor Buffer Overflow<a class="headerlink" href="#pattern-4-monitor-buffer-overflow" title="Link to this heading">#</a></h3>
+<p>Proactively monitor and respond to buffer overflow conditions during acquisition.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">monitorBuffers</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfOverflowedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overflow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;WARNING: Lost %zu samples!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overflow</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Calculate time lost</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSamplingRate</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">timeLost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="p">;</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Time lost: %.3f seconds</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timeLost</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Increase buffer size</span>
+<span class="w">        </span><span class="n">DSI_Headset_StopBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_Headset_ReallocateBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 20 seconds</span>
+<span class="w">        </span><span class="n">DSI_Headset_FlushBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_Headset_StartBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Buffer increased to 20 seconds</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Call periodically during acquisition</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">acquiring</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DSI_Sleep</span><span class="p">(</span><span class="mf">5.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">monitorBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="pattern-5-monitor-buffer-overflow">
+<h3>Pattern 5: Monitor Buffer Overflow<a class="headerlink" href="#pattern-5-monitor-buffer-overflow" title="Link to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">checkForProblems</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Check for API errors</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;API Error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_ClearError</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Check for buffer overflow</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfOverflowedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overflow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Buffer overflow: %zu samples lost</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overflow</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Increase buffer size</span>
+<span class="w">        </span><span class="n">DSI_Headset_StopBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_Headset_ReallocateBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_Headset_FlushBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_Headset_StartBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h2>
+<p>Essential guidelines for robust error handling in production DSI applications. Following these practices will prevent most common errors and make debugging easier when issues occur.</p>
+<section id="always-check-critical-operations">
+<h3>1. Always Check Critical Operations<a class="headerlink" href="#always-check-critical-operations" title="Link to this heading">#</a></h3>
+<p>Never assume operations succeed—verify every critical function call.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// BAD - No error checking</span>
+<span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM3&quot;</span><span class="p">);</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A1+A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// GOOD - Comprehensive error checking</span>
+<span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_New</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM3&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Connection failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A1+A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Montage error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span><span class="n">DSI_Headset_Delete</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="use-error-callback-for-real-time-monitoring">
+<h3>2. Use Error Callback for Real-Time Monitoring<a class="headerlink" href="#use-error-callback-for-real-time-monitoring" title="Link to this heading">#</a></h3>
+<p>Set up callbacks to catch errors in background threads and asynchronous operations.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">errorHandler</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Critical and errors only</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[ERROR] %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c1">// Set flag for main loop to check</span>
+<span class="w">        </span><span class="k">extern</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">errorOccurred</span><span class="p">;</span>
+<span class="w">        </span><span class="n">errorOccurred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// Continue execution</span>
+<span class="p">}</span>
+
+<span class="n">DSI_SetErrorCallback</span><span class="p">(</span><span class="n">errorHandler</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="validate-pointers-before-use">
+<h3>3. Validate Pointers Before Use<a class="headerlink" href="#validate-pointers-before-use" title="Link to this heading">#</a></h3>
+<p>Check for NULL pointers before dereferencing to avoid crashes.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DSI_Channel</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetChannelByName</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pz&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Channel_GetSignal</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Use val safely</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Channel &#39;Pz&#39; not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="monitor-system-health">
+<h3>4. Monitor System Health<a class="headerlink" href="#monitor-system-health" title="Link to this heading">#</a></h3>
+<p>Track buffer status, lost samples, and system alarms to detect degradation early.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">samplesReceived</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">samplesLost</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">alarmsReceived</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">time_t</span><span class="w"> </span><span class="n">lastCheck</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">HealthStats</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">updateHealth</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">HealthStats</span><span class="o">*</span><span class="w"> </span><span class="n">stats</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">buffered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfBufferedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfOverflowedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">alarms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfAlarms</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">stats</span><span class="o">-&gt;</span><span class="n">samplesReceived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffered</span><span class="p">;</span>
+<span class="w">    </span><span class="n">stats</span><span class="o">-&gt;</span><span class="n">samplesLost</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">overflow</span><span class="p">;</span>
+<span class="w">    </span><span class="n">stats</span><span class="o">-&gt;</span><span class="n">alarmsReceived</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">alarms</span><span class="p">;</span>
+<span class="w">    </span><span class="n">stats</span><span class="o">-&gt;</span><span class="n">lastCheck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Log if problems detected</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overflow</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Health: Lost %zu samples (total: %zu)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">overflow</span><span class="p">,</span><span class="w"> </span><span class="n">stats</span><span class="o">-&gt;</span><span class="n">samplesLost</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">alarms</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Health: %zu new alarms (total: %zu)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="n">alarms</span><span class="p">,</span><span class="w"> </span><span class="n">stats</span><span class="o">-&gt;</span><span class="n">alarmsReceived</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="implement-graceful-degradation">
+<h3>5. Implement Graceful Degradation<a class="headerlink" href="#implement-graceful-degradation" title="Link to this heading">#</a></h3>
+<p>Retry failed operations and provide fallback options when possible.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">connectWithRetry</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxRetries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRetries</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Connected successfully</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Attempt %d failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">maxRetries</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Retrying in 2 seconds...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">DSI_Sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed to connect after %d attempts</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">maxRetries</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="common-error-scenarios">
+<h2>Common Error Scenarios<a class="headerlink" href="#common-error-scenarios" title="Link to this heading">#</a></h2>
+<p>Real-world error situations with complete diagnostic and recovery code. These scenarios demonstrate how to handle the most frequently encountered problems.</p>
+<section id="scenario-1-port-already-in-use">
+<h3>Scenario 1: Port Already in Use<a class="headerlink" href="#scenario-1-port-already-in-use" title="Link to this heading">#</a></h3>
+<p><strong>Error:</strong> <code class="docutils literal notranslate"><span class="pre">&quot;Port</span> <span class="pre">in</span> <span class="pre">use&quot;</span></code></p>
+<p><strong>Cause:</strong> Another application is using the serial port</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Try environment variable first (DSISerialPort)</span>
+<span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Connected using DSISerialPort environment variable</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Env variable failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+
+<span class="c1">// Try specific ports</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">ports</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;COM3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COM6&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">};</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">ports</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Trying %s...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ports</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">DSI_Headset_Connect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">ports</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Connected to %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ports</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;No available ports found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="scenario-2-unsupported-sampling-rate">
+<h3>Scenario 2: Unsupported Sampling Rate<a class="headerlink" href="#scenario-2-unsupported-sampling-rate" title="Link to this heading">#</a></h3>
+<p>Handling hardware-specific sampling rate limitations and feature locks.</p>
+<p><strong>Error:</strong> <code class="docutils literal notranslate"><span class="pre">&quot;Invalid</span> <span class="pre">sampling</span> <span class="pre">rate&quot;</span></code></p>
+<p><strong>Cause:</strong> Requested sampling rate not supported by hardware model, or feature not unlocked</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Check if custom sampling rates are available</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Headset_GetFeatureAvailability</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SampleRate&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Custom sampling rates not available (feature locked)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Use default rate (300 Hz)</span>
+<span class="w">    </span><span class="n">DSI_Headset_ConfigureADC</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetInfoString</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DSI-7&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// DSI-7 supports 300 Hz only</span>
+<span class="w">    </span><span class="n">DSI_Headset_ConfigureADC</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DSI-24&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// DSI-24 supports up to 1200 Hz</span>
+<span class="w">    </span><span class="n">DSI_Headset_ConfigureADC</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;VR300&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// VR300 supports 300 Hz</span>
+<span class="w">    </span><span class="n">DSI_Headset_ConfigureADC</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ADC config failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="scenario-3-invalid-montage">
+<h3>Scenario 3: Invalid Montage<a class="headerlink" href="#scenario-3-invalid-montage" title="Link to this heading">#</a></h3>
+<p>Recovering from electrode name mismatches and montage specification errors.</p>
+<p><strong>Error:</strong> <code class="docutils literal notranslate"><span class="pre">&quot;Cannot</span> <span class="pre">construct</span> <span class="pre">channel&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Source</span> <span class="pre">name</span> <span class="pre">not</span> <span class="pre">found&quot;</span></code></p>
+<p><strong>Cause:</strong> Electrode names don’t match available sources</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// List available sources using iteration pattern (matches demo.c)</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfSources</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Available sources (%d):</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DSI_Source</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetSourceByIndex</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;  %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_Source_GetName</span><span class="p">(</span><span class="n">src</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// Try requested montage</span>
+<span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;P3,Pz,P4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A1+A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Montage error: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DSI_ClearError</span><span class="p">());</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Use numbered sources as fallback</span>
+<span class="w">    </span><span class="n">DSI_Headset_ChooseChannels</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;@1,@2,@3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;@A1+@A2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DSI_Error</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Using numbered source montage</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="scenario-4-buffer-overflow">
+<h3>Scenario 4: Buffer Overflow<a class="headerlink" href="#scenario-4-buffer-overflow" title="Link to this heading">#</a></h3>
+<p>Dynamically adjusting buffer size when data processing can’t keep pace.</p>
+<p><strong>Problem:</strong> Buffer overflow during acquisition</p>
+<p><strong>Cause:</strong> Data arriving faster than application can process</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">handleBufferOverflow</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">overflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfOverflowedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overflow</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Buffer overflow: %zu samples lost</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">overflow</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Stop acquisition temporarily</span>
+<span class="w">    </span><span class="n">DSI_Headset_StopBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Double buffer size</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">currentSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Headset_GetNumberOfBufferedSamples</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span>
+<span class="w">                        </span><span class="n">DSI_Headset_GetSamplingRate</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">newSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentSize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Increasing buffer: %.1f → %.1f seconds</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="n">currentSize</span><span class="p">,</span><span class="w"> </span><span class="n">newSize</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">DSI_Headset_ReallocateBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">newSize</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DSI_Headset_FlushBuffers</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Resume acquisition</span>
+<span class="w">    </span><span class="n">DSI_Headset_StartBackgroundAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Acquisition resumed with larger buffer</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="scenario-5-data-corruption">
+<h3>Scenario 5: Data Corruption<a class="headerlink" href="#scenario-5-data-corruption" title="Link to this heading">#</a></h3>
+<p>Detecting and responding to signal integrity issues and hardware problems.</p>
+<p><strong>Error:</strong> <code class="docutils literal notranslate"><span class="pre">&quot;Data</span> <span class="pre">corruption</span> <span class="pre">(CRC</span> <span class="pre">failure)&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Block</span> <span class="pre">failed</span> <span class="pre">consistency</span> <span class="pre">check&quot;</span></code></p>
+<p><strong>Cause:</strong> EMI, poor cable connection, or hardware issues</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">corruptionCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">monitorDataQuality</span><span class="p">(</span><span class="n">DSI_Headset</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DSI_Error</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">strstr</span><span class="p">(</span><span class="n">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CRC&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;consistency&quot;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">corruptionCount</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Data corruption #%d: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">corruptionCount</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="n">DSI_ClearError</span><span class="p">();</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">corruptionCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Excessive corruption detected!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Check: cables, grounding, EMI sources</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="c1">// Consider stopping acquisition for inspection</span>
+<span class="w">            </span><span class="n">DSI_Headset_StopDataAcquisition</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="quick_reference.html"><span class="std std-doc">quick_reference</span></a> - Quick function lookup</p></li>
+<li><p><a class="reference internal" href="getting_started/index.html"><span class="std std-doc">getting_started</span></a> - Tutorial guide</p></li>
+</ul>
+<hr class="docutils" />
+<p><a class="reference internal" href="index.html"><span class="std std-doc">← Back to API Index</span></a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quick_reference.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quick Reference</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Wearable Sensing.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
