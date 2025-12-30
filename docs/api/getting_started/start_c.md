@@ -68,7 +68,7 @@ int main() {
         fprintf(stderr, "Error: %s\n", DSI_ClearError());
         return 1;
     }
-    printf("Connected to %s\n", DSI_Headset_GetPort(h));
+    printf("Connected!\n");
     
     // Configure channels (montage)
     DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "A1+A2", 1);
@@ -216,13 +216,7 @@ if (!DSI_Headset_IsConnected(h)) {
 }
 
 // Get device information
-const char* model = DSI_Headset_GetHardwareModel(h);
-const char* firmware = DSI_Headset_GetFirmwareRevision(h);
-unsigned int serial = DSI_Headset_GetSerialNumber(h);
-
-printf("Connected to: %s\n", model);
-printf("Firmware: %s\n", firmware);
-printf("Serial: %u\n", serial);
+printf("%s\n", DSI_Headset_GetInfoString(h));
 ```
 
 ### Step 5: Error Handling
@@ -280,9 +274,7 @@ int connectToHeadset(DSI_Headset* pHeadset, const char* port) {
     }
     
     // Get device info
-    printf("Connected to %s (SN: %u)\n",
-           DSI_Headset_GetHardwareModel(h),
-           DSI_Headset_GetSerialNumber(h));
+    printf("%s\n", DSI_Headset_GetInfoString(h));
     
     *pHeadset = h;
     return 1;
@@ -416,17 +408,18 @@ DSI_Headset_ChooseChannels(h, "Fp1-F3,F3-C3,C3-P3,P3-O1", "", 1);
 ### Complete Montage Example
 
 ```c
-int configureMontage(DSI_Headset h, const char* model) {
+int configureMontage(DSI_Headset h) {
     const char* montage;
     const char* reference;
+    const char* info = DSI_Headset_GetInfoString(h);
     
     // Choose montage based on headset model
-    if (strstr(model, "DSI-7")) {
+    if (strstr(info, "DSI-7")) {
         // DSI-7: 7 dry electrodes
         montage = "P3,Pz,P4,POz,O1,Oz,O2";
         reference = "Cz";
     } 
-    else if (strstr(model, "DSI-24")) {
+    else if (strstr(info, "DSI-24")) {
         // DSI-24: Full 10-20 system
         montage = "Fp1,Fp2,F7,F3,Fz,F4,F8,"
                   "T3,C3,Cz,C4,T4,"
@@ -476,13 +469,13 @@ if (DSI_Headset_GetFeatureAvailability(h, "SampleRate")) {
     printf("Using default sampling rate (feature not unlocked)\n");
 }
 
-const char* model = DSI_Headset_GetHardwareModel(h);
+const char* info = DSI_Headset_GetInfoString(h);
 
-if (strstr(model, "DSI-7")) {
+if (strstr(info, "DSI-7")) {
     // DSI-7 default is 300 Hz
     DSI_Headset_ConfigureADC(h, 300, 0);
 }
-else if (strstr(model, "DSI-24")) {
+else if (strstr(info, "DSI-24")) {
     // DSI-24 default is 300 Hz, can configure higher if unlocked
     DSI_Headset_ConfigureADC(h, 300, 0);
 }

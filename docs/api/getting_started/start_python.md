@@ -45,7 +45,7 @@ from DSI import Headset
 # Connect to headset
 h = Headset()
 h.Connect(None)  # None uses DSISerialPort environment variable
-print(f"Connected to {h.GetPort()}")
+print("Connected!")
 
 # Configure channels
 h.ChooseChannels("P3,Pz,P4", "A1+A2", True)
@@ -53,16 +53,15 @@ h.ChooseChannels("P3,Pz,P4", "A1+A2", True)
 # Start acquisition
 h.StartDataAcquisition()
 
-# Collect data
-ch = h.GetChannelByName("Pz")
-
+# Collect data using Channels() helper
 for i in range(10):
     h.Idle(0.1)  # Process for 100ms
     
-    # Read buffered samples
-    if ch.GetNumberOfBufferedSamples() > 0:
-        value = ch.ReadBuffered()
-        print(f"Sample {i}: Pz = {value:.2f} µV")
+    # Read buffered samples from first channel
+    channels = h.Channels()
+    if channels and channels[0].GetNumberOfBufferedSamples() > 0:
+        value = channels[0].ReadBuffered()
+        print(f"Sample {i}: {channels[0].GetName()} = {value:.2f} µV")
 
 # Cleanup
 h.StopDataAcquisition()
@@ -159,9 +158,7 @@ if not h.IsConnected():
     exit(1)
 
 # Get device information
-print(f"Connected to: {h.GetHardwareModel()}")
-print(f"Firmware: {h.GetFirmwareRevision()}")
-print(f"Serial: {h.GetSerialNumber()}")
+print(h.GetInfoString())
 ```
 
 ### Step 5: Error Handling
@@ -196,7 +193,7 @@ def connect_to_headset(port=None):
         h.Connect(port)  # None uses DSISerialPort env variable
         
         # Get device info
-        print(f"Connected to {h.GetHardwareModel()} (SN: {h.GetSerialNumber()})")
+        print(h.GetInfoString())
         
         return h
     except Exception as e:
@@ -298,20 +295,35 @@ for i in range(n_channels):
     print(info)
 ```
 
-### Step 5: Access Channels by Name
+### Step 5: Access Channels
 
-For most applications, accessing channels by name is more readable and maintainable than using indices. The API returns `None` if the channel doesn't exist.
+The Channels() helper method returns a list of all configured channels, making it easy to iterate and access channel data. This is the pattern used in DSI.py examples.
 
 ```python
-# Preferred: Access by name
-pz = h.GetChannelByName("Pz")
-if pz is None:
-    print("Channel 'Pz' not found")
-else:
-    print(f"Found channel: {pz.GetName()}")
+# Get all channels as a list
+channels = h.Channels()
 
-# Alternative: Access by index
-ch0 = h.GetChannelByIndex(0)
+# Access first channel
+if channels:
+    ch0 = channels[0]
+    print(f"First channel: {ch0.GetName()}")
+
+# Find a specific channel by name
+pz = None
+for ch in channels:
+    if ch.GetName() == "Pz":
+        pz = ch
+        break
+
+if pz:
+    print(f"Found channel: {pz.GetName()}")
+else:
+    print("Channel 'Pz' not found")
+
+# Or use list comprehension (Pythonic)
+pz_channels = [ch for ch in channels if ch.GetName() == "Pz"]
+if pz_channels:
+    pz = pz_channels[0]
 ```
 
 ### Advanced: Bipolar Montages
@@ -333,15 +345,17 @@ h.ChooseChannels("Fp1-F3,F3-C3,C3-P3,P3-O1", "", True)
 ### Complete Montage Example
 
 ```python
-def configure_montage(h, model):
+def configure_montage(h):
     """Configure montage based on headset model."""
     
+    info = h.GetInfoString()
+    
     # Choose montage based on headset model
-    if "DSI-7" in model:
+    if "DSI-7" in info:
         # DSI-7: 7 dry electrodes
         montage = "P3,Pz,P4,POz,O1,Oz,O2"
         reference = "Cz"
-    elif "DSI-24" in model:
+    elif "DSI-24" in info:
         # DSI-24: Full 10-20 system
         montage = ("Fp1,Fp2,F7,F3,Fz,F4,F8,"
                    "T3,C3,Cz,C4,T4,"
@@ -365,8 +379,7 @@ def configure_montage(h, model):
         return False
 
 # Usage
-model = h.GetHardwareModel()
-if not configure_montage(h, model):
+if not configure_montage(h):
     exit(1)
 ```
 
@@ -387,12 +400,12 @@ if h.GetFeatureAvailability("SampleRate"):
 else:
     print("Using default sampling rate (feature not unlocked)")
 
-model = h.GetHardwareModel()
+info = h.GetInfoString()
 
-if "DSI-7" in model:
+if "DSI-7" in info:
     # DSI-7 default is 300 Hz
     h.ConfigureADC(300, 0)
-elif "DSI-24" in model:
+elif "DSI-24" in info:
     # DSI-24 default is 300 Hz, can configure higher if unlocked
     h.ConfigureADC(300, 0)
 
@@ -603,7 +616,13 @@ def sample_callback(headset_ptr, packet_time, user_data):
     h = Headset(headset_ptr)
     
     # Get channel data using ReadBuffered() like DSI.py examples
-    pz = h.GetChannelByName("Pz")
+    channels = h.Channels()
+    pz = None
+    for ch in channels:
+        if ch.GetName() == "Pz":
+            pz = ch
+            break
+    
     if pz:
         value = pz.ReadBuffered()
         
@@ -619,8 +638,7 @@ def main():
     if h is None:
         exit(1)
     
-    model = h.GetHardwareModel()
-    if not configure_montage(h, model):
+    if not configure_montage(h):
         exit(1)
     
     # Set callback and start
@@ -670,7 +688,7 @@ def save_to_csv(h, filename, duration):
     
     with open(filename, 'w') as f:
         # Write header
-        f.write("Time")
+        f.write("Sample")
         for ch in h.Channels():
             f.write(f",{ch.GetName()}")
         f.write("\n")
@@ -682,7 +700,7 @@ def save_to_csv(h, filename, duration):
         
         h.StartDataAcquisition()
         
-        start_time = h.SecondsSinceConnection()
+        sample_number = 0
         
         for block in range(num_blocks):
             h.Idle(samples_per_block / fs)  # Process one block duration
@@ -692,9 +710,8 @@ def save_to_csv(h, filename, duration):
             buffered = channels[0].GetNumberOfBufferedSamples()
             
             for samp in range(buffered):
-                # Write timestamp
-                current_time = h.SecondsSinceConnection() - start_time
-                f.write(f"{current_time:.6f}")
+                # Write sample number
+                f.write(f"{sample_number}")
                 
                 # Write channel values
                 for ch in channels:
@@ -702,6 +719,7 @@ def save_to_csv(h, filename, duration):
                     f.write(f",{value:.6f}")
                 
                 f.write("\n")
+                sample_number += 1
         
         h.StopDataAcquisition()
     
