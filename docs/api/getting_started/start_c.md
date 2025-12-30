@@ -787,7 +787,7 @@ void saveToCSV(DSI_Headset h, const char* filename, double duration) {
 
 ### Task: Check Impedances
 
-Impedance testing measures electrode-skin contact quality. Good impedances (below 50kΩ) are critical for clean recordings. Run this before each session to verify sensor placement.
+Impedance testing measures electrode-skin contact quality. Good impedances (below 1MΩ) are critical for clean recordings. Run this before each session to verify sensor placement.
 
 ```c
 void checkImpedances(DSI_Headset h) {
@@ -819,9 +819,9 @@ void checkImpedances(DSI_Headset h) {
             printf("%-10s %8.0f kΩ", name, impedance / 1000.0);
             
             // Quality indicator
-            if (impedance < 50000) {
+            if (impedance < 1000000) {
                 printf(" ✓ Good\n");
-            } else if (impedance < 100000) {
+            } else if (impedance < 2000000) {
                 printf(" ⚠ Fair\n");
             } else {
                 printf(" ✗ Poor\n");

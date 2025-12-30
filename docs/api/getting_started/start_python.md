@@ -731,7 +731,7 @@ save_to_csv(h, "eeg_data.csv", 10.0)  # Save 10 seconds
 
 ### Task: Check Impedances
 
-Electrode impedance testing verifies proper skin contact. Lower impedances (below 50kΩ) generally provide better signal quality. Run this before each recording session.
+Electrode impedance testing verifies proper skin contact. Lower impedances (below 1MΩ) generally provide better signal quality. Run this before each recording session.
 
 ```python
 import time
@@ -762,9 +762,9 @@ def check_impedances(h):
             impedance = src.GetImpedanceEEG()
             
             # Quality indicator (thresholds in Ohms)
-            if impedance < 50000:
+            if impedance < 1000000:
                 quality = "Good"
-            elif impedance < 100000:
+            elif impedance < 2000000:
                 quality = "Fair"
             else:
                 quality = "Poor"
