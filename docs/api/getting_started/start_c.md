@@ -300,6 +300,12 @@ A **montage** defines which electrodes to use and how to reference them.
 - `"Fp1,Fp2,F3,F4,C3,C4"` — Frontal and central channels  
 - `"@1,@2,@3,@4"` — First four sensors (numbered indexing)
 
+**Available channels by model:**
+
+- **DSI-24:** Fp1, Fp2, Fz, F3, F4, F7, F8, Cz, C3, C4, T7/T3, T8/T4, Pz, P3, P4, P7/T5, P8/T6, O1, O2, A1, A2
+- **DSI-7:** F3, F4, C3, C4, P3, Pz, P4, LE
+- **DSI-VR300:** FCz, Pz, P3, P4, PO7, PO8, Oz, LE
+
 ### Step 1: List Available Sources
 
 Before configuring channels, it's helpful to see which electrodes are available on your headset. Sources represent individual sensors that can be combined into channels.
@@ -317,23 +323,53 @@ for (int i = 0; i < nSources; i++) {
 
 ### Step 2: Choose Reference
 
-The reference electrode determines the baseline for measuring voltage. **The API's default reference is always linked ears** (if available on the headset).
+The reference electrode determines the baseline for measuring voltage. **By default, the API automatically uses linked ears (A1+A2 on DSI-24, LE on DSI-7/VR300) as the reference.** You only need to call reference functions if you want to change from this default.
 
-**Default Reference (Linked Ears):**
-- **DSI-24:** Uses `A1+A2` (average of A1 and A2 channels)
-- **DSI-7/VR300:** Uses `LE` (pre-averaged linked ear channel)
-- Empty string `""` or `NULL` uses this default automatically
+#### Default Reference (Automatic)
 
-**Hardware Reference (Factory Reference):**
-To use the hardware reference instead of linked ears, explicitly specify the electrode:
-- **DSI-24/DSI-7:** Use `"Pz"` for hardware reference  
-- **DSI-VR300:** Use `"P4"` for hardware reference
+No API calls needed - just pass empty string `""` or `NULL` to `ChooseChannels()`:
 
-**Other Reference Options:**
-- `"Cz"` — Common single electrode reference
-- Any electrode name — Custom reference electrode
+```c
+// Uses default linked ears automatically
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
+```
 
-**Important:** Do NOT hardcode `"A1+A2"` in your code - this only works on DSI-24 and will fail on DSI-7/VR300 which don't have separate A1/A2 channels. Use `""` to automatically select the correct linked ear reference for any model.
+**Default reference by model:**
+- **DSI-24:** `A1+A2` (average of A1 and A2 channels)
+- **DSI-7:** `LE` (pre-averaged linked ear channel)
+- **DSI-VR300:** `LE` (pre-averaged linked ear channel)
+
+#### Change to Hardware Reference
+
+To use the hardware/factory reference instead of linked ears:
+
+```c
+// Option 1: Use "FACTORY" keyword
+DSI_Headset_SetDefaultReference(h, "FACTORY", 1);
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
+
+// Option 2: Specify hardware reference electrode directly
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "Pz", 1);  // DSI-24/DSI-7
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "P4", 1);  // VR300
+```
+
+**Hardware reference by model:**
+- **DSI-24:** `Pz`
+- **DSI-7:** `Pz`
+- **DSI-VR300:** `P4`
+
+#### Change to Custom Reference
+
+To use any electrode as reference (e.g., P3, Cz):
+
+```c
+// Option 1: Set default reference, then configure channels
+DSI_Headset_SetDefaultReference(h, "P3", 1);
+DSI_Headset_ChooseChannels(h, "Pz,P4,O1,O2", "", 1);
+
+// Option 2: Specify directly in ChooseChannels
+DSI_Headset_ChooseChannels(h, "Pz,P4,O1,O2", "P3", 1);
+```
 
 **To check which reference is active:**
 ```c
