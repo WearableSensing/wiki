@@ -71,7 +71,8 @@ int main() {
     printf("Connected!\n");
     
     // Configure channels (montage)
-    DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "A1+A2", 1);
+    // Using "" for reference uses the default linked ears reference
+    DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
     
     // Start acquisition
     DSI_Headset_StartDataAcquisition(h);
@@ -298,6 +299,12 @@ A **montage** defines which electrodes to use and how to reference them.
 - `"Fp1,Fp2,F3,F4,C3,C4"` — Frontal and central channels  
 - `"@1,@2,@3,@4"` — First four sensors (numbered indexing)
 
+**Available channels by model:**
+
+- **DSI-24:** Fp1, Fp2, Fz, F3, F4, F7, F8, Cz, C3, C4, T7/T3, T8/T4, Pz, P3, P4, P7/T5, P8/T6, O1, O2, A1, A2
+- **DSI-7:** F3, F4, C3, C4, P3, Pz, P4, LE
+- **DSI-VR300:** FCz, Pz, P3, P4, PO7, PO8, Oz, LE
+
 ### Step 1: List Available Sources
 
 Before configuring channels, it's helpful to see which electrodes are available on your headset. Sources represent individual sensors that can be combined into channels.
@@ -315,12 +322,59 @@ for (int i = 0; i < nSources; i++) {
 
 ### Step 2: Choose Reference
 
-The reference electrode determines the baseline for measuring voltage. Different references are appropriate for different research applications or clinical protocols.
+The reference electrode determines the baseline for measuring voltage. **By default, the API automatically uses linked ears (A1/2+A2/2 on DSI-24, LE on DSI-7/VR300) as the reference.** You only need to call reference functions if you want to change from this default.
 
-**Common reference options:**
-- `"A1+A2"` — Average of both ear sensors (linked ears)
-- `"Cz"` — Single electrode reference
-- `""` (empty string) — No re-referencing, uses factory reference (typically Pz)
+#### Default Reference (Automatic)
+
+No API calls needed - just pass empty string `""` or `NULL` to `ChooseChannels()`:
+
+```c
+// Uses default linked ears automatically
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
+```
+
+**Default reference by model:**
+- **DSI-24:** `A1/2+A2/2` (average of A1 and A2 channels)
+- **DSI-7:** `LE` (pre-averaged linked ear channel)
+- **DSI-VR300:** `LE` (pre-averaged linked ear channel)
+
+#### Change to Hardware Reference
+
+To use the hardware/factory reference instead of linked ears:
+
+```c
+// Option 1: Use "FACTORY" keyword
+DSI_Headset_SetDefaultReference(h, "FACTORY", 1);
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
+
+// Option 2: Specify hardware reference electrode directly
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "Pz", 1);  // DSI-24/DSI-7
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "P4", 1);  // VR300
+```
+
+**Hardware reference by model:**
+- **DSI-24:** `Pz`
+- **DSI-7:** `Pz`
+- **DSI-VR300:** `P4`
+
+#### Change to Custom Reference
+
+To use any electrode as reference (e.g., P3, Cz):
+
+```c
+// Option 1: Set default reference, then configure channels
+DSI_Headset_SetDefaultReference(h, "P3", 1);
+DSI_Headset_ChooseChannels(h, "Pz,P4,O1,O2", "", 1);
+
+// Option 2: Specify directly in ChooseChannels
+DSI_Headset_ChooseChannels(h, "Pz,P4,O1,O2", "P3", 1);
+```
+
+**To check which reference is active:**
+```c
+const char* ref = DSI_Headset_GetReferenceString(h);
+printf("Current reference: %s\n", ref);
+```
 
 ### Step 3: Configure Channels
 
@@ -328,7 +382,13 @@ After choosing your montage and reference, configure the channels using `ChooseC
 
 ```c
 // ChooseChannels(headset, montage, reference, autoswap)
-DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "A1+A2", 1);
+
+// Recommended: Use empty string for default linked ear reference
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "", 1);
+
+// To use hardware reference instead, specify electrode explicitly:
+// DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "Pz", 1);  // DSI-24/DSI-7
+// DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "P4", 1);  // VR300
 
 if (DSI_Error()) {
     fprintf(stderr, "Montage error: %s\n", DSI_ClearError());
@@ -409,29 +469,9 @@ DSI_Headset_ChooseChannels(h, "Fp1-F3,F3-C3,C3-P3,P3-O1", "", 1);
 
 ```c
 int configureMontage(DSI_Headset h) {
-    const char* montage;
-    const char* reference;
-    const char* info = DSI_Headset_GetInfoString(h);
-    
-    // Choose montage based on headset model
-    if (strstr(info, "DSI-7")) {
-        // DSI-7: 7 dry electrodes
-        montage = "P3,Pz,P4,POz,O1,Oz,O2";
-        reference = "Cz";
-    } 
-    else if (strstr(info, "DSI-24")) {
-        // DSI-24: Full 10-20 system
-        montage = "Fp1,Fp2,F7,F3,Fz,F4,F8,"
-                  "T3,C3,Cz,C4,T4,"
-                  "T5,P3,Pz,P4,T6,"
-                  "O1,Oz,O2";
-        reference = "A1+A2";
-    }
-    else {
-        // Unknown model: use numbered sources
-        montage = "@1,@2,@3,@4,@5";
-        reference = "";
-    }
+    // Configure a standard posterior montage
+    const char* montage = "P3,Pz,P4,O1,O2";
+    const char* reference = "";  // Default linked ears
     
     printf("Montage: %s\n", montage);
     printf("Reference: %s\n", reference);
@@ -461,23 +501,14 @@ Once your headset is connected and channels are configured, you can start acquir
 // Set sampling rate and filter mode
 // DSI_Headset_ConfigureADC(h, samplesPerSecond, filterMode)
 
-// NOTE: Configuring non-default sampling rates requires the appropriate feature
-// to be unlocked on your headset. Check feature availability first:
+// NOTE: The default sampling rate is 300 Hz. If the SampleRate feature is unlocked,
+// all DSI headsets can configure rates up to 600 Hz. Check feature availability first:
 if (DSI_Headset_GetFeatureAvailability(h, "SampleRate")) {
-    printf("Custom sampling rates are available\n");
+    printf("Custom sampling rates are available (up to 600 Hz)\n");
+    DSI_Headset_ConfigureADC(h, 600, 0);  // Use 600 Hz when unlocked
 } else {
-    printf("Using default sampling rate (feature not unlocked)\n");
-}
-
-const char* info = DSI_Headset_GetInfoString(h);
-
-if (strstr(info, "DSI-7")) {
-    // DSI-7 default is 300 Hz
-    DSI_Headset_ConfigureADC(h, 300, 0);
-}
-else if (strstr(info, "DSI-24")) {
-    // DSI-24 default is 300 Hz, can configure higher if unlocked
-    DSI_Headset_ConfigureADC(h, 300, 0);
+    printf("Using default sampling rate of 300 Hz (feature not unlocked)\n");
+    DSI_Headset_ConfigureADC(h, 300, 0);  // Default 300 Hz
 }
 
 // Verify actual sampling rate
@@ -787,7 +818,7 @@ void saveToCSV(DSI_Headset h, const char* filename, double duration) {
 
 ### Task: Check Impedances
 
-Impedance testing measures electrode-skin contact quality. Good impedances (below 50kΩ) are critical for clean recordings. Run this before each session to verify sensor placement.
+Impedance testing measures electrode-skin contact quality. Good impedances (below 1MΩ) are critical for clean recordings. Run this before each session to verify sensor placement.
 
 ```c
 void checkImpedances(DSI_Headset h) {
@@ -819,9 +850,9 @@ void checkImpedances(DSI_Headset h) {
             printf("%-10s %8.0f kΩ", name, impedance / 1000.0);
             
             // Quality indicator
-            if (impedance < 50000) {
+            if (impedance < 1000000) {
                 printf(" ✓ Good\n");
-            } else if (impedance < 100000) {
+            } else if (impedance < 2000000) {
                 printf(" ⚠ Fair\n");
             } else {
                 printf(" ✗ Poor\n");

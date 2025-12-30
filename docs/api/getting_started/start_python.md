@@ -48,7 +48,8 @@ h.Connect(None)  # None uses DSISerialPort environment variable
 print("Connected!")
 
 # Configure channels
-h.ChooseChannels("P3,Pz,P4", "A1+A2", True)
+# Using "" for reference uses the default linked ears reference
+h.ChooseChannels("P3,Pz,P4", "", True)
 
 # Start acquisition
 h.StartDataAcquisition()
@@ -82,7 +83,7 @@ python DSI.py /dev/ttyUSB0                           # Linux
 python DSI.py /dev/cu.DSI24-023-BluetoothSerial      # macOS
 
 # Optional second argument for reference or impedance mode
-python DSI.py COM4 A1+A2      # Use A1+A2 reference
+python DSI.py COM4 A1/2+A2/2  # Use A1/2+A2/2 reference
 python DSI.py COM4 impedances # Run impedance test
 ```
 
@@ -223,6 +224,12 @@ A **montage** defines which electrodes to use and how to reference them.
 - `"Fp1,Fp2,F3,F4,C3,C4"` — Frontal and central channels  
 - `"@1,@2,@3,@4"` — First four sensors (numbered indexing)
 
+**Available channels by model:**
+
+- **DSI-24:** Fp1, Fp2, Fz, F3, F4, F7, F8, Cz, C3, C4, T7/T3, T8/T4, Pz, P3, P4, P7/T5, P8/T6, O1, O2, A1, A2
+- **DSI-7:** F3, F4, C3, C4, P3, Pz, P4, LE
+- **DSI-VR300:** FCz, Pz, P3, P4, PO7, PO8, Oz, LE
+
 ### Step 1: List Available Sources
 
 ```python
@@ -243,16 +250,69 @@ for i in range(n_sources):
 
 ### Step 2: Choose Reference
 
-**Common reference options:**
-- `"A1+A2"` — Average of both ear sensors (linked ears)
-- `"Cz"` — Single electrode reference
-- `""` (empty string) — No re-referencing, uses factory reference (typically Pz)
+The reference electrode determines the baseline for measuring voltage. **By default, the API automatically uses linked ears (A1/2+A2/2 on DSI-24, LE on DSI-7/VR300) as the reference.** You only need to call reference functions if you want to change from this default.
+
+#### Default Reference (Automatic)
+
+No API calls needed - just pass empty string `""` to `ChooseChannels()`:
+
+```python
+# Uses default linked ears automatically
+h.ChooseChannels("P3,Pz,P4", "", True)
+```
+
+**Default reference by model:**
+- **DSI-24:** `A1/2+A2/2` (average of A1 and A2 channels)
+- **DSI-7:** `LE` (pre-averaged linked ear channel)
+- **DSI-VR300:** `LE` (pre-averaged linked ear channel)
+
+#### Change to Hardware Reference
+
+To use the hardware/factory reference instead of linked ears:
+
+```python
+# Option 1: Use "FACTORY" keyword
+h.SetDefaultReference("FACTORY", True)
+h.ChooseChannels("P3,Pz,P4", "", True)
+
+# Option 2: Specify hardware reference electrode directly
+h.ChooseChannels("P3,Pz,P4", "Pz", True)  # DSI-24/DSI-7
+h.ChooseChannels("P3,Pz,P4", "P4", True)  # VR300
+```
+
+**Hardware reference by model:**
+- **DSI-24:** `Pz`
+- **DSI-7:** `Pz`
+- **DSI-VR300:** `P4`
+
+#### Change to Custom Reference
+
+To use any electrode as reference (e.g., P3, Cz):
+
+```python
+# Option 1: Set default reference, then configure channels
+h.SetDefaultReference("P3", True)
+h.ChooseChannels("Pz,P4,O1,O2", "", True)
+
+# Option 2: Specify directly in ChooseChannels
+h.ChooseChannels("Pz,P4,O1,O2", "P3", True)
+```
+
+**To check which reference is active:**
+```python
+ref = h.GetReferenceString()
+print(f"Current reference: {ref}")
+```
 
 ### Step 3: Configure Channels
 
 ```python
 # ChooseChannels(montage, reference, autoswap)
-h.ChooseChannels("P3,Pz,P4,O1,O2", "A1+A2", True)
+h.ChooseChannels("P3,Pz,P4,O1,O2", "", True)
+
+# To use hardware reference instead, specify electrode explicitly:
+# h.ChooseChannels("P3,Pz,P4,O1,O2", "Pz", True)  # DSI-24/DSI-7
+# h.ChooseChannels("P3,Pz,P4,O1,O2", "P4", True)  # VR300
 
 print(f"Configured {h.GetNumberOfChannels()} channels")
 ```
@@ -265,7 +325,7 @@ print(f"Configured {h.GetNumberOfChannels()} channels")
 **Error handling:**
 ```python
 try:
-    h.ChooseChannels("P3,Pz,P4,O1,O2", "A1+A2", True)
+    h.ChooseChannels("P3,Pz,P4,O1,O2", "", True)  # Use auto-detected default
 except Exception as e:
     print(f"Montage error: {e}")
     # Troubleshoot: List available sources
@@ -346,26 +406,11 @@ h.ChooseChannels("Fp1-F3,F3-C3,C3-P3,P3-O1", "", True)
 
 ```python
 def configure_montage(h):
-    """Configure montage based on headset model."""
+    """Configure a standard posterior montage."""
     
-    info = h.GetInfoString()
-    
-    # Choose montage based on headset model
-    if "DSI-7" in info:
-        # DSI-7: 7 dry electrodes
-        montage = "P3,Pz,P4,POz,O1,Oz,O2"
-        reference = "Cz"
-    elif "DSI-24" in info:
-        # DSI-24: Full 10-20 system
-        montage = ("Fp1,Fp2,F7,F3,Fz,F4,F8,"
-                   "T3,C3,Cz,C4,T4,"
-                   "T5,P3,Pz,P4,T6,"
-                   "O1,Oz,O2")
-        reference = "A1+A2"
-    else:
-        # Unknown model: use numbered sources
-        montage = "@1,@2,@3,@4,@5"
-        reference = ""
+    # Configure a standard posterior montage
+    montage = "P3,Pz,P4,O1,O2"
+    reference = ""  # Default linked ears
     
     print(f"Montage: {montage}")
     print(f"Reference: {reference}")
@@ -391,23 +436,17 @@ Once your headset is connected and channels are configured, you can start acquir
 
 ### Step 1: Configure Sampling
 
-Before acquiring data, you may want to configure the sampling rate and filter settings. Not all sampling rates are available on all headsets - check feature availability first.
+The default sampling rate is 300 Hz. If the SampleRate feature is unlocked, all DSI headsets can configure rates up to 600 Hz.
 
 ```python
-# NOTE: Configuring non-default sampling rates requires the appropriate feature to be unlocked on your headset. Check feature availability first:
+# NOTE: The default sampling rate is 300 Hz. If the SampleRate feature is unlocked,
+# all DSI headsets can configure rates up to 600 Hz. Check feature availability first:
 if h.GetFeatureAvailability("SampleRate"):
-    print("Custom sampling rates are available")
+    print("Custom sampling rates are available (up to 600 Hz)")
+    h.ConfigureADC(600, 0)  # Use 600 Hz when unlocked
 else:
-    print("Using default sampling rate (feature not unlocked)")
-
-info = h.GetInfoString()
-
-if "DSI-7" in info:
-    # DSI-7 default is 300 Hz
-    h.ConfigureADC(300, 0)
-elif "DSI-24" in info:
-    # DSI-24 default is 300 Hz, can configure higher if unlocked
-    h.ConfigureADC(300, 0)
+    print("Using default sampling rate of 300 Hz (feature not unlocked)")
+    h.ConfigureADC(300, 0)  # Default 300 Hz
 
 # Verify actual sampling rate
 fs = h.GetSamplingRate()
@@ -731,7 +770,7 @@ save_to_csv(h, "eeg_data.csv", 10.0)  # Save 10 seconds
 
 ### Task: Check Impedances
 
-Electrode impedance testing verifies proper skin contact. Lower impedances (below 50kΩ) generally provide better signal quality. Run this before each recording session.
+Electrode impedance testing verifies proper skin contact. Lower impedances (below 1MΩ) generally provide better signal quality. Run this before each recording session.
 
 ```python
 import time
@@ -762,9 +801,9 @@ def check_impedances(h):
             impedance = src.GetImpedanceEEG()
             
             # Quality indicator (thresholds in Ohms)
-            if impedance < 50000:
+            if impedance < 1000000:
                 quality = "Good"
-            elif impedance < 100000:
+            elif impedance < 2000000:
                 quality = "Fair"
             else:
                 quality = "Poor"
