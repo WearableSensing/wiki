@@ -1,11 +1,11 @@
 # DSI API Documentation
 
-The DSI API provides programmatic control of Wearable Sensing DSI headsets for real-time EEG data acquisition, impedance testing, and signal processing. Available for **C/C++** and **Python** across Windows, Linux, and macOS.
+The DSI API provides programmatic control of Wearable Sensing DSI headsets for real-time EEG data acquisition, impedance testing, and signal processing. Available for **C/C++** and **Python** across Windows, Linux, and macOS. Other platforms or language extensions may be supported via request, please visit our [contact page](../help/index.md).
 
 ```{admonition} API Version
 :class: tip
-**Version:** 1.20.4  
-**Last Updated:** November 2025  
+**Version:** 1.20.3  
+**Last Updated:** June, 6 2025  
 **Platforms:** Windows, Linux, macOS  
 **Languages:** C/C++, Python
 ```
@@ -14,8 +14,8 @@ The DSI API provides programmatic control of Wearable Sensing DSI headsets for r
 
 ## Key Capabilities
 
-- **Connect & Configure**: Serial connections via USB, Bluetooth, or COM ports
-- **Acquire EEG Data**: Real-time streaming at up to 300 Hz with configurable filtering
+- **Connect & Configure**: Serial connections via USB or Bluetooth with flexible channel setups.
+- **Acquire EEG Data**: Real-time streaming at 300 Hz with configurable filtering
 - **Test Impedance**: Measure electrode contact quality
 - **Process Signals**: Custom real-time processing with sample-by-sample callbacks
 - **Control Hardware**: Analog reset, LED indicators, and low-level features
@@ -24,12 +24,12 @@ The DSI API provides programmatic control of Wearable Sensing DSI headsets for r
 
 ## DSI-API Sections
 
-### [Getting Started](getting_started.md)
+### [Getting Started](getting_started/index.md)
 **Best for:** First-time users, tutorial-based learning
 
 Step-by-step tutorials with C and Python examples covering:
 - Quick start guide to streaming data
-- Five detailed tutorials: connection, data acquisition, impedance testing, real-time processing, and background acquisition
+- Four detailed tutorials: connection, data acquisition, impedance testing, and background acquisition
 - Prerequisites, common tasks, and troubleshooting
 
 ---
@@ -55,23 +55,18 @@ Comprehensive error reference with:
 
 ---
 
-## Common Tasks
-
-- [Connect to a headset](getting_started.md#tutorial-1-basic-connection) • [Configure channels](getting_started.md#tutorial-2-channel-configuration) • [Stream EEG data](getting_started.md#tutorial-3-data-acquisition)
-- [Check impedances](getting_started.md#task-check-impedances) • [Background acquisition](getting_started.md#tutorial-4-background-acquisition) • [Real-time processing](getting_started.md#tutorial-5-real-time-processing)
-
 **Need examples?** Check `demo.c` and `DSI.py` included with your API.
 
 ---
 
 
 ```{toctree}
-:maxdepth: 3
+:maxdepth: 4
 :hidden:
 
-getting_started
-quick_reference
-error_codes
+Getting Started <getting_started/index>
+Quick Reference <quick_reference>
+Error Codes <error_codes>
 
 ```
 

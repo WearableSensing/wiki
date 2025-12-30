@@ -2,7 +2,7 @@
 
 > **Fast lookup guide** — Function signatures organized by category for experienced developers.
 
-This page provides a complete function reference organized by task. Each section groups related functions together, making it easy to find what you need. For detailed tutorials and examples, see [Getting Started](getting_started.md).
+This page provides a complete function reference organized by task. Each section groups related functions together, making it easy to find what you need. For detailed tutorials and examples, see [Getting Started](getting_started/index.md).
 
 ## Table of Contents
 
@@ -245,7 +245,7 @@ void DSI_Headset_ChangeLEDs(DSI_Headset h, int setAndSelect)
 
 ## Processing Stages
 
-Create custom data processing pipelines. Processing stages work sample-by-sample through callbacks. See [Getting Started](getting_started.md#tutorial-5-real-time-processing) for examples.
+Create custom data processing pipelines. Processing stages work sample-by-sample through callbacks.
 
 ```c
 DSI_ProcessingStage DSI_Headset_AddProcessingStage(DSI_Headset h, const char* name, 
@@ -450,9 +450,9 @@ Typical sequences for common tasks. These show the correct order of operations f
 
 ## Related Documentation
 
-- [getting_started](getting_started.md) - Comprehensive tutorials
+- [getting_started](getting_started/index.md) - Comprehensive tutorials
 - [error_codes](error_codes.md) - Error handling reference
 
 ---
 
-[Back to API Index](index.md)
+[← Back to API Index](index.md)

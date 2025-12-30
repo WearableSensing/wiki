@@ -64,13 +64,13 @@ Get in touch with our support team for personalized assistance
 ```{toctree}
 :maxdepth: 3
 
-   API <api/index>
    Integrations <examples/index>
    Tutorials <help/tutorials/index>
    Downloads <help/downloads/index>
    FAQ <faq/index>
    About <help/about>
    Contact <help/index>
+   API <api/index>
 ```
 
 ````

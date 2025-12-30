@@ -1,6 +1,8 @@
 # Error Codes
 
-> **Complete error catalog** — All error messages, causes, and recovery strategies.
+> **Complete error catalog** — All error messages, causes, and recovery strategies. Includes detection patterns and best practices for robust error handling in DSI API applications.
+
+If you are new to the DSI API, please start with the [Getting Started Guide](getting_started/index.md) and refer to the [Quick Reference](quick_reference.md) for function lookups. If an error occurs that you cannot resolve, please contact Wearable Sensing support via the [contact page](../help/index.md).
 
 ## Table of Contents
 
@@ -673,8 +675,8 @@ void monitorDataQuality(DSI_Headset h) {
 ## Related Documentation
 
 - [quick_reference](quick_reference.md) - Quick function lookup
-- [getting_started](getting_started.md) - Tutorial guide
+- [getting_started](getting_started/index.md) - Tutorial guide
 
 ---
 
-[Back to API Index](index.md)
+[← Back to API Index](index.md)

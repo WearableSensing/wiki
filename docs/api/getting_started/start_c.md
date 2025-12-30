@@ -1,6 +1,6 @@
-# Getting Started
+# Getting Started with C/C++
 
-> **Step-by-step tutorial** — Learn to connect, configure, and acquire EEG data from DSI headsets using the DSI API.
+> **C/C++ tutorial** — Learn to connect, configure, and acquire EEG data using the DSI API in C/C++.
 
 ## Table of Contents
 
@@ -10,48 +10,60 @@
 - [Tutorial 2: Channel Configuration](#tutorial-2-channel-configuration)
 - [Tutorial 3: Data Acquisition](#tutorial-3-data-acquisition)
 - [Tutorial 4: Background Acquisition](#tutorial-4-background-acquisition)
-- [Tutorial 5: Real-Time Processing](#tutorial-5-real-time-processing)
+- [Common Tasks](#common-tasks)
 - [Next Steps](#next-steps)
 
 ---
 
 ## Prerequisites
 
-### Hardware
-- DSI headset (DSI-7, DSI-24, DSI-Flex, or DSI-VR300)
-- USB cable or Bluetooth adapter
-- Charged battery
-
-### Software
-
-See the DSI [Downloads](../help/downloads/index.md) page for the latest API release.
+### Required Components
 
 - DSI API library (`DSI.dll` / `DSI.so` / `DSI.dylib`)
 - Header file (`DSI.h`)
-- C/C++ compiler or Python 3.0+
+- API loader (`DSI_API_Loader.c`)
+- C/C++ compiler
 
-### Platform Support
+**Important:** Before using any DSI API functions, you must:
+1. Add `DSI_API_Loader.c` to your project
+2. Call `Load_DSI_API(NULL)` at program startup
+3. Check the return value (0 = success, non-zero = error)
 
-- **Windows:** Visual Studio 2015+ or MinGW (requires `DSI.dll`)
-- **Linux:** GCC 4.8+, GLIBC 2.14+, USB permissions configured (requires `DSI.so`)
-- **macOS:** Xcode Command Line Tools (requires `DSI.dylib`)
+### Platform-Specific Requirements
+
+**Windows:**
+- Visual Studio 2015+ or MinGW
+- `DSI.dll` and `DSI.lib`
+
+**Linux:**
+- GCC 4.8+, GLIBC 2.14+
+- USB permissions configured
+- `DSI.so`
+
+**macOS:**
+- Xcode Command Line Tools
+- `DSI.dylib`
 
 ---
 
 ## Quick Start
 
-Get up and running quickly with these minimal examples.
-
-### C Quick Start
+This minimal example demonstrates the essential steps to connect to a headset, configure channels, and acquire data. Copy this code to get started quickly, then explore the detailed tutorials below for more information.
 
 ```c
 #include "DSI.h"
 #include <stdio.h>
 
 int main() {
+    // Load the API (must be first!)
+    if (Load_DSI_API(NULL) != 0) {
+        fprintf(stderr, "Failed to load DSI API\n");
+        return 1;
+    }
+    
     // Create and connect to headset
     DSI_Headset h = DSI_Headset_New(NULL);
-    DSI_Headset_Connect(h, NULL);  // NULL uses default COM port
+    DSI_Headset_Connect(h, NULL);  // NULL uses DSISerialPort env variable
     if (!h || DSI_Error()) {
         fprintf(stderr, "Error: %s\n", DSI_ClearError());
         return 1;
@@ -64,7 +76,7 @@ int main() {
     // Start acquisition
     DSI_Headset_StartDataAcquisition(h);
     
-    // Collect data using callback
+    // Collect data
     DSI_Channel pz = DSI_Headset_GetChannelByName(h, "Pz");
     
     for (int i = 0; i < 10; i++) {
@@ -83,90 +95,74 @@ int main() {
 }
 ```
 
-**Compile:**
+### Compiling
+
+**Windows (Visual Studio):**
 ```bash
-# Windows (Visual Studio)
-cl quick_start.c DSI.lib
-
-# Linux
-gcc quick_start.c -L. -lDSI -o quick_start
-
-# macOS
-clang quick_start.c -L. -lDSI -o quick_start
+cl quick_start.c DSI_API_Loader.c DSI.lib
 ```
 
-### Python Quick Start
-
-```python
-from DSI import Headset
-
-# Connect to headset
-h = Headset()
-h.Connect(None)  # None uses default COM port
-print(f"Connected to {h.GetPort()}")
-
-# Configure channels
-h.ChooseChannels("P3,Pz,P4", "A1+A2", True)
-
-# Start acquisition
-h.StartDataAcquisition()
-
-# Collect data
-ch = h.GetChannelByName("Pz")
-
-for i in range(10):
-    h.Idle(0.1)  # Process for 100ms
-    
-    value = ch.GetSignal()
-    print(f"Sample {i}: Pz = {value:.2f} µV")
-
-# Cleanup
-h.StopDataAcquisition()
+**Linux:**
+```bash
+gcc quick_start.c DSI_API_Loader.c -L. -lDSI -ldl -o quick_start
 ```
 
-**Quick Test:**
-The `DSI.py` file in the release directory is runnable as-is for quick testing. Simply edit the default port and run:
+**macOS:**
 ```bash
-# Edit line 296 in DSI.py to set your COM port (default is COM6 for Windows)
-python DSI.py
-
-# Or pass port as command-line argument
-python DSI.py COM4
-python DSI.py /dev/ttyUSB0  # Linux
-python DSI.py /dev/cu.DSI24-023-BluetoothSerial  # macOS
-
-# Optional second argument for reference or impedance mode
-python DSI.py COM4 A1+A2      # Use A1+A2 reference
-python DSI.py COM4 impedances # Run impedance test
+clang quick_start.c DSI_API_Loader.c -L. -lDSI -o quick_start
 ```
 
 ---
 
 ## Tutorial 1: Basic Connection
 
+This tutorial walks through establishing a connection to your DSI headset. You'll learn how to properly initialize the API, specify serial ports, create headset objects, and handle errors.
+
+### Step 0: Load the API
+
+Before calling any DSI functions, you must load the dynamic library. This step locates the platform-specific library file and imports all API functions into your program's memory space.
+
+```c
+#include "DSI.h"
+
+int main() {
+    // Load the DSI API library
+    if (Load_DSI_API(NULL) != 0) {
+        fprintf(stderr, "Failed to load DSI API\n");
+        return 1;
+    }
+    
+    // Now you can use DSI functions...
+}
+```
+
+**What `Load_DSI_API` does:**
+- Locates and loads the platform-specific dynamic library (`DSI.dll`, `DSI.so`, or `DSI.dylib`)
+- Imports all DSI API functions
+- Returns 0 on success, negative if library not found, positive if function import failed
+
+**Note:** You must add `DSI_API_Loader.c` to your project for this function to be available.
+
 ### Step 1: Include the API
 
-**C:**
+Include the DSI header file and standard C libraries needed for your application. The DSI.h header defines all API functions and data types.
+
 ```c
 #include "DSI.h"
 #include <stdio.h>
 #include <stdlib.h>
 ```
 
-**Python:**
-```python
-from DSI import Headset
-```
-
 ### Step 2: Specify Port or Use Environment Variable
+
+The serial port identifier varies by platform and connection method. You can specify it directly or use an environment variable for flexibility across different systems.
 
 **Port specification by platform:**
 - **Windows:** COM ports (e.g., `COM4`, `COM5`, `COM6`)
 - **Linux:** `/dev/ttyUSB0`, `/dev/ttyUSB1`, `/dev/ttyACM0`, `/dev/ttyACM1`
 - **macOS:** `/dev/cu.DSI24-xxxxx-BluetoothSerial` or `/dev/tty.usbserial-xxxxx`
-- **Environment variable:** Set `DSISerialPort` and pass `NULL` (C) or `None` (Python)
+- **Environment variable:** Set `DSISerialPort` and pass `NULL`
 
-**C example:**
 ```c
 // Option 1: Use environment variable (set DSISerialPort)
 const char* port = NULL;  // NULL uses DSISerialPort env variable
@@ -183,25 +179,10 @@ const char* port = NULL;  // NULL uses DSISerialPort env variable
 printf("Using port: %s\n", port ? port : "from DSISerialPort env var");
 ```
 
-**Python example:**
-```python
-import sys
-
-# Option 1: Use environment variable
-port = None  # None uses DSISerialPort env variable
-
-# Option 2: Specify port directly
-if sys.platform.startswith('win'):
-    port = 'COM4'  # Windows
-elif sys.platform.startswith('darwin'):
-    port = '/dev/cu.DSI24-023-BluetoothSerial'  # macOS
-else:
-    port = '/dev/ttyUSB0'  # Linux
-```
-
 ### Step 3: Create and Connect Headset Object
 
-**C example:**
+Creating and connecting involves two separate steps: first allocate the headset object, then establish the serial connection. Always check for errors after each step.
+
 ```c
 // Create headset object (does not connect yet)
 DSI_Headset h = DSI_Headset_New(NULL);
@@ -219,25 +200,14 @@ if (DSI_Error()) {
 }
 ```
 
-**Python example:**
-```python
-try:
-    # Create and connect in one step
-    h = Headset()
-    h.Connect(port)  # port can be None for env variable
-except Exception as e:
-    print(f"Failed to connect: {e}")
-    exit(1)
-```
-
-**What happens:**
-- **C:** `DSI_Headset_New(NULL)` allocates object, then `DSI_Headset_Connect(h, port)` connects
-- **Python:** `Headset()` allocates, then `.Connect(port)` connects
-- Connection process: Opens serial port → Queries hardware model/firmware → Initializes communication
+**What happens during connection:**
+1. `DSI_Headset_New(NULL)` allocates the headset object
+2. `DSI_Headset_Connect(h, port)` opens serial port
+3. Queries hardware model and firmware
+4. Initializes communication
 
 ### Step 4: Verify Connection
 
-**C example:**
 ```c
 if (!DSI_Headset_IsConnected(h)) {
     fprintf(stderr, "Not connected!\n");
@@ -255,21 +225,9 @@ printf("Firmware: %s\n", firmware);
 printf("Serial: %u\n", serial);
 ```
 
-**Python example:**
-```python
-if not h.IsConnected():
-    print("Not connected!")
-    exit(1)
-
-# Get device information
-print(f"Connected to: {h.GetHardwareModel()}")
-print(f"Firmware: {h.GetFirmwareRevision()}")
-print(f"Serial: {h.GetSerialNumber()}")
-```
-
 ### Step 5: Error Handling
 
-See the [Error Codes](error_codes.md) page for a full list of error messages.
+Always check for errors after critical operations. See [Error Codes](../error_codes.md) for a complete reference.
 
 ```c
 // ALWAYS check for errors after critical operations
@@ -295,7 +253,7 @@ int errorCallback(const char* msg, int level) {
 DSI_SetErrorCallback(errorCallback);
 ```
 
-**Complete connection example:**
+### Complete Connection Example
 
 ```c
 int connectToHeadset(DSI_Headset* pHeadset, const char* port) {
@@ -331,38 +289,15 @@ int connectToHeadset(DSI_Headset* pHeadset, const char* port) {
 }
 ```
 
-**Python equivalent:**
-```python
-def connect_to_headset(port=None):
-    """Connect to DSI headset.
-    
-    Args:
-        port: Serial port path, or None to use DSISerialPort env variable
-    
-    Returns:
-        Headset object if successful, None otherwise
-    """
-    try:
-        # Create and connect
-        h = Headset()
-        h.Connect(port)  # None uses DSISerialPort env variable
-        
-        # Get device info
-        print(f"Connected to {h.GetHardwareModel()} (SN: {h.GetSerialNumber()})")
-        
-        return h
-    except Exception as e:
-        print(f"Connection failed: {e}")
-        return None
-```
-
 ---
 
 ## Tutorial 2: Channel Configuration
 
+Channel configuration (also called montage selection) determines which electrodes to record from and how to reference them. This tutorial covers listing available electrodes, choosing references, and configuring both referential and bipolar montages.
+
 ### Understanding Montages
 
-**montage** defines which electrodes to use and how to reference them.
+A **montage** defines which electrodes to use and how to reference them.
 
 **Syntax:** `"electrode1,electrode2,electrode3"`
 
@@ -373,12 +308,10 @@ def connect_to_headset(port=None):
 
 ### Step 1: List Available Sources
 
-```c
-// Get all available electrode names
-const char* sources = DSI_Headset_GetSourceNames(h);
-printf("Available electrodes:\n%s\n", sources);
+Before configuring channels, it's helpful to see which electrodes are available on your headset. Sources represent individual sensors that can be combined into channels.
 
-// Or iterate programmatically
+```c
+// Iterate through all sources to see what's available
 int nSources = DSI_Headset_GetNumberOfSources(h);
 printf("Total sources: %d\n", nSources);
 
@@ -390,6 +323,8 @@ for (int i = 0; i < nSources; i++) {
 
 ### Step 2: Choose Reference
 
+The reference electrode determines the baseline for measuring voltage. Different references are appropriate for different research applications or clinical protocols.
+
 **Common reference options:**
 - `"A1+A2"` — Average of both ear sensors (linked ears)
 - `"Cz"` — Single electrode reference
@@ -397,7 +332,8 @@ for (int i = 0; i < nSources; i++) {
 
 ### Step 3: Configure Channels
 
-**C example:**
+After choosing your montage and reference, configure the channels using `ChooseChannels()`. This function validates electrode names and sets up the signal processing pipeline.
+
 ```c
 // ChooseChannels(headset, montage, reference, autoswap)
 DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "A1+A2", 1);
@@ -406,8 +342,12 @@ if (DSI_Error()) {
     fprintf(stderr, "Montage error: %s\n", DSI_ClearError());
     
     // Troubleshoot: List available sources
-    const char* sources = DSI_Headset_GetSourceNames(h);
-    fprintf(stderr, "Available: %s\n", sources);
+    fprintf(stderr, "Available sources:\n");
+    int nSources = DSI_Headset_GetNumberOfSources(h);
+    for (int i = 0; i < nSources; i++) {
+        DSI_Source src = DSI_Headset_GetSourceByIndex(h, i);
+        fprintf(stderr, "  %s\n", DSI_Source_GetName(src));
+    }
     return 0;
 }
 
@@ -415,20 +355,14 @@ if (DSI_Error()) {
 printf("Configured %d channels\n", DSI_Headset_GetNumberOfChannels(h));
 ```
 
-**Python example:**
-```python
-# ChooseChannels(montage, reference, autoswap)
-h.ChooseChannels("P3,Pz,P4,O1,O2", "A1+A2", True)
-
-print(f"Configured {h.GetNumberOfChannels()} channels")
-```
-
 **Parameters:**
 - `montage` — Comma-separated electrode names
 - `reference` — Reference electrode(s) specification
-- `autoswap` — Automatically swap signal/reference if needed (use `1` or `True`)
+- `autoswap` — Automatically swap signal/reference if needed (use `1`)
 
 ### Step 4: Inspect Channels
+
+After configuration, iterate through channels to verify your montage. Channel properties help you distinguish EEG signals from triggers and auxiliary inputs.
 
 ```c
 int nChannels = DSI_Headset_GetNumberOfChannels(h);
@@ -449,6 +383,8 @@ for (int i = 0; i < nChannels; i++) {
 ```
 
 ### Step 5: Access Channels by Name
+
+Accessing channels by name makes code more readable and maintainable than using indices. The function returns `NULL` if the channel doesn't exist.
 
 ```c
 // Preferred: Access by name
@@ -477,7 +413,7 @@ DSI_Headset_ChooseChannels(h, "Fp1-F3,F3-C3,C3-P3,P3-O1", "", 1);
 // - P3-O1
 ```
 
-**Complete montage example:**
+### Complete Montage Example
 
 ```c
 int configureMontage(DSI_Headset h, const char* model) {
@@ -524,6 +460,8 @@ int configureMontage(DSI_Headset h, const char* model) {
 
 ## Tutorial 3: Data Acquisition
 
+Once your headset is connected and channels are configured, you can start acquiring EEG data. This tutorial covers sampling rate configuration, buffer management, starting/stopping acquisition, and reading data from channels.
+
 ### Step 1: Configure Sampling
 
 ```c
@@ -560,7 +498,7 @@ printf("Sampling rate: %.0f Hz\n", fs);
 - `2` - High-pass filter
 - `3` - Band-pass filter
 
-### Step 2: Buffers
+### Step 2: Understanding Buffers
 
 ```c
 // Channel buffers are allocated automatically when you configure channels.
@@ -630,7 +568,7 @@ DSI_Headset_StopDataAcquisition(h);
 printf("Acquisition stopped\n");
 ```
 
-**Complete acquisition example:**
+### Complete Acquisition Example
 
 ```c
 void acquireData(DSI_Headset h, double durationSeconds) {
@@ -676,7 +614,7 @@ void acquireData(DSI_Headset h, double durationSeconds) {
 
 ## Tutorial 4: Background Acquisition
 
-Background acquisition runs in a separate thread, allowing your application to continue other work.
+Background acquisition runs data collection in a separate thread, freeing your main application to perform other tasks (UI updates, analysis, etc.). This tutorial shows how to set up callbacks that execute automatically when new data arrives.
 
 ### Step 1: Set Sample Callback
 
@@ -688,10 +626,11 @@ void mySampleCallback(DSI_Headset h, double packetTime, void* userData) {
     // Get first channel
     DSI_Channel ch = DSI_Headset_GetChannelByIndex(h, 0);
     
-    // Get latest sample
-    double value = DSI_Channel_GetSignal(ch);
+    // Read buffered sample (callback context - samples are buffered)
+    double value = DSI_Channel_ReadBuffered(ch);
     
     printf("New sample: %.2f µV (time: %.3f)\n", value, packetTime);
+}
 }
 
 // Register callback (NULL for userData if not needed)
@@ -719,7 +658,7 @@ printf("Background acquisition running...\n");
 for (int i = 0; i < 100; i++) {
     // Do other work
     printf("Main loop iteration %d\n", i);
-    DSI_Sleep(0.1);
+    DSI_Headset_Idle(h, 0.1);  // Process events for 100ms
     
     // Check buffer status
     int buffered = DSI_Headset_GetNumberOfBufferedSamples(h);
@@ -734,7 +673,7 @@ DSI_Headset_StopBackgroundAcquisition(h);
 printf("Background acquisition stopped\n");
 ```
 
-**Complete background acquisition example:**
+### Complete Background Acquisition Example
 
 ```c
 // Global flag to control acquisition
@@ -747,7 +686,7 @@ void sampleCallback(DSI_Headset h, double packetTime, void* userData) {
     // Get channel data
     DSI_Channel pz = DSI_Headset_GetChannelByName(h, "Pz");
     if (pz) {
-        double value = DSI_Channel_GetSignal(pz);
+        double value = DSI_Channel_ReadBuffered(pz);
         
         // Print every 100 samples
         if (sampleCount % 100 == 0) {
@@ -767,7 +706,7 @@ int main() {
     
     // Main loop: monitor health
     while (g_acquiring) {
-        DSI_Sleep(5.0);
+        DSI_Headset_Idle(h, 5.0);  // Process events for 5 seconds
         
         // Check for overflow
         int overflow = DSI_Headset_GetNumberOfOverflowedSamples(h);
@@ -790,116 +729,13 @@ int main() {
 
 ---
 
-## Tutorial 5: Real-Time Processing
-
-### Using Processing Stages
-
-Processing stages allow you to create processing pipelines (filtering, feature extraction, etc.). They process data sample-by-sample through callbacks. The callback is specified when creating the stage.
-
-```c
-// Processing callback that applies custom filter
-void myFilterCallback(DSI_Headset h, double packetTime, void* userData) {
-    DSI_ProcessingStage output = (DSI_ProcessingStage)userData;
-    DSI_ProcessingStage input = DSI_ProcessingStage_GetInput(output);
-    
-    unsigned int nChannels = DSI_ProcessingStage_GetNumberOfChannels(input);
-    
-    for (unsigned int ch = 0; ch < nChannels; ch++) {
-        // Read most recent sample (0 = current, 1 = previous, etc.)
-        double value = DSI_ProcessingStage_Read(input, ch, 0);
-        
-        // Apply simple low-pass filter (example)
-        double filtered = value * 0.9;  // Placeholder - use real filter
-        
-        // Write to output stage
-        DSI_ProcessingStage_Write(output, ch, filtered);
-    }
-}
-
-// Create processing stage with callback
-// AddProcessingStage(headset, name, callback, paramData, inputStage)
-DSI_ProcessingStage ps = DSI_Headset_AddProcessingStage(h, "MyFilter", 
-                                                         myFilterCallback, NULL, NULL);
-if (!ps || DSI_Error()) {
-    fprintf(stderr, "Failed to add processing stage: %s\n", DSI_ClearError());
-    return;
-}
-
-// Start acquisition - callback runs automatically
-DSI_Headset_StartDataAcquisition(h);
-```
-
-### Real-Time Band-Power Analysis
-
-```c
-#include <math.h>
-
-typedef struct {
-    double alpha_power;   // 8-13 Hz
-    double beta_power;    // 13-30 Hz
-    double theta_power;   // 4-8 Hz
-} BandPowers;
-
-BandPowers computeBandPowers(const double* data, int n, double fs) {
-    BandPowers bp = {0};
-    
-    // Simple FFT-based power calculation
-    // (Use FFTW or similar library in production)
-    
-    // For demo: compute variance in each band (simplified)
-    double sum = 0, sum2 = 0;
-    for (int i = 0; i < n; i++) {
-        sum += data[i];
-        sum2 += data[i] * data[i];
-    }
-    
-    double variance = (sum2 / n) - (sum / n) * (sum / n);
-    
-    // Placeholder: distribute variance to bands
-    bp.alpha_power = variance * 0.4;
-    bp.beta_power = variance * 0.3;
-    bp.theta_power = variance * 0.3;
-    
-    return bp;
-}
-
-void realTimeBandPower(DSI_Headset h) {
-    double fs = DSI_Headset_GetSamplingRate(h);
-    int windowSize = (int)(fs * 1.0);  // 1-second windows
-    double* buffer = malloc(windowSize * sizeof(double));
-    
-    DSI_Headset_StartDataAcquisition(h);
-    DSI_Channel pz = DSI_Headset_GetChannelByName(h, "Pz");
-    
-    while (acquiring) {
-        // Process events for 1 second
-        DSI_Headset_Idle(h, 1.0);
-        
-        // Read buffered samples one at a time
-        size_t buffered = DSI_Channel_GetNumberOfBufferedSamples(pz);
-        size_t toRead = buffered < windowSize ? buffered : windowSize;
-        
-        for (size_t i = 0; i < toRead; i++) {
-            buffer[i] = DSI_Channel_ReadBuffered(pz);
-        }
-        
-        if (toRead >= windowSize) {
-            BandPowers bp = computeBandPowers(buffer, windowSize, fs);
-            printf("Alpha: %.2f | Beta: %.2f | Theta: %.2f\n",
-                   bp.alpha_power, bp.beta_power, bp.theta_power);
-        }
-    }
-    
-    DSI_Headset_StopDataAcquisition(h);
-    free(buffer);
-}
-```
-
----
-
 ## Common Tasks
 
-### Task: Save Data to File
+These practical examples demonstrate frequently needed operations: saving data to files, checking electrode impedances, and monitoring battery levels.
+
+### Task: Save Data to CSV File
+
+Exporting EEG data to CSV format enables analysis in tools like MATLAB, Python, or Excel. This example writes time-synchronized samples with proper column headers.
 
 ```c
 void saveToCSV(DSI_Headset h, const char* filename, double duration) {
@@ -958,6 +794,8 @@ void saveToCSV(DSI_Headset h, const char* filename, double duration) {
 
 ### Task: Check Impedances
 
+Impedance testing measures electrode-skin contact quality. Good impedances (below 50kΩ) are critical for clean recordings. Run this before each session to verify sensor placement.
+
 ```c
 void checkImpedances(DSI_Headset h) {
     printf("Starting impedance test...\n");
@@ -970,7 +808,7 @@ void checkImpedances(DSI_Headset h) {
     }
     
     // Wait for readings to stabilize
-    DSI_Sleep(2.0);
+    DSI_Headset_Idle(h, 2.0);
     
     // Read impedances
     int nSources = DSI_Headset_GetNumberOfSources(h);
@@ -1009,13 +847,15 @@ void checkImpedances(DSI_Headset h) {
 
 ### Task: Monitor Battery Level
 
+Monitoring battery prevents unexpected disconnections. Query battery status periodically during long recordings to ensure data integrity.
+
 ```c
 void monitorBattery(DSI_Headset h) {
     // Send battery query
     DSI_Headset_SendBatteryQuery(h);
     
     // Wait for response
-    DSI_Sleep(0.5);
+    DSI_Headset_Idle(h, 0.5);
     
     // Read level (0 = main battery)
     double level = DSI_Headset_GetBatteryLevel(h, 0);
@@ -1038,15 +878,18 @@ void monitorBattery(DSI_Headset h) {
 
 ### Explore Advanced Features
 
-- [quick_reference](quick_reference.md) - Quick lookup guide
-- [error_codes](error_codes.md) - Error handling strategies
+- [Quick Reference](../quick_reference.md) - Quick lookup guide for all API functions
+- [Error Codes](../error_codes.md) - Complete error code reference
+- [Python Getting Started](start_python.md) - Python version of this guide
 
+### Sample Code
+
+Check the `release/demo.c` file in the release package for a complete working example.
 
 ### Support
 
-- **Sample code:** See `release/demo.c` and Python `DSI.py` examples in the release package.
-- **Technical support:** Contact WearableSensing support team via the [contact page](../help/index.md).
+**Technical support:** Contact WearableSensing support team via the [contact page](../../help/index.md).
 
 ---
 
-[Back to API Index](index.md)
+[Back to Getting Started](index.md) | [Back to API Index](../index.md)
