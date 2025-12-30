@@ -1,10 +1,10 @@
 # Filtering EEG Data
---------------------------------------------------------------------------------------
+---
 
 This section will guide you through the process of filtering EEG data using MNE-Python. Filtering is a crucial step in EEG data preprocessing, as it helps to remove noise and artifacts from the signal.
 
 ## Basic Filtering
---------------------------------------------------------------------------------------
+---
 
 To filter your EEG data, you can use the `filter` method provided by MNE on any `Raw` or `Epochs` objects. This method allows you to apply a band-pass filter to your data, which is essential for isolating the frequency bands of interest. By default, MNE applies an FIR zero-phase Butterworth filter, which is suitable for most EEG applications. See the MNE documentation on the filter method for more details: ([mne.io.Raw.filter](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.filter)).
 
@@ -27,7 +27,7 @@ raweegdata.plot()
 This code will apply a band-pass filter to your EEG data, allowing frequencies between 1 Hz and 40 Hz to pass through while attenuating frequencies outside this range. The `l_freq` parameter sets the lower cutoff frequency, and the `h_freq` parameter sets the upper cutoff frequency. Visualizing the data before and after filtering helps you see the effects of the filter on your EEG signal.
 
 ## Advanced Filtering Options
---------------------------------------------------------------------------------------
+---
 
 For more advanced filtering options, you can specify additional parameters such as the filter type, the number of taps, and whether to apply a notch filter. MNE provides flexibility in how you apply filters, allowing you to customize the filtering process to suit your specific needs. See the MNE documentation on notch filters for more details: ([mne.io.Raw.notch_filter](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.notch_filter)).
 
@@ -45,7 +45,7 @@ raweegdata.filter(l_freq=1.0, h_freq=40.0, method='iir')
 ```
 
 ### Resources
---------------------------------------------------------------------------------------
+---
 
 For more information on processing data in MNE-Python, you can refer to the following resources:
 

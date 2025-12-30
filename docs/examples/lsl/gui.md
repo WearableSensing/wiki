@@ -1,10 +1,10 @@
 # Getting Started
---------------------------------------------------------------------------------------
+---
 
 This page documents how to use the dsi2lslGUI application and configure it for your DSI headset.
 
 ## Connecting the DSI Headset
---------------------------------------------------------------------------------------
+---
 
 Before you can start your LSL stream, make sure your headset is properly connected to your computer using bluetooth or usb. Once properly connected, go to `Device Manager` in your Windows search bar and locate the COM port the headset is connected to.
 
@@ -13,7 +13,7 @@ Before you can start your LSL stream, make sure your headset is properly connect
 * A wired connection will be found under `Ports (COM & LPT)`.
 
 ## Starting dsi2lslGUI
---------------------------------------------------------------------------------------
+---
 
 Go back to `dsi2lslGUI`, inside of **Port** enter **'COM'** followed by the number from your dropdown (e.g., `COM8`). You are now ready to start consuming the DSI data.
 
@@ -41,7 +41,7 @@ Go back to `dsi2lslGUI`, inside of **Port** enter **'COM'** followed by the numb
 Please note that older versions of the dsi2lslGUI may not have the `Impedance` checkbox or the `Reset` button. If you do not see this option, you can still use the application without it.
 
 ## Configuring Montage and Reference (Optional)
---------------------------------------------------------------------------------------
+---
 
 ```{admonition} Note
 :class: sidebar note
@@ -65,6 +65,6 @@ C3/2+C4/2
 ```
 
 ## Resources
---------------------------------------------------------------------------------------
+---
 
 See {doc}`LSL-Tools <tools>` for guides on consuming your LSL data.

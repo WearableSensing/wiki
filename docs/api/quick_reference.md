@@ -213,10 +213,6 @@ const char* DSI_Headset_GetInfoString(DSI_Headset h)
 
 Check which optional features are unlocked on your headset. Some capabilities (like custom sampling rates or accelerometer access) require feature unlocks.
 
-### Feature Availability
-
-Query which optional capabilities are unlocked on the connected headset.
-
 ```c
 void DSI_Headset_QueryUnlockedFeatures(DSI_Headset h)
 int DSI_Headset_GetFeatureAvailability(DSI_Headset h, const char* featureName)

@@ -1,5 +1,5 @@
 # Load Wearable Sensing Data
---------------------------------------------------------------------------------------
+---
 
 This will be a guide on loading Wearable Sensing data using MNE-Python.
 
@@ -9,12 +9,12 @@ The data were collected using a DSI-24 at a sampling rate of 300Hz. There were t
 ```
 
 ## Example Data
---------------------------------------------------------------------------------------
+---
 
 To follow along with this tutorial, you can download a sample data file from this [dropbox](https://www.dropbox.com/scl/fi/n1yhaco7fy397pu69l14u/Sample_DSI_24_Eyes_Closed.edf?rlkey=2vco7a100hhevg86i6vol1nmx&e=1&dl=0).
 
 ## Import using MNE
---------------------------------------------------------------------------------------
+---
 
 ```{code-block} python
 :caption: Load Wearable Sensing EDF
@@ -45,6 +45,6 @@ The `preload=True` option loads the data into memory, allowing for faster access
 ```
 
 ## Resources
---------------------------------------------------------------------------------------
+---
 
 For more in-depth documentation and API reference, please refer to: ([mne.io.read_raw_edf](https://mne.tools/stable/generated/mne.io.read_raw_edf.html))

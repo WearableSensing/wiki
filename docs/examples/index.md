@@ -5,11 +5,11 @@ Connect Wearable Sensing EEG devices with popular research platforms and tools. 
 
 ```{admonition} Need a Custom Integration?
 :class: tip
-Have a third-party library you'd like to integrate? Reach out to us—we're always expanding our integrations to provide more value to our users.
+Have a third-party library you'd like to integrate? [Reach out to us](../help/index)—we're always expanding our integrations to provide more value to our users.
 ```
 
 ## Integration Tutorials
---------------------------------------------------------------------------------------
+---
 
 ````{grid} 2
 :gutter: 3
