@@ -71,8 +71,7 @@ int main() {
     printf("Connected!\n");
     
     // Configure channels (montage)
-    // Using "" for reference lets API use its auto-detected default
-    // (linked ears if available, otherwise factory reference)
+    // Using "" for reference uses the default linked ears reference
     DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
     
     // Start acquisition

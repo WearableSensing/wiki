@@ -48,8 +48,7 @@ h.Connect(None)  # None uses DSISerialPort environment variable
 print("Connected!")
 
 # Configure channels
-# Using "" for reference lets API use its auto-detected default
-# (linked ears if available, otherwise factory reference)
+# Using "" for reference uses the default linked ears reference
 h.ChooseChannels("P3,Pz,P4", "", True)
 
 # Start acquisition
@@ -309,8 +308,6 @@ print(f"Current reference: {ref}")
 
 ```python
 # ChooseChannels(montage, reference, autoswap)
-
-# Recommended: Use empty string for default linked ear reference
 h.ChooseChannels("P3,Pz,P4,O1,O2", "", True)
 
 # To use hardware reference instead, specify electrode explicitly:
