@@ -67,7 +67,7 @@ Custom Wearable Sensing utilities
 
 ### Additional Resources
 
-See our main page for more complete list of supported integrations.
+See our main page for a more complete list of supported integrations.
 
 - [Third-Party Software](https://wearablesensing.com/3rd-party-software/)
 

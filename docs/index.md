@@ -5,7 +5,7 @@
 ```{admonition} New here?
 :class: tip
 :text-align: center
-Start with our [Tutorials](help/tutorials/index) or explore the **Quick Links** below
+Start with our [Tutorials](help/tutorials/index) or explore the **Quick Links** below.
 ```
 
 ## Quick Links
