@@ -56,7 +56,11 @@ typedef int (*DSI_MessageCallback)(const char* msg, int debugLevel);
 
 ## Error Categories
 
+Errors are organized by functional area to help quickly identify the source of problems. Each category includes the error message, root cause, and recommended recovery steps.
+
 ### Connection Errors
+
+Serial port and communication errors that occur during device connection and data transmission.
 
 | Error Message | Cause | Recovery |
 |---------------|-------|----------|
@@ -95,6 +99,8 @@ if (DSI_Error()) {
 ---
 
 ### Configuration Errors
+
+Errors from setting up channels, montages, sampling rates, and device features.
 
 | Error Message | Cause | Recovery |
 |---------------|-------|----------|
@@ -150,6 +156,8 @@ if (DSI_Error()) {
 
 ### Runtime Errors
 
+Errors that occur during active data acquisition, including buffer management and data integrity issues.
+
 | Error Message | Cause | Recovery |
 |---------------|-------|----------|
 | `"Buffer overflow"` | Data arriving faster than being read | Increase buffer size, optimize processing |
@@ -193,6 +201,8 @@ if (err && strstr(err, "CRC")) {
 
 ### Resource Errors
 
+System resource allocation failures including memory, threads, and OS primitives.
+
 | Error Message | Cause | Recovery |
 |---------------|-------|----------|
 | `"Memory allocation failure"` | Out of memory | Reduce buffer sizes, close other applications |
@@ -228,6 +238,8 @@ int allocateBuffers(DSI_Headset h, double seconds) {
 
 ### File I/O Errors
 
+Errors related to reading and writing calibration files and other persistent data.
+
 | Error Message | Cause | Recovery |
 |---------------|-------|----------|
 | `"failed to open \"...\" to dump calibration memory"` | Cannot write calibration file | Check permissions, disk space, path validity |
@@ -260,6 +272,8 @@ if (!readCalibration(h, calFile)) {
 
 ### Index/Range Errors
 
+Array bounds and lookup errors when accessing channels, sources, or processing stages.
+
 | Error Message | Cause | Recovery |
 |---------------|-------|----------|
 | `"Channel index N is out of range (M channels available)"` | Channel index exceeds count | Use valid index 0 to M-1 |
@@ -289,7 +303,11 @@ for (int i = 0; i < nChannels; i++) {
 
 ## Error Detection Patterns
 
+Proven code patterns for detecting and handling errors in DSI API applications. These patterns demonstrate the best practices used in demo.c and recommended for production code.
+
 ### Pattern 1: Check After Critical Operations
+
+The most basic pattern: check errors immediately after operations that could fail.
 
 ```c
 DSI_Headset h = DSI_Headset_New(NULL);
@@ -313,6 +331,8 @@ if (DSI_Error()) {
 ```
 
 ### Pattern 2: Callback for Automatic Logging
+
+Register a callback to receive all errors automatically, useful for comprehensive logging.
 
 ```c
 int errorLogger(const char* msg, int level) {
@@ -340,6 +360,8 @@ DSI_SetErrorCallback(errorLogger);
 
 ### Pattern 3: Validate Return Values
 
+Always verify pointer returns before dereferencing, as NULL indicates failure.
+
 ```c
 DSI_Channel ch = DSI_Headset_GetChannelByName(h, "Pz");
 if (!ch) {
@@ -354,6 +376,8 @@ if (!ch) {
 ```
 
 ### Pattern 4: Monitor Buffer Overflow
+
+Proactively monitor and respond to buffer overflow conditions during acquisition.
 
 ```c
 void monitorBuffers(DSI_Headset h) {
@@ -412,7 +436,11 @@ void checkForProblems(DSI_Headset h) {
 
 ## Best Practices
 
+Essential guidelines for robust error handling in production DSI applications. Following these practices will prevent most common errors and make debugging easier when issues occur.
+
 ### 1. Always Check Critical Operations
+
+Never assume operations succeed—verify every critical function call.
 
 ```c
 // BAD - No error checking
@@ -444,6 +472,8 @@ if (DSI_Error()) {
 
 ### 2. Use Error Callback for Real-Time Monitoring
 
+Set up callbacks to catch errors in background threads and asynchronous operations.
+
 ```c
 int errorHandler(const char* msg, int level) {
     if (level <= 1) { // Critical and errors only
@@ -461,6 +491,8 @@ DSI_SetErrorCallback(errorHandler);
 
 ### 3. Validate Pointers Before Use
 
+Check for NULL pointers before dereferencing to avoid crashes.
+
 ```c
 DSI_Channel ch = DSI_Headset_GetChannelByName(h, "Pz");
 if (ch) {
@@ -472,6 +504,8 @@ if (ch) {
 ```
 
 ### 4. Monitor System Health
+
+Track buffer status, lost samples, and system alarms to detect degradation early.
 
 ```c
 typedef struct {
@@ -505,6 +539,8 @@ void updateHealth(DSI_Headset h, HealthStats* stats) {
 
 ### 5. Implement Graceful Degradation
 
+Retry failed operations and provide fallback options when possible.
+
 ```c
 int connectWithRetry(DSI_Headset h, const char* port, int maxRetries) {
     for (int i = 0; i < maxRetries; i++) {
@@ -532,6 +568,8 @@ int connectWithRetry(DSI_Headset h, const char* port, int maxRetries) {
 ---
 
 ## Common Error Scenarios
+
+Real-world error situations with complete diagnostic and recovery code. These scenarios demonstrate how to handle the most frequently encountered problems.
 
 ### Scenario 1: Port Already in Use
 
@@ -565,6 +603,8 @@ fprintf(stderr, "No available ports found\n");
 ```
 
 ### Scenario 2: Unsupported Sampling Rate
+
+Handling hardware-specific sampling rate limitations and feature locks.
 
 **Error:** `"Invalid sampling rate"`
 
@@ -600,6 +640,8 @@ if (DSI_Error()) {
 
 ### Scenario 3: Invalid Montage
 
+Recovering from electrode name mismatches and montage specification errors.
+
 **Error:** `"Cannot construct channel"` or `"Source name not found"`
 
 **Cause:** Electrode names don't match available sources
@@ -628,6 +670,8 @@ if (DSI_Error()) {
 ```
 
 ### Scenario 4: Buffer Overflow
+
+Dynamically adjusting buffer size when data processing can't keep pace.
 
 **Problem:** Buffer overflow during acquisition
 
@@ -662,6 +706,8 @@ void handleBufferOverflow(DSI_Headset h) {
 ```
 
 ### Scenario 5: Data Corruption
+
+Detecting and responding to signal integrity issues and hardware problems.
 
 **Error:** `"Data corruption (CRC failure)"` or `"Block failed consistency check"`
 
