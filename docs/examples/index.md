@@ -5,11 +5,11 @@ Connect Wearable Sensing EEG devices with popular research platforms and tools. 
 
 ```{admonition} Need a Custom Integration?
 :class: tip
-Have a third-party library you'd like to integrate? Reach out to us—we're always expanding our integrations to provide more value to our users.
+Have a third-party library you'd like to integrate? [Reach out to us](../help/index)—we're always expanding our integrations to provide more value to our users.
 ```
 
 ## Integration Tutorials
---------------------------------------------------------------------------------------
+---
 
 ````{grid} 2
 :gutter: 3
@@ -67,7 +67,7 @@ Custom Wearable Sensing utilities
 
 ### Additional Resources
 
-See our main page for more complete list of supported integrations.
+See our main page for a more complete list of supported integrations.
 
 - [Third-Party Software](https://wearablesensing.com/3rd-party-software/)
 

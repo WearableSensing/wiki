@@ -1,15 +1,15 @@
 # Photodiode Experiment
---------------------------------------------------------------------------------------
+---
 
 This [lsl-tool](https://github.com/WearableSensing/lsl-tools) displays a simple visual stimulus (e.g., a flashing square) intended to be captured by a photodiode. Its primary purpose is to generate events that can be used to measure and correct for timing offsets between the stimulus presentation computer and an LSL-streaming data acquisition system (e.g., a DSI headset).
 
 ## Hardware Setup
---------------------------------------------------------------------------------------
+---
 
-You will need to set up a lightdiode as well as a MMBT-S (a device used for sending hardware event markers in neuroscience experiments) for this experiment. You can find instructions on that [here](../../../help/tutorials/hardware.rst#mmbt-s-trigger-box-setup-with-e-prime) or visit the [MMBT-S documentation](https://wearablesensing.com/mmbt/). Make sure to place the lightdiode on the top right corner of the screen for this experiment.
+You will need to set up a lightdiode as well as a MMBT-S (a device used for sending hardware event markers in neuroscience experiments) for this experiment. You can find instructions in the hardware tutorials section or visit the [MMBT-S documentation](https://wearablesensing.com/mmbt/). Make sure to place the lightdiode on the top right corner of the screen for this experiment.
 
 ## How to Run the Software
---------------------------------------------------------------------------------------
+---
 
 To start the experiment, run the main.py script from your terminal:
 
@@ -77,7 +77,7 @@ This option automatically records the LSL streams you have configured.
 - The output is saved as photodiode_exp.csv in the same directory.
 
 ## Example Walkthrough
---------------------------------------------------------------------------------------
+---
 
 Here is an example of a complete interaction:
 
@@ -101,7 +101,7 @@ Do you want to record? (y/n): y
 ```
 
 ### Outcome of this experiment
---------------------------------------------------------------------------------------
+---
 
 - The experiment will connect to an MMBTS on COM10.
 

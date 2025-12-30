@@ -1,12 +1,12 @@
 # Update Reference Channel
---------------------------------------------------------------------------------------
+---
 
 This section will guide you through the process of updating the reference channel in your EEG data using MNE-Python. The DSI-24 system uses Pz as the hardware reference point, but it is often beneficial to re-reference to a more common standard, such as Linked Ears (average of A1 and A2 electrodes).
 
 The `raweegdata` object is assumed to be your loaded EEG data, as shown in the previous sections. See {doc}`MNE Load <../core/load>` for more details on loading EEG data.
 
 ## Re-Referencing EEG Data
---------------------------------------------------------------------------------------
+---
 
 This code will change the reference to a more commonly used Linked Ear Reference, which is calculated as the average of the A1 and A2 electrodes.
 
@@ -21,7 +21,7 @@ print('Available channels (After Re-Referencing):', raweegdata.ch_names)
 This code sets the original EEG Data to a new reference which is Linked Ears (Average of A1 and A2). Make sure the channels are spelled correctly and exist in your EEG Data.
 
 ## Renaming Channel References to Reflect Linked-Ears (LE) Average
---------------------------------------------------------------------------------------
+---
 
 Even after the EEG Data has been Re-Referenced to the average of the A1 and A2 electrodes (Linked Ears, or LE), the channel names ending with '-Pz' still persist. The next part of the code will change such names ending with '-Pz' to '-LE' and reflect the changes visually.
 

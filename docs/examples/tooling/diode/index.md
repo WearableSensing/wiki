@@ -1,5 +1,5 @@
 # Photodiode Experiment
---------------------------------------------------------------------------------------
+---
 
 To ensure our data is accurately timed with stimuli, we can run a test like a photodiode experiment. 
 
@@ -8,7 +8,7 @@ This test measures the exact delay between when we tell an event to happen on a 
 A tool such as this is useful to test the timing of a system for visual stimuli presentation without the overhead of other stimuli and experiment protocols that may introduce their own delays to the system. Our tool for this type of experiment is provided in the [lsl-tools](https://github.com/WearableSensing/lsl-tools) library on GitHub.
 
 ## Installation
---------------------------------------------------------------------------------------
+---
 
 ```{admonition} Python Version
 :class: note

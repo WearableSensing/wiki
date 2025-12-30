@@ -1,5 +1,5 @@
 # Downloads
---------------------------------------------------------------------------------------
+---
 
 <div id="password-gate-container">
   <p>
@@ -18,7 +18,7 @@
 </div>
 
 ## Data Transmission Drivers
---------------------------------------------------------------------------------------
+---
 
 This section provides the necessary drivers for data transmission between Wearable Sensing devices and your computer.
 
@@ -26,17 +26,17 @@ This section provides the necessary drivers for data transmission between Wearab
 
 ```{grid-item-card}  Bluetooth Dongle Driver
 :link: https://www.dropbox.com/scl/fi/mxh8bikmpscuyjdq5xen6/EDUP-Bluetooth-Support.pdf?rlkey=lirw261dakdj8t25pbd2c1qp5&dl=0
-*released 4/16/2025*
+*released 04/16/2025*
 ```
 
 ```{grid-item-card}  USB Wired Mode Driver
 :link: https://www.dropbox.com/s/01vaox1fk93t5do/CP210x_VCP_Windows.zip?dl=0
-*released 3/27/2020*
+*released 03/27/2020*
 ```
 ````
 
 ## Third Party Plugins
---------------------------------------------------------------------------------------
+---
 
 This section provides links to third-party plugins and extensions that are developed by the community and can be integrated with Wearable Sensing's technology.
 
@@ -49,7 +49,7 @@ If importing data collected from DSI-Streamer 1.08.90 or above, use v.1.14; othe
 
 ```{grid-item-card}  Lab Streaming Layer
 :link: https://github.com/labstreaminglayer/App-WearableSensing/releases/
-*released 9/16/2020*
+*released 09/16/2020*
 ```
 
 ````

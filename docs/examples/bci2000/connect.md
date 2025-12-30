@@ -1,12 +1,12 @@
 # Connecting DSI Headset
---------------------------------------------------------------------------------------
+---
 
 This guide will walk you through how to connect your Wearable Sensing DSI headset to BCI2000 for data acquisition.
 
 > **Note:** Please ensure BCI2000 is already installed on your system. If you haven't installed it yet, you can find the download instructions [here](https://www.bci2000.org/mediawiki/index.php/DownloadBCI2000).
 
 ## Configure the DSISerial Module
---------------------------------------------------------------------------------------
+---
 
 BCI2000 includes a community-contributed module called DSISerial, which supports Wearable Sensing DSI EEG systems. This module is already built into BCI2000, so no additional downloads or driver installations are required.
 
@@ -36,7 +36,7 @@ Replace `#` with the COM port number assigned to your DSI headset.
 If you need help establishing your DSI hardware connection, see our [DSI Software Tutorial](https://code.wearablesensing.com/help/tutorials/software.html).
 
 ## Resources
---------------------------------------------------------------------------------------
+---
 
 This documentation only covers connection. For full usage, configuration, and advanced module options, please visit following links:
 
