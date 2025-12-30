@@ -83,7 +83,7 @@ python DSI.py /dev/ttyUSB0                           # Linux
 python DSI.py /dev/cu.DSI24-023-BluetoothSerial      # macOS
 
 # Optional second argument for reference or impedance mode
-python DSI.py COM4 A1+A2      # Use A1+A2 reference
+python DSI.py COM4 A1/2+A2/2  # Use A1/2+A2/2 reference
 python DSI.py COM4 impedances # Run impedance test
 ```
 
@@ -250,7 +250,7 @@ for i in range(n_sources):
 
 ### Step 2: Choose Reference
 
-The reference electrode determines the baseline for measuring voltage. **By default, the API automatically uses linked ears (A1+A2 on DSI-24, LE on DSI-7/VR300) as the reference.** You only need to call reference functions if you want to change from this default.
+The reference electrode determines the baseline for measuring voltage. **By default, the API automatically uses linked ears (A1/2+A2/2 on DSI-24, LE on DSI-7/VR300) as the reference.** You only need to call reference functions if you want to change from this default.
 
 #### Default Reference (Automatic)
 
@@ -262,7 +262,7 @@ h.ChooseChannels("P3,Pz,P4", "", True)
 ```
 
 **Default reference by model:**
-- **DSI-24:** `A1+A2` (average of A1 and A2 channels)
+- **DSI-24:** `A1/2+A2/2` (average of A1 and A2 channels)
 - **DSI-7:** `LE` (pre-averaged linked ear channel)
 - **DSI-VR300:** `LE` (pre-averaged linked ear channel)
 

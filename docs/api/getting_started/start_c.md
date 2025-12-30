@@ -322,7 +322,7 @@ for (int i = 0; i < nSources; i++) {
 
 ### Step 2: Choose Reference
 
-The reference electrode determines the baseline for measuring voltage. **By default, the API automatically uses linked ears (A1+A2 on DSI-24, LE on DSI-7/VR300) as the reference.** You only need to call reference functions if you want to change from this default.
+The reference electrode determines the baseline for measuring voltage. **By default, the API automatically uses linked ears (A1/2+A2/2 on DSI-24, LE on DSI-7/VR300) as the reference.** You only need to call reference functions if you want to change from this default.
 
 #### Default Reference (Automatic)
 
@@ -334,7 +334,7 @@ DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
 ```
 
 **Default reference by model:**
-- **DSI-24:** `A1+A2` (average of A1 and A2 channels)
+- **DSI-24:** `A1/2+A2/2` (average of A1 and A2 channels)
 - **DSI-7:** `LE` (pre-averaged linked ear channel)
 - **DSI-VR300:** `LE` (pre-averaged linked ear channel)
 
