@@ -71,7 +71,9 @@ int main() {
     printf("Connected!\n");
     
     // Configure channels (montage)
-    DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "A1+A2", 1);
+    // Using "" for reference lets API use its auto-detected default
+    // (linked ears if available, otherwise factory reference)
+    DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "", 1);
     
     // Start acquisition
     DSI_Headset_StartDataAcquisition(h);
@@ -315,12 +317,29 @@ for (int i = 0; i < nSources; i++) {
 
 ### Step 2: Choose Reference
 
-The reference electrode determines the baseline for measuring voltage. Different references are appropriate for different research applications or clinical protocols.
+The reference electrode determines the baseline for measuring voltage. **The API's default reference is always linked ears** (if available on the headset).
 
-**Common reference options:**
-- `"A1+A2"` — Average of both ear sensors (linked ears)
-- `"Cz"` — Single electrode reference
-- `""` (empty string) — No re-referencing, uses factory reference (typically Pz)
+**Default Reference (Linked Ears):**
+- **DSI-24:** Uses `A1+A2` (average of A1 and A2 channels)
+- **DSI-7/VR300:** Uses `LE` (pre-averaged linked ear channel)
+- Empty string `""` or `NULL` uses this default automatically
+
+**Hardware Reference (Factory Reference):**
+To use the hardware reference instead of linked ears, explicitly specify the electrode:
+- **DSI-24/DSI-7:** Use `"Pz"` for hardware reference  
+- **DSI-VR300:** Use `"P4"` for hardware reference
+
+**Other Reference Options:**
+- `"Cz"` — Common single electrode reference
+- Any electrode name — Custom reference electrode
+
+**Important:** Do NOT hardcode `"A1+A2"` in your code - this only works on DSI-24 and will fail on DSI-7/VR300 which don't have separate A1/A2 channels. Use `""` to automatically select the correct linked ear reference for any model.
+
+**To check which reference is active:**
+```c
+const char* ref = DSI_Headset_GetReferenceString(h);
+printf("Current reference: %s\n", ref);
+```
 
 ### Step 3: Configure Channels
 
@@ -328,7 +347,13 @@ After choosing your montage and reference, configure the channels using `ChooseC
 
 ```c
 // ChooseChannels(headset, montage, reference, autoswap)
-DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "A1+A2", 1);
+
+// Recommended: Use empty string for default linked ear reference
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "", 1);
+
+// To use hardware reference instead, specify electrode explicitly:
+// DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "Pz", 1);  // DSI-24/DSI-7
+// DSI_Headset_ChooseChannels(h, "P3,Pz,P4,O1,O2", "P4", 1);  // VR300
 
 if (DSI_Error()) {
     fprintf(stderr, "Montage error: %s\n", DSI_ClearError());
@@ -409,29 +434,9 @@ DSI_Headset_ChooseChannels(h, "Fp1-F3,F3-C3,C3-P3,P3-O1", "", 1);
 
 ```c
 int configureMontage(DSI_Headset h) {
-    const char* montage;
-    const char* reference;
-    const char* info = DSI_Headset_GetInfoString(h);
-    
-    // Choose montage based on headset model
-    if (strstr(info, "DSI-7")) {
-        // DSI-7: 7 dry electrodes
-        montage = "P3,Pz,P4,POz,O1,Oz,O2";
-        reference = "Cz";
-    } 
-    else if (strstr(info, "DSI-24")) {
-        // DSI-24: Full 10-20 system
-        montage = "Fp1,Fp2,F7,F3,Fz,F4,F8,"
-                  "T3,C3,Cz,C4,T4,"
-                  "T5,P3,Pz,P4,T6,"
-                  "O1,Oz,O2";
-        reference = "A1+A2";
-    }
-    else {
-        // Unknown model: use numbered sources
-        montage = "@1,@2,@3,@4,@5";
-        reference = "";
-    }
+    // Configure a standard posterior montage
+    const char* montage = "P3,Pz,P4,O1,O2";
+    const char* reference = "";  // Default linked ears
     
     printf("Montage: %s\n", montage);
     printf("Reference: %s\n", reference);

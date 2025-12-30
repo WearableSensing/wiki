@@ -48,7 +48,9 @@ h.Connect(None)  # None uses DSISerialPort environment variable
 print("Connected!")
 
 # Configure channels
-h.ChooseChannels("P3,Pz,P4", "A1+A2", True)
+# Using "" for reference lets API use its auto-detected default
+# (linked ears if available, otherwise factory reference)
+h.ChooseChannels("P3,Pz,P4", "", True)
 
 # Start acquisition
 h.StartDataAcquisition()
@@ -243,16 +245,41 @@ for i in range(n_sources):
 
 ### Step 2: Choose Reference
 
-**Common reference options:**
-- `"A1+A2"` — Average of both ear sensors (linked ears)
-- `"Cz"` — Single electrode reference
-- `""` (empty string) — No re-referencing, uses factory reference (typically Pz)
+The reference electrode determines the baseline for measuring voltage. **The API's default reference is always linked ears** (if available on the headset).
+
+**Default Reference (Linked Ears):**
+- **DSI-24:** Uses `A1+A2` (average of A1 and A2 channels)
+- **DSI-7/VR300:** Uses `LE` (pre-averaged linked ear channel)
+- Empty string `""` or `None` uses this default automatically
+
+**Hardware Reference (Factory Reference):**
+To use the hardware reference instead of linked ears, explicitly specify the electrode:
+- **DSI-24/DSI-7:** Use `"Pz"` for hardware reference  
+- **DSI-VR300:** Use `"P4"` for hardware reference
+
+**Other Reference Options:**
+- `"Cz"` — Common single electrode reference
+- Any electrode name — Custom reference electrode
+
+**Important:** Do NOT hardcode `"A1+A2"` in your code - this only works on DSI-24 and will fail on DSI-7/VR300 which don't have separate A1/A2 channels. Use `""` to automatically select the correct linked ear reference for any model.
+
+**To check which reference is active:**
+```python
+ref = h.GetReferenceString()
+print(f"Current reference: {ref}")
+```
 
 ### Step 3: Configure Channels
 
 ```python
 # ChooseChannels(montage, reference, autoswap)
-h.ChooseChannels("P3,Pz,P4,O1,O2", "A1+A2", True)
+
+# Recommended: Use empty string for default linked ear reference
+h.ChooseChannels("P3,Pz,P4,O1,O2", "", True)
+
+# To use hardware reference instead, specify electrode explicitly:
+# h.ChooseChannels("P3,Pz,P4,O1,O2", "Pz", True)  # DSI-24/DSI-7
+# h.ChooseChannels("P3,Pz,P4,O1,O2", "P4", True)  # VR300
 
 print(f"Configured {h.GetNumberOfChannels()} channels")
 ```
@@ -265,7 +292,7 @@ print(f"Configured {h.GetNumberOfChannels()} channels")
 **Error handling:**
 ```python
 try:
-    h.ChooseChannels("P3,Pz,P4,O1,O2", "A1+A2", True)
+    h.ChooseChannels("P3,Pz,P4,O1,O2", "", True)  # Use auto-detected default
 except Exception as e:
     print(f"Montage error: {e}")
     # Troubleshoot: List available sources
@@ -346,26 +373,11 @@ h.ChooseChannels("Fp1-F3,F3-C3,C3-P3,P3-O1", "", True)
 
 ```python
 def configure_montage(h):
-    """Configure montage based on headset model."""
+    """Configure a standard posterior montage."""
     
-    info = h.GetInfoString()
-    
-    # Choose montage based on headset model
-    if "DSI-7" in info:
-        # DSI-7: 7 dry electrodes
-        montage = "P3,Pz,P4,POz,O1,Oz,O2"
-        reference = "Cz"
-    elif "DSI-24" in info:
-        # DSI-24: Full 10-20 system
-        montage = ("Fp1,Fp2,F7,F3,Fz,F4,F8,"
-                   "T3,C3,Cz,C4,T4,"
-                   "T5,P3,Pz,P4,T6,"
-                   "O1,Oz,O2")
-        reference = "A1+A2"
-    else:
-        # Unknown model: use numbered sources
-        montage = "@1,@2,@3,@4,@5"
-        reference = ""
+    # Configure a standard posterior montage
+    montage = "P3,Pz,P4,O1,O2"
+    reference = ""  # Default linked ears
     
     print(f"Montage: {montage}")
     print(f"Reference: {reference}")
