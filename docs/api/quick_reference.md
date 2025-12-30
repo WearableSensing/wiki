@@ -30,6 +30,9 @@ This page provides a complete function reference organized by task. Each section
 Core utilities and error handling used throughout the API.
 
 ### Error Handling
+
+Manage API errors and configure error reporting callbacks.
+
 ```c
 const char* DSI_Error(void)
 const char* DSI_ClearError(void)
@@ -37,11 +40,16 @@ void DSI_SetErrorCallback(DSI_MessageCallback func)
 ```
 
 ### Utilities
+
+General-purpose functions for API version info, default ports, and timing.
+
 ```c
 const char* DSI_GetAPIVersion(void)
 const char* DSI_GetDefaultPort(void)
 void DSI_Sleep(double seconds)
 ```
+
+**Note:** `DSI_Sleep()` is a simple sleep function. For event processing during acquisition, use `DSI_Headset_Idle()` instead (see [Data Acquisition](#data-acquisition)).
 
 ---
 
@@ -58,6 +66,8 @@ void DSI_Headset_Delete(DSI_Headset h)
 
 ## Connection Management
 
+Establish and manage serial port connections to DSI headsets. Pass `NULL` as the port to use the `DSISerialPort` environment variable.
+
 ```c
 void DSI_Headset_Connect(DSI_Headset h, const char* port)
 int DSI_Headset_IsConnected(DSI_Headset h)
@@ -70,7 +80,12 @@ void DSI_Headset_Disconnect(DSI_Headset h)
 
 ## Device Configuration
 
+Configure sampling rates, filters, and data callbacks. Most applications need to call `ConfigureADC()` to set the sampling rate and `SetSampleCallback()` to receive data.
+
 ### Core Configuration
+
+Set sampling rate, filter mode, accelerometer rate, and debug verbosity level.
+
 ```c
 void DSI_Headset_ConfigureADC(DSI_Headset h, unsigned int samplesPerSecond, unsigned int filterMode)
 void DSI_Headset_SetAccelerometerRate(DSI_Headset h, unsigned int rate)
@@ -80,6 +95,9 @@ void DSI_Headset_SetVerbosity(DSI_Headset h, int level)
 **Note:** Configuring non-default sampling rates requires the appropriate feature to be unlocked on your headset. Check `DSI_Headset_GetFeatureAvailability(h, "SampleRate")` before attempting to configure custom rates.
 
 ### Callbacks
+
+Register functions to be called for messages and incoming data samples.
+
 ```c
 void DSI_Headset_SetMessageCallback(DSI_Headset h, DSI_MessageCallback func)
 void DSI_Headset_SetSampleCallback(DSI_Headset h, DSI_SampleCallback func, void* userData)
@@ -116,6 +134,9 @@ const char* DSI_Headset_GetMontageString(DSI_Headset h)
 Control when and how data is collected from the headset. Choose foreground (you control the loop) or background (automatic callback) acquisition.
 
 ### Foreground Acquisition
+
+Manually control data collection by calling receive/idle in your own loop.
+
 ```c
 void DSI_Headset_StartDataAcquisition(DSI_Headset h)
 void DSI_Headset_StopDataAcquisition(DSI_Headset h)
@@ -125,6 +146,9 @@ void DSI_Headset_Idle(DSI_Headset h, double seconds)
 ```
 
 ### Background Acquisition
+
+Automatic data collection in a separate thread with callback-based delivery.
+
 ```c
 int DSI_Headset_StartBackgroundAcquisition(DSI_Headset h)
 void DSI_Headset_StopBackgroundAcquisition(DSI_Headset h)
@@ -137,6 +161,9 @@ void DSI_Headset_StopBackgroundAcquisition(DSI_Headset h)
 Manage internal sample buffers. Buffers are allocated automatically when you configure channels, but you can adjust sizes and monitor status.
 
 ### Buffer Control
+
+Allocate, flush, and monitor buffer usage and overflow status.
+
 ```c
 void DSI_Headset_ReallocateBuffers(DSI_Headset h, double secondsForSignal, double secondsForImpedance)
 void DSI_Headset_FlushBuffers(DSI_Headset h)
@@ -145,6 +172,9 @@ size_t DSI_Headset_GetNumberOfOverflowedSamples(DSI_Headset h)
 ```
 
 ### Buffering Controller
+
+Advanced buffer timing control with PID-based batch delivery configuration.
+
 ```c
 void DSI_Headset_ConfigureBufferingController(DSI_Headset h, 
     double secondsBetweenUpdates, double smoothing, double P, double I, double D)
@@ -155,6 +185,8 @@ double DSI_Headset_WaitForBatch(DSI_Headset h)
 ---
 
 ## Device Information
+
+Query headset properties and current settings. For a formatted summary, use `DSI_Headset_GetInfoString()` which is demonstrated in demo.c.
 
 ```c
 const char* DSI_Headset_GetHardwareModel(DSI_Headset h)
@@ -173,9 +205,17 @@ const char* DSI_Headset_GetBatteryLevelString(DSI_Headset h)
 const char* DSI_Headset_GetInfoString(DSI_Headset h)
 ```
 
+**Recommended:** Use `GetInfoString()` for device info display. Individual property getters are useful for programmatic model detection.
+
 ---
 
 ## Feature Queries
+
+Check which optional features are unlocked on your headset. Some capabilities (like custom sampling rates or accelerometer access) require feature unlocks.
+
+### Feature Availability
+
+Query which optional capabilities are unlocked on the connected headset.
 
 ```c
 void DSI_Headset_QueryUnlockedFeatures(DSI_Headset h)
@@ -183,6 +223,9 @@ int DSI_Headset_GetFeatureAvailability(DSI_Headset h, const char* featureName)
 ```
 
 ### Hardware State
+
+Query battery status and Bluetooth initialization state.
+
 ```c
 void DSI_Headset_SendBatteryQuery(DSI_Headset h)
 int DSI_Headset_IsBlueToothInitialized(DSI_Headset h)
@@ -204,6 +247,8 @@ double DSI_Headset_GetImpedanceCMF(DSI_Headset h)
 
 ## Alarm System
 
+Monitor hardware-level alarms from the headset. Alarms indicate conditions like buffer overflow, battery low, or sensor disconnection. These functions are available but not commonly used in typical applications.
+
 ```c
 int DSI_Headset_GetAlarm(DSI_Headset h, int remove)
 size_t DSI_Headset_GetNumberOfAlarms(DSI_Headset h)
@@ -215,6 +260,8 @@ void DSI_Headset_ClearAlarms(DSI_Headset h)
 
 ## Source Naming
 
+Configure how electrodes are named. Most applications use the default 10-20 naming scheme and don't need these functions.
+
 ```c
 void DSI_Headset_UseNamingScheme(DSI_Headset h, const char* schemeName)
 int DSI_Headset_RenameSource(DSI_Headset h, const char* oldName, const char* newName)
@@ -222,11 +269,18 @@ int DSI_Headset_AddSourceAliases(DSI_Headset h, const char* aliasString)
 const char* DSI_Headset_GetSourceNames(DSI_Headset h, DSI_SourceSelection selection)
 ```
 
+**Note:** To list sources in your application, use `DSI_Headset_GetNumberOfSources()` + `DSI_Headset_GetSourceByIndex()` iteration instead of `GetSourceNames()`. See [getting_started](getting_started/index.md) for examples.
+
 ---
 
 ## Hardware Control
 
+Low-level hardware control functions. Most applications don't need these - they're for advanced use cases like custom firmware interactions or specialized testing.
+
 ### Analog Reset
+
+Control the analog signal reset state for advanced testing scenarios.
+
 ```c
 void DSI_Headset_StartAnalogReset(DSI_Headset h)
 void DSI_Headset_LockAnalogReset(DSI_Headset h)
@@ -234,6 +288,9 @@ void DSI_Headset_ReleaseAnalogReset(DSI_Headset h)
 ```
 
 ### Low-Level Control
+
+Direct hardware commands for shutdown, LED control, and data stream management.
+
 ```c
 void DSI_Headset_Shutdown(DSI_Headset h)
 void DSI_Headset_KillDataStream(DSI_Headset h, int expectReply)
@@ -273,6 +330,9 @@ void DSI_ProcessingStage_Write(DSI_ProcessingStage p, unsigned int channel, doub
 Access data from individual channels. `ReadBuffered()` returns one sample at a time; call it in a loop to read multiple samples.
 
 ### Data Access
+
+Read signal values, access buffer history, and manage channel output buffers.
+
 ```c
 double DSI_Channel_GetSignal(DSI_Channel ch)
 double DSI_Channel_ReadBuffered(DSI_Channel ch)
@@ -284,6 +344,9 @@ void DSI_Channel_FlushOutputBuffer(DSI_Channel ch)
 ```
 
 ### Channel Properties
+
+Query channel names, types, and signal calculation properties.
+
 ```c
 const char* DSI_Channel_GetName(DSI_Channel ch)
 const char* DSI_Channel_GetString(DSI_Channel ch)
@@ -297,7 +360,12 @@ int DSI_Channel_IsTrigger(DSI_Channel ch)
 
 ## Source Functions
 
+Access individual electrode sensors. Sources represent physical electrodes before they're combined into channels. Use these primarily for impedance testing and sensor identification.
+
 ### Source Properties
+
+Read source names, signal values, impedance, gain, and DC offset.
+
 ```c
 const char* DSI_Source_GetName(DSI_Source s)
 void DSI_Source_SetName(DSI_Source s, const char* name)
@@ -308,6 +376,9 @@ double DSI_Source_GetDCOffset(DSI_Source s)
 ```
 
 ### Source Type Queries
+
+Identify source types (EEG sensor, reference, trigger, etc.).
+
 ```c
 int DSI_Source_IsReferentialEEG(DSI_Source s)
 int DSI_Source_IsFactoryReference(DSI_Source s)

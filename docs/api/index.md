@@ -55,7 +55,7 @@ Comprehensive error reference with:
 
 ---
 
-**Need examples?** Check `demo.c` and `DSI.py` included with your API.
+**Need examples?** Check `demo.c` and `DSI.py` included with your DSI-API download.
 
 ---
 

@@ -40,7 +40,7 @@ Connect with popular platforms and third-party libraries
 :link: api/index
 :link-type: doc
 
-Comprehensive DSI API documentation, guides, and error codes
+Comprehensive DSI-API documentation, guides, and error codes
 ```
 
 ```{grid-item-card} FAQ
