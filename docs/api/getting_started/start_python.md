@@ -391,23 +391,17 @@ Once your headset is connected and channels are configured, you can start acquir
 
 ### Step 1: Configure Sampling
 
-Before acquiring data, you may want to configure the sampling rate and filter settings. Not all sampling rates are available on all headsets - check feature availability first.
+The default sampling rate is 300 Hz. If the SampleRate feature is unlocked, all DSI headsets can configure rates up to 600 Hz.
 
 ```python
-# NOTE: Configuring non-default sampling rates requires the appropriate feature to be unlocked on your headset. Check feature availability first:
+# NOTE: The default sampling rate is 300 Hz. If the SampleRate feature is unlocked,
+# all DSI headsets can configure rates up to 600 Hz. Check feature availability first:
 if h.GetFeatureAvailability("SampleRate"):
-    print("Custom sampling rates are available")
+    print("Custom sampling rates are available (up to 600 Hz)")
+    h.ConfigureADC(600, 0)  # Use 600 Hz when unlocked
 else:
-    print("Using default sampling rate (feature not unlocked)")
-
-info = h.GetInfoString()
-
-if "DSI-7" in info:
-    # DSI-7 default is 300 Hz
-    h.ConfigureADC(300, 0)
-elif "DSI-24" in info:
-    # DSI-24 default is 300 Hz, can configure higher if unlocked
-    h.ConfigureADC(300, 0)
+    print("Using default sampling rate of 300 Hz (feature not unlocked)")
+    h.ConfigureADC(300, 0)  # Default 300 Hz
 
 # Verify actual sampling rate
 fs = h.GetSamplingRate()

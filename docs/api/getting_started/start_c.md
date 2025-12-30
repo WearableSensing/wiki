@@ -461,23 +461,14 @@ Once your headset is connected and channels are configured, you can start acquir
 // Set sampling rate and filter mode
 // DSI_Headset_ConfigureADC(h, samplesPerSecond, filterMode)
 
-// NOTE: Configuring non-default sampling rates requires the appropriate feature
-// to be unlocked on your headset. Check feature availability first:
+// NOTE: The default sampling rate is 300 Hz. If the SampleRate feature is unlocked,
+// all DSI headsets can configure rates up to 600 Hz. Check feature availability first:
 if (DSI_Headset_GetFeatureAvailability(h, "SampleRate")) {
-    printf("Custom sampling rates are available\n");
+    printf("Custom sampling rates are available (up to 600 Hz)\n");
+    DSI_Headset_ConfigureADC(h, 600, 0);  // Use 600 Hz when unlocked
 } else {
-    printf("Using default sampling rate (feature not unlocked)\n");
-}
-
-const char* info = DSI_Headset_GetInfoString(h);
-
-if (strstr(info, "DSI-7")) {
-    // DSI-7 default is 300 Hz
-    DSI_Headset_ConfigureADC(h, 300, 0);
-}
-else if (strstr(info, "DSI-24")) {
-    // DSI-24 default is 300 Hz, can configure higher if unlocked
-    DSI_Headset_ConfigureADC(h, 300, 0);
+    printf("Using default sampling rate of 300 Hz (feature not unlocked)\n");
+    DSI_Headset_ConfigureADC(h, 300, 0);  // Default 300 Hz
 }
 
 // Verify actual sampling rate
