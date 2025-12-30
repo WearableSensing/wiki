@@ -73,13 +73,22 @@ typedef int (*DSI_MessageCallback)(const char* msg, int debugLevel);
 
 **Detection Pattern:**
 ```c
-DSI_Headset h = DSI_Headset_New(NULL);
-DSI_Headset_Connect(h, "COM3");
+// Helper function for error checking (from demo.c)
+int CheckError(void) {
+    if (DSI_Error()) return fprintf(stderr, "%s\n", DSI_ClearError());
+    else return 0;
+}
+#define CHECK  if (CheckError() != 0) return -1;
+
+// Use in connection code
+DSI_Headset h = DSI_Headset_New(NULL); CHECK
+DSI_Headset_Connect(h, "COM3"); CHECK
+
+// Or check explicitly without macro
+DSI_Headset_Connect(h, "COM4");
 if (DSI_Error()) {
     fprintf(stderr, "Connection failed: %s\n", DSI_ClearError());
-    // Try alternative port or auto-detection
-    const char* port = DSI_GetDefaultPort();
-    if (port) DSI_Headset_Connect(h, port);
+    // Try alternative approach
 }
 ```
 
@@ -109,13 +118,28 @@ if (DSI_Error()) {
 
 **Detection Pattern:**
 ```c
+// Helper function for error checking (from demo.c)
+int CheckError(void) {
+    if (DSI_Error()) return fprintf(stderr, "%s\n", DSI_ClearError());
+    else return 0;
+}
+#define CHECK  if (CheckError() != 0) return -1;
+
+// Use CHECK macro for montage configuration
+DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "A1+A2", 1); CHECK
+
+// Or check explicitly for troubleshooting
 DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "A1+A2", 1);
 if (DSI_Error()) {
     fprintf(stderr, "Montage error: %s\n", DSI_ClearError());
     
-    // List available sources
-    const char* sources = DSI_Headset_GetSourceNames(h);
-    fprintf(stderr, "Available: %s\n", sources);
+    // List available sources using iteration pattern
+    fprintf(stderr, "Available sources:\n");
+    int n = DSI_Headset_GetNumberOfSources(h);
+    for (int i = 0; i < n; i++) {
+        DSI_Source src = DSI_Headset_GetSourceByIndex(h, i);
+        fprintf(stderr, "  %s\n", DSI_Source_GetName(src));
+    }
     
     // Try simpler montage
     DSI_Headset_ChooseChannels(h, "@1,@2,@3,@4", "@A1+@A2", 1);
@@ -359,7 +383,7 @@ while (acquiring) {
 }
 ```
 
-### Pattern 5: Combined Error and Alarm Monitoring
+### Pattern 5: Monitor Buffer Overflow
 
 ```c
 void checkForProblems(DSI_Headset h) {
@@ -370,21 +394,16 @@ void checkForProblems(DSI_Headset h) {
         DSI_ClearError();
     }
     
-    // Check for hardware alarms
-    size_t nAlarms = DSI_Headset_GetNumberOfAlarms(h);
-    if (nAlarms > 0) {
-        fprintf(stderr, "Headset alarms: %zu\n", nAlarms);
-        
-        for (size_t i = 0; i < nAlarms; i++) {
-            int alarm = DSI_Headset_GetAlarm(h, 1);  // 1 = remove from queue
-            handleAlarm(alarm);
-        }
-    }
-    
     // Check for buffer overflow
     size_t overflow = DSI_Headset_GetNumberOfOverflowedSamples(h);
     if (overflow > 0) {
         fprintf(stderr, "Buffer overflow: %zu samples lost\n", overflow);
+        
+        // Increase buffer size
+        DSI_Headset_StopBackgroundAcquisition(h);
+        DSI_Headset_ReallocateBuffers(h, 20.0, 0.0);
+        DSI_Headset_FlushBuffers(h);
+        DSI_Headset_StartBackgroundAcquisition(h);
     }
 }
 ```
@@ -522,16 +541,13 @@ int connectWithRetry(DSI_Headset h, const char* port, int maxRetries) {
 
 **Solution:**
 ```c
-// Try auto-detection first
-const char* port = DSI_GetDefaultPort();
-if (port) {
-    DSI_Headset_Connect(h, port);
-    if (!DSI_Error()) {
-        printf("Connected to %s\n", port);
-        return;
-    }
-    DSI_ClearError();
+// Try environment variable first (DSISerialPort)
+DSI_Headset_Connect(h, NULL);
+if (!DSI_Error()) {
+    printf("Connected using DSISerialPort environment variable\n");
+    return;
 }
+fprintf(stderr, "Env variable failed: %s\n", DSI_ClearError());
 
 // Try specific ports
 const char* ports[] = {"COM3", "COM4", "COM5", "COM6", NULL};
@@ -542,7 +558,7 @@ for (int i = 0; ports[i]; i++) {
         printf("Connected to %s\n", ports[i]);
         return;
     }
-    DSI_ClearError();
+    fprintf(stderr, "Failed: %s\n", DSI_ClearError());
 }
 
 fprintf(stderr, "No available ports found\n");
@@ -564,15 +580,15 @@ if (!DSI_Headset_GetFeatureAvailability(h, "SampleRate")) {
     return;
 }
 
-const char* model = DSI_Headset_GetHardwareModel(h);
+const char* info = DSI_Headset_GetInfoString(h);
 
-if (strstr(model, "DSI-7")) {
+if (strstr(info, "DSI-7")) {
     // DSI-7 supports 300 Hz only
     DSI_Headset_ConfigureADC(h, 300, 0);
-} else if (strstr(model, "DSI-24")) {
+} else if (strstr(info, "DSI-24")) {
     // DSI-24 supports up to 1200 Hz
     DSI_Headset_ConfigureADC(h, 600, 0);
-} else if (strstr(model, "VR300")) {
+} else if (strstr(info, "VR300")) {
     // VR300 supports 300 Hz
     DSI_Headset_ConfigureADC(h, 300, 0);
 }
@@ -590,9 +606,13 @@ if (DSI_Error()) {
 
 **Solution:**
 ```c
-// List available sources first
-const char* sources = DSI_Headset_GetSourceNames(h);
-printf("Available sources: %s\n", sources);
+// List available sources using iteration pattern (matches demo.c)
+int n = DSI_Headset_GetNumberOfSources(h);
+printf("Available sources (%d):\n", n);
+for (int i = 0; i < n; i++) {
+    DSI_Source src = DSI_Headset_GetSourceByIndex(h, i);
+    printf("  %s\n", DSI_Source_GetName(src));
+}
 
 // Try requested montage
 DSI_Headset_ChooseChannels(h, "P3,Pz,P4", "A1+A2", 1);
@@ -609,7 +629,7 @@ if (DSI_Error()) {
 
 ### Scenario 4: Buffer Overflow
 
-**Alarm:** `OverrunInFIFO` (alarm code 14)
+**Problem:** Buffer overflow during acquisition
 
 **Cause:** Data arriving faster than application can process
 
@@ -634,7 +654,6 @@ void handleBufferOverflow(DSI_Headset h) {
     
     DSI_Headset_ReallocateBuffers(h, newSize, 0.0);
     DSI_Headset_FlushBuffers(h);
-    DSI_Headset_ClearAlarms(h);
     
     // Resume acquisition
     DSI_Headset_StartBackgroundAcquisition(h);
