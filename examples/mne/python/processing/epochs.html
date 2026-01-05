@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Epoching &amp; Event Handling &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/password.css?v=a096a895" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/mne/python/processing/epochs';</script>
+    <script src="../../../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="MNE-LSL Integration" href="../../lsl/index.html" />
+    <link rel="prev" title="Artifact Handling" href="artifacts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">   </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsl/index.html">LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/gui.html">GUI Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/tools.html">Command Line Tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MNE</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">MNE-Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lsl/index.html">MNE-LSL</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../mnelab/index.html">MNELAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eeglab/index.html">EEGLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/gui/index.html">GUI Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/scripting/index.html">Scripting &amp; Command Line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../bci2000/index.html">BCI2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/connect.html">Connect Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/run.html">Run Experiments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../psychopy/index.html">PsychoPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/stimulus.html">Creating Stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/software.html">Software Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/hardware.html">Hardware Triggers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tooling/index.html">Internal Tooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tooling/diode/index.html">Photodiode Experiment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/photodiode.html">Run the experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/offset.html">Determine offset and timing accuracy</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Integrations</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">MNE Integration</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">MNE-Python Integration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Epoching &amp; Event Handling</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="epoching-event-handling">
+<h1>Epoching &amp; Event Handling<a class="headerlink" href="#epoching-event-handling" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p>Learn to extract and analyze event-related data by creating epochs around stimulus events or experimental triggers.</p>
+<div class="note admonition">
+<p class="admonition-title">Prerequisites</p>
+<p>This guide assumes you have loaded, filtered, and cleaned your EEG data. See <a class="reference internal" href="../core/load.html"><span class="doc">Load Data</span></a>, <a class="reference internal" href="filter.html"><span class="doc">Filtering</span></a>, and <a class="reference internal" href="artifacts.html"><span class="doc">Artifact Handling</span></a> for details.</p>
+</div>
+<section id="understanding-epochs">
+<h2>Understanding Epochs<a class="headerlink" href="#understanding-epochs" title="Link to this heading">#</a></h2>
+<p><strong>Epochs</strong> are time-locked segments of data centered around specific events (e.g., stimulus presentation, button press). Epoching is essential for:</p>
+<ul class="simple">
+<li><p>Event-Related Potential (ERP) analysis</p></li>
+<li><p>Time-frequency analysis</p></li>
+<li><p>Statistical comparison between conditions</p></li>
+<li><p>Averaging across trials</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="finding-events">
+<h2>Finding Events<a class="headerlink" href="#finding-events" title="Link to this heading">#</a></h2>
+<p>Events are markers in your data that indicate when something happened (stimulus, response, etc.). For Wearable Sensing data, these typically come from the Trigger channel.</p>
+<section id="finding-events-from-trigger-channel">
+<h3>Finding Events from Trigger Channel<a class="headerlink" href="#finding-events-from-trigger-channel" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mne</span>
+
+<span class="c1"># Load data</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_edf</span><span class="p">(</span><span class="s1">&#39;recording.edf&#39;</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Find events from trigger channel</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">find_events</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">stim_channel</span><span class="o">=</span><span class="s1">&#39;Trigger&#39;</span><span class="p">,</span> <span class="n">min_duration</span><span class="o">=</span><span class="mf">0.002</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">events</span><span class="p">)</span><span class="si">}</span><span class="s1"> events&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Event IDs: </span><span class="si">{</span><span class="nb">set</span><span class="p">(</span><span class="n">events</span><span class="p">[:,</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Visualize events</span>
+<span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">plot_events</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> 
+                     <span class="n">first_samp</span><span class="o">=</span><span class="n">raw</span><span class="o">.</span><span class="n">first_samp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Event array structure:</strong></p>
+<ul class="simple">
+<li><p>Column 1: Sample number</p></li>
+<li><p>Column 2: Previous trigger value (usually 0)</p></li>
+<li><p>Column 3: Event ID (trigger code)</p></li>
+</ul>
+</section>
+<section id="creating-event-dictionary">
+<h3>Creating Event Dictionary<a class="headerlink" href="#creating-event-dictionary" title="Link to this heading">#</a></h3>
+<p>Map event IDs to meaningful names:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">event_id</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;auditory/left&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;auditory/right&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;visual/left&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;visual/right&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;response&#39;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="creating-epochs">
+<h2>Creating Epochs<a class="headerlink" href="#creating-epochs" title="Link to this heading">#</a></h2>
+<section id="basic-epoch-creation">
+<h3>Basic Epoch Creation<a class="headerlink" href="#basic-epoch-creation" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create epochs around events</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span>
+    <span class="n">raw</span><span class="p">,</span>
+    <span class="n">events</span><span class="p">,</span>
+    <span class="n">event_id</span><span class="o">=</span><span class="n">event_id</span><span class="p">,</span>
+    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span>      <span class="c1"># Start 200 ms before event</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>       <span class="c1"># End 800 ms after event</span>
+    <span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>  <span class="c1"># Baseline period for correction</span>
+    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Key parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tmin</span></code>, <code class="docutils literal notranslate"><span class="pre">tmax</span></code>: Time window around events (in seconds)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">baseline</span></code>: Period used for baseline correction (tuple or None)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preload</span></code>: Load data into memory (needed for many operations)</p></li>
+</ul>
+</section>
+<section id="epoch-selection-by-condition">
+<h3>Epoch Selection by Condition<a class="headerlink" href="#epoch-selection-by-condition" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create epochs for specific conditions</span>
+<span class="n">epochs_auditory</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;auditory&#39;</span><span class="p">]</span>
+<span class="n">epochs_visual</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;visual&#39;</span><span class="p">]</span>
+<span class="n">epochs_left</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;auditory/left&#39;</span><span class="p">,</span> <span class="s1">&#39;visual/left&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Auditory epochs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs_auditory</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Visual epochs: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs_visual</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualizing-epochs">
+<h3>Visualizing Epochs<a class="headerlink" href="#visualizing-epochs" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot all epochs</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_channels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">scalings</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot average across epochs (ERP)</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">plot_image</span><span class="p">(</span><span class="n">picks</span><span class="o">=</span><span class="s1">&#39;eeg&#39;</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Plot ERP with standard error</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">average</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="baseline-correction">
+<h2>Baseline Correction<a class="headerlink" href="#baseline-correction" title="Link to this heading">#</a></h2>
+<p>Remove pre-stimulus activity to isolate event-related responses:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Baseline correct using pre-stimulus period</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">apply_baseline</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># Or specify during epoch creation</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="n">event_id</span><span class="p">,</span>
+                    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                    <span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>  <span class="c1"># Apply automatically</span>
+                    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Baseline options:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(None,</span> <span class="pre">0)</span></code>: Use time from start to t=0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(-0.2,</span> <span class="pre">0)</span></code>: Use 200 ms before event</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: No baseline correction</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="epoch-rejection">
+<h2>Epoch Rejection<a class="headerlink" href="#epoch-rejection" title="Link to this heading">#</a></h2>
+<section id="manual-rejection">
+<h3>Manual Rejection<a class="headerlink" href="#manual-rejection" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interactively reject bad epochs</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Click on epochs to mark as bad</span>
+</pre></div>
+</div>
+</section>
+<section id="automatic-rejection">
+<h3>Automatic Rejection<a class="headerlink" href="#automatic-rejection" title="Link to this heading">#</a></h3>
+<p>Set amplitude thresholds to automatically reject noisy epochs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define rejection criteria (in volts)</span>
+<span class="n">reject_criteria</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">eeg</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">,</span>      <span class="c1"># 100 µV for EEG channels</span>
+    <span class="n">eog</span><span class="o">=</span><span class="mf">200e-6</span>       <span class="c1"># 200 µV for EOG channels</span>
+<span class="p">)</span>
+
+<span class="c1"># Apply during epoch creation</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="n">event_id</span><span class="p">,</span>
+                    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                    <span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">reject</span><span class="o">=</span><span class="n">reject_criteria</span><span class="p">,</span>
+                    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Rejected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="o">.</span><span class="n">drop_log</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="si">}</span><span class="s1"> epochs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="peak-to-peak-rejection">
+<h3>Peak-to-Peak Rejection<a class="headerlink" href="#peak-to-peak-rejection" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reject based on peak-to-peak amplitude</span>
+<span class="n">reject_criteria</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">eeg</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">)</span>
+<span class="n">flat_criteria</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">eeg</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>  <span class="c1"># Also reject flat channels</span>
+
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="n">event_id</span><span class="p">,</span>
+                    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                    <span class="n">reject</span><span class="o">=</span><span class="n">reject_criteria</span><span class="p">,</span>
+                    <span class="n">flat</span><span class="o">=</span><span class="n">flat_criteria</span><span class="p">,</span>
+                    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualizing-rejection">
+<h3>Visualizing Rejection<a class="headerlink" href="#visualizing-rejection" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot drop log showing why epochs were rejected</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">plot_drop_log</span><span class="p">()</span>
+
+<span class="c1"># Show rejection statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">epochs</span><span class="o">.</span><span class="n">drop_log</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="computing-evoked-responses-erps">
+<h2>Computing Evoked Responses (ERPs)<a class="headerlink" href="#computing-evoked-responses-erps" title="Link to this heading">#</a></h2>
+<p>Average epochs to compute Event-Related Potentials:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Average all epochs</span>
+<span class="n">evoked_all</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+
+<span class="c1"># Average by condition</span>
+<span class="n">evoked_auditory</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;auditory&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+<span class="n">evoked_visual</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;visual&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+
+<span class="c1"># Plot ERPs</span>
+<span class="n">evoked_all</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">evoked_auditory</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># Plot with spatial colors</span>
+<span class="n">evoked_all</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spatial_colors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gfp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="comparing-conditions">
+<h3>Comparing Conditions<a class="headerlink" href="#comparing-conditions" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot multiple conditions</span>
+<span class="n">evokeds</span> <span class="o">=</span> <span class="p">[</span><span class="n">epochs</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span><span class="o">.</span><span class="n">average</span><span class="p">()</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">event_id</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+<span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">plot_compare_evokeds</span><span class="p">(</span><span class="n">evokeds</span><span class="p">)</span>
+
+<span class="c1"># Statistical comparison</span>
+<span class="kn">from</span> <span class="nn">mne.stats</span> <span class="kn">import</span> <span class="n">permutation_cluster_test</span>
+<span class="c1"># See MNE statistics tutorials for details</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="topographic-analysis">
+<h2>Topographic Analysis<a class="headerlink" href="#topographic-analysis" title="Link to this heading">#</a></h2>
+<section id="topographic-maps">
+<h3>Topographic Maps<a class="headerlink" href="#topographic-maps" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot topography at specific time points</span>
+<span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+<span class="n">evoked</span><span class="o">.</span><span class="n">plot_topomap</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span> <span class="n">ch_type</span><span class="o">=</span><span class="s1">&#39;eeg&#39;</span><span class="p">)</span>
+
+<span class="c1"># Interactive topomap</span>
+<span class="n">evoked</span><span class="o">.</span><span class="n">plot_topomap</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">ch_type</span><span class="o">=</span><span class="s1">&#39;eeg&#39;</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="joint-plot-butterfly-topomap">
+<h3>Joint Plot (Butterfly + Topomap)<a class="headerlink" href="#joint-plot-butterfly-topomap" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine timecourse and topography</span>
+<span class="n">evoked</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+
+<span class="c1"># Automatically select peak times</span>
+<span class="n">evoked</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="s1">&#39;peaks&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="time-frequency-analysis">
+<h2>Time-Frequency Analysis<a class="headerlink" href="#time-frequency-analysis" title="Link to this heading">#</a></h2>
+<p>Analyze oscillatory activity in epochs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne.time_frequency</span> <span class="kn">import</span> <span class="n">tfr_morlet</span>
+
+<span class="c1"># Compute time-frequency representation</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Frequencies from 4-40 Hz</span>
+<span class="n">n_cycles</span> <span class="o">=</span> <span class="n">freqs</span> <span class="o">/</span> <span class="mf">2.0</span>   <span class="c1"># Number of cycles per frequency</span>
+
+<span class="n">power</span> <span class="o">=</span> <span class="n">tfr_morlet</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">freqs</span><span class="o">=</span><span class="n">freqs</span><span class="p">,</span> <span class="n">n_cycles</span><span class="o">=</span><span class="n">n_cycles</span><span class="p">,</span>
+                   <span class="n">return_itc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">power</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;logratio&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Power&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="event-related-spectral-perturbation-ersp">
+<h3>Event-Related Spectral Perturbation (ERSP)<a class="headerlink" href="#event-related-spectral-perturbation-ersp" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute for specific channels</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">tfr_morlet</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EEG C3-LE&#39;</span><span class="p">,</span> <span class="s1">&#39;EEG C4-LE&#39;</span><span class="p">],</span>
+                   <span class="n">freqs</span><span class="o">=</span><span class="n">freqs</span><span class="p">,</span> <span class="n">n_cycles</span><span class="o">=</span><span class="n">n_cycles</span><span class="p">,</span>
+                   <span class="n">return_itc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">power</span><span class="o">.</span><span class="n">plot_topo</span><span class="p">(</span><span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;logratio&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="saving-and-loading-epochs">
+<h2>Saving and Loading Epochs<a class="headerlink" href="#saving-and-loading-epochs" title="Link to this heading">#</a></h2>
+<section id="save-epochs">
+<h3>Save Epochs<a class="headerlink" href="#save-epochs" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save epochs to disk</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;epochs-epo.fif&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Save specific conditions</span>
+<span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;auditory&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;epochs_auditory-epo.fif&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="load-epochs">
+<h3>Load Epochs<a class="headerlink" href="#load-epochs" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load saved epochs</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">read_epochs</span><span class="p">(</span><span class="s1">&#39;epochs-epo.fif&#39;</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="export-to-other-formats">
+<h3>Export to Other Formats<a class="headerlink" href="#export-to-other-formats" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export to NumPy array</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>  <span class="c1"># Shape: (n_epochs, n_channels, n_times)</span>
+
+<span class="c1"># Export to DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">to_data_frame</span><span class="p">()</span>
+
+<span class="c1"># Export to CSV</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;epochs.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="complete-epoching-workflow">
+<h2>Complete Epoching Workflow<a class="headerlink" href="#complete-epoching-workflow" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mne</span>
+
+<span class="c1"># Load and preprocess data</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_edf</span><span class="p">(</span><span class="s1">&#39;recording.edf&#39;</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">l_freq</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">h_freq</span><span class="o">=</span><span class="mf">40.0</span><span class="p">)</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">set_eeg_reference</span><span class="p">(</span><span class="n">ref_channels</span><span class="o">=</span><span class="s1">&#39;average&#39;</span><span class="p">)</span>
+
+<span class="c1"># Find events</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">find_events</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">stim_channel</span><span class="o">=</span><span class="s1">&#39;Trigger&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define event IDs</span>
+<span class="n">event_id</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;condition_1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;condition_2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;response&#39;</span><span class="p">:</span> <span class="mi">5</span>
+<span class="p">}</span>
+
+<span class="c1"># Create epochs with rejection</span>
+<span class="n">reject_criteria</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">eeg</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">)</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="n">event_id</span><span class="p">,</span>
+                    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                    <span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">reject</span><span class="o">=</span><span class="n">reject_criteria</span><span class="p">,</span>
+                    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="si">}</span><span class="s1"> epochs&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute ERPs</span>
+<span class="n">evoked_1</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;condition_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+<span class="n">evoked_2</span> <span class="o">=</span> <span class="n">epochs</span><span class="p">[</span><span class="s1">&#39;condition_2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">average</span><span class="p">()</span>
+
+<span class="c1"># Visualize</span>
+<span class="n">evoked_1</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+<span class="n">evoked_2</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+
+<span class="c1"># Compare conditions</span>
+<span class="n">mne</span><span class="o">.</span><span class="n">viz</span><span class="o">.</span><span class="n">plot_compare_evokeds</span><span class="p">({</span><span class="s1">&#39;Condition 1&#39;</span><span class="p">:</span> <span class="n">evoked_1</span><span class="p">,</span> 
+                               <span class="s1">&#39;Condition 2&#39;</span><span class="p">:</span> <span class="n">evoked_2</span><span class="p">})</span>
+
+<span class="c1"># Save results</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;epochs-epo.fif&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">evoked_1</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;condition_1-ave.fif&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">evoked_2</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;condition_2-ave.fif&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h2>
+<p><strong>MNE Tutorials:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/epochs/10_epochs_overview.html">Epoching and Averaging</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/evoked/index.html">ERP/ERF Analysis</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/time-freq/index.html">Time-Frequency Analysis</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/evoked/20_visualize_evoked.html">Visualizing Evoked Data</a></p></li>
+</ul>
+<p><strong>API References:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mne.tools/stable/generated/mne.Epochs.html"><code class="docutils literal notranslate"><span class="pre">mne.Epochs</span></code></a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/generated/mne.find_events.html"><code class="docutils literal notranslate"><span class="pre">mne.find_events</span></code></a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/generated/mne.EvokedArray.html"><code class="docutils literal notranslate"><span class="pre">mne.EvokedArray</span></code></a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/generated/mne.viz.plot_compare_evokeds.html"><code class="docutils literal notranslate"><span class="pre">mne.viz.plot_compare_evokeds</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="artifacts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Artifact Handling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../lsl/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MNE-LSL Integration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Wearable Sensing.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

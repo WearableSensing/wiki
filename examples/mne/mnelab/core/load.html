@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Load Wearable Sensing Data &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/password.css?v=a096a895" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/mne/mnelab/core/load';</script>
+    <script src="../../../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Channel Configuration" href="channels.html" />
+    <link rel="prev" title="MNELAB" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">   </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsl/index.html">LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/gui.html">GUI Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/tools.html">Command Line Tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MNE</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../python/index.html">MNE-Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lsl/index.html">MNE-LSL</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">MNELAB</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eeglab/index.html">EEGLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/gui/index.html">GUI Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/scripting/index.html">Scripting &amp; Command Line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../bci2000/index.html">BCI2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/connect.html">Connect Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/run.html">Run Experiments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../psychopy/index.html">PsychoPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/stimulus.html">Creating Stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/software.html">Software Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/hardware.html">Hardware Triggers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tooling/index.html">Internal Tooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tooling/diode/index.html">Photodiode Experiment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/photodiode.html">Run the experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/offset.html">Determine offset and timing accuracy</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Integrations</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">MNE Integration</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">MNELAB</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Load Wearable Sensing Data</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="load-wearable-sensing-data">
+<h1>Load Wearable Sensing Data<a class="headerlink" href="#load-wearable-sensing-data" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p>MNELAB can open EDF files exported from DSI-Streamer, making it easy to analyze recordings from DSI-7, DSI-24, DSI-VR300, and DSI-Flex headsets.</p>
+<section id="exporting-edf-from-dsi-streamer">
+<h2>Exporting EDF from DSI-Streamer<a class="headerlink" href="#exporting-edf-from-dsi-streamer" title="Link to this heading">#</a></h2>
+<p>Before using MNELAB, export your data from DSI-Streamer:</p>
+<ol class="arabic simple">
+<li><p>Open your recording in DSI-Streamer</p></li>
+<li><p>Navigate to the <strong>Record</strong> tab</p></li>
+<li><p>Select the <strong>EDF</strong> raw format checkbox</p></li>
+<li><p>Under <strong>Export Files</strong> header, Click <strong>Export</strong></p></li>
+<li><p>Save your file (e.g., <code class="docutils literal notranslate"><span class="pre">recording.edf</span></code>) to the desired location using the file dialog window</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">EDF vs CSV</p>
+<p>MNELAB works best with EDF files, which preserve metadata like channel names, sampling rates, and sensor information. While CSV files can be imported into MNE-Python programmatically, EDF is the recommended format for GUI-based workflows.</p>
+</div>
+</section>
+<section id="opening-files-in-mnelab">
+<h2>Opening Files in MNELAB<a class="headerlink" href="#opening-files-in-mnelab" title="Link to this heading">#</a></h2>
+<p>Once you’ve exported an EDF file:</p>
+<ol class="arabic simple">
+<li><p><strong>Launch MNELAB</strong> from your applications menu</p></li>
+<li><p><strong>Click the “Open” icon</strong> in the toolbar, or select <strong>File → Open</strong></p></li>
+<li><p><strong>Browse to your EDF file</strong> and click Open</p></li>
+</ol>
+<p>The file will load, and the sidebar will display the dataset name while the main panel shows metadata about the recording, including:</p>
+<ul class="simple">
+<li><p>Number of channels</p></li>
+<li><p>Sampling rate</p></li>
+<li><p>Recording duration</p></li>
+<li><p>Channel types</p></li>
+<li><p>Annotations (if any)</p></li>
+<li><p>Montage information</p></li>
+</ul>
+</section>
+<section id="data-selection-cropping">
+<h2>Data Selection &amp; Cropping<a class="headerlink" href="#data-selection-cropping" title="Link to this heading">#</a></h2>
+<section id="cropping-time-range">
+<h3>Cropping Time Range<a class="headerlink" href="#cropping-time-range" title="Link to this heading">#</a></h3>
+<p>To work with a specific time segment:</p>
+<ol class="arabic simple">
+<li><p><strong>Edit → Crop data</strong></p></li>
+<li><p>Enter <strong>Start time</strong> and <strong>Stop time</strong> (in seconds)</p></li>
+<li><p>Click <strong>OK</strong></p></li>
+</ol>
+<p>A new cropped dataset will be created in the sidebar.</p>
+</section>
+<section id="picking-channels-by-type">
+<h3>Picking Channels by Type<a class="headerlink" href="#picking-channels-by-type" title="Link to this heading">#</a></h3>
+<p>To select specific channel types:</p>
+<ol class="arabic simple">
+<li><p><strong>Edit → Pick channels</strong></p></li>
+<li><p>Choose selection method:</p>
+<ul class="simple">
+<li><p><strong>By type:</strong> Select EEG, MEG, EOG, etc.</p></li>
+<li><p><strong>By name:</strong> Manually select individual channels</p></li>
+</ul>
+</li>
+<li><p>Choose whether to create new dataset or overwrite</p></li>
+<li><p>Click <strong>OK</strong></p></li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">Working with Multiple Datasets</p>
+<p>MNELAB preserves your analysis history by creating new datasets for each processing step. Use the sidebar to switch between versions and compare results.</p>
+</div>
+</section>
+</section>
+<section id="viewing-your-data">
+<h2>Viewing Your Data<a class="headerlink" href="#viewing-your-data" title="Link to this heading">#</a></h2>
+<p>To visualize the time-series data:</p>
+<ol class="arabic simple">
+<li><p>Select <strong>Plot → Plot data</strong> from the menu</p></li>
+<li><p>A new window will open showing all channels over time</p></li>
+<li><p>Use your mouse to:</p>
+<ul class="simple">
+<li><p><strong>Scroll</strong>: Navigate through time</p></li>
+<li><p><strong>Zoom</strong>: Adjust the time scale</p></li>
+<li><p><strong>Select channels</strong>: Click channel names to highlight</p></li>
+</ul>
+</li>
+<li><p>Click the <strong>Help</strong> button in the plot window for more interaction options, including:</p>
+<ul class="simple">
+<li><p>Adjusting scaling</p></li>
+<li><p>Toggling channel visibility</p></li>
+<li><p>Measuring time intervals</p></li>
+<li><p>Adding annotations</p></li>
+<li><p>Marking bad segments / channels</p></li>
+</ul>
+</li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">Interactive Plotting</p>
+<p>MNELAB’s plotting window is fully interactive. You can scroll through the entire recording, adjust scaling, add annotations, and toggle channels on/off for clearer visualization.</p>
+</div>
+</section>
+<section id="viewing-channel-locations">
+<h2>Viewing Channel Locations<a class="headerlink" href="#viewing-channel-locations" title="Link to this heading">#</a></h2>
+<p>To visualize sensor positions:</p>
+<ol class="arabic simple">
+<li><p><strong>Plot → Plot channel locations</strong></p></li>
+<li><p>A 2D topographic view of channel positions appears</p></li>
+<li><p>Bad channels are highlighted in red</p></li>
+</ol>
+<p>This is useful for:</p>
+<ul class="simple">
+<li><p>Verifying montage configuration</p></li>
+<li><p>Identifying spatial relationships between channels</p></li>
+<li><p>Planning channel selections for analysis</p></li>
+</ul>
+</section>
+<section id="expected-channels">
+<h2>Expected Channels<a class="headerlink" href="#expected-channels" title="Link to this heading">#</a></h2>
+<p>For Wearable Sensing headsets, you should see:</p>
+<ul class="simple">
+<li><p><strong>DSI-24:</strong> Fp1, Fp2, Fz, F3, F4, F7, F8, Cz, C3, C4, T3, T4, T5 (P7), T6 (P8), Pz, P3, P4, O1, O2, A1, A2, X1, X2, X3, Trigger, Event</p></li>
+<li><p><strong>DSI-7:</strong> F3, F4, C3, C4, P3, Pz, P4, LE</p></li>
+<li><p><strong>VR300:</strong> FCz, Pz, P3, P4, PO7, PO8, Oz, LE</p></li>
+<li><p><strong>VRVEP:</strong> FCz, POz, PO3/4, O1/O2, Oz, LE</p></li>
+</ul>
+</section>
+<section id="fif-files">
+<h2>FIF Files<a class="headerlink" href="#fif-files" title="Link to this heading">#</a></h2>
+<p>In addition to EDF files, MNELAB can read FIF files created from other MNE-Python workflows. See our <a class="reference internal" href="../../python/index.html"><span class="std std-doc">MNE-Python integration tutorial</span></a> for more information.</p>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<section id="file-won-t-load">
+<h3>File Won’t Load<a class="headerlink" href="#file-won-t-load" title="Link to this heading">#</a></h3>
+<p><strong>Problem:</strong> EDF file fails to open<br />
+<strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Ensure the file was exported from DSI-Streamer (not manually edited)</p></li>
+<li><p>Check that the file extension is <code class="docutils literal notranslate"><span class="pre">.edf</span></code> (not <code class="docutils literal notranslate"><span class="pre">.EDF</span></code> or <code class="docutils literal notranslate"><span class="pre">.edf.txt</span></code>)</p></li>
+<li><p>Try re-exporting from DSI-Streamer</p></li>
+</ul>
+</section>
+<section id="missing-channels">
+<h3>Missing Channels<a class="headerlink" href="#missing-channels" title="Link to this heading">#</a></h3>
+<p><strong>Problem:</strong> Some channels don’t appear<br />
+<strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Check the info panel to see which channels were loaded</p></li>
+<li><p>Verify the original recording included all expected channels</p></li>
+<li><p>Check DSI-Streamer export settings</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MNELAB</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="channels.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Channel Configuration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Wearable Sensing.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

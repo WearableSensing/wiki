@@ -1,0 +1,879 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Artifact Handling &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/password.css?v=a096a895" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/mne/python/processing/artifacts';</script>
+    <script src="../../../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Epoching &amp; Event Handling" href="epochs.html" />
+    <link rel="prev" title="Filtering" href="filter.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">   </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsl/index.html">LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/gui.html">GUI Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/tools.html">Command Line Tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MNE</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">MNE-Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../lsl/index.html">MNE-LSL</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../mnelab/index.html">MNELAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eeglab/index.html">EEGLab</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/gui/index.html">GUI Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/scripting/index.html">Scripting &amp; Command Line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../bci2000/index.html">BCI2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/connect.html">Connect Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/run.html">Run Experiments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../psychopy/index.html">PsychoPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/stimulus.html">Creating Stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/software.html">Software Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/hardware.html">Hardware Triggers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tooling/index.html">Internal Tooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tooling/diode/index.html">Photodiode Experiment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/photodiode.html">Run the experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/offset.html">Determine offset and timing accuracy</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Integrations</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">MNE Integration</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">MNE-Python Integration</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Artifact Handling</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="artifact-handling">
+<h1>Artifact Handling<a class="headerlink" href="#artifact-handling" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p>Learn to identify and remove artifacts from your EEG data using manual rejection, ICA, and regression methods.</p>
+<div class="note admonition">
+<p class="admonition-title">Prerequisites</p>
+<p>This guide assumes you have loaded and filtered your EEG data. See <a class="reference internal" href="../core/load.html"><span class="doc">Load Data</span></a> and <a class="reference internal" href="filter.html"><span class="doc">Filtering</span></a> for details.</p>
+</div>
+<section id="overview-of-artifact-types">
+<h2>Overview of Artifact Types<a class="headerlink" href="#overview-of-artifact-types" title="Link to this heading">#</a></h2>
+<p>Common artifacts in EEG data include:</p>
+<ul class="simple">
+<li><p><strong>Eye blinks and movements</strong> - High amplitude, frontal distribution</p></li>
+<li><p><strong>Muscle activity (EMG)</strong> - High frequency, temporal regions</p></li>
+<li><p><strong>Cardiac activity (ECG)</strong> - Regular rhythmic pattern</p></li>
+<li><p><strong>Line noise</strong> - 50/60 Hz electrical interference</p></li>
+<li><p><strong>Movement artifacts</strong> - Large amplitude, variable patterns</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Artifact Detection Resources</p>
+<p>See <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/10_preprocessing_overview.html">Overview of Artifact Detection</a> for a comprehensive overview of artifact types and detection methods.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="manual-artifact-rejection">
+<h2>Manual Artifact Rejection<a class="headerlink" href="#manual-artifact-rejection" title="Link to this heading">#</a></h2>
+<section id="marking-bad-data-spans">
+<h3>Marking Bad Data Spans<a class="headerlink" href="#marking-bad-data-spans" title="Link to this heading">#</a></h3>
+<p>Visually inspect data and mark bad segments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mne</span>
+
+<span class="c1"># Interactive visualization for marking bad spans</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_channels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Click and drag to mark bad spans as annotations</span>
+<span class="c1"># These will be excluded from epoching</span>
+</pre></div>
+</div>
+</section>
+<section id="using-annotations">
+<h3>Using Annotations<a class="headerlink" href="#using-annotations" title="Link to this heading">#</a></h3>
+<p>Programmatically create annotations for bad segments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne</span> <span class="kn">import</span> <span class="n">Annotations</span>
+
+<span class="c1"># Create annotations for bad segments (times in seconds)</span>
+<span class="n">onset</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">45.2</span><span class="p">,</span> <span class="mf">60.5</span><span class="p">]</span>  <span class="c1"># Start times of bad segments</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>  <span class="c1"># Duration of each segment</span>
+<span class="n">description</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bad_movement&#39;</span><span class="p">,</span> <span class="s1">&#39;bad_blink&#39;</span><span class="p">,</span> <span class="s1">&#39;bad_noise&#39;</span><span class="p">]</span>
+
+<span class="n">annot</span> <span class="o">=</span> <span class="n">Annotations</span><span class="p">(</span><span class="n">onset</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">orig_time</span><span class="o">=</span><span class="n">raw</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;meas_date&#39;</span><span class="p">])</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">set_annotations</span><span class="p">(</span><span class="n">annot</span><span class="p">)</span>
+
+<span class="c1"># Visualize with annotations</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Annotation Resources</p>
+<p>See <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html">Rejecting Bad Data Spans</a> for more information on annotations and automatic detection methods.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="independent-component-analysis-ica">
+<h2>Independent Component Analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Link to this heading">#</a></h2>
+<p>ICA decomposes EEG signals into independent components, allowing you to identify and remove artifact sources.</p>
+<section id="fitting-ica">
+<h3>Fitting ICA<a class="headerlink" href="#fitting-ica" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne.preprocessing</span> <span class="kn">import</span> <span class="n">ICA</span>
+
+<span class="c1"># Create ICA object</span>
+<span class="n">ica</span> <span class="o">=</span> <span class="n">ICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">97</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit ICA on filtered data (1-40 Hz recommended)</span>
+<span class="n">raw_filt</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">l_freq</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">h_freq</span><span class="o">=</span><span class="mf">40.0</span><span class="p">)</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">raw_filt</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fitted </span><span class="si">{</span><span class="n">ica</span><span class="o">.</span><span class="n">n_components_</span><span class="si">}</span><span class="s1"> components&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualizing-components">
+<h3>Visualizing Components<a class="headerlink" href="#visualizing-components" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot component time courses</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">plot_sources</span><span class="p">(</span><span class="n">raw_filt</span><span class="p">)</span>
+
+<span class="c1"># Plot component topographies</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">plot_components</span><span class="p">()</span>
+
+<span class="c1"># Plot detailed properties of specific components</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">plot_properties</span><span class="p">(</span><span class="n">raw_filt</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="identifying-artifact-components">
+<h3>Identifying Artifact Components<a class="headerlink" href="#identifying-artifact-components" title="Link to this heading">#</a></h3>
+<p><strong>Eye blinks:</strong> Frontal topography, low frequency, large amplitude</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find components correlated with EOG channel</span>
+<span class="n">eog_indices</span><span class="p">,</span> <span class="n">eog_scores</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">find_bads_eog</span><span class="p">(</span><span class="n">raw_filt</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;EEG X2:EOG-Pz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;EOG components: </span><span class="si">{</span><span class="n">eog_indices</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Visualize EOG scores</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">plot_scores</span><span class="p">(</span><span class="n">eog_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Cardiac artifacts:</strong> Regular rhythmic pattern</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find components correlated with ECG</span>
+<span class="n">ecg_indices</span><span class="p">,</span> <span class="n">ecg_scores</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">find_bads_ecg</span><span class="p">(</span><span class="n">raw_filt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ECG components: </span><span class="si">{</span><span class="n">ecg_indices</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="removing-components">
+<h3>Removing Components<a class="headerlink" href="#removing-components" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mark components as bad</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>  <span class="c1"># Component indices to remove</span>
+
+<span class="c1"># Apply ICA to remove marked components</span>
+<span class="n">raw_clean</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+<span class="c1"># Compare before and after</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_channels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Before ICA&#39;</span><span class="p">)</span>
+<span class="n">raw_clean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_channels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;After ICA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-ica-workflow">
+<h3>Complete ICA Workflow<a class="headerlink" href="#complete-ica-workflow" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mne</span>
+<span class="kn">from</span> <span class="nn">mne.preprocessing</span> <span class="kn">import</span> <span class="n">ICA</span>
+
+<span class="c1"># Load and filter data</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_raw_edf</span><span class="p">(</span><span class="s1">&#39;recording.edf&#39;</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">l_freq</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">h_freq</span><span class="o">=</span><span class="mf">40.0</span><span class="p">)</span>
+
+<span class="c1"># Fit ICA</span>
+<span class="n">ica</span> <span class="o">=</span> <span class="n">ICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">97</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+
+<span class="c1"># Automatically find bad components</span>
+<span class="c1"># Use EOG channel if available, or frontal channel (Fp1)</span>
+<span class="n">eog_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">find_bads_eog</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;Fp1&#39;</span><span class="p">)</span>
+<span class="n">ecg_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">find_bads_ecg</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+
+<span class="c1"># Combine and set as bad</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">exclude</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">eog_indices</span> <span class="o">+</span> <span class="n">ecg_indices</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Excluding components: </span><span class="si">{</span><span class="n">ica</span><span class="o">.</span><span class="n">exclude</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot for verification</span>
+<span class="n">ica</span><span class="o">.</span><span class="n">plot_components</span><span class="p">(</span><span class="n">picks</span><span class="o">=</span><span class="n">ica</span><span class="o">.</span><span class="n">exclude</span><span class="p">)</span>
+
+<span class="c1"># Apply ICA</span>
+<span class="n">raw_clean</span> <span class="o">=</span> <span class="n">ica</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+<span class="c1"># Save cleaned data</span>
+<span class="n">raw_clean</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;recording_ica_clean.fif&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">ICA Best Practices</p>
+<ul class="simple">
+<li><p>Filter data (1-40 Hz) before ICA for better decomposition</p></li>
+<li><p>Use at least 1-2 minutes of data for stable components</p></li>
+<li><p>Remove extreme artifacts manually before ICA</p></li>
+<li><p>Verify components visually before removal</p></li>
+<li><p>See <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/40_artifact_correction_ica.html">ICA Tutorial</a> for detailed guidance</p></li>
+</ul>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="regression-based-artifact-removal">
+<h2>Regression-Based Artifact Removal<a class="headerlink" href="#regression-based-artifact-removal" title="Link to this heading">#</a></h2>
+<p>Use regression to remove artifacts when you have reference channels (EOG, ECG).</p>
+<section id="eog-artifact-removal">
+<h3>EOG Artifact Removal<a class="headerlink" href="#eog-artifact-removal" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create EOG events from EOG channel</span>
+<span class="n">eog_events</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">find_eog_events</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;EEG X2:EOG-Pz&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create EOG epochs</span>
+<span class="n">eog_epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">create_eog_epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;EEG X2:EOG-Pz&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute and apply SSP projectors</span>
+<span class="n">projs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">compute_proj_eog</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;EEG X2:EOG-Pz&#39;</span><span class="p">,</span> 
+                                               <span class="n">n_eeg</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">add_proj</span><span class="p">(</span><span class="n">projs</span><span class="p">)</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">apply_proj</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="ecg-artifact-removal">
+<h3>ECG Artifact Removal<a class="headerlink" href="#ecg-artifact-removal" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find ECG events</span>
+<span class="n">ecg_events</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">find_ecg_events</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;EEG X1:ECG-Pz&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create ECG epochs</span>
+<span class="n">ecg_epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">create_ecg_epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;EEG X1:ECG-Pz&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute and apply SSP projectors</span>
+<span class="n">projs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">compute_proj_ecg</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">ch_name</span><span class="o">=</span><span class="s1">&#39;EEG X1:ECG-Pz&#39;</span><span class="p">,</span>
+                                               <span class="n">n_eeg</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">add_proj</span><span class="p">(</span><span class="n">projs</span><span class="p">)</span>
+<span class="n">raw</span><span class="o">.</span><span class="n">apply_proj</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Regression Resources</p>
+<p>See <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/35_artifact_correction_regression.html">Repairing Artifacts with Regression</a> and <a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/50_artifact_correction_ssp.html">SSP Tutorial</a> for more information.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="automatic-artifact-detection">
+<h2>Automatic Artifact Detection<a class="headerlink" href="#automatic-artifact-detection" title="Link to this heading">#</a></h2>
+<p>MNE provides automated methods for detecting artifacts in continuous data.</p>
+<section id="peak-to-peak-amplitude">
+<h3>Peak-to-Peak Amplitude<a class="headerlink" href="#peak-to-peak-amplitude" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Detect flat and high-amplitude segments</span>
+<span class="n">annot_auto</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">annotate_amplitude</span><span class="p">(</span>
+    <span class="n">raw</span><span class="p">,</span> 
+    <span class="n">peak</span><span class="o">=</span><span class="s1">&#39;neg&#39;</span><span class="p">,</span>
+    <span class="n">flat</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>  <span class="c1"># Flat if below this value (V)</span>
+    <span class="n">bad_percent</span><span class="o">=</span><span class="mi">10</span>  <span class="c1"># Mark as bad if &gt;10% of channels affected</span>
+<span class="p">)</span>
+
+<span class="n">raw</span><span class="o">.</span><span class="n">set_annotations</span><span class="p">(</span><span class="n">annot_auto</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="muscle-artifacts">
+<h3>Muscle Artifacts<a class="headerlink" href="#muscle-artifacts" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Detect muscle artifacts</span>
+<span class="n">annot_muscle</span><span class="p">,</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">annotate_muscle_zscore</span><span class="p">(</span>
+    <span class="n">raw</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># Z-score threshold</span>
+    <span class="n">min_length_good</span><span class="o">=</span><span class="mf">0.2</span>  <span class="c1"># Minimum length of good data</span>
+<span class="p">)</span>
+
+<span class="n">raw</span><span class="o">.</span><span class="n">set_annotations</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">annotations</span> <span class="o">+</span> <span class="n">annot_muscle</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="epoch-based-rejection">
+<h2>Epoch-Based Rejection<a class="headerlink" href="#epoch-based-rejection" title="Link to this heading">#</a></h2>
+<p>Reject bad epochs based on amplitude thresholds:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mne</span>
+
+<span class="c1"># Create epochs (see Epoching section for details)</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">find_events</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">stim_channel</span><span class="o">=</span><span class="s1">&#39;Trigger&#39;</span><span class="p">)</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">Epochs</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">event_id</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;stimulus&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+                    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">preload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Set rejection criteria (values in V for EEG)</span>
+<span class="n">reject_criteria</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">eeg</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">,</span>  <span class="c1"># 100 µV</span>
+    <span class="n">eog</span><span class="o">=</span><span class="mf">200e-6</span>   <span class="c1"># 200 µV</span>
+<span class="p">)</span>
+
+<span class="c1"># Apply rejection</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">drop_bad</span><span class="p">(</span><span class="n">reject</span><span class="o">=</span><span class="n">reject_criteria</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Kept </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="o">.</span><span class="n">drop_log</span><span class="p">)</span><span class="si">}</span><span class="s1"> epochs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="visualizing-dropped-epochs">
+<h3>Visualizing Dropped Epochs<a class="headerlink" href="#visualizing-dropped-epochs" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot drop log</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">plot_drop_log</span><span class="p">()</span>
+
+<span class="c1"># Plot rejected epochs</span>
+<span class="n">epochs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">picks</span><span class="o">=</span><span class="s1">&#39;eeg&#39;</span><span class="p">,</span> <span class="n">scalings</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h2>
+<p><strong>MNE Preprocessing Tutorials:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/10_preprocessing_overview.html">Overview of Artifact Detection</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/15_handling_bad_channels.html">Handling Bad Channels</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html">Rejecting Bad Data Spans</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/40_artifact_correction_ica.html">ICA Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/35_artifact_correction_regression.html">Regression-Based Correction</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/auto_tutorials/preprocessing/50_artifact_correction_ssp.html">SSP Correction</a></p></li>
+</ul>
+<p><strong>API References:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mne.tools/stable/generated/mne.preprocessing.ICA.html"><code class="docutils literal notranslate"><span class="pre">mne.preprocessing.ICA</span></code></a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/generated/mne.Annotations.html"><code class="docutils literal notranslate"><span class="pre">mne.Annotations</span></code></a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/stable/generated/mne.preprocessing.find_bads_eog.html"><code class="docutils literal notranslate"><span class="pre">mne.preprocessing.find_bads_eog</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="filter.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Filtering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="epochs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Epoching &amp; Event Handling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Wearable Sensing.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
