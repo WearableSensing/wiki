@@ -30,9 +30,41 @@ Load data and configure channels
 :link-type: doc
 :text-align: center
 
-Filter and preprocess signals
+Filter, clean, and epoch your data
 ```
+
 ````
+
+---
+
+## Tutorial Sections
+
+(core-operations)=
+### Core Operations
+
+```{admonition} Start Here
+:class: tip
+Begin with loading your data, then configure channels and references for analysis.
+```
+
+- {doc}`core/load` - Load EDF files from DSI-Streamer
+- {doc}`core/channels` - Set channel types, manage selections, and configure referencing
+
+(data-processing)=
+### Data Processing
+
+```{admonition} Preprocessing Pipeline
+:class: note
+Follow these tutorials in sequence for a complete preprocessing workflow:
+1. **Filter** - Remove noise and isolate frequency bands
+2. **Artifacts** - Clean data using ICA and rejection methods
+3. **Epochs** - Extract event-related segments for analysis
+```
+
+- {doc}`processing/filter` - Apply frequency filters and resampling
+- {doc}`processing/artifacts` - Remove artifacts with ICA and rejection
+- {doc}`processing/epochs` - Create epochs and compute ERPs
+
 ---
 
 
@@ -58,11 +90,20 @@ Filter and preprocess signals
 ```
 
 ```{toctree}
-:maxdepth: 3
+:maxdepth: 2
 :hidden:
+:caption: Core Operations
 
-Load Wearable Sensing Data <core/load>
-Channel Configuration <core/update_channel>
-Update Reference <core/update_ref>
-Filtering <processing/filter>
+core/load
+core/channels
+```
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+:caption: Data Processing
+
+processing/filter
+processing/artifacts
+processing/epochs
 ```
