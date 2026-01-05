@@ -24,7 +24,6 @@ Step-by-step hardware and internal software tutorials
 :link: help/downloads/index
 :link-type: doc
 
-
 Essential drivers, software tools, user guides, and third-party plugins
 ```
 

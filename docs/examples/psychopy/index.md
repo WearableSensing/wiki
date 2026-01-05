@@ -21,7 +21,7 @@ Learn how to integrate Wearable Sensing headsets with PsychoPy to run experiment
 :link: stimulus
 :link-type: doc
 :text-align: center
-
+---
 Design and present experimental stimuli
 ```
 
@@ -29,7 +29,7 @@ Design and present experimental stimuli
 :link: software
 :link-type: doc
 :text-align: center
-
+---
 Send triggers via software
 ```
 
@@ -37,7 +37,7 @@ Send triggers via software
 :link: hardware
 :link-type: doc
 :text-align: center
-
+---
 Connect physical trigger devices
 ```
 

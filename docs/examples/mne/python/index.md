@@ -32,36 +32,9 @@ Load data and configure channels
 
 Filter and preprocess signals
 ```
-
 ````
-
 ---
 
-## Tutorials
-
-Follow these step-by-step tutorials to work with Wearable Sensing data in MNE-Python:
-
-(core-operations)=
-### Core Operations
-
-```{toctree}
-:maxdepth: 1
-
-core/load
-core/update_channel
-core/update_ref
-```
-
-(data-processing)=
-### Data Processing
-
-```{toctree}
-:maxdepth: 1
-
-processing/filter
-```
-
----
 
 ## Additional Resources
 
@@ -69,3 +42,27 @@ processing/filter
 - [MNE GitHub Repository](https://github.com/mne-tools/mne-python)
 - [MNE Documentation](https://mne.tools/stable/documentation/index.html)
 - [MNE Tutorials](https://mne.tools/stable/auto_tutorials/index.html)
+
+### Related Wearable Sensing Tutorials
+
+- [MNE-LSL Integration](../lsl/index.md) - Real-time streaming
+- [MNELAB Integration](../mnelab/index.md) - GUI-based analysis
+- [EEGLab Plugin](../../eeglab/index.md) - Alternative GUI-based workflow
+
+
+
+```{admonition} Need Help?
+:class: tip
+- **MNE Community:** [MNE Forum](https://mne.discourse.group/)
+- **Wearable Sensing Support:** [Contact Support](../../../help/index.md)
+```
+
+```{toctree}
+:maxdepth: 3
+:hidden:
+
+Load Wearable Sensing Data <core/load>
+Channel Configuration <core/update_channel>
+Update Reference <core/update_ref>
+Filtering <processing/filter>
+```
