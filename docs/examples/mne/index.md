@@ -3,15 +3,24 @@
 
 MNE is a comprehensive ecosystem for working with neurophysiological data. Use these integrations to analyze EEG data from Wearable Sensing devices with powerful Python tools.
 
-## Choose Your Integration
 
-````{grid} 1 2 2 2
+## Getting Started
+
+```{admonition} Installation Required
+:class: note
+Each integration requires separate installation. Click on the cards below to access detailed setup instructions and tutorials.
+```
+
+### Choose Your Integration
+
+````{grid} 1 2 3 3
 :gutter: 3
 
 ```{grid-item-card} MNE-Python
 :link: python/index
 :link-type: doc
 :text-align: center
+---
 
 **Offline Analysis & Visualization**
 
@@ -24,7 +33,7 @@ Perfect for: Post-processing, advanced analysis, research workflows
 :link: lsl/index
 :link-type: doc
 :text-align: center
-
+---
 **Real-Time Streaming & Processing**
 
 Bridge between MNE-Python and Lab Streaming Layer for real-time data streaming and visualization.
@@ -32,38 +41,25 @@ Bridge between MNE-Python and Lab Streaming Layer for real-time data streaming a
 Perfect for: Live monitoring, real-time analysis, BCI applications
 ```
 
-````
-
+```{grid-item-card} MNELAB
+:link: mnelab/index
+:link-type: doc
+:text-align: center
 ---
+**GUI-Based Analysis**
 
-## Getting Started
+Graphical user interface for MNE-Python. Point-and-click workflows for EEG analysis without coding.
 
-```{admonition} Installation Required
-:class: note
-Each integration requires separate installation. Click on the cards above to access detailed setup instructions and tutorials.
+Perfect for: Visual workflows, EDF files, low or no-code analysis
 ```
-
-### What Can You Do?
-
-**With MNE-Python:**
-- Load and analyze EEG recordings
-- Apply advanced preprocessing and filtering
-- Perform time-frequency analysis and source localization
-- Create publication-ready visualizations
-
-**With MNE-LSL:**
-- Stream data in real-time from Wearable Sensing devices
-- Visualize EEG signals during data collection
-- Monitor signal quality in real-time
-- Implement online processing pipelines
-
----
+````
 
 ## Additional Resources
 
 **Official MNE Documentation:**
 - [MNE-Python Documentation](https://mne.tools/stable/index.html)
 - [MNE-LSL Documentation](https://mne.tools/mne-lsl/stable/index.html)
+- [MNELAB Documentation](https://mnelab.readthedocs.io/)
 
 **Related Integrations:**
 - {doc}`LSL Integration <../lsl/index>` - Set up LSL streaming with Wearable Sensing devices
@@ -74,4 +70,10 @@ Each integration requires separate installation. Click on the cards above to acc
 
 MNE-Python <python/index>
 MNE-LSL <lsl/index>
+MNELAB <mnelab/index>
+```
+
+```{admonition} Need Help?
+:class: tip
+- **Wearable Sensing Support:** [Contact Support](../../help/index.md)
 ```

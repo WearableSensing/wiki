@@ -44,7 +44,18 @@ wearable_sensing_data = mne.io.read_raw_edf(edf_file_path, preload = True)
 The `preload=True` option loads the data into memory, allowing for faster access and manipulation. By default, MNE does not preload the data, which means it will read the data from disk each time you access it.
 ```
 
-## Resources
 ---
+
+## Next Steps
+
+After loading your data:
+1. {doc}`Configure channels and references <channels>` - Set channel types and re-reference
+2. {doc}`Filter your data <../processing/filter>` - Remove noise and isolate frequency bands
+3. {doc}`Remove artifacts <../processing/artifacts>` - Clean data using ICA
+4. {doc}`Create epochs <../processing/epochs>` - Extract event-related segments
+
+---
+
+## Resources
 
 For more in-depth documentation and API reference, please refer to: ([mne.io.read_raw_edf](https://mne.tools/stable/generated/mne.io.read_raw_edf.html))
