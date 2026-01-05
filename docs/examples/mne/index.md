@@ -3,9 +3,17 @@
 
 MNE is a comprehensive ecosystem for working with neurophysiological data. Use these integrations to analyze EEG data from Wearable Sensing devices with powerful Python tools.
 
+
+## Getting Started
+
+```{admonition} Installation Required
+:class: note
+Each integration requires separate installation. Click on the cards below to access detailed setup instructions and tutorials.
+```
+
 ## Choose Your Integration
 
-````{grid} 1 2 2 2
+````{grid} 1 2 3 3
 :gutter: 3
 
 ```{grid-item-card} MNE-Python
@@ -32,16 +40,21 @@ Bridge between MNE-Python and Lab Streaming Layer for real-time data streaming a
 Perfect for: Live monitoring, real-time analysis, BCI applications
 ```
 
+```{grid-item-card} MNELAB
+:link: mnelab/index
+:link-type: doc
+:text-align: center
+
+**GUI-Based Analysis**
+
+Graphical user interface for MNE-Python. Point-and-click workflows for EEG analysis without coding.
+
+Perfect for: Visual workflows, EDF files, users new to Python
+```
+
 ````
 
 ---
-
-## Getting Started
-
-```{admonition} Installation Required
-:class: note
-Each integration requires separate installation. Click on the cards above to access detailed setup instructions and tutorials.
-```
 
 ### What Can You Do?
 
@@ -57,6 +70,12 @@ Each integration requires separate installation. Click on the cards above to acc
 - Monitor signal quality in real-time
 - Implement online processing pipelines
 
+**With MNELAB:**
+- Open and visualize files through an intuitive GUI
+- Apply filters and re-referencing with point-and-click
+- Perform artifact rejection and ICA decomposition
+- Export processed data for further analysis
+
 ---
 
 ## Additional Resources
@@ -64,6 +83,7 @@ Each integration requires separate installation. Click on the cards above to acc
 **Official MNE Documentation:**
 - [MNE-Python Documentation](https://mne.tools/stable/index.html)
 - [MNE-LSL Documentation](https://mne.tools/mne-lsl/stable/index.html)
+- [MNELAB Documentation](https://mnelab.readthedocs.io/)
 
 **Related Integrations:**
 - {doc}`LSL Integration <../lsl/index>` - Set up LSL streaming with Wearable Sensing devices
@@ -74,4 +94,5 @@ Each integration requires separate installation. Click on the cards above to acc
 
 MNE-Python <python/index>
 MNE-LSL <lsl/index>
+MNELAB <mnelab/index>
 ```
