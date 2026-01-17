@@ -1,7 +1,8 @@
 # Filtering
 ---
 
-Apply frequency filters to remove noise and isolate signals of interest.
+Apply frequency filters to your Wearable Sensing EEG data to remove noise and isolate signals of interest.
+
 
 ## Applying Filters
 
@@ -9,8 +10,13 @@ Apply frequency filters to remove noise and isolate signals of interest.
 2. Set filter parameters:
    - **High-pass:** Removes slow drifts (e.g., 0.5 Hz)
    - **Low-pass:** Removes high-frequency noise (e.g., 40 Hz)
-   - **Notch:** Removes specific frequencies (e.g., 50/60 Hz line noise)
+   - **Notch:** Removes specific frequencies (60 Hz in North America, 50 Hz in Europe/Asia)
 3. Click **Apply**
+
+```{admonition} Power Line Noise
+:class: tip
+For Wearable Sensing recordings in North America, use 60 Hz notch filter. For Europe/Asia, use 50 Hz. You may also want to remove harmonics (120 Hz, 180 Hz for 60 Hz systems).
+```
 
 ## Common Filter Settings
 
@@ -67,3 +73,20 @@ After filtering, compare before and after:
 - Close other applications to free memory
 - Consider downsampling: **Tools → Resample**
 - Process data in shorter segments
+
+---
+
+## Next Steps
+
+After filtering your Wearable Sensing data:
+1. {doc}`Remove artifacts <artifacts>` - Clean data with ICA
+2. {doc}`Create epochs <epochs>` - Extract event-related segments
+3. Save filtered data: **File → Save as** (use FIF format for compatibility)
+
+---
+
+## Resources
+
+- [MNELAB Filtering](https://mnelab.readthedocs.io/) | [MNE Filtering Tutorial](https://mne.tools/stable/auto_tutorials/preprocessing/30_filtering_resampling.html)
+- [Zhang et al. (2024) - Optimal ERP Filters](https://doi.org/10.1111/psyp.14530)
+- {doc}`MNE-Python Filtering <../../python/processing/filter>` | {doc}`Load Data <../core/load>`

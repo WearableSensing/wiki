@@ -21,7 +21,7 @@ Learn how to stream, record, and analyze Wearable Sensing EEG data using LSL too
 :link: gui
 :link-type: doc
 :text-align: center
-
+---
 Use dsi2lslGUI for streaming
 ```
 
@@ -29,7 +29,7 @@ Use dsi2lslGUI for streaming
 :link: tools
 :link-type: doc
 :text-align: center
-
+---
 Advanced LSL utilities
 ```
 

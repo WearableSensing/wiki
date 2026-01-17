@@ -14,7 +14,7 @@ Get started with Wearable Sensing's EEG technology through step-by-step guides c
 :link: software
 :link-type: doc
 :text-align: center
-
+---
 Learn to install and configure DSI-Streamer and other essential software tools
 ```
 
@@ -22,7 +22,7 @@ Learn to install and configure DSI-Streamer and other essential software tools
 :link: hardware
 :link-type: doc
 :text-align: center
-
+---
 Setup guides for EEG headsets, sensors, and proper electrode placement techniques
 ```
 
@@ -30,7 +30,7 @@ Setup guides for EEG headsets, sensors, and proper electrode placement technique
 :link: ../../examples/index
 :link-type: doc
 :text-align: center
-
+---
 Integrate with popular platforms like MNE-Python, PsychoPy, BCI2000, and more
 ```
 ````

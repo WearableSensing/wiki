@@ -1,23 +1,23 @@
 # Load Wearable Sensing Data
 ---
 
-This will be a guide on loading Wearable Sensing data using MNE-Python.
+Load EEG recordings from your Wearable Sensing DSI-24, DSI-VR300, or DSI-7 headset into MNE-Python for offline analysis.
 
-```{admonition} Experiment
+```{admonition} Data Source
 :class: note
-The data were collected using a DSI-24 at a sampling rate of 300Hz. There were two conditions in which the user was asked to close and open their eyes.
+The example data were collected using a DSI-24 headset at 300 Hz sampling rate. There were two experimental conditions: eyes closed and eyes open, demonstrating alpha rhythm modulation.
 ```
 
 ## Example Data
----
 
 To follow along with this tutorial, you can download a sample data file from this [dropbox](https://www.dropbox.com/scl/fi/n1yhaco7fy397pu69l14u/Sample_DSI_24_Eyes_Closed.edf?rlkey=2vco7a100hhevg86i6vol1nmx&e=1&dl=0).
 
+
 ## Import using MNE
----
 
 ```{code-block} python
-:caption: Load Wearable Sensing EDF
+:caption: Load Wearable Sensing EDF file with MNE-Python
+
 import mne
 
 # Define the file path of the EDF file on you computer
@@ -58,4 +58,5 @@ After loading your data:
 
 ## Resources
 
-For more in-depth documentation and API reference, please refer to: ([mne.io.read_raw_edf](https://mne.tools/stable/generated/mne.io.read_raw_edf.html))
+- [read_raw_edf API](https://mne.tools/stable/generated/mne.io.read_raw_edf.html) | [Loading Data Tutorial](https://mne.tools/stable/auto_tutorials/io/10_reading_meg_data.html)
+- {doc}`Channel Configuration <channels>` | {doc}`Filtering <../processing/filter>`

@@ -21,7 +21,7 @@ Learn how to connect and use your Wearable Sensing DSI headset with BCI2000 for 
 :link: connect
 :link-type: doc
 :text-align: center
-
+---
 Set up your DSI headset with BCI2000
 ```
 
@@ -29,7 +29,7 @@ Set up your DSI headset with BCI2000
 :link: run
 :link-type: doc
 :text-align: center
-
+---
 Start recording and running tasks
 ```
 

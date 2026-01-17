@@ -30,7 +30,9 @@ See [Background on Filtering](https://mne.tools/stable/auto_tutorials/preprocess
 
 The most common filter type - keeps frequencies within a specified range:
 
-```python
+```{code-block} python
+:caption: Apply band-pass filter to remove drift and high-frequency noise
+
 import mne
 
 # Load data
@@ -56,7 +58,9 @@ raw.plot(n_channels=20, duration=10, title='After Filtering')
 
 Remove slow drifts and DC offset:
 
-```python
+```{code-block} python
+:caption: Remove slow drifts below 1 Hz
+
 # Remove frequencies below 1 Hz
 raw.filter(l_freq=1.0, h_freq=None)
 ```
@@ -65,7 +69,9 @@ raw.filter(l_freq=1.0, h_freq=None)
 
 Remove high-frequency noise:
 
-```python
+```{code-block} python
+:caption: Remove high-frequency noise above 40 Hz
+
 # Remove frequencies above 40 Hz
 raw.filter(l_freq=None, h_freq=40.0)
 ```
@@ -76,7 +82,9 @@ raw.filter(l_freq=None, h_freq=40.0)
 
 Remove power line noise (50 Hz in Europe, 60 Hz in North America):
 
-```python
+```{code-block} python
+:caption: Remove 60 Hz line noise and harmonics
+
 # Remove 60 Hz line noise
 raw.notch_filter(freqs=60.0, filter_length='auto', phase='zero')
 
@@ -91,7 +99,9 @@ raw.notch_filter(freqs=50.0, filter_length='auto', phase='zero')
 
 Check if line noise is present before filtering:
 
-```python
+```{code-block} python
+:caption: Plot power spectral density to identify line noise
+
 # Plot power spectral density
 raw.plot_psd(fmax=100, average=False)
 # Look for peaks at 50/60 Hz and harmonics
@@ -109,7 +119,9 @@ raw.plot_psd(fmax=100, average=False)
 - Longer computational time
 - Recommended for most EEG applications
 
-```python
+```{code-block} python
+:caption: Apply FIR filter
+
 # FIR filter (default)
 raw.filter(l_freq=1.0, h_freq=40.0, method='fir')
 ```
@@ -120,7 +132,9 @@ raw.filter(l_freq=1.0, h_freq=40.0, method='fir')
 - Faster computation
 - Use with caution for ERP analysis
 
-```python
+```{code-block} python
+:caption: Apply IIR Butterworth filter
+
 # IIR filter (4th order Butterworth)
 raw.filter(l_freq=1.0, h_freq=40.0, method='iir', iir_params=dict(order=4, ftype='butter'))
 ```
@@ -129,7 +143,9 @@ raw.filter(l_freq=1.0, h_freq=40.0, method='iir', iir_params=dict(order=4, ftype
 
 Controls the shape of the filter frequency response:
 
-```python
+```{code-block} python
+:caption: Choose filter window type
+
 # Hamming window (default)
 raw.filter(l_freq=1.0, h_freq=40.0, fir_window='hamming')
 
@@ -144,7 +160,9 @@ raw.filter(l_freq=1.0, h_freq=40.0, fir_window='blackman')
 
 Longer filters have sharper cutoffs but introduce more edge artifacts:
 
-```python
+```{code-block} python
+:caption: Specify filter length
+
 # Automatic length (recommended)
 raw.filter(l_freq=1.0, h_freq=40.0, filter_length='auto')
 
@@ -159,7 +177,9 @@ raw.filter(l_freq=1.0, h_freq=40.0, filter_length='30s')
 
 Controls whether filtering introduces time delays:
 
-```python
+```{code-block} python
+:caption: Choose filter phase behavior
+
 # Zero-phase (default) - no time delay, but processes data twice
 raw.filter(l_freq=1.0, h_freq=40.0, phase='zero')
 
@@ -175,7 +195,9 @@ raw.filter(l_freq=1.0, h_freq=40.0, phase='minimum')
 
 Control the sharpness of frequency cutoffs:
 
-```python
+```{code-block} python
+:caption: Set transition bandwidth for cutoff sharpness
+
 # Wider transition (faster, less ringing)
 raw.filter(l_freq=1.0, h_freq=40.0, l_trans_bandwidth=0.5, h_trans_bandwidth=5.0)
 
@@ -188,7 +210,9 @@ raw.filter(l_freq=1.0, h_freq=40.0, l_trans_bandwidth='auto', h_trans_bandwidth=
 
 ### Filtering Specific Channels
 
-```python
+```{code-block} python
+:caption: Filter only selected channels
+
 # Filter only EEG channels
 raw.filter(l_freq=1.0, h_freq=40.0, picks='eeg')
 
@@ -198,7 +222,9 @@ raw.filter(l_freq=1.0, h_freq=40.0, picks=['EEG Cz-LE', 'EEG Pz-LE'])
 
 ### Filtering in Place vs Copy
 
-```python
+```{code-block} python
+:caption: Filter in-place or create filtered copy
+
 # Modify original data (in-place)
 raw.filter(l_freq=1.0, h_freq=40.0)
 
@@ -212,7 +238,9 @@ raw_filtered = raw.copy().filter(l_freq=1.0, h_freq=40.0)
 
 Visualize filter characteristics before applying:
 
-```python
+```{code-block} python
+:caption: Visualize filter frequency and impulse response
+
 from mne.viz import plot_filter
 
 # Design filter parameters
@@ -232,20 +260,17 @@ plot_filter(h, raw.info['sfreq'])
 
 Reduce sampling rate to decrease file size and processing time:
 
-```python
+```{code-block} python
+:caption: Resample data to lower sampling rate
+
 # Original sampling rate
 print(f'Original sampling rate: {raw.info["sfreq"]} Hz')
 
-# Resample to 250 Hz
-raw.resample(sfreq=250)
+# Resample to 150 Hz
+raw.resample(sfreq=150)
 
 print(f'New sampling rate: {raw.info["sfreq"]} Hz')
 ```
-
-**Common resampling targets:**
-- 250 Hz - Standard for EEG analysis
-- 500 Hz - Higher temporal resolution
-- 1000 Hz - For high-frequency analysis
 
 ```{admonition} Filter Before Resampling
 :class: warning
@@ -261,7 +286,9 @@ Always filter BEFORE resampling to avoid aliasing artifacts. The correct order i
 
 Visualize the impact of different filters:
 
-```python
+```{code-block} python
+:caption: Compare filter effects using power spectral density
+
 # Create copies with different filters
 raw_1hz = raw.copy().filter(l_freq=1.0, h_freq=40.0)
 raw_01hz = raw.copy().filter(l_freq=0.1, h_freq=40.0)
@@ -286,49 +313,17 @@ plt.show()
 
 ---
 
-## Common Filter Combinations
+## Next Steps
 
-Filter settings for specific analysis types:
-
-```python
-# ERP analysis (preserve slow components)
-raw.filter(l_freq=0.1, h_freq=40.0)
-
-# Oscillatory analysis (alpha, beta)
-raw.filter(l_freq=1.0, h_freq=50.0)
-
-# Sleep staging
-raw.filter(l_freq=0.3, h_freq=35.0)
-
-# Remove only line noise (preserve everything else)
-raw.notch_filter(freqs=60.0)
-```
+After filtering your data:
+1. {doc}`Remove artifacts with ICA <artifacts>` - Clean data for analysis
+2. {doc}`Create epochs <epochs>` - Extract event-related segments
+3. {doc}`MNE-LSL real-time filtering <../../lsl/processing/filter>` - Compare with real-time approaches
 
 ---
 
-## Best Practices
+## Resources
 
-1. **Filter early** in your preprocessing pipeline
-2. **Filter before resampling** to avoid aliasing
-3. **Use FIR filters** for ERP analysis (linear phase)
-4. **Document filter settings** in your methods
-5. **Visualize effects** using PSD plots
-
----
-
-## Additional Resources
-
-**MNE Documentation:**
-- [Background on Filtering](https://mne.tools/stable/auto_tutorials/preprocessing/25_background_filtering.html)
-- [Filtering and Resampling](https://mne.tools/stable/auto_tutorials/preprocessing/30_filtering_resampling.html)
-- [Filter Design](https://mne.tools/stable/auto_examples/visualization/plot_filter_basics.html)
-
-**API References:**
-- [`raw.filter()`](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.filter)
-- [`raw.notch_filter()`](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.notch_filter)
-- [`raw.resample()`](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.resample)
-- [`mne.filter.create_filter()`](https://mne.tools/stable/generated/mne.filter.create_filter.html)
-
-**External Resources:**
-- [Neural Data Science in Python](https://neuraldatascience.io/intro.html)
-- [Widmann et al. (2015) - Digital filter design for EEG](https://doi.org/10.1016/j.jneumeth.2014.08.002)
+- [Filtering Tutorial](https://mne.tools/stable/auto_tutorials/preprocessing/30_filtering_resampling.html) | [Background on Filtering](https://mne.tools/stable/auto_tutorials/preprocessing/25_background_filtering.html) | [Filter Design](https://mne.tools/stable/auto_examples/visualization/plot_filter_basics.html)
+- [raw.filter API](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.filter) | [raw.notch_filter API](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.notch_filter)
+- [Widmann et al. (2015) - Digital filter design](https://doi.org/10.1016/j.jneumeth.2014.08.002)

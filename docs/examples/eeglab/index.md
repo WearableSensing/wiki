@@ -57,7 +57,7 @@ If lost data is detected in the recording:
 :link: gui/index
 :link-type: doc
 :text-align: center
-
+---
 Step-by-step guide to using the import window
 ```
 
@@ -65,7 +65,7 @@ Step-by-step guide to using the import window
 :link: scripting/index
 :link-type: doc
 :text-align: center
-
+---
 Automate your analysis pipeline
 ```
 

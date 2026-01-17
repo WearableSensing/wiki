@@ -12,7 +12,7 @@ Browse by category below or use the **search bar** in the top navigation (or pre
 :link: general/index
 :link-type: doc
 :text-align: center
-
+---
 Product information, shipping, and support
 ```
 
@@ -20,7 +20,7 @@ Product information, shipping, and support
 :link: software/index
 :link-type: doc
 :text-align: center
-
+---
 DSI-Streamer, data acquisition, and APIs
 ```
 
@@ -28,7 +28,7 @@ DSI-Streamer, data acquisition, and APIs
 :link: hardware/index
 :link-type: doc
 :text-align: center
-
+---
 Devices, electrodes, batteries, and maintenance
 ```
 
@@ -36,7 +36,7 @@ Devices, electrodes, batteries, and maintenance
 :link: integrations/index
 :link-type: doc
 :text-align: center
-
+---
 Third-party software and hardware compatibility
 ```
 
@@ -44,7 +44,7 @@ Third-party software and hardware compatibility
 :link: triggers/index
 :link-type: doc
 :text-align: center
-
+---
 External triggers and synchronization
 ```
 
@@ -52,7 +52,7 @@ External triggers and synchronization
 :link: warranty/index
 :link-type: doc
 :text-align: center
-
+---
 Coverage, support packages, and policies
 ```
 

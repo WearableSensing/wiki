@@ -1,5 +1,6 @@
 # Software Triggers
 ---
+
 ```{admonition} LSL
 :class: sidebar note
 The following tutorials will use pylsl in pair with PsychoPy

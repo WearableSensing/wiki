@@ -1,11 +1,16 @@
 # Epoching & Event Handling
 ---
 
-Analyze event-related potentials and create epochs from continuous data.
+Analyze event-related potentials and create epochs from your Wearable Sensing continuous recordings.
+
+```{admonition} Prerequisites
+:class: note
+Your data is likely to include event markers in the 'Trigger' channel (sent from the Triggerhub or an MMBT-S device). Data should be {doc}`filtered <filter>` and cleaned with {doc}`ICA <artifacts>` if needed.
+```
 
 ## Viewing Events
 
-If your recording includes event markers (triggers from DSI-Streamer):
+If your Wearable Sensing recording includes event markers (triggers from the device), you can view them in MNELAB:
 
 1. Events appear in the info panel if present in the EDF file
 2. **Edit → Events** to view all event markers
@@ -45,7 +50,7 @@ Remove epochs with excessive artifacts:
 1. **Tools → Drop bad epochs**
 2. Configure rejection criteria:
    - **Activate Reject:** Check this box
-   - **Enter threshold:** e.g., 0.0001 (corresponding to 100 µV peak-to-peak)
+   - **Enter threshold:** e.g., 0.0001 (corresponding to 100 uV peak-to-peak)
 3. Click **OK**
 
 Epochs exceeding the threshold will be automatically rejected.
@@ -132,3 +137,19 @@ Analyze frequency content of your epochs:
    - **Frequency range:** e.g., 0.5 - 50 Hz
    - **Method:** Welch (default)
 3. View the PSD plot showing power across frequencies
+
+---
+
+## Next Steps
+
+After creating epochs from your Wearable Sensing data:
+1. Compute ERPs by averaging: **Tools → Average epochs**
+2. Export epochs: **File → Export** (choose FIF for MNE-Python compatibility)
+3. {doc}`Advanced analysis in MNE-Python <../../python/processing/epochs>` for statistics and source localization
+
+---
+
+## Resources
+
+- [MNELAB Documentation](https://mnelab.readthedocs.io/) | [MNE Epochs Tutorial](https://mne.tools/stable/auto_tutorials/epochs/10_epochs_overview.html)
+- {doc}`MNE-Python Epochs <../../python/processing/epochs>` | {doc}`MNE-LSL Real-Time Epochs <../../lsl/processing/epochs>`

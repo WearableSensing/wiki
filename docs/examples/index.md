@@ -9,7 +9,6 @@ Have a third-party library you'd like to integrate? [Reach out to us](../help/in
 ```
 
 ## Integration Tutorials
----
 
 ````{grid} 2
 :gutter: 3
@@ -18,7 +17,7 @@ Have a third-party library you'd like to integrate? [Reach out to us](../help/in
 :link: lsl/index
 :link-type: doc
 :text-align: center
-
+---
 Real-time data streaming and synchronization
 ```
 
@@ -26,7 +25,7 @@ Real-time data streaming and synchronization
 :link: mne/index
 :link-type: doc
 :text-align: center
-
+---
 EEG analysis and real-time streaming
 ```
 
@@ -34,7 +33,7 @@ EEG analysis and real-time streaming
 :link: eeglab/index
 :link-type: doc
 :text-align: center
-
+---
 EEGLab plugin integration
 ```
 
@@ -42,7 +41,7 @@ EEGLab plugin integration
 :link: bci2000/index
 :link-type: doc
 :text-align: center
-
+---
 Brain-computer interface platform
 ```
 
@@ -50,7 +49,7 @@ Brain-computer interface platform
 :link: psychopy/index
 :link-type: doc
 :text-align: center
-
+---
 Stimulus presentation and experiments
 ```
 
@@ -58,7 +57,7 @@ Stimulus presentation and experiments
 :link: tooling/index
 :link-type: doc
 :text-align: center
-
+---
 Custom Wearable Sensing utilities
 ```
 
