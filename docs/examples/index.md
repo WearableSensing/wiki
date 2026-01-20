@@ -1,5 +1,4 @@
 # Integrations
----
 
 Connect Wearable Sensing EEG devices with popular research platforms and tools. These integrations enable advanced data streaming, analysis, and experimental workflows.
 
@@ -7,6 +6,8 @@ Connect Wearable Sensing EEG devices with popular research platforms and tools. 
 :class: tip
 Have a third-party library you'd like to integrate? [Reach out to us](../help/index)—we're always expanding our integrations to provide more value to our users.
 ```
+
+---
 
 ## Integration Tutorials
 
@@ -29,12 +30,12 @@ Real-time data streaming and synchronization
 EEG analysis and real-time streaming
 ```
 
-```{grid-item-card} EEGLab
+```{grid-item-card} EEGLAB
 :link: eeglab/index
 :link-type: doc
 :text-align: center
 ---
-EEGLab plugin integration
+EEGLAB plugin integration
 ```
 
 ```{grid-item-card} BCI2000
@@ -63,6 +64,7 @@ Custom Wearable Sensing utilities
 
 ````
 
+---
 
 ### Additional Resources
 
@@ -76,7 +78,7 @@ See our main page for a more complete list of supported integrations.
 
 LSL <lsl/index>
 MNE <mne/index>
-EEGLab <eeglab/index>
+EEGLAB <eeglab/index>
 BCI2000 <bci2000/index>
 PsychoPy <psychopy/index>
 Internal Tooling <tooling/index>

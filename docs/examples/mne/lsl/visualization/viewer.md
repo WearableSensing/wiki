@@ -1,10 +1,10 @@
 # Stream Viewer
----
 
 Visualize real-time EEG data from Wearable Sensing devices using MNE-LSL's StreamViewer.
 
-## Launch LSL Stream Viewer
 ---
+
+## Launch LSL Stream Viewer
 
 ```{figure} ../../../../_static/images/mne-lsl/mne_lsl_vr_300.png
 :alt: MNE-LSL StreamViewer
@@ -13,14 +13,14 @@ Visualize real-time EEG data from Wearable Sensing devices using MNE-LSL's Strea
 StreamViewer displaying real-time EEG with eyes-closed alpha activity.
 ```
 
-Once your LSL stream is running (see {doc}`LSL Setup <../../../../lsl/index>`), use the following code with the stream name to start StreamViewer and visualize the data in real-time:
+Once your LSL stream is running (see {doc}`LSL Setup <../../../lsl/index>`), use the following code with the stream name to start StreamViewer and visualize the data in real-time:
 
 ```{code-block} python
 :caption: Launch StreamViewer for real-time DSI visualization
 
 from mne_lsl.stream import StreamViewer
 
-stream_name = "WS-default"  # Common options: DSI-24, DSI-VR300, WS-default
+stream_name = "WS-default"  # Or DSI-24, DSI-VR300, WS-default
 
 viewer = StreamViewer(stream_name=stream_name)
 viewer.start()
@@ -28,7 +28,7 @@ viewer.start()
 
 ```{admonition} Finding Your Stream Name
 :class: tip
-If unsure of your stream name, check DSI-Streamer settings or use {doc}`stream discovery <../processing/connect>` to list available streams.
+If unsure of your stream name, check the LSL GUI or use {doc}`stream discovery <../processing/connect>` to list available streams.
 ```
 
 ---
@@ -90,15 +90,15 @@ Now that you can visualize your data in real-time:
 
 ## Troubleshooting
 
-**Window won't open:** See {doc}`Installation <../index>` and ensure dependencies are met
+**Window won't open:** See {doc}`Installation <../index>` and ensure dependencies are met.
 
-**Choppy display:** Reduce window duration or number of channels  
+**Choppy display:** Reduce window duration or number of channels. 
 
-**No signal:** Check stream is running and accessible
+**No signal:** Check stream is running and accessible.
 
 ---
 
 ## Resources
 
-- [StreamViewer API](https://mne.tools/mne-lsl/stable/generated/api/mne_lsl.stream.StreamViewer.html)
+- [StreamViewer API](https://mne.tools/mne-lsl/stable/generated/api/mne_lsl.stream_viewer.StreamViewer.html#mne_lsl.stream_viewer.StreamViewer)
 - {doc}`Stream Connection <../processing/connect>` | {doc}`Filtering <../processing/filter>`

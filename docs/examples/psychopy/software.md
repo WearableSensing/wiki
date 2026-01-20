@@ -1,5 +1,4 @@
 # Software Triggers
----
 
 ```{admonition} LSL
 :class: sidebar note

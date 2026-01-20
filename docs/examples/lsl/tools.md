@@ -1,5 +1,4 @@
 # LSL-Tools
----
 
 Wearable Sensing has created some examples to demonstrate working with LabStreamingLayer. You can find them at Wearable Sensing's [github](https://github.com/WearableSensing/lsl-tools), where they are easy to clone and run.
 

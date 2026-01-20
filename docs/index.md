@@ -4,7 +4,6 @@
 
 ```{admonition} New here?
 :class: tip
-:text-align: center
 Start with our [Tutorials](help/tutorials/index) or explore the **Quick Links** below.
 ```
 
@@ -58,10 +57,10 @@ Get in touch with our support team for personalized assistance
 ````
 
 ---
-````{dropdown} Navigation
 
 ```{toctree}
 :maxdepth: 3
+:hidden:
 
    Integrations <examples/index>
    Tutorials <help/tutorials/index>
@@ -71,5 +70,3 @@ Get in touch with our support team for personalized assistance
    Contact <help/index>
    API <api/index>
 ```
-
-````

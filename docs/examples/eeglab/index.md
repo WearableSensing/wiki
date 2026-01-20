@@ -1,13 +1,12 @@
-# EEGLab
----
+# EEGLAB
 
-The Wearable Sensing EEGLab plugin allows you to import DSI-Streamer CSV files directly into EEGLab for advanced processing and analysis.
+The Wearable Sensing EEGLAB plugin allows you to import DSI-Streamer CSV files directly into EEGLAB for advanced processing and analysis.
 
 ```{admonition} Download & Installation
 :class: note
 
-**Recommended: Install via EEGLab Plugin Manager**
-1. Open EEGLab in MATLAB.
+**Recommended: Install via EEGLAB Plugin Manager**
+1. Open EEGLAB in MATLAB.
 2. Navigate to **File → Manage EEGLAB extensions**.
 3. Search for `WearableSensing` in the extension manager.
 4. Click **Install/Update**.
@@ -22,6 +21,8 @@ If you prefer to install manually, you can download the plugin directly:
 3. Restart MATLAB and run EEGLAB.
 ```
 
+---
+
 ## Key Features
 
 - **Universal Compatibility**: Works with CSV files from any version of DSI-Streamer.
@@ -29,12 +30,16 @@ If you prefer to install manually, you can download the plugin directly:
 - **Batch Import**: Select multiple files to process them all at once.
 - **Filtering**: Option to apply FIR filters during import
 
+---
+
 ## Important Considerations
 
 To ensure accurate analysis, the plugin enforces specific data requirements:
 
 - **Raw CSV Files Only**: The plugin is designed to import **raw, unfiltered data**. It will not accept files that have already been filtered or processed in DSI-Streamer (e.g., "Recorded by Montage" or "Filtered").
 - **DSI-Streamer Format**: Files must be in the standard `.csv` export format from DSI-Streamer. Customized or manually edited CSVs may fail to load.
+
+---
 
 ## Data Integrity Check
 
@@ -47,6 +52,8 @@ If lost data is detected in the recording:
 2. **Boundary Events** are inserted into the data at the exact location of the gap.
 3. This ensures that downstream processing tools (like Artifact Subspace Reconstruction) treat the data as discontinuous, preventing artifacts from "smearing" across the gap.
 ```
+
+---
 
 ## Documentation
 

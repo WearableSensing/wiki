@@ -1,8 +1,9 @@
 Hardware Tutorials
 ==================
---------------------------------------------------------------------------------------
 
 This section provides tutorials on how to use Wearable Sensing's hardware effectively. Whether you're setting up a new device or troubleshooting an existing one, you'll find helpful guides and resources here.
+
+--------------------------------------------------------------------------------------
 
 DSI-24 Doning Procedure
 -----------------------

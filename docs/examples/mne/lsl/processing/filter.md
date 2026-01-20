@@ -1,5 +1,4 @@
 # Filtering
----
 
 Apply filters to live data streams from your Wearable Sensing headset for cleaner signals and better analysis. MNE-LSL by default uses IIR (Infinite Impulse Response) causal filters that process incoming data in real-time without introducing delays, making them suitable for neurofeedback and BCI applications.
 
@@ -7,6 +6,7 @@ Apply filters to live data streams from your Wearable Sensing headset for cleane
 :class: note
 Familiarity with {doc}`connecting to Wearable Sensing streams <connect>` and MNE-Python {doc}`filtering concepts <../../python/processing/filter>`
 ```
+---
 
 ## Why Filter Real-Time Data?
 
@@ -225,17 +225,6 @@ print("Applied custom filter via callback")
 data, ts = stream.get_data(winsize=5.0)
 
 stream.disconnect()
-```
-
-```{admonition} Callback Best Practices
-:class: tip
-**Processing speed:** Callbacks run in the acquisition thread. Keep operations fast to avoid delaying data collection.
-
-**Multiple callbacks:** Add multiple callbacks for sequential processing - they execute in the order added.
-
-**Stateful filters:** For filters requiring state (like IIR), use a class with `__call__` method to maintain state between calls.
-
-**Error handling:** Errors in callbacks will disrupt acquisition. Test thoroughly before deployment.
 ```
 
 ---

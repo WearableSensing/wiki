@@ -1,29 +1,30 @@
 # Brain-Computer Interfaces
----
 
-Brain-Computer Interfaces (BCIs) enable direct communication between brain activity and external devices. This guide demonstrates how to build real-time BCIs using EEG data from Wearable Sensing DSI-24, DSI-VR300, and DSI-7 headsets.
+Brain-Computer Interfaces (BCIs) enable direct communication between brain activity and external devices. This guide demonstrates how to build real-time BCIs using EEG data from Wearable Sensing headsets.
 
 ```{admonition} Prerequisites
 :class: note
-- Wearable Sensing headset streaming via LSL (see {doc}`LSL Setup <../../../../lsl/index>`)
+- Wearable Sensing headset streaming via LSL (see {doc}`LSL Setup <../../../lsl/index>`)
 - Understanding of {doc}`epochs <../processing/epochs>` and {doc}`filtering <../processing/filter>`
+- MNE-LSL installed (see {doc}`Installation <../index>`)
 ```
 
 ```{admonition} Important Note
 :class: warning
-The examples here are simplified demonstrations for learning purposes. Production BCIs require extensive testing, subject-specific calibration, and validation procedures. Many advanced methods (connectivity analysis, adaptive algorithms, specialized signal processing) are beyond the scope of this guide.
+*The examples are simplified demonstrations for learning purposes.* Production BCIs require extensive testing, user-specific calibration, and validation procedures. Many advanced methods (connectivity analysis, adaptive algorithms, specialized signal processing) are beyond the scope of this guide.
 ```
+---
 
-## BCI Approaches
+## Example BCI Applications
 
 Different BCI applications use different EEG features:
 
-- **Alpha neurofeedback (8-13 Hz):** Relaxation training, stress reduction, peak performance
+- **Alpha neurofeedback (8-13 Hz):** Relaxation training, stress reduction, performance
 - **Sensorimotor rhythms (SMR, 12-15 Hz):** Motor control and epilepsy management
 - **Motor Imagery:** Classify imagined movements (C3, C4, Cz channels)
-- **P300 speller:** Detect attention responses for spelling and selection
-- **SSVEP:** Steady-state visual evoked potentials for fast selection
-- **Error-related potentials:** Error correction in BCI control
+- **P300 speller:** Detect attention responses for spelling and selection using N200/P300 components
+- **SSVEP:** Steady-state visual evoked potentials
+- **Error-related potentials:** Error correction in BCI control using evoked responses to feedback
 
 ---
 
@@ -40,39 +41,37 @@ Adapted from the [MNE-LSL bandpower example](https://mne.tools/mne-lsl/stable/ge
 
 This BCI helps users learn to increase alpha wave activity (8-13 Hz) through operant conditioning. The system:
 
-1. Connects to your EEG stream and applies filtering
-2. Calibrates a personalized threshold based on your resting alpha power
-3. Provides real-time feedback when you exceed the threshold
-4. Tracks your success rate over the session
-
-Alpha training is commonly used for relaxation, stress reduction, and peak performance applications.
+1. Connects to the EEG stream and applies filtering
+2. Calibrates a personalized threshold based on the resting alpha power
+3. Provides real-time feedback when a user exceeds the threshold
+4. Tracks the success rate over the session
 
 ### How It Works
 
 **Bandpower Computation**
 
-The system uses Welch's method to estimate the power spectral density (PSD) of your EEG signal. The PSD is then integrated over the alpha frequency band (8-13 Hz) using Simpson's rule. This provides a robust, noise-resistant measure of alpha oscillatory activity.
+The system uses Welch's method to estimate the power spectral density (PSD) of the EEG signal. The PSD is then integrated over the alpha frequency band (8-13 Hz) using Simpson's rule. This provides a robust, noise-resistant measure of alpha oscillatory activity.
 
 **Baseline Calibration**
 
-Before training begins, the system measures your typical alpha power during a 10-second rest period. It collects 20 samples and uses the 70th percentile as the target threshold. This creates a challenging but achievable goal that's personalized to your baseline brain activity.
+Before training begins, the system measures the alpha power during a 10-second rest period. It collects 20 samples and uses the 70th percentile as the target threshold. 
 
 **Feedback Loop**
 
-During training, the system continuously computes your current alpha power and compares it to the threshold. When you exceed the threshold, you receive immediate feedback ("SUCCESS!"), creating a learning signal that enables self-regulation of brain activity through operant conditioning.
+During training, the system continuously computes the current alpha power and compares it to the threshold. When the threshold is exceeded, immediate feedback ("SUCCESS!") is provided, creating a learning signal that enables self-regulation of brain activity through operant conditioning.
 
 ### Implementation
 
 **Getting Started**
-1. **Start your LSL stream** from DSI-Streamer with your Wearable Sensing device
+1. **Start the LSL stream** from the dsi2LSL GUI using a Wearable Sensing device
 2. **Run the script below** - it will connect and apply filtering
-3. **Calibration phase (10 seconds)** - relax with eyes closed to establish your baseline
+3. **Calibration phase (10 seconds)** - relax with eyes closed to establish a baseline
 4. **Training phase** - try to increase alpha power:
-   - Close your eyes
+   - Close eyes
    - Focus on breathing
    - Relax facial and body muscles
-5. **Monitor feedback** - SUCCESS messages indicate you exceeded the threshold
-6. **Press Ctrl+C** when finished to see your final success rate
+5. **Monitor feedback** - "SUCCESS" messages indicate the threshold was exceeded
+6. **Press Ctrl+C** when finished to see the final success rate
 
 The complete code is structured in three main steps: stream setup, baseline calibration, and the training loop.
 
@@ -275,12 +274,12 @@ For more advanced BCI applications, refer to the MNE-LSL documentation:
 
 - **[Motor Imagery Classification](https://mne.tools/mne-lsl/stable/generated/examples/40_decode.html)** - Decode imagined movements using EpochsStream and machine learning
 - **[P300 Detection](https://mne.tools/mne-lsl/stable/generated/examples/30_real_time_evoked_responses.html)** - Detect event-related potentials for spelling and selection
-- **[Real-time Connectivity](https://mne.tools/mne-lsl/stable/generated/examples/10_peak_detection.html)** - Analyze functional connectivity between brain regions
+- **[Real-time Peak Detection](https://mne.tools/mne-lsl/stable/generated/examples/10_peak_detection.html)** - Real-time detection of peaks in time series data
 
 ---
 
 ## Resources
 
 - [Bandpower Example](https://mne.tools/mne-lsl/stable/generated/examples/20_bandpower.html) | [Decoding Example](https://mne.tools/mne-lsl/stable/generated/examples/40_decode.html)
-- [MNE-LSL API Reference](https://mne.tools/mne-lsl/stable/api.html)
+- [MNE-LSL API Reference](https://mne.tools/mne-lsl/stable/api/index.html)
 - {doc}`Epoching <../processing/epochs>` | {doc}`Filtering <../processing/filter>` | {doc}`Visualization <../visualization/viewer>`

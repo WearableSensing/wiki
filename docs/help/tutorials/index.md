@@ -1,5 +1,4 @@
 # Wearable Sensing Tutorials
----
 
 Get started with Wearable Sensing's EEG technology through step-by-step guides covering software setup, hardware configuration, and third-party integrations.
 
@@ -10,7 +9,7 @@ Get started with Wearable Sensing's EEG technology through step-by-step guides c
 ````{grid} 3
 :gutter: 3
 
-```{grid-item-card} Software Tutorials
+```{grid-item-card} Software
 :link: software
 :link-type: doc
 :text-align: center
@@ -18,7 +17,7 @@ Get started with Wearable Sensing's EEG technology through step-by-step guides c
 Learn to install and configure DSI-Streamer and other essential software tools
 ```
 
-```{grid-item-card} Hardware Tutorials
+```{grid-item-card} Hardware
 :link: hardware
 :link-type: doc
 :text-align: center
@@ -26,7 +25,7 @@ Learn to install and configure DSI-Streamer and other essential software tools
 Setup guides for EEG headsets, sensors, and proper electrode placement techniques
 ```
 
-```{grid-item-card} Third-Party Software
+```{grid-item-card} Third-Party
 :link: ../../examples/index
 :link-type: doc
 :text-align: center

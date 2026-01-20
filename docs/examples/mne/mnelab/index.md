@@ -1,5 +1,4 @@
 # MNELAB
----
 
 MNELAB is a graphical user interface (GUI) for [MNE-Python](https://mne.tools/stable/index.html) that provides an intuitive point-and-click interface for EEG/MEG analysis. While independent from the MNE-Python team, MNELAB is actively maintained, peer-reviewed ([JOSS publication](https://doi.org/10.21105/joss.04650)), and provides seamless integration with Wearable Sensing EDF files.
 
@@ -10,12 +9,15 @@ MNELAB is a graphical user interface (GUI) for [MNE-Python](https://mne.tools/st
 
 The MNELAB GUI displaying a loaded DSI-24 EEG recording.
 ```
+---
 
 ## Installation
 
 Download the latest standalone installer for your platform—no Python knowledge required:
 
 - **[Download MNELAB](https://github.com/cbrnr/mnelab/releases)** (Windows & macOS)
+
+---
 
 ## Getting Started
 
@@ -32,6 +34,7 @@ Learn how to work with Wearable Sensing data in MNELAB through step-by-step tuto
 
 **Already familiar?** Use Quick Navigation below to jump to specific topics.
 ```
+---
 
 ### Quick Navigation
 
@@ -79,7 +82,7 @@ raw = mne.io.read_raw_fif('preprocessed_data.fif', preload=True)
 
 - [MNELAB Docs](https://mnelab.readthedocs.io/) | [GitHub](https://github.com/cbrnr/mnelab) | [JOSS Paper](https://doi.org/10.21105/joss.04650)
 - [MNE-Python Docs](https://mne.tools/stable/index.html) | [Tutorials](https://mne.tools/stable/auto_tutorials/index.html) | [MNE Forum](https://mne.discourse.group/)
-- {doc}`MNE-Python <../python/index>` | {doc}`MNE-LSL <../lsl/index>` | {doc}`EEGLab <../../eeglab/index>`
+- {doc}`MNE-Python <../python/index>` | {doc}`MNE-LSL <../lsl/index>` | {doc}`EEGLAB <../../eeglab/index>`
 
 ---
 

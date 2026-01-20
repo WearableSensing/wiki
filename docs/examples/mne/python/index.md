@@ -1,5 +1,4 @@
-# MNE-Python Integration
----
+# MNE-Python
 
 MNE-Python is an open-source Python package for exploring, visualizing, and analyzing human neurophysiological data. Use it to perform offline analysis of recordings from your Wearable Sensing DSI-24, DSI-VR300, DSI-7, or DSI-Flex headsets.
 
@@ -7,10 +6,13 @@ MNE-Python is an open-source Python package for exploring, visualizing, and anal
 :class: note
 Before starting, install MNE-Python following the [official installation guide](https://mne.tools/stable/install/index.html). These tutorials use MNE version 1.9.0 and demonstrate workflows with Wearable Sensing EDF files exported from DSI-Streamer.
 ```
+---
 
 ## Getting Started
 
 Learn how to work with Wearable Sensing EEG data in MNE-Python through step-by-step tutorials covering data loading, preprocessing, and analysis.
+
+---
 
 ### Quick Navigation
 
@@ -39,6 +41,8 @@ Filter, clean, and epoch your data
 
 ## Tutorial Sections
 
+The tutorials are organized into two main sections: Core Operations and Data Processing.
+
 (core-operations)=
 ### Core Operations
 
@@ -50,6 +54,7 @@ Begin with loading your data, then configure channels and references for analysi
 - {doc}`core/load` - Load EDF files from DSI-Streamer
 - {doc}`core/channels` - Set channel types, manage selections, and configure referencing
 
+---
 (data-processing)=
 ### Data Processing
 
@@ -71,7 +76,7 @@ Follow these tutorials in sequence for a complete preprocessing workflow:
 ## Resources
 
 - [MNE Documentation](https://mne.tools/stable/documentation/index.html) | [Tutorials](https://mne.tools/stable/auto_tutorials/index.html) | [GitHub](https://github.com/mne-tools/mne-python)
-- {doc}`MNE-LSL <../lsl/index>` | {doc}`MNELAB <../mnelab/index>` | {doc}`EEGLab <../../eeglab/index>` | [MNE Forum](https://mne.discourse.group/)
+- {doc}`MNE-LSL <../lsl/index>` | {doc}`MNELAB <../mnelab/index>` | {doc}`EEGLAB <../../eeglab/index>` | [MNE Forum](https://mne.discourse.group/)
 
 
 

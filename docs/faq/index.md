@@ -1,9 +1,10 @@
 # Frequently Asked Questions
----
+
 Browse by category below or use the **search bar** in the top navigation (or press `Ctrl+K`) to find specific topics.
 
-## Categories
 ---
+
+## Categories
 
 ````{grid} 2
 :gutter: 4

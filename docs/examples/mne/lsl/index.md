@@ -1,5 +1,4 @@
 # MNE-LSL Integration
----
 
 MNE-LSL is a Python package that bridges MNE-Python with the Lab Streaming Layer (LSL) for real-time EEG data streaming, processing, and visualization.
 
@@ -9,6 +8,8 @@ MNE-LSL is a Python package that bridges MNE-Python with the Lab Streaming Layer
 
 StreamViewer displaying real-time EEG with eyes-closed alpha activity.
 ```
+
+---
 
 ## Installation
 

@@ -1,5 +1,4 @@
 # Connect a Device
----
 
 Discover and connect to LSL streams from your Wearable Sensing DSI-24, DSI-VR300, or DSI-7 headset.
 
@@ -60,7 +59,7 @@ Once you know your stream name, create a `StreamLSL` object to connect and start
 
 from mne_lsl.stream import StreamLSL
 
-stream_name = "DSI-24"  # Common names: DSI-24, DSI-VR300, WS-default
+stream_name = "DSI-24"  # Example: DSI-24, DSI-VR300, WS-default
 
 # Connect to stream
 stream = StreamLSL(bufsize=10, name=stream_name).connect()
@@ -72,15 +71,6 @@ print(f"Channels: {len(stream.ch_names)}")
 **Parameters:**
 - `bufsize`: Seconds of data to buffer (default: 10)
 - `name`: Stream name, or use `source_id` for unique identification
-
-```{admonition} Wearable Sensing Device Names
-:class: tip
-Your stream name depends on how you configured DSI-Streamer:
-- **DSI-24**: Common for DSI-24 headset
-- **DSI-VR300**: Common for VR300 headset
-- **WS-default**: Default for all Wearable Sensing devices
-- **Custom name**: Check DSI-Streamer settings if using a custom name
-```
 
 ---
 

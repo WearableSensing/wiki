@@ -1,5 +1,4 @@
 # Getting Started
----
 
 This page documents how to use the dsi2lslGUI application and configure it for your DSI headset.
 

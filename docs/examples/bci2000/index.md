@@ -1,5 +1,4 @@
 # BCI2000 Integration
----
 
 BCI2000 is an open-source, fully-featured software designed to support Brain-Computer Interface (BCI) research. Developed and maintained by the National Center for Adaptive Neurotechnologies (NCAN), it has been used for decades and offers a wide range of tools to support common BCI experiments.
 
@@ -7,6 +6,8 @@ BCI2000 is an open-source, fully-featured software designed to support Brain-Com
 :class: note
 Download the latest version from the [official BCI2000 page](https://www.bci2000.org/mediawiki/index.php/DownloadBCI2000). You will need to create a free account to access all modules and applications. These tutorials use BCI2000 version 3.6 on Windows 11.
 ```
+
+---
 
 ## Getting Started
 
