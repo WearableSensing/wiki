@@ -24,7 +24,9 @@ Events are markers in your data that indicate when something happened (stimulus,
 
 ### Finding Events from Trigger Channel
 
-```python
+```{code-block} python
+:caption: Extract events from trigger channel
+
 import mne
 
 # Load data
@@ -50,7 +52,9 @@ mne.viz.plot_events(events, sfreq=raw.info['sfreq'],
 
 Map event IDs to meaningful names:
 
-```python
+```{code-block} python
+:caption: Create event dictionary for condition labels
+
 event_id = {
     'auditory/left': 1,
     'auditory/right': 2,
@@ -66,7 +70,9 @@ event_id = {
 
 ### Basic Epoch Creation
 
-```python
+```{code-block} python
+:caption: Create epochs with baseline correction
+
 # Create epochs around events
 epochs = mne.Epochs(
     raw,
@@ -88,7 +94,9 @@ print(epochs)
 
 ### Epoch Selection by Condition
 
-```python
+```{code-block} python
+:caption: Select epochs by experimental condition
+
 # Create epochs for specific conditions
 epochs_auditory = epochs['auditory']
 epochs_visual = epochs['visual']
@@ -100,7 +108,9 @@ print(f'Visual epochs: {len(epochs_visual)}')
 
 ### Visualizing Epochs
 
-```python
+```{code-block} python
+:caption: Visualize epochs and ERPs interactively
+
 # Plot all epochs
 epochs.plot(n_epochs=10, n_channels=20, scalings='auto')
 
@@ -117,7 +127,9 @@ epochs.average().plot()
 
 Remove pre-stimulus activity to isolate event-related responses:
 
-```python
+```{code-block} python
+:caption: Apply baseline correction to epochs
+
 # Baseline correct using pre-stimulus period
 epochs.apply_baseline(baseline=(-0.2, 0))
 
@@ -139,7 +151,9 @@ epochs = mne.Epochs(raw, events, event_id=event_id,
 
 ### Manual Rejection
 
-```python
+```{code-block} python
+:caption: Interactively reject bad epochs
+
 # Interactively reject bad epochs
 epochs.plot(n_epochs=10, block=True)
 # Click on epochs to mark as bad
@@ -149,7 +163,9 @@ epochs.plot(n_epochs=10, block=True)
 
 Set amplitude thresholds to automatically reject noisy epochs:
 
-```python
+```{code-block} python
+:caption: Set automatic rejection thresholds
+
 # Define rejection criteria (in volts)
 reject_criteria = dict(
     eeg=100e-6,      # 100 µV for EEG channels
@@ -168,7 +184,9 @@ print(f'Rejected {len(epochs.drop_log) - len(epochs)} epochs')
 
 ### Peak-to-Peak Rejection
 
-```python
+```{code-block} python
+:caption: Reject epochs with extreme amplitudes or flatlines
+
 # Reject based on peak-to-peak amplitude
 reject_criteria = dict(eeg=100e-6)
 flat_criteria = dict(eeg=1e-6)  # Also reject flat channels
@@ -182,7 +200,9 @@ epochs = mne.Epochs(raw, events, event_id=event_id,
 
 ### Visualizing Rejection
 
-```python
+```{code-block} python
+:caption: View rejection statistics and drop log
+
 # Plot drop log showing why epochs were rejected
 epochs.plot_drop_log()
 
@@ -196,7 +216,9 @@ print(epochs.drop_log)
 
 Average epochs to compute Event-Related Potentials:
 
-```python
+```{code-block} python
+:caption: Compute and plot evoked responses (ERPs)
+
 # Average all epochs
 evoked_all = epochs.average()
 
@@ -214,7 +236,9 @@ evoked_all.plot(spatial_colors=True, gfp=True)
 
 ### Comparing Conditions
 
-```python
+```{code-block} python
+:caption: Compare ERPs across experimental conditions
+
 # Plot multiple conditions
 evokeds = [epochs[cond].average() for cond in event_id.keys()]
 mne.viz.plot_compare_evokeds(evokeds)
@@ -230,7 +254,9 @@ from mne.stats import permutation_cluster_test
 
 ### Topographic Maps
 
-```python
+```{code-block} python
+:caption: Plot ERP topography at specific time points
+
 # Plot topography at specific time points
 times = [0.1, 0.2, 0.3]
 evoked.plot_topomap(times=times, ch_type='eeg')
@@ -241,7 +267,9 @@ evoked.plot_topomap(times='auto', ch_type='eeg', nrows='auto')
 
 ### Joint Plot (Butterfly + Topomap)
 
-```python
+```{code-block} python
+:caption: Combine timecourse and topography visualization
+
 # Combine timecourse and topography
 evoked.plot_joint(times=[0.1, 0.2, 0.3])
 
@@ -255,7 +283,9 @@ evoked.plot_joint(times='peaks')
 
 Analyze oscillatory activity in epochs:
 
-```python
+```{code-block} python
+:caption: Compute time-frequency representation with Morlet wavelets
+
 from mne.time_frequency import tfr_morlet
 
 # Compute time-frequency representation
@@ -271,7 +301,9 @@ power.plot(baseline=(-0.2, 0), mode='logratio', title='Power')
 
 ### Event-Related Spectral Perturbation (ERSP)
 
-```python
+```{code-block} python
+:caption: Compute ERSP for specific channels
+
 # Compute for specific channels
 power = tfr_morlet(epochs, picks=['EEG C3-LE', 'EEG C4-LE'],
                    freqs=freqs, n_cycles=n_cycles,
@@ -286,7 +318,9 @@ power.plot_topo(baseline=(-0.2, 0), mode='logratio')
 
 ### Save Epochs
 
-```python
+```{code-block} python
+:caption: Save epochs to FIF format
+
 # Save epochs to disk
 epochs.save('epochs-epo.fif', overwrite=True)
 
@@ -296,14 +330,18 @@ epochs['auditory'].save('epochs_auditory-epo.fif', overwrite=True)
 
 ### Load Epochs
 
-```python
+```{code-block} python
+:caption: Load epochs from saved FIF file
+
 # Load saved epochs
 epochs = mne.read_epochs('epochs-epo.fif', preload=True)
 ```
 
 ### Export to Other Formats
 
-```python
+```{code-block} python
+:caption: Export epochs to NumPy, DataFrame, or CSV
+
 # Export to NumPy array
 data = epochs.get_data()  # Shape: (n_epochs, n_channels, n_times)
 
@@ -318,7 +356,9 @@ df.to_csv('epochs.csv', index=False)
 
 ## Complete Epoching Workflow
 
-```python
+```{code-block} python
+:caption: Complete workflow from loading to ERP comparison
+
 import mne
 
 # Load and preprocess data
@@ -366,16 +406,17 @@ evoked_2.save('condition_2-ave.fif', overwrite=True)
 
 ---
 
-## Additional Resources
+## Next Steps
 
-**MNE Tutorials:**
-- [Epoching and Averaging](https://mne.tools/stable/auto_tutorials/epochs/10_epochs_overview.html)
-- [ERP/ERF Analysis](https://mne.tools/stable/auto_tutorials/evoked/index.html)
-- [Time-Frequency Analysis](https://mne.tools/stable/auto_tutorials/time-freq/index.html)
-- [Visualizing Evoked Data](https://mne.tools/stable/auto_tutorials/evoked/20_visualize_evoked.html)
+After creating epochs:
+1. Compute statistics and contrasts between conditions
+2. Perform time-frequency analysis on epochs
+3. {doc}`MNE-LSL real-time epochs <../../lsl/processing/epochs>` - Compare with real-time epoching
 
-**API References:**
-- [`mne.Epochs`](https://mne.tools/stable/generated/mne.Epochs.html)
-- [`mne.find_events`](https://mne.tools/stable/generated/mne.find_events.html)
-- [`mne.EvokedArray`](https://mne.tools/stable/generated/mne.EvokedArray.html)
-- [`mne.viz.plot_compare_evokeds`](https://mne.tools/stable/generated/mne.viz.plot_compare_evokeds.html)
+---
+
+## Resources
+
+- [Epoching Tutorial](https://mne.tools/stable/auto_tutorials/epochs/10_epochs_overview.html) | [ERP/ERF Analysis](https://mne.tools/stable/auto_tutorials/evoked/index.html) | [Time-Frequency Analysis](https://mne.tools/stable/auto_tutorials/time-freq/index.html)
+- [mne.Epochs API](https://mne.tools/stable/generated/mne.Epochs.html) | [mne.find_events API](https://mne.tools/stable/generated/mne.find_events.html)
+- [Visualizing Evoked Data](https://mne.tools/stable/auto_tutorials/evoked/20_visualize_evoked.html) | [plot_compare_evokeds API](https://mne.tools/stable/generated/mne.viz.plot_compare_evokeds.html)

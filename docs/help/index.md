@@ -1,5 +1,4 @@
 # Contact Us
----
 
 Need help or have questions? Our team is here to assist you with technical support, sales inquiries, and product information.
 

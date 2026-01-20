@@ -1,5 +1,4 @@
 # PsychoPy Integration
----
 
 PsychoPy is an open-source software package used to create and run experiments with Python. It is designed for psychologists and neuroscientists who want to present stimuli with precise timing in their research.
 
@@ -7,6 +6,8 @@ PsychoPy is an open-source software package used to create and run experiments w
 :class: note
 Download the latest version of PsychoPy from the [official website](https://www.psychopy.org/download.html). These tutorials use PsychoPy version 2024.2.4 (py3.10).
 ```
+
+---
 
 ## Getting Started
 

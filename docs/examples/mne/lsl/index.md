@@ -1,96 +1,147 @@
 # MNE-LSL Integration
----
 
-MNE-LSL is a Python package that bridges MNE-Python and Lab Streaming Layer (LSL), enabling real-time streaming, visualization, and processing of EEG data. This integration allows you to monitor and analyze data as it's being recorded from your Wearable Sensing devices.
-
-MNE-LSL enables you to:
-- Stream data in real-time from Wearable Sensing devices via LSL
-- Visualize EEG signals as they're being recorded
-- Apply real-time preprocessing and filtering
-- Monitor signal quality during data collection
-- Implement real-time analysis pipelines
-
-
-Install MNE-LSL following the [official installation guide](https://mne.tools/mne-lsl/stable/resources/install.html). MNE-LSL requires the liblsl library. Follow their instructions to install it on your system or install pylsl via pip: `pip install pylsl`
-
----
-
-## Getting Started
-
-### Basic Workflow
-
-1. **Start LSL streaming** from your Wearable Sensing device using `dsi2lslGUI` or similar tool. See our {doc}`LSL Integration <../../lsl/index>` guide for more instructions.
-2. **Connect to the stream** using MNE-LSL
-3. **Visualize and process** data in real-time
-4. **Record or analyze** as needed
-
----
-
-### Quick Example
-
-```python
-from mne_lsl.stream_viewer import StreamViewer
-
-# The viewer will open showing your real-time EEG data, similar to the figure below.
-stream_name = "YourStreamName"  # Replace with your stream name (e.g., "WS-default", "DSI-24", "DSI-VR300")
-stream_viewer = StreamViewer(stream_name=stream_name)
-stream_viewer.start()
-```
-
-The image below shows an LSL connection streaming data from a DSI-VR300 device with real-time visualization of eyes-closed alpha activity.
+MNE-LSL is a Python package that bridges MNE-Python with the Lab Streaming Layer (LSL) for real-time EEG data streaming, processing, and visualization.
 
 ```{figure} ../../../_static/images/mne-lsl/mne_lsl_vr_300.png
-:alt: MNE-LSL streaming from DSI-VR300 showing eyes-closed alpha activity
-:width: 100%
+:alt: MNE-LSL StreamViewer
+:width: 75%
 
-Real-time LSL streaming with MNE-LSL viewer displaying eyes-closed alpha activity from a DSI-VR300 headset.
+StreamViewer displaying real-time EEG with eyes-closed alpha activity.
 ```
 
 ---
 
-### Access data in real-time
+## Installation
 
-After connecting to an LSL stream, you can access the stream info, channel types, and real-time data as shown in the example below.
+- **[Installation Guide](https://mne.tools/mne-lsl/stable/resources/install.html)** - Full documentation with dependencies and troubleshooting
 
-```python
-from mne_lsl.stream import StreamLSL as Stream
+Install MNE-LSL using pip:
 
-# Connect to the LSL stream
-source_id = "YourStreamName"  # Replace with your stream name
-bufsize = 10  # Buffer size in seconds
-stream = Stream(bufsize=bufsize, source_id=source_id).connect()
-
-# Access the stream info
-stream_info = stream.info
-print(stream_info)
-
-# Access the channel types. You can select unique types or channels using .pick().
-channel_types = stream.get_channel_types(unique=True)
-print(channel_types)
-
-# Access data in real-time
-winsize = stream.n_new_samples / stream.info["sfreq"]
-
-# Retrieve data from the stream
-picks = ("Fz", "Oz")  # Example channel picks
-data, ts = stream.get_data(winsize, picks=picks)
-
-# Disconnect from the stream when done
-stream.disconnect()
+```bash
+pip install mne-lsl
 ```
-See the MNE-LSL tutorials for more examples on real-time processing and visualization: [MNE-LSL Tutorials](https://mne.tools/mne-lsl/stable/generated/tutorials/index.html)
+
+For real-time visualization with StreamViewer, install with Qt backend:
+
+```bash
+pip install mne-lsl PyQt5
+```
 
 ---
 
-## Additional Resources
+## Quick Navigation
 
-**Official MNE-LSL Documentation:**
-- [MNE-LSL Documentation](https://mne.tools/mne-lsl/stable/index.html)
-- [MNE-LSL Tutorials](https://mne.tools/mne-lsl/stable/generated/tutorials/index.html)
-- [MNE-LSL Examples](https://mne.tools/mne-lsl/stable/generated/examples/index.html) * this shows real time analysis examples *
-- [MNE-LSL GitHub Repository](https://github.com/mne-tools/mne-lsl)
-- [Lab Streaming Layer](https://labstreaminglayer.readthedocs.io/)
+````{grid} 3
+:gutter: 3
 
-**Related Pages:**
-- {doc}`LSL Integration <../../lsl/index>` - Set up LSL streaming with Wearable Sensing devices
-- {doc}`MNE-Python Integration <../python/index>` - Analysis with MNE-Python
+```{grid-item-card} Processing
+:link: processing/connect
+:link-type: doc
+:text-align: center
+---
+Connect, filter, and epoch streams
+```
+
+```{grid-item-card} Classification
+:link: classification/bci
+:link-type: doc
+:text-align: center
+---
+Build closed-loop BCIs
+```
+
+```{grid-item-card} Visualization
+:link: visualization/viewer
+:link-type: doc
+:text-align: center
+---
+Real-time EEG monitoring
+```
+
+````
+
+---
+
+## Quick Examples
+
+**View real-time data from your Wearable Sensing headset:**
+```{code-block} python
+:caption: Launch StreamViewer for real-time monitoring
+
+from mne_lsl.stream import StreamViewer
+
+stream_name = "DSI-24"  # Or DSI-VR300, DSI-7, WS-default
+StreamViewer(stream_name=stream_name).start()
+```
+
+**Replay pre-recorded data**
+
+This example replays data from an EDF file, such as those exported by DSI-Streamer, as an LSL stream for testing:
+
+```{code-block} python
+:caption: Replay EDF file as LSL stream for testing
+
+import time
+from mne.io import read_raw_edf
+from mne_lsl.player import PlayerLSL as Player
+
+path_to_edf = "C:/path/to/your/data.edf"  # Replace with your EDF file path
+raw = read_raw_edf(path_to_edf, preload=True)
+player = Player(raw, chunk_size=200, n_repeat=1, name="example-edf-replay").start()
+
+while player.running:
+    time.sleep(0.5)
+
+del player
+``` 
+
+---
+
+## Tutorial Sections
+
+### Processing
+
+- {doc}`processing/connect` - Discover and connect to LSL streams
+- {doc}`processing/filter` - Apply real-time filters
+- {doc}`processing/epochs` - Create event-related epochs
+
+### Classification
+
+- {doc}`classification/bci` - Build BCIs with bandpower and machine learning
+
+### Visualization
+
+- {doc}`visualization/viewer` - StreamViewer for real-time monitoring
+
+---
+
+## Resources
+
+- [MNE-LSL Docs](https://mne.tools/mne-lsl/stable/) | [Tutorials](https://mne.tools/mne-lsl/stable/generated/tutorials/index.html) | [Examples](https://mne.tools/mne-lsl/stable/generated/examples/index.html)
+- {doc}`LSL Setup <../../lsl/index>` | {doc}`MNE-Python <../python/index>` | [MNE Forum](https://mne.discourse.group/)
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+:caption: Processing
+
+processing/connect
+processing/filter
+processing/epochs
+```
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+:caption: Visualization
+
+visualization/viewer
+```
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+:caption: Classification
+
+classification/bci
+```

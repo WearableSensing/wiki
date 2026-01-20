@@ -1,5 +1,4 @@
 # Creating Stimuli
----
 
 The following demonstrates how to create and time simple PsychoPy stimuli.
 

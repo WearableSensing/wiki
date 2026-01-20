@@ -12,7 +12,9 @@ This guide assumes you have already loaded your EEG data into a `raw` object. Se
 
 MNE uses channel types to apply appropriate processing and visualization. For Wearable Sensing headsets, most channels will be EEG, but you may have auxiliary channels (EMG, EOG, ECG).
 
-```python
+```{code-block} python
+:caption: Set channel types for auxiliary channels
+
 import mne
 
 # Set channel types for auxiliary channels
@@ -46,7 +48,9 @@ See [MNE Channel Types](https://mne.tools/stable/auto_tutorials/intro/40_sensor_
 
 Remove channels that are not relevant to your analysis:
 
-```python
+```{code-block} python
+:caption: Remove auxiliary and reference channels
+
 # Remove auxiliary and reference channels
 channels_to_remove = ['EEG X1:EMG-Pz', 'EEG X2:EOG-Pz', 'EEG X3:-Pz', 'CM']
 raw.drop_channels(channels_to_remove)
@@ -58,7 +62,9 @@ print('Remaining channels:', raw.ch_names)
 
 Pick only the channels you need:
 
-```python
+```{code-block} python
+:caption: Select specific EEG channels for analysis
+
 # Select only EEG channels
 raw_eeg = raw.copy().pick('eeg')
 
@@ -71,7 +77,9 @@ raw_selected = raw.copy().pick(selected_channels)
 
 Identify and mark channels with excessive noise:
 
-```python
+```{code-block} python
+:caption: Mark noisy channels as bad
+
 # Mark channels as bad
 raw.info['bads'] = ['EEG Fp1-Pz', 'EEG T3-Pz']
 
@@ -88,7 +96,9 @@ After marking bad channels, you can interpolate them using `raw.interpolate_bads
 
 Organize channels in a preferred order for visualization:
 
-```python
+```{code-block} python
+:caption: Reorder channels for DSI-24 headset layout
+
 # Define desired channel order (DSI-24 example)
 desired_order = [
     'EEG Fp1-Pz', 'EEG Fp2-Pz', 'EEG Fz-Pz', 'EEG F3-Pz', 'EEG F4-Pz',
@@ -130,7 +140,9 @@ The reference electrode provides the baseline for voltage measurements. Wearable
 
 ### Re-Referencing to Linked Ears
 
-```python
+```{code-block} python
+:caption: Re-reference to linked ears (A1/A2 average)
+
 # Re-reference to linked ears (average of A1 and A2)
 ref_channels = ['EEG A1-Pz', 'EEG A2-Pz']
 raw.set_eeg_reference(ref_channels=ref_channels)
@@ -140,7 +152,9 @@ print(f'Reference set to: {raw.info["custom_ref_applied"]}')
 
 ### Re-Referencing to Average
 
-```python
+```{code-block} python
+:caption: Re-reference to average of all EEG channels
+
 # Re-reference to average of all EEG channels
 raw.set_eeg_reference(ref_channels='average')
 
@@ -149,7 +163,9 @@ print('Reference set to average of all EEG channels')
 
 ### Re-Referencing to a Single Channel
 
-```python
+```{code-block} python
+:caption: Re-reference to a single channel (Cz)
+
 # Re-reference to a specific channel (e.g., Cz)
 raw.set_eeg_reference(ref_channels=['EEG Cz-Pz'])
 ```
@@ -158,7 +174,9 @@ raw.set_eeg_reference(ref_channels=['EEG Cz-Pz'])
 
 After re-referencing, update channel names to reflect the new reference:
 
-```python
+```{code-block} python
+:caption: Rename channels to reflect linked ears reference
+
 # Rename channels from '-Pz' to '-LE' (Linked Ears)
 rename_dict = {}
 for ch_name in raw.ch_names:
@@ -173,7 +191,9 @@ print('Renamed channels:', raw.ch_names)
 
 Or rename to standard 10-20 names (removes reference suffix):
 
-```python
+```{code-block} python
+:caption: Remove reference suffix for standard 10-20 naming
+
 # Remove reference suffix for standard naming
 rename_dict = {}
 for ch_name in raw.ch_names:
@@ -198,7 +218,9 @@ raw.rename_channels(rename_dict)
 
 Here's a complete workflow combining channel management and referencing:
 
-```python
+```{code-block} python
+:caption: Complete channel configuration workflow for DSI-24
+
 import mne
 
 # Load data
@@ -239,15 +261,17 @@ print(f'Reference: {raw.info["custom_ref_applied"]}')
 
 ---
 
-## Additional Resources
+## Next Steps
 
-**MNE Documentation:**
-- [Handling Bad Channels](https://mne.tools/stable/auto_tutorials/preprocessing/15_handling_bad_channels.html)
-- [Setting the EEG Reference](https://mne.tools/stable/auto_tutorials/preprocessing/55_setting_eeg_reference.html)
-- [Channel Types Tutorial](https://mne.tools/stable/auto_tutorials/intro/40_sensor_locations.html)
+After configuring channels:
+1. {doc}`Filter your data <../processing/filter>` - Remove noise and isolate frequency bands
+2. {doc}`Remove artifacts <../processing/artifacts>` - Clean data using ICA
+3. {doc}`Create epochs <../processing/epochs>` - Extract event-related segments
 
-**API References:**
-- [`raw.set_channel_types()`](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.set_channel_types)
-- [`raw.set_eeg_reference()`](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.set_eeg_reference)
-- [`raw.drop_channels()`](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.drop_channels)
-- [`raw.interpolate_bads()`](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.interpolate_bads)
+---
+
+## Resources
+
+- [Channel Types Tutorial](https://mne.tools/stable/auto_tutorials/intro/40_sensor_locations.html) | [Setting EEG Reference](https://mne.tools/stable/auto_tutorials/preprocessing/55_setting_eeg_reference.html) | [Handling Bad Channels](https://mne.tools/stable/auto_tutorials/preprocessing/15_handling_bad_channels.html)
+- [set_channel_types API](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.set_channel_types) | [set_eeg_reference API](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.set_eeg_reference)
+- [drop_channels API](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.drop_channels) | [interpolate_bads API](https://mne.tools/stable/generated/mne.io.Raw.html#mne.io.Raw.interpolate_bads)

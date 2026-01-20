@@ -31,7 +31,9 @@ See [Overview of Artifact Detection](https://mne.tools/stable/auto_tutorials/pre
 
 Visually inspect data and mark bad segments:
 
-```python
+```{code-block} python
+:caption: Interactive visualization for marking bad data spans
+
 import mne
 
 # Interactive visualization for marking bad spans
@@ -44,7 +46,9 @@ raw.plot(n_channels=20, block=True)
 
 Programmatically create annotations for bad segments:
 
-```python
+```{code-block} python
+:caption: Create annotations for bad data segments programmatically
+
 from mne import Annotations
 
 # Create annotations for bad segments (times in seconds)
@@ -72,7 +76,9 @@ ICA decomposes EEG signals into independent components, allowing you to identify
 
 ### Fitting ICA
 
-```python
+```{code-block} python
+:caption: Fit ICA to decompose signals into independent components
+
 from mne.preprocessing import ICA
 
 # Create ICA object
@@ -87,7 +93,9 @@ print(f'Fitted {ica.n_components_} components')
 
 ### Visualizing Components
 
-```python
+```{code-block} python
+:caption: Visualize ICA components to identify artifacts
+
 # Plot component time courses
 ica.plot_sources(raw_filt)
 
@@ -102,7 +110,9 @@ ica.plot_properties(raw_filt, picks=[0, 1, 2])
 
 **Eye blinks:** Frontal topography, low frequency, large amplitude
 
-```python
+```{code-block} python
+:caption: Identify EOG artifact components
+
 # Find components correlated with EOG channel
 eog_indices, eog_scores = ica.find_bads_eog(raw_filt, ch_name='EEG X2:EOG-Pz')
 print(f'EOG components: {eog_indices}')
@@ -113,7 +123,9 @@ ica.plot_scores(eog_scores)
 
 **Cardiac artifacts:** Regular rhythmic pattern
 
-```python
+```{code-block} python
+:caption: Identify ECG artifact components
+
 # Find components correlated with ECG
 ecg_indices, ecg_scores = ica.find_bads_ecg(raw_filt)
 print(f'ECG components: {ecg_indices}')
@@ -121,7 +133,9 @@ print(f'ECG components: {ecg_indices}')
 
 ### Removing Components
 
-```python
+```{code-block} python
+:caption: Apply ICA to remove artifact components
+
 # Mark components as bad
 ica.exclude = [0, 2, 5]  # Component indices to remove
 
@@ -135,7 +149,9 @@ raw_clean.plot(n_channels=10, title='After ICA')
 
 ### Complete ICA Workflow
 
-```python
+```{code-block} python
+:caption: Complete ICA workflow from filtering to artifact removal
+
 import mne
 from mne.preprocessing import ICA
 
@@ -183,7 +199,9 @@ Use regression to remove artifacts when you have reference channels (EOG, ECG).
 
 ### EOG Artifact Removal
 
-```python
+```{code-block} python
+:caption: Remove EOG artifacts using SSP regression
+
 # Create EOG events from EOG channel
 eog_events = mne.preprocessing.find_eog_events(raw, ch_name='EEG X2:EOG-Pz')
 
@@ -199,7 +217,9 @@ raw.apply_proj()
 
 ### ECG Artifact Removal
 
-```python
+```{code-block} python
+:caption: Remove ECG artifacts using SSP regression
+
 # Find ECG events
 ecg_events = mne.preprocessing.find_ecg_events(raw, ch_name='EEG X1:ECG-Pz')
 
@@ -226,7 +246,9 @@ MNE provides automated methods for detecting artifacts in continuous data.
 
 ### Peak-to-Peak Amplitude
 
-```python
+```{code-block} python
+:caption: Automatically detect flat and high-amplitude segments
+
 # Detect flat and high-amplitude segments
 annot_auto, scores = mne.preprocessing.annotate_amplitude(
     raw, 
@@ -240,7 +262,9 @@ raw.set_annotations(annot_auto)
 
 ### Muscle Artifacts
 
-```python
+```{code-block} python
+:caption: Detect muscle artifacts using z-score threshold
+
 # Detect muscle artifacts
 annot_muscle, scores = mne.preprocessing.annotate_muscle_zscore(
     raw,
@@ -257,7 +281,9 @@ raw.set_annotations(raw.annotations + annot_muscle)
 
 Reject bad epochs based on amplitude thresholds:
 
-```python
+```{code-block} python
+:caption: Reject bad epochs using amplitude criteria
+
 import mne
 
 # Create epochs (see Epoching section for details)
@@ -280,7 +306,9 @@ print(f'Kept {len(epochs)} / {len(epochs) + len(epochs.drop_log)} epochs')
 
 ### Visualizing Dropped Epochs
 
-```python
+```{code-block} python
+:caption: Visualize rejection statistics
+
 # Plot drop log
 epochs.plot_drop_log()
 
@@ -290,17 +318,17 @@ epochs.plot(picks='eeg', scalings='auto')
 
 ---
 
-## Additional Resources
+## Next Steps
 
-**MNE Preprocessing Tutorials:**
-- [Overview of Artifact Detection](https://mne.tools/stable/auto_tutorials/preprocessing/10_preprocessing_overview.html)
-- [Handling Bad Channels](https://mne.tools/stable/auto_tutorials/preprocessing/15_handling_bad_channels.html)
-- [Rejecting Bad Data Spans](https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html)
-- [ICA Tutorial](https://mne.tools/stable/auto_tutorials/preprocessing/40_artifact_correction_ica.html)
-- [Regression-Based Correction](https://mne.tools/stable/auto_tutorials/preprocessing/35_artifact_correction_regression.html)
-- [SSP Correction](https://mne.tools/stable/auto_tutorials/preprocessing/50_artifact_correction_ssp.html)
+After cleaning your data:
+1. {doc}`Create epochs <epochs>` - Extract clean event-related segments
+2. {doc}`Analyze ERPs <epochs>` - Compute evoked responses
+3. {doc}`MNE-LSL real-time processing <../../lsl/index>` - Apply ICA in real-time workflows
 
-**API References:**
-- [`mne.preprocessing.ICA`](https://mne.tools/stable/generated/mne.preprocessing.ICA.html)
-- [`mne.Annotations`](https://mne.tools/stable/generated/mne.Annotations.html)
-- [`mne.preprocessing.find_bads_eog`](https://mne.tools/stable/generated/mne.preprocessing.find_bads_eog.html)
+---
+
+## Resources
+
+- [ICA Tutorial](https://mne.tools/stable/auto_tutorials/preprocessing/40_artifact_correction_ica.html) | [Overview of Artifact Detection](https://mne.tools/stable/auto_tutorials/preprocessing/10_preprocessing_overview.html)
+- [Handling Bad Channels](https://mne.tools/stable/auto_tutorials/preprocessing/15_handling_bad_channels.html) | [Rejecting Bad Data](https://mne.tools/stable/auto_tutorials/preprocessing/20_rejecting_bad_data.html)
+- [ICA API](https://mne.tools/stable/generated/mne.preprocessing.ICA.html) | [Annotations API](https://mne.tools/stable/generated/mne.Annotations.html)

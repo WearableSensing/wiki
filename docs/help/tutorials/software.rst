@@ -1,10 +1,11 @@
 Software Tutorials
 ==================
---------------------------------------------------------------------------------------
 
 This section provides tutorials on how to use Wearable Sensing's DSI-Streamer software, including how to set it up, configure it, and use it effectively.
 
 For comprehensive documentation on the DSI-API, please refer to the :doc:`DSI API Documentation <../../../api/index>`.
+
+--------------------------------------------------------------------------------------
 
 Connection Guide
 ----------------

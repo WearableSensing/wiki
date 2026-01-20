@@ -1,5 +1,4 @@
 # MNE Integration
----
 
 MNE is a comprehensive ecosystem for working with neurophysiological data. Use these integrations to analyze EEG data from Wearable Sensing devices with powerful Python tools.
 
@@ -10,6 +9,7 @@ MNE is a comprehensive ecosystem for working with neurophysiological data. Use t
 :class: note
 Each integration requires separate installation. Click on the cards below to access detailed setup instructions and tutorials.
 ```
+---
 
 ### Choose Your Integration
 
@@ -53,6 +53,8 @@ Graphical user interface for MNE-Python. Point-and-click workflows for EEG analy
 Perfect for: Visual workflows, EDF files, low or no-code analysis
 ```
 ````
+
+---
 
 ## Additional Resources
 

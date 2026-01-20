@@ -1,7 +1,8 @@
 # Artifact Handling
 ---
 
-Remove or correct artifacts such as eye blinks, muscle activity, and bad segments.
+Remove or correct artifacts such as eye blinks, muscle activity, and bad segments from your Wearable Sensing EEG recordings.
+
 
 ## Manual Artifact Rejection
 
@@ -71,3 +72,19 @@ If specific channels are consistently noisy:
 :class: tip
 After marking bad channels, use **Tools → Interpolate bad channels** to replace them with interpolated values from neighboring channels.
 ```
+
+---
+
+## Next Steps
+
+After cleaning your Wearable Sensing data:
+1. {doc}`Create epochs <epochs>` - Extract event-related segments for analysis
+2. Save cleaned data: **File → Save as** (FIF format recommended for MNE compatibility)
+3. {doc}`Export to MNE-Python <../../python/index>` for advanced statistics and visualization
+
+---
+
+## Resources
+
+- [MNELAB Documentation](https://mnelab.readthedocs.io/) | [MNE ICA Tutorial](https://mne.tools/stable/auto_tutorials/preprocessing/40_artifact_correction_ica.html)
+- {doc}`MNE-Python Artifact Removal <../../python/processing/artifacts>` | {doc}`Filtering <filter>`
