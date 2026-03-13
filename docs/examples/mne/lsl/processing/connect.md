@@ -31,7 +31,7 @@ for stream in streams:
     print(f"  - {stream.name} ({stream.stype}) @ {stream.sfreq} Hz")
 
 # Or filter by name/type
-eeg_streams = resolve_streams(timeout=5.0, stream_type='EEG')
+eeg_streams = resolve_streams(timeout=5.0, stype='EEG')
 print(f"\nFound {len(eeg_streams)} EEG stream(s)")
 
 dsi_stream = resolve_streams(timeout=5.0, name='DSI-24')

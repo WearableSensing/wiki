@@ -18,7 +18,7 @@ Once your LSL stream is running (see {doc}`LSL Setup <../../../lsl/index>`), use
 ```{code-block} python
 :caption: Launch StreamViewer for real-time DSI visualization
 
-from mne_lsl.stream import StreamViewer
+from mne_lsl.stream_viewer import StreamViewer
 
 stream_name = "WS-default"  # Or DSI-24, DSI-VR300, WS-default
 
@@ -35,45 +35,44 @@ If unsure of your stream name, check the LSL GUI or use {doc}`stream discovery <
 
 ## Customize the Viewer by Channel and Duration
 
-The StreamViewer can be customized to display specific channels and adjust the time window shown using the GUI tools, or programmatically as follows:
-
-```{code-block} python
-:caption: Customize StreamViewer with specific channels and time window
-
-from mne_lsl.stream import StreamViewer
-
-stream_name = "WS-default"  # Change to your stream name
-viewer = StreamViewer(
-    stream_name=stream_name,
-    window_duration=10.0,  # Show 10 seconds
-    picks=['Cz'],  # Specific channels
-)
-viewer.start()
-```
+Channel selection and time window duration are adjusted interactively through the StreamViewer GUI after launch. There are no constructor parameters for these in v1.12.0.
 
 ---
 
 ## View Filtered Streams from StreamLSL
 
-If you want to visualize filtered data, first create a `StreamLSL` object, apply filters, and then pass it to `StreamViewer`:
+```{admonition} Note
+:class: note
+In mne-lsl 1.12.0, `StreamViewer` connects directly to a raw LSL stream by name. It does not accept a pre-filtered `StreamLSL` object. For filtered visualization, apply filters via {doc}`StreamLSL <../processing/filter>` and retrieve data with `get_data()` to plot with your preferred plotting library.
+```
+
+To use `StreamLSL` for filtered data processing alongside the viewer, run them as separate scripts or processes — `StreamViewer.start()` is blocking and calls `sys.exit()` when the window closes, so code after it will not execute.
 
 ```{code-block} python
-:caption: Visualize filtered streams in real-time
+:caption: Script 1 — Filtered data acquisition with StreamLSL
 
-from mne_lsl.stream import StreamLSL, StreamViewer
+from mne_lsl.stream import StreamLSL
+import time
 
 stream_name = "WS-default"  # Change to your stream name
-
-# Filter the stream using StreamLSL built in methods
 stream = StreamLSL(bufsize=10, name=stream_name).connect()
 stream.filter(l_freq=1.0, h_freq=40.0)
 stream.notch_filter(freqs=60.0)
 
-# Visualize the filtered stream
-viewer = StreamViewer(stream=stream)
-viewer.start()
+# Process filtered data here
+while True:
+    data, ts = stream.get_data(winsize=1.0)
+    time.sleep(0.1)
+```
 
-stream.disconnect()
+```{code-block} python
+:caption: Script 2 — StreamViewer for raw stream monitoring (run separately)
+
+from mne_lsl.stream_viewer import StreamViewer
+
+stream_name = "WS-default"  # Change to your stream name
+viewer = StreamViewer(stream_name=stream_name)
+viewer.start()  # Blocking — exits the process when window closes
 ```
 
 ---
