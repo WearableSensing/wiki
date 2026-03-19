@@ -47,6 +47,11 @@ html_theme_options = {
             icon="fa-brands fa-github fa-fw",
         ),
         dict(
+            name="LinkedIn",
+            url="https://www.linkedin.com/company/wearablesensing",
+            icon="fa-brands fa-linkedin fa-fw",
+        ),
+        dict(
             name="Wearable Sensing",
             url="https://wearablesensing.com",
             icon="_static/images/logo2.png",
