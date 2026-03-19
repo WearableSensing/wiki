@@ -21,7 +21,7 @@ Send TTL-style electrical pulses directly into the DSI trigger input at the mome
 - No network or OS scheduling latency
 - Requires additional hardware and a serial port connection from your stimulus computer (or USB-to-serial adapter in the case of the MMBT-S)
 
-```{figure} ../../../_static/images/triggerhub.png
+```{figure} ../../../_static/images/triggerhub.jpg
 :alt: Wearable Sensing Trigger Hub
 :align: center
 :width: 320px

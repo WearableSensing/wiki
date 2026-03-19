@@ -4,7 +4,7 @@ Unity is a cross-platform game engine widely used for game development and resea
 
 ## Featured Tools
 
-```{figure} ../../_static/images/examples/unity/labo-integration.png
+```{figure} ../../_static/images/examples/unity/labo-integration.jpg
 :alt: Wearable Sensing and Labo integration architecture
 :align: center
 :width: 400px

@@ -49,7 +49,7 @@ html_theme_options = {
         dict(
             name="Wearable Sensing",
             url="https://wearablesensing.com",
-            icon="_static/images/logo.png",
+            icon="_static/images/logo2.png",
             type="local",
         ),
     ],

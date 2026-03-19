@@ -2,7 +2,7 @@
 
 Build immersive virtual reality experiences powered by real-time EEG data. Wearable Sensing devices are designed to work alongside consumer VR headsets, either with the compact VR-300 or with other DSI devices using the VR Adapter.
 
-```{figure} ../../_static/images/vr-headset.png
+```{figure} ../../_static/images/vr-headset.jpg
 :alt: VR-300 worn under a consumer VR headset
 :align: center
 :width: 320px
