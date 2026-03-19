@@ -6,7 +6,6 @@ PsychoPy allows for the creation of precisely timed visual stimuli.
 With these stimuli, corresponding digital 'marker' can be sent directly into the active EEG data stream.
 
 ## Creating Visual Stimuli
----
 
 This code create visuals with the text "wearable" and a red rectangle. For more information on different stimuli, please refer to the [Resource](#resources) at the bottom on of the page.
 
@@ -82,14 +81,13 @@ win.flip() # Show the updated stimuli
 core.wait(2.0) # Wait for 2 seconds
 ```
 
-```{image} ../../_static/images/psychopy-stim.gif
+```{image} ../../_static/images/examples/psychopy/psychopy-stim.gif
 :alt: simple stim
 :class: center
 :width: 200px
 ```
 
 ## Resources
----
 
 For more in-depth documentation and API reference, please refer to:
 

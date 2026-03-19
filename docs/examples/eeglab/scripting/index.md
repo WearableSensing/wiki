@@ -1,5 +1,4 @@
 # Scripting & Command Line
----
 
 You can automate data import using the `pop_WearableSensing` function in your MATLAB scripts.
 

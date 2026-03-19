@@ -1,5 +1,4 @@
 # Running BCI2000
----
 
 With all configuration complete, you're now ready to launch BCI2000 and verify your DSI headset connection by running a mock experiment. This test ensures that BCI2000 can successfully communicate with your headset and properly open the Source Signal and Timing visualization windows.
 
@@ -13,7 +12,7 @@ Follow these steps to launch BCI2000 with your DSI headset:
 
 **If successful, the following window will appear:**
 
-```{figure} ../../_static/images/bci2000-1.png
+```{figure} ../../_static/images/examples/bci2000/bci2000-1.png
 
 *BCI2000 Launcher* Interface
 ```
@@ -37,7 +36,7 @@ Follow these steps to launch BCI2000 with your DSI headset:
 
       * The *Launch* button will set up all three modules, and create a new window called *Operator*.
   
-   ```{figure} ../../_static/images/bci2000-2.png
+   ```{figure} ../../_static/images/examples/bci2000/bci2000-2.png
 
    *Operator* Window
    ```
@@ -49,7 +48,7 @@ Follow these steps to launch BCI2000 with your DSI headset:
    3. Click ***Set Config***
       * This step will apply all the current parameter settings and initializes all the modules you selected. You will know if this launch was successful if no error logs were displayed and both the Timing and Source Signal windows were opened.
 
-   ```{figure} ../../_static/images/bci2000-3.png
+   ```{figure} ../../_static/images/examples/bci2000/bci2000-3.png
    :name: bci2000-config
    :align: center
 
@@ -66,7 +65,6 @@ Follow these steps to launch BCI2000 with your DSI headset:
    ```
 
 ## Resources
----
 
 This documentation only covers setup. For full usage, configuration, and advanced module options, please visit following links:
 

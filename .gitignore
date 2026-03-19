@@ -7,3 +7,4 @@ readme.txt
 *.m
 
 *.csv
+.claude/

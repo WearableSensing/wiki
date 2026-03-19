@@ -50,8 +50,7 @@ epochs_stream = EpochsStream(
     baseline=(-0.2, 0),      # Baseline correction period
 ).connect()
 
-print(f"Epoch duration: {epochs_stream.tmax - epochs_stream.tmin:.2f}s")
-print(f"Monitoring for events on channel: {epochs_stream.event_channels}")
+print(f"Epoch duration: {epochs_stream.times[-1] - epochs_stream.times[0]:.2f}s")
 ```
 
 **Parameters explained:**

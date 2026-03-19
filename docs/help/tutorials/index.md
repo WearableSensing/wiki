@@ -6,7 +6,7 @@ Get started with Wearable Sensing's EEG technology through step-by-step guides c
 
 ## Getting Started
 
-````{grid} 3
+````{grid} 2
 :gutter: 3
 
 ```{grid-item-card} Software
@@ -25,6 +25,14 @@ Learn to install and configure DSI-Streamer and other essential software tools
 Setup guides for EEG headsets, sensors, and proper electrode placement techniques
 ```
 
+```{grid-item-card} Learning
+:link: learning/index
+:link-type: doc
+:text-align: center
+---
+Foundational concepts like trigger alignment, event synchronization, and data pipelines
+```
+
 ```{grid-item-card} Third-Party
 :link: ../../examples/index
 :link-type: doc
@@ -40,6 +48,7 @@ Integrate with popular platforms like MNE-Python, PsychoPy, BCI2000, and more
 
 - **Software Setup**: Install drivers, configure streaming applications, and troubleshoot common issues
 - **Hardware Configuration**: Connect devices, optimize signal quality, and maintain your equipment
+- **Learning**: Core concepts for working with EEG data—triggers, event alignment, and real-time pipelines
 - **Integration**: Connect Wearable Sensing devices with research and development platforms
 
 ```{toctree}
@@ -47,5 +56,6 @@ Integrate with popular platforms like MNE-Python, PsychoPy, BCI2000, and more
 
    Software <software>
    Hardware <hardware>
+   Learning <learning/index>
    Third-Party Software <../../examples/index>
 ```

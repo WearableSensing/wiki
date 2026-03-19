@@ -9,6 +9,7 @@ Common questions about Wearable Sensing software tools and data acquisition.
 ```{toctree}
 :maxdepth: 1
 
+How do I ensure good signal quality from DSI-Streamer? <questions/signal-quality-dsi-streamer>
 Does the DSI-Streamer output raw or filtered data? <questions/raw-or-filtered>
 What operating systems does DSI-Streamer work on? <questions/os-compatibility>
 What types of output formats does the DSI-Streamer support? <questions/output-formats>

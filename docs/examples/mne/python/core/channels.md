@@ -1,5 +1,4 @@
 # Channel Configuration
----
 
 Configure channel properties, manage channel selection, and set up referencing for your EEG data.
 

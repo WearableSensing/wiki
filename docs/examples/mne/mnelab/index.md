@@ -3,7 +3,7 @@
 MNELAB is a graphical user interface (GUI) for [MNE-Python](https://mne.tools/stable/index.html) that provides an intuitive point-and-click interface for EEG/MEG analysis. While independent from the MNE-Python team, MNELAB is actively maintained, peer-reviewed ([JOSS publication](https://doi.org/10.21105/joss.04650)), and provides seamless integration with Wearable Sensing EDF files.
 
 
-```{figure} ../../../_static/images/mne_lab.png
+```{figure} ../../../_static/images/examples/mne/mne_lab.png
 :alt: MNELAB GUI screenshot
 :width: 75%
 

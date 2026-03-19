@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Wearable Sensing Technical Documentation'
-copyright = '2025, Wearable Sensing'
+copyright = 'Wearable Sensing, LLC. All rights reserved'
 author = 'Tab Memmott'
 
 # -- General configuration ---------------------------------------------------
@@ -45,7 +45,13 @@ html_theme_options = {
             name="Code Repository",
             url="https://github.com/WearableSensing",
             icon="fa-brands fa-github fa-fw",
-        )
+        ),
+        dict(
+            name="Wearable Sensing",
+            url="https://wearablesensing.com",
+            icon="_static/images/logo.png",
+            type="local",
+        ),
     ],
     "secondary_sidebar_items": [],  # remove secondary sidebar
     # "article_header_start": [],  # disable breadcrumbs
@@ -60,6 +66,8 @@ html_theme_options = {
         "image_dark": "_static/images/logo.png",
         "text": "   ",
     },
+    "footer_start": [],
+    "footer_end": ["copyright"],
 }
 html_favicon = "_static/images/favicon.png"
 html_sidebars = {

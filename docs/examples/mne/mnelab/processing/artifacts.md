@@ -1,5 +1,4 @@
 # Artifact Handling
----
 
 Remove or correct artifacts such as eye blinks, muscle activity, and bad segments from your Wearable Sensing EEG recordings.
 

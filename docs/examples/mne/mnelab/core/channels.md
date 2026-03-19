@@ -1,5 +1,4 @@
 # Channel Configuration
----
 
 Learn how to configure channel properties and references in MNELAB.
 

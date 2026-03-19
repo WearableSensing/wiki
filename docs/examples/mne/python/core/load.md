@@ -1,5 +1,4 @@
 # Load Wearable Sensing Data
----
 
 Load EEG recordings from your Wearable Sensing DSI-24, DSI-VR300, or DSI-7 headset into MNE-Python for offline analysis.
 

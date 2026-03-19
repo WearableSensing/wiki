@@ -5,7 +5,7 @@ Discover and connect to LSL streams from your Wearable Sensing DSI-24, DSI-VR300
 ```{admonition} Prerequisites
 :class: note
 - MNE-LSL installed (see {doc}`Installation <../index>`)
-- LSL stream running from your Wearable Sensing device (see {doc}`LSL Setup <../../../../lsl/index>`)
+- LSL stream running from your Wearable Sensing device (see {doc}`LSL Setup <../../../lsl/index>`)
 ```
 
 ## Key Concepts
@@ -31,7 +31,7 @@ for stream in streams:
     print(f"  - {stream.name} ({stream.stype}) @ {stream.sfreq} Hz")
 
 # Or filter by name/type
-eeg_streams = resolve_streams(timeout=5.0, stream_type='EEG')
+eeg_streams = resolve_streams(timeout=5.0, stype='EEG')
 print(f"\nFound {len(eeg_streams)} EEG stream(s)")
 
 dsi_stream = resolve_streams(timeout=5.0, name='DSI-24')
@@ -160,4 +160,4 @@ Now that you know how to connect to streams:
 ## Resources
 
 - [Stream API](https://mne.tools/mne-lsl/stable/generated/api/mne_lsl.stream.StreamLSL.html) | [MNE-LSL Tutorial](https://mne.tools/mne-lsl/stable/generated/tutorials/00_introduction.html)
-- {doc}`LSL Setup <../../../../lsl/index>` | {doc}`Visualization <../visualization/viewer>`
+- {doc}`LSL Setup <../../../lsl/index>` | {doc}`Visualization <../visualization/viewer>`
