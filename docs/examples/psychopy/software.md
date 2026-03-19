@@ -1,10 +1,5 @@
 # Software Triggers
 
-```{admonition} LSL
-:class: sidebar note
-The following tutorials will use pylsl in pair with PsychoPy
-```
-
 This tutorial will show you how to send digital event markers from PsychoPy into an active DSI data stream. Sending these markers is crucial for accurately synchronizing your stimuli with recorded neural activity.
 
 ## Setting up the Stream

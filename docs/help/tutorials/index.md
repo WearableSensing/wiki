@@ -2,10 +2,6 @@
 
 Get started with Wearable Sensing's EEG technology through step-by-step guides covering software setup, hardware configuration, and third-party integrations.
 
----
-
-## Getting Started
-
 ````{grid} 2
 :gutter: 3
 
@@ -48,7 +44,7 @@ Integrate with popular platforms like MNE-Python, PsychoPy, BCI2000, and more
 
 - **Software Setup**: Install drivers, configure streaming applications, and troubleshoot common issues
 - **Hardware Configuration**: Connect devices, optimize signal quality, and maintain your equipment
-- **Learning**: Core concepts for working with EEG data—triggers, event alignment, and real-time pipelines
+- **Learning**: Core concepts for working with EEG data
 - **Integration**: Connect Wearable Sensing devices with research and development platforms
 
 ```{toctree}

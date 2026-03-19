@@ -8,6 +8,8 @@ Have a third-party library you'd like to integrate with? [Reach out to us →](.
 ```{card} Game Development & VR
 :link: game-vr/index
 :link-type: doc
+:text-align: center
+---
 
 Build brain-controlled games and immersive VR experiences with real-time EEG
 ```

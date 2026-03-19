@@ -2,9 +2,13 @@
 
 Browse by category below or use the **search bar** in the top navigation (or press `Ctrl+K`) to find specific topics.
 
----
 
-## Categories
+```{admonition} Need More Help?
+:class: tip
+Can't find what you're looking for? Visit our {doc}`Contact <../help/index>` page to reach our support team.
+```
+
+---
 
 ````{grid} 2
 :gutter: 4
@@ -60,11 +64,6 @@ Coverage, support packages, and policies
 ````
 
 ---
-
-```{admonition} Need More Help?
-:class: tip
-Can't find what you're looking for? Visit our {doc}`Contact <../help/index>` page to reach our support team.
-```
 
 
 ```{toctree}

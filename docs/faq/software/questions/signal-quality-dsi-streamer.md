@@ -19,7 +19,7 @@ With the **Impedance** checkbox enabled, DSI-Streamer injects a test signal into
 ```{figure} ../../../_static/images/signal-quality.png
 :alt: DSI signal quality metrics
 :align: center
-:width: 400px
+:width: 300px
 
 Signal quality metrics panel in DSI-Streamer — green indicates good electrode contact
 ```

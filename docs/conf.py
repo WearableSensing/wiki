@@ -47,24 +47,31 @@ html_theme_options = {
             icon="fa-brands fa-github fa-fw",
         ),
         dict(
+            name="LinkedIn",
+            url="https://www.linkedin.com/company/wearablesensing",
+            icon="fa-brands fa-linkedin fa-fw",
+        ),
+        dict(
             name="Wearable Sensing",
             url="https://wearablesensing.com",
-            icon="_static/images/logo.png",
+            icon="_static/images/logo2.png",
             type="local",
         ),
     ],
     "secondary_sidebar_items": [],  # remove secondary sidebar
-    # "article_header_start": [],  # disable breadcrumbs
+    "article_header_start": [],  # disable breadcrumbs
     "navbar_end": [
         "theme-switcher",
         "navbar-icon-links",
     ],
     "navbar_align": "left",
     "back_to_top_button": False,
+    "pygments_light_style": "github-light-colorblind",
+    "pygments_dark_style": "github-dark-colorblind",
     "logo": {
         "image_light": "_static/images/logo.png",
         "image_dark": "_static/images/logo.png",
-        "text": "   ",
+        "text": " ",
     },
     "footer_start": [],
     "footer_end": ["copyright"],
@@ -86,5 +93,5 @@ html_js_files = [
 ]
 
 html_css_files = [
-    'css/password.css',
+    'css/custom.css',
 ]

@@ -4,7 +4,7 @@ The Lab Streaming Layer (LSL) is a system for unified collection of measurement 
 
 ```{admonition} Software Download
 :class: note
-Download the latest [`dsi2lslGUI`](https://github.com/WearableSensing/LSL) release from our GitHub. To build from source, visit the [App-WearableSensing repository](https://github.com/WearableSensing/App-WearableSensing). These tutorials are created on Windows 11.
+Download the latest [dsi2lslGUI](https://github.com/WearableSensing/LSL) release from our GitHub. To build from source, visit the [App-WearableSensing repository](https://github.com/WearableSensing/App-WearableSensing). These tutorials are created on Windows 11.
 ```
 
 ---

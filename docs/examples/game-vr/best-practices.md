@@ -6,7 +6,7 @@ Architecture recommendations, triggering strategy, tooling, and system requireme
 
 Use a separate backend to handle all EEG signal processing. The game engine should only receive final predictions or send/receive event markers. This keeps rendering performance stable and the two concerns cleanly separated.
 
-```
+```text
 ┌──────────────────────┐
 │      DSI Headset     │  VR-300 / DSI-24
 └──────────┬───────────┘
@@ -14,13 +14,13 @@ Use a separate backend to handle all EEG signal processing. The game engine shou
            ▼
 ┌───────────────────────────────────────────────────────┐
 │                    LSL Stream                         │
-│  ─────────────────────────────────────────────────── │
+│  ───────────────────────────────────────────────────  │
 │  EEG data channels   (dsi2lslGUI)                     │
 │  Trigger channel     (hardware events embedded here)  │
 └──────────┬────────────────────────────────────────────┘
            │  pylsl              LSL markers (stim events)
            │          ┌─────────────────────────────────────────┐
-           ▼          ▼                                          │
+           ▼          ▼                                         │
 ┌──────────────────────────────────┐     ┌──────────────────────┴─────┐
 │         Python Backend           │     │  Game Engine or            │
 │  ──────────────────────────────  │     │  Presentation Software     │
