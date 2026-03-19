@@ -1,5 +1,4 @@
 # Epoching & Event Handling
----
 
 Learn to extract and analyze event-related data by creating epochs around stimulus events or experimental triggers.
 

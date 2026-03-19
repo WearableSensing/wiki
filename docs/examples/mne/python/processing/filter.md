@@ -1,5 +1,4 @@
 # Filtering
----
 
 This section will guide you through the process of filtering EEG data using MNE-Python. Filtering is a crucial step in EEG data preprocessing, as it helps to remove noise and artifacts from the signal.
 

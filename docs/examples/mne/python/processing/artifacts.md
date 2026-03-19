@@ -1,5 +1,4 @@
 # Artifact Handling
----
 
 Learn to identify and remove artifacts from your EEG data using manual rejection, ICA, and regression methods.
 

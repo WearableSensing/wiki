@@ -1,5 +1,4 @@
 # Load Wearable Sensing Data
----
 
 MNELAB can open EDF files exported from DSI-Streamer, making it easy to analyze recordings from DSI-7, DSI-24, DSI-VR300, and DSI-Flex headsets.
 

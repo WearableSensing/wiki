@@ -1,5 +1,4 @@
 # GUI Guide
----
 
 To import data from DSI-Streamer into EEGLab:
 

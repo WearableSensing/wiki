@@ -2,17 +2,21 @@
 
 Connect Wearable Sensing EEG devices with popular research platforms and tools. These integrations enable advanced data streaming, analysis, and experimental workflows.
 
-```{admonition} Need a Custom Integration?
-:class: tip
-Have a third-party library you'd like to integrate? [Reach out to us](../help/index)—we're always expanding our integrations to provide more value to our users.
+Have a third-party library you'd like to integrate with? [Reach out to us →](../help/index)
+
+
+```{card} Game Development & VR
+:link: game-vr/index
+:link-type: doc
+
+Build brain-controlled games and immersive VR experiences with real-time EEG
 ```
 
----
 
-## Integration Tutorials
 
 ````{grid} 2
 :gutter: 3
+
 
 ```{grid-item-card} Lab Streaming Layer (LSL)
 :link: lsl/index
@@ -82,4 +86,5 @@ EEGLAB <eeglab/index>
 BCI2000 <bci2000/index>
 PsychoPy <psychopy/index>
 Internal Tooling <tooling/index>
+Game Development & VR <game-vr/index>
 ```

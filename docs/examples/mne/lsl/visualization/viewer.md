@@ -6,7 +6,7 @@ Visualize real-time EEG data from Wearable Sensing devices using MNE-LSL's Strea
 
 ## Launch LSL Stream Viewer
 
-```{figure} ../../../../_static/images/mne-lsl/mne_lsl_vr_300.png
+```{figure} ../../../../_static/images/examples/mne/mne_lsl_vr_300.png
 :alt: MNE-LSL StreamViewer
 :width: 100%
 

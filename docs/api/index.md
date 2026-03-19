@@ -4,9 +4,9 @@ The DSI API provides programmatic control of Wearable Sensing DSI headsets for r
 
 ```{admonition} API Version
 :class: tip
-**Version:** 1.20.3  
-**Last Updated:** June, 6 2025  
-**Platforms:** Windows, Linux, macOS  
+**Version:** 1.20.5
+**Last Updated:** February 10, 2026
+**Platforms:** Windows, Linux, macOS
 **Languages:** C/C++, Python
 ```
 

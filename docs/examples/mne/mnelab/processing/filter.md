@@ -1,5 +1,4 @@
 # Filtering
----
 
 Apply frequency filters to your Wearable Sensing EEG data to remove noise and isolate signals of interest.
 

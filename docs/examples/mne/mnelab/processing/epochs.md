@@ -1,5 +1,4 @@
 # Epoching & Event Handling
----
 
 Analyze event-related potentials and create epochs from your Wearable Sensing continuous recordings.
 
