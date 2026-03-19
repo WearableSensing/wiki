@@ -1,92 +1,392 @@
-html[data-theme="light"] {
-    /* Search term highlight */
-    --pst-color-target: #fde8d5;
+/* =============================================================
+   Brand Theme — Wearable Sensing
+   ============================================================= */
 
-    /* Input focus ring — replaces pink accent */
+/* ----- Light mode ------------------------------------------ */
+html[data-theme="light"] {
+    --pst-color-target: #fde8d5;
     --pst-color-accent: #b75a19;
     --pst-color-accent-bg: #faeee5;
 
-    /* Brand primary */
+    /* Primary */
     --pst-color-primary: #b75a19;
     --pst-color-primary-bg: #faeee5;
     --pst-color-primary-highlight: #8a4212;
+
+    /* Links */
     --pst-color-link: #b75a19;
     --pst-color-link-hover: #8a4212;
 
-    /* Secondary — replace purple with brand orange family */
+    /* Secondary — replaces theme purple */
     --pst-color-secondary: #b75a19;
     --pst-color-secondary-bg: #faeee5;
     --pst-color-secondary-highlight: #8a4212;
     --pst-color-secondary-text: #fff;
     --pst-color-secondary-highlight-text: #fff;
 
-    /* Note admonitions — brand orange */
+    /* Admonition colors */
     --pst-color-info: #b75a19;
     --pst-color-info-bg: #faeee5;
     --pst-color-info-highlight: #8a4212;
-
-    /* Tip / hint / seealso — green */
     --pst-color-success: #2e7d32;
     --pst-color-success-bg: #e8f5e9;
     --pst-color-success-highlight: #1b5e20;
-
-    /* Warning / caution / attention — amber */
     --pst-color-warning: #b08000;
     --pst-color-warning-bg: #fff8e1;
     --pst-color-warning-highlight: #7a5900;
-
-    /* Danger / error — red */
     --pst-color-danger: #d72d47;
     --pst-color-danger-bg: #f9e1e4;
     --pst-color-danger-highlight: #bb2239;
 }
 
-/* Override hardcoded blue focus border on form inputs */
-.form-control:focus,
-.form-select:focus,
-.form-check-input:focus {
-    border-color: #b75a19;
-}
-
+/* ----- Dark mode ------------------------------------------- */
 html[data-theme="dark"] {
-    /* Search term highlight */
     --pst-color-target: #4a2208;
-
-    /* Input focus ring — replaces pink accent */
     --pst-color-accent: #d4722a;
     --pst-color-accent-bg: #3d2010;
 
-    /* Brand primary */
+    /* Primary */
     --pst-color-primary: #d4722a;
     --pst-color-primary-bg: #3d2010;
     --pst-color-primary-highlight: #e8935a;
+
+    /* Links */
     --pst-color-link: #d4772e;
     --pst-color-link-hover: #e8935a;
 
-    /* Secondary — replace purple with brand orange family */
+    /* Secondary — replaces theme purple */
     --pst-color-secondary: #d4722a;
     --pst-color-secondary-bg: #3d2010;
     --pst-color-secondary-highlight: #e8935a;
     --pst-color-secondary-text: #fff;
     --pst-color-secondary-highlight-text: #fff;
 
-    /* Note admonitions — lighter orange for dark backgrounds */
+    /* Admonition colors */
     --pst-color-info: #d4722a;
     --pst-color-info-bg: #3d2010;
     --pst-color-info-highlight: #e8935a;
-
-    /* Tip / hint / seealso */
     --pst-color-success: #66bb6a;
     --pst-color-success-bg: #0a2e0c;
     --pst-color-success-highlight: #47a373;
-
-    /* Warning / caution / attention — amber */
     --pst-color-warning: #f9a825;
     --pst-color-warning-bg: #3d2e00;
     --pst-color-warning-highlight: #ff7614;
-
-    /* Danger / error */
     --pst-color-danger: #e78894;
     --pst-color-danger-bg: #4e111b;
     --pst-color-danger-highlight: #df596a;
+}
+
+
+/* =============================================================
+   Admonitions
+   ============================================================= */
+
+.admonition, div.admonition {
+    border: .5px solid color-mix(in srgb, var(--pst-color-info) 35%, transparent);
+    border-left-width: .18rem;
+    border-radius: .6rem;
+    background-color: color-mix(in srgb, var(--pst-color-info-bg) 55%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .08) !important;
+    padding: .3rem;
+    padding-bottom: .5rem;
+    margin: 1rem;
+}
+
+.admonition > .admonition-title, div.admonition > .admonition-title {
+    background-color: transparent;
+    margin: .1rem 0 .3rem 0;
+    padding: 0 .8rem .2rem .8rem;
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    opacity: .7;
+}
+
+.admonition > .admonition-title::after, div.admonition > .admonition-title::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Per-type colors */
+.admonition.note, div.admonition.note,
+.admonition.admonition-todo, div.admonition.admonition-todo {
+    border-color: color-mix(in srgb, var(--pst-color-info) 35%, transparent);
+    border-left-color: var(--pst-color-info);
+    background-color: color-mix(in srgb, var(--pst-color-info-bg) 55%, transparent);
+}
+.admonition.tip, div.admonition.tip,
+.admonition.hint, div.admonition.hint,
+.admonition.seealso, div.admonition.seealso {
+    border-color: color-mix(in srgb, var(--pst-color-success) 35%, transparent);
+    border-left-color: var(--pst-color-success);
+    background-color: color-mix(in srgb, var(--pst-color-success-bg) 55%, transparent);
+}
+.admonition.warning, div.admonition.warning,
+.admonition.caution, div.admonition.caution,
+.admonition.attention, div.admonition.attention,
+.admonition.important, div.admonition.important {
+    border-color: color-mix(in srgb, var(--pst-color-warning) 35%, transparent);
+    border-left-color: var(--pst-color-warning);
+    background-color: color-mix(in srgb, var(--pst-color-warning-bg) 55%, transparent);
+}
+.admonition.danger, div.admonition.danger,
+.admonition.error, div.admonition.error {
+    border-color: color-mix(in srgb, var(--pst-color-danger) 35%, transparent);
+    border-left-color: var(--pst-color-danger);
+    background-color: color-mix(in srgb, var(--pst-color-danger-bg) 55%, transparent);
+}
+
+
+/* =============================================================
+   Blockquote callouts (> **Note:** ...)
+   ============================================================= */
+
+.bd-article-container blockquote {
+    border: .5px solid color-mix(in srgb, var(--pst-color-border) 60%, transparent);
+    border-left: .18rem solid var(--pst-color-border);
+    border-radius: .6rem;
+    background-color: color-mix(in srgb, var(--pst-color-surface) 55%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .08);
+    padding: .3rem .8rem .5rem;
+    margin: 1rem;
+}
+
+.bd-article-container blockquote p {
+    margin-bottom: 0;
+}
+
+
+/* =============================================================
+   Content indentation
+   ============================================================= */
+
+.bd-article-container p,
+.bd-article-container ul,
+.bd-article-container ol,
+.bd-article-container table,
+.bd-article-container pre,
+.bd-article-container blockquote,
+.bd-article-container .admonition,
+.bd-article-container .highlight,
+.bd-article-container div.admonition,
+.bd-article-container figure,
+.bd-article-container .sd-card {
+    margin-left: .1rem;
+}
+
+/* =============================================================
+   Grid cards
+   ============================================================= */
+
+.bd-content .sd-card {
+    border-radius: 1rem !important;
+    border: 1px solid var(--pst-color-border) !important;
+    overflow: hidden !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bd-content .sd-card:hover {
+    border-color: var(--pst-color-primary) !important;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--pst-color-primary) 20%, transparent) !important;
+}
+
+
+/* =============================================================
+   Content images & figures
+   ============================================================= */
+
+.bd-article-container img {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+.bd-article-container figcaption p,
+.bd-article-container .figure .caption,
+.bd-article-container .figure p {
+    font-size: .8rem;
+    color: var(--pst-color-text-muted);
+}
+
+
+/* =============================================================
+   Form inputs — override hardcoded blue focus border
+   ============================================================= */
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: var(--pst-color-primary);
+}
+
+
+/* =============================================================
+   Footer
+   ============================================================= */
+
+.bd-footer .bd-footer__inner {
+    padding: .4rem 1rem;
+}
+
+.bd-footer .footer-item,
+.bd-footer .footer-item p {
+    font-size: .75rem;
+    opacity: .7;
+    margin-bottom: 0;
+}
+
+
+/* =============================================================
+   Password gate
+   ============================================================= */
+
+#password-gate-container {
+    margin: 40px auto;
+    text-align: center;
+    padding: 0;
+    width: 90%;
+}
+
+#password-gate-container h3 {
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#password-gate-container p {
+    font-size: 1em;
+    color: #6c757d;
+    margin-bottom: 24px;
+}
+
+#password-gate-container input[type="password"] {
+    width: 280px;
+    padding: 12px 15px;
+    font-size: 1em;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+#password-gate-container button {
+    padding: 12px 24px;
+    font-size: 1em;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--pst-color-primary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#password-gate-container button:hover {
+    background-color: var(--pst-color-primary-highlight);
+}
+
+#protected-content {
+    margin: 40px auto;
+    text-align: center;
+    padding: 0;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* =============================================================
+   Download cards
+   ============================================================= */
+
+.downloads-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    color: var(--pst-color-text-base);
+    padding-top: 1rem;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.download-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid var(--pst-color-border);
+    border-radius: 8px;
+    background-color: var(--pst-color-background);
+    text-align: left;
+}
+
+html[data-theme="dark"] .download-card {
+    background-color: var(--pst-color-surface);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.card-header .icon {
+    font-size: 1.1rem;
+    color: var(--pst-color-primary);
+    background-color: var(--pst-color-primary-bg);
+    padding: 0.5rem;
+    border-radius: 6px;
+    line-height: 1;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.download-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.download-list li {
+    margin-bottom: 1rem;
+}
+
+.download-list a {
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.download-list a:hover {
+    text-decoration: underline;
+}
+
+.download-list .description,
+.download-list .metadata {
+    font-size: 0.8rem;
+    color: var(--pst-color-text-muted);
+    font-style: italic;
+}
+
+.download-list .description {
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.download-list .metadata {
+    display: inline;
+    margin-left: 0.5rem;
 }

@@ -5,7 +5,7 @@
   <div style="flex-shrink: 0;">
     <img src="../_static/images/landing-hero.png"
          alt="Wearable Sensing"
-         style="width: 220px; height: 220px; border-radius: 25%; object-fit: cover;">
+         style="width: 220px; height: 220px; border-radius: 25%; border: 1px solid #e0e0e0; object-fit: cover;">
   </div>
   <div>
     <p>Wearable Sensing is a rapidly growing neurotechnology company specializing in dry electrode sensors for brain activity monitoring. Our patented technology ensures high signal quality and artifact-free physiological monitoring in easy-to-use, mobile form factors. This makes it possible to reliably monitor brain activity in real-world environments using our practical EEG headsets.</p>

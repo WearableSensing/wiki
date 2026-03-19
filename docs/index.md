@@ -6,19 +6,19 @@
 <div style="display: flex; gap: 12px; margin: 1em 0 1.5em 0; flex-wrap: nowrap;">
   <img src="_static/images/landing/dsi24-landing.jpg"
        alt="DSI-24 EEG headset"
-       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; object-fit: cover; background: white;">
+       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; border: 1px solid #e0e0e0; object-fit: cover; background: white;">
   <img src="_static/images/landing/cap-dsi7.jpg"
        alt="DSI-7 EEG headset"
-       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; object-fit: contain; background: white;">
+       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; border: 1px solid #e0e0e0; object-fit: contain; background: white;">
   <img src="_static/images/landing/cap-vr300.jpg"
        alt="DSI-VR300 EEG headset"
-       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; object-fit: contain; background: white;">
+       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; border: 1px solid #e0e0e0; object-fit: contain; background: white;">
   <img src="_static/images/landing/cap-flex.png"
        alt="DSI-7 Flex EEG headset"
-       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; object-fit: contain; background: white;">
+       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; border: 1px solid #e0e0e0; object-fit: contain; background: white;">
   <img src="_static/images/vr-headset.jpg"
        alt="VR-300 EEG headset"
-       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; object-fit: cover; background: white;">
+       style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; border: 1px solid #e0e0e0; object-fit: cover; background: white;">
 </div>
 ```
 ---

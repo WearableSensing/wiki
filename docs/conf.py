@@ -88,6 +88,5 @@ html_js_files = [
 ]
 
 html_css_files = [
-    'css/password.css',
     'css/custom.css',
 ]

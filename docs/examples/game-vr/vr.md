@@ -19,7 +19,7 @@ Other DSI devices (DSI-24, DSI-7, DSI-Flex) can also be used with VR headsets us
 ```{figure} ../../_static/images/examples/game-vr/vr-adapter.jpg
 :alt: DSI-24 with VR adapter clips attached
 :align: center
-:width: 340px
+:width: 200px
 
 DSI-24 with the VR Adapter clips for use with a VR headset
 ```
