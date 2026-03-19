@@ -21,13 +21,7 @@
        style="flex: 1; min-width: 0; height: 150px; border-radius: 20px; object-fit: cover; background: white;">
 </div>
 ```
-
-```{admonition} New here?
-:class: tip
-Start with our [Tutorials](help/tutorials/index) or explore the **Quick Links** below.
-```
-
-## Quick Links 
+---
 
 ````{grid} 2
 :gutter: 4

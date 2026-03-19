@@ -61,6 +61,8 @@ html_theme_options = {
     ],
     "navbar_align": "left",
     "back_to_top_button": False,
+    "pygments_light_style": "github-light-colorblind",
+    "pygments_dark_style": "github-dark-colorblind",
     "logo": {
         "image_light": "_static/images/logo.png",
         "image_dark": "_static/images/logo.png",
@@ -87,4 +89,5 @@ html_js_files = [
 
 html_css_files = [
     'css/password.css',
+    'css/custom.css',
 ]

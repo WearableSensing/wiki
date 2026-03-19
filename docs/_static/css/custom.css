@@ -1,0 +1,92 @@
+html[data-theme="light"] {
+    /* Search term highlight */
+    --pst-color-target: #fde8d5;
+
+    /* Input focus ring — replaces pink accent */
+    --pst-color-accent: #b75a19;
+    --pst-color-accent-bg: #faeee5;
+
+    /* Brand primary */
+    --pst-color-primary: #b75a19;
+    --pst-color-primary-bg: #faeee5;
+    --pst-color-primary-highlight: #8a4212;
+    --pst-color-link: #b75a19;
+    --pst-color-link-hover: #8a4212;
+
+    /* Secondary — replace purple with brand orange family */
+    --pst-color-secondary: #b75a19;
+    --pst-color-secondary-bg: #faeee5;
+    --pst-color-secondary-highlight: #8a4212;
+    --pst-color-secondary-text: #fff;
+    --pst-color-secondary-highlight-text: #fff;
+
+    /* Note admonitions — brand orange */
+    --pst-color-info: #b75a19;
+    --pst-color-info-bg: #faeee5;
+    --pst-color-info-highlight: #8a4212;
+
+    /* Tip / hint / seealso — green */
+    --pst-color-success: #2e7d32;
+    --pst-color-success-bg: #e8f5e9;
+    --pst-color-success-highlight: #1b5e20;
+
+    /* Warning / caution / attention — amber */
+    --pst-color-warning: #b08000;
+    --pst-color-warning-bg: #fff8e1;
+    --pst-color-warning-highlight: #7a5900;
+
+    /* Danger / error — red */
+    --pst-color-danger: #d72d47;
+    --pst-color-danger-bg: #f9e1e4;
+    --pst-color-danger-highlight: #bb2239;
+}
+
+/* Override hardcoded blue focus border on form inputs */
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: #b75a19;
+}
+
+html[data-theme="dark"] {
+    /* Search term highlight */
+    --pst-color-target: #4a2208;
+
+    /* Input focus ring — replaces pink accent */
+    --pst-color-accent: #d4722a;
+    --pst-color-accent-bg: #3d2010;
+
+    /* Brand primary */
+    --pst-color-primary: #d4722a;
+    --pst-color-primary-bg: #3d2010;
+    --pst-color-primary-highlight: #e8935a;
+    --pst-color-link: #d4772e;
+    --pst-color-link-hover: #e8935a;
+
+    /* Secondary — replace purple with brand orange family */
+    --pst-color-secondary: #d4722a;
+    --pst-color-secondary-bg: #3d2010;
+    --pst-color-secondary-highlight: #e8935a;
+    --pst-color-secondary-text: #fff;
+    --pst-color-secondary-highlight-text: #fff;
+
+    /* Note admonitions — lighter orange for dark backgrounds */
+    --pst-color-info: #d4722a;
+    --pst-color-info-bg: #3d2010;
+    --pst-color-info-highlight: #e8935a;
+
+    /* Tip / hint / seealso */
+    --pst-color-success: #66bb6a;
+    --pst-color-success-bg: #0a2e0c;
+    --pst-color-success-highlight: #47a373;
+
+    /* Warning / caution / attention — amber */
+    --pst-color-warning: #f9a825;
+    --pst-color-warning-bg: #3d2e00;
+    --pst-color-warning-highlight: #ff7614;
+
+    /* Danger / error */
+    --pst-color-danger: #e78894;
+    --pst-color-danger-bg: #4e111b;
+    --pst-color-danger-highlight: #df596a;
+}
