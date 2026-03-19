@@ -1,88 +1,88 @@
 # Triggers and Event Alignment
 
-A **trigger** (also called an **event marker** or **stim marker**) is a signal that marks the exact moment something happens in an experiment or application: a stimulus appears, a user responds, or a game event fires. Different fields and software packages use different terms for the same concept, but they all refer to the same thing. This marker is recorded alongside the EEG data so you can extract brain activity time-locked to each event, whether you are analyzing data offline or processing it in real time.
+```{figure} ../../../_static/images/examples/psychopy/psychopy-serial.png
+:alt: DSI-Streamer showing trigger rises on the Trigger channel after serial bytes are sent from PsychoPy
+:align: center
+:width: 500px
+:text-align: center
 
-Accurate trigger alignment matters in both workflows:
+DSI-Streamer showing trigger rises on the Trigger channel after serial bytes are sent from PsychoPy via the MMBT-S.
+```
 
-- **Offline / ERP analysis:** Event markers define the epochs cut from a continuous recording. A timing error shifts every epoch by the same amount, distorting ERP waveforms and reducing statistical power.
-- **Real-time BCI:** Markers during calibration define the training windows for your classifier. Inaccurate markers directly degrade classification accuracy before a single prediction is made.
+A **trigger** (also called an **event marker** or **stim marker**) marks the exact moment something happens in an experiment or application. This could be a stimulus appearing on screen, a user responding, or a game event firing. The term varies by field and software, but the concept is the same: a timestamped signal recorded alongside EEG data so brain activity can be extracted time-locked to each event.
+
+Accurate alignment matters in both workflows:
+
+- **Offline / ERP analysis:** Triggers define the epochs cut from a continuous recording. A timing error shifts every epoch by the same amount, distorting ERP waveforms and reducing statistical power.
+- **Real-time BCI:** During calibration, triggers define the training windows. Bad markers mean the classifier trains on the wrong data. During online control, each trigger also drives backend reshaping by telling the backend where to cut the next window for classification. Timing inconsistency at either stage degrades accuracy.
 
 For supported trigger types and device-specific bit depths, see {doc}`What type of external triggers are supported? <../../../faq/triggers/questions/trigger-types>`.
 
 ## Trigger Methods
 
-Three approaches are commonly used, each with different trade-offs for timing accuracy and setup complexity.
+### Hardware Triggers
 
-### Hardware Triggers (MMBT-S / Trigger Hub)
+Hardware triggers write codes directly to the DSI trigger channel at stimulus onset, bypassing network and OS scheduling. This gives the lowest and most consistent latency.
 
-Send TTL-style electrical pulses directly into the DSI trigger input at the moment of stimulus onset via the **MMBT-S** device or Wearable Sensing Trigger Hub.
+The recommended device is the **[MMBT-S](https://wearablesensing.com/mmbt/)**, a USB-to-serial adapter that connects to your stimulus computer and converts serial writes into TTL pulses on the DSI trigger channel. Your stimulus software (PsychoPy, Unity, custom scripts) writes a trigger value at each event onset. The **[Trigger Hub](https://wearablesensing.com/wireless-trigger-hub/)** is an alternative when you need to consolidate multiple trigger sources or require input types the MMBT-S does not support.
 
-- Most accurate and consistent timing; signal lands directly on the EEG trigger channel
-- No network or OS scheduling latency
-- Requires additional hardware and a serial port connection from your stimulus computer (or USB-to-serial adapter in the case of the MMBT-S)
-
-```{figure} ../../../_static/images/triggerhub.jpg
-:alt: Wearable Sensing Trigger Hub
-:align: center
-:width: 320px
-
-Wearable Sensing Trigger Hub
+```{raw} html
+<div style="display: flex; gap: 2rem; justify-content: center; align-items: flex-start; margin: 1.5rem 0;">
+  <figure style="text-align: center; flex: 1; max-width: 220px;">
+    <a href="https://wearablesensing.com/mmbt/" target="_blank">
+      <img src="../../../_static/images/mmbt-s.jpg" alt="MMBT-S USB-to-serial trigger adapter" style="width: 200px; height: 160px; object-fit: contain; border: 1px solid #e0e0e0; border-radius: 4px;">
+    </a>
+    <figcaption style="font-size: .8rem; color: #6c757d; margin-top: 0.5rem;"><a href="https://wearablesensing.com/mmbt/" target="_blank">MMBT-S</a> — USB-to-serial trigger adapter</figcaption>
+  </figure>
+  <figure style="text-align: center; flex: 1; max-width: 220px;">
+    <a href="https://wearablesensing.com/wireless-trigger-hub/" target="_blank"><img src="../../../_static/images/triggerhub.jpg" alt="Wearable Sensing Trigger Hub" style="width: 200px; height: 160px; object-fit: contain; border: 1px solid #e0e0e0; border-radius: 4px;"></a>
+    <figcaption style="font-size: .8rem; color: #6c757d; margin-top: 0.5rem;"><a href="https://wearablesensing.com/wireless-trigger-hub/" target="_blank">Trigger Hub</a> — multi-source trigger consolidator</figcaption>
+  </figure>
+</div>
 ```
 
-Parallel port output from a stimulus computer is another hardware option, but parallel ports are a legacy interface not present on most modern computers. The MMBT-S via serial port is the recommended hardware trigger method.
-
-**Guides:** {doc}`Hardware Triggers with PsychoPy <../../../examples/psychopy/hardware>`
+**Guides:** {doc}`Hardware Triggers with PsychoPy <../../../examples/psychopy/hardware>`, {doc}`Unity Integration <../../../examples/game-vr/unity>`
 
 ### Software Triggers (LSL Markers)
 
-Send marker events over a **Lab Streaming Layer (LSL)** stream from your stimulus application. LSL time-synchronizes the marker stream with the EEG stream at the recording level.
+LSL markers are sent as a timestamped stream from your stimulus application and synchronized with the EEG stream at the recording level.
 
-- No additional hardware needed; works across the network
+- No additional hardware required; works across the network
 - Compatible with any LSL-enabled application (PsychoPy, Unity, custom scripts)
-- Introduces a small, measurable timing offset relative to actual stimulus onset with some variability based on hardware and OS scheduling. This offset must be measured and corrected for accurate epoching and analysis.
+- Introduces a measurable timing offset and some jitter that must be accounted for in analysis
 
-**Guides:** {doc}`Software Triggers with PsychoPy <../../../examples/psychopy/software>`
-
-### Serial Port
-
-Send data over a **serial port** connection. This is commonly used to pass trigger codes from a front end application to a backend application or recording system, but it can also be used in any local setup where low-latency, deterministic communication is needed.
-
-- Lowest and most consistent latency (~1 ms); no network jitter
-
-**Guides:** {doc}`Unity Integration <../../../examples/game-vr/unity>`, {doc}`Best Practices & Tooling <../../../examples/game-vr/best-practices>`
+**Guides:** {doc}`Software Triggers with PsychoPy <../../../examples/psychopy/software>`, {doc}`LSL Integration <../../../examples/lsl/index>`
 
 ## Measuring and Correcting Trigger Offset
 
-All trigger methods introduce a delay between when a trigger is sent and when the stimulus actually occurs. This offset depends on your specific setup: the stimulus presentation software, the stimuli type, the hardware, and the operating system. There is no universal value you can assume. You need to measure it for your setup, and remeasure any time the setup changes (new computer, new presentation software, new stimuli type, or significant hardware changes).
+Every trigger method introduces a delay between when a trigger is sent and when the stimulus actually reaches the participant. This offset depends on your setup: the presentation software, stimulus type, hardware, and OS. There is no universal value. Measure it for your specific setup and remeasure whenever anything changes, such as the computer, software, stimulus type, or hardware.
 
-The measurement method also depends on the type of stimulus:
+**Visual stimuli:** Attach a photodiode to the screen. It detects the physical light change and records the true onset on the DSI trigger channel, which you compare against your trigger signal. See the {doc}`Photodiode Experiment <../../../examples/tooling/diode/photodiode>` guide for a full walkthrough using PsychoPy.
 
-**Visual stimuli:** Attach a photodiode to the screen. The photodiode detects the physical light change and records it on the DSI trigger channel, giving you the true onset time to compare against your software or hardware trigger signal. We provide a complete example of this approach in the {doc}`Photodiode Experiment <../../../examples/tooling/diode/photodiode>` guide using PsychoPy.
+**Audio stimuli:** Use a Y-splitter to route your audio output. Send one side to your speakers and the other into the Trigger Hub audio input. The Hub records the audio onset on the trigger channel for comparison.
 
-**Audio stimuli:** Split the audio signal from your presentation computer using a Y-splitter. Send one output to your speakers or headphones as normal, and route the other into the Trigger Hub audio input. The Trigger Hub records the audio onset on the EEG trigger channel, which you can then compare against your trigger signal to measure the offset.
-
-The {doc}`Offset Analysis <../../../examples/tooling/diode/offset>` tool visualizes timing differences and reports mean offset, standard deviation, and drift across trials for either method.
-
-These are examples only. Your values will differ. Once measured, apply the offset as a fixed correction to your event timestamps during epoching or real-time processing.
+The {doc}`Offset Analysis <../../../examples/tooling/diode/offset>` tool computes mean offset, standard deviation, and drift across trials. Once measured, apply the offset as a fixed correction to event timestamps during epoching or real-time processing.
 
 ## Offline Use: ERP and Epoch-Based Analysis
 
-In offline ERP workflows, triggers are the anchors around which you cut epochs from a continuous recording.
+Triggers are the anchors around which epochs are cut from a continuous recording.
 
-- Each trigger value identifies a condition (e.g., `1` = target, `2` = non-target). Consistent, accurate coding here is what makes it possible to average across trials and recover condition-specific ERP components.
-- After measuring your system's trigger offset, apply that correction when epoching so that time-zero in each epoch corresponds to true stimulus onset, not the moment the trigger was sent.
+- Each trigger value should map to a condition (e.g., `1` = target, `2` = non-target). Consistent coding is what allows you to average across trials and recover condition-specific ERP components.
+- Apply your measured offset when epoching so time-zero aligns with true stimulus onset, not when the trigger was sent.
 
+**Guides:** {doc}`MNE-Python Epoching <../../../examples/mne/python/processing/epochs>`
 
 ## Real-Time Use: BCI and Game Development
 
-In real-time applications, triggers serve two roles:
+In real-time applications, triggers serve three roles:
 
-1. **Stimulus markers during calibration:** Your application marks each stimulus onset so the backend can extract time-locked windows and train a classifier. The quality of these markers directly determines classifier performance.
-2. **Prediction delivery:** Once trained, the backend sends classification results to the game engine over serial port or TCP to drive in-game events.
+1. **Calibration markers:** Each stimulus onset is marked so the backend can extract time-locked windows and train a classifier. Marker quality directly determines classifier performance.
+2. **Online window reshaping:** During live control, each trigger tells the backend where to cut the next classification window. Inconsistent timing produces misaligned epochs and degrades live accuracy even with a well-trained model.
+3. **Prediction delivery:** The backend sends classification results to the game engine to drive in-game events.
 
-For low-latency prediction delivery, how you handle data on the backend matters as much as the communication method. Buffer incoming EEG data into fixed-size windows, process each window as it fills, and send the result immediately. Avoid blocking I/O on the main processing thread. Keeping the processing loop tight and predictable minimizes the delay between when data arrives and when a prediction is sent.
+On the backend, keep the processing loop tight. Buffer EEG into fixed-size windows, process each window as it fills, and send results immediately. Avoid blocking I/O on the processing thread.
 
-See the {doc}`Best Practices & Tooling <../../../examples/game-vr/best-practices>` page for the recommended pipeline architecture.
+**Guides:** {doc}`MNE-LSL Epoching <../../../examples/mne/lsl/processing/epochs>`, {doc}`Game Development Best Practices <../../../examples/game-vr/best-practices>`
 
 ## Resources
 

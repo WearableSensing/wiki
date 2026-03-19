@@ -59,7 +59,7 @@ html_theme_options = {
         ),
     ],
     "secondary_sidebar_items": [],  # remove secondary sidebar
-    # "article_header_start": [],  # disable breadcrumbs
+    "article_header_start": [],  # disable breadcrumbs
     "navbar_end": [
         "theme-switcher",
         "navbar-icon-links",
@@ -71,7 +71,7 @@ html_theme_options = {
     "logo": {
         "image_light": "_static/images/logo.png",
         "image_dark": "_static/images/logo.png",
-        "text": "   ",
+        "text": " ",
     },
     "footer_start": [],
     "footer_end": ["copyright"],

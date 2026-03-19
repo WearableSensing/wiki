@@ -176,7 +176,7 @@ html[data-theme="dark"] {
 .bd-article-container div.admonition,
 .bd-article-container figure,
 .bd-article-container .sd-card {
-    margin-left: .1rem;
+    margin-left: .19rem;
 }
 
 /* =============================================================
@@ -389,4 +389,16 @@ html[data-theme="dark"] .download-card {
 .download-list .metadata {
     display: inline;
     margin-left: 0.5rem;
+}
+
+
+/* =============================================================
+   Navbar logo
+   ============================================================= */
+
+.navbar-brand img {
+    height: 35px !important;
+    margin: 4px !important;
+    padding: 1px !important;
+    width: auto !important;
 }
