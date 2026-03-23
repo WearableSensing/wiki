@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Connect a Device &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=93a58fdd" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/mne/lsl/processing/connect';</script>
+    <script src="../../../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Filtering" href="filter.html" />
+    <link rel="prev" title="MNE-LSL Integration" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title"> </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsl/index.html">LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/gui.html">GUI Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/tools.html">Command Line Tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MNE</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../python/index.html">MNE-Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">MNE-LSL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Connect a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="epochs.html">Epoching &amp; Event Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../visualization/viewer.html">Stream Viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classification/bci.html">Brain-Computer Interfaces</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../mnelab/index.html">MNELAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eeglab/index.html">EEGLAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/gui/index.html">GUI Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/scripting/index.html">Scripting &amp; Command Line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../bci2000/index.html">BCI2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/connect.html">Connect Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/run.html">Run Experiments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../psychopy/index.html">PsychoPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/stimulus.html">Creating Stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/software.html">Software Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/hardware.html">Hardware Triggers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tooling/index.html">Internal Tooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tooling/diode/index.html">Photodiode Experiment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/photodiode.html">Run the experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/offset.html">Determine offset and timing accuracy</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../game-vr/index.html">Game Development &amp; VR</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/best-practices.html">Best Practices &amp; Tooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/unity.html">Unity Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/game-dev.html">Game Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/vr.html">VR Development</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="connect-a-device">
+<h1>Connect a Device<a class="headerlink" href="#connect-a-device" title="Link to this heading">#</a></h1>
+<p>Discover and connect to LSL streams from your Wearable Sensing DSI-24, DSI-VR300, or DSI-7 headset.</p>
+<div class="note admonition">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>MNE-LSL installed (see <a class="reference internal" href="../index.html"><span class="doc">Installation</span></a>)</p></li>
+<li><p>LSL stream running from your Wearable Sensing device (see <a class="reference internal" href="../../../lsl/index.html"><span class="doc">LSL Setup</span></a>)</p></li>
+</ul>
+</div>
+<section id="key-concepts">
+<h2>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Stream Name:</strong> Device identifier (e.g., “DSI-24”, “DSI-VR300”, “WS-default”)</p></li>
+<li><p><strong>Buffer Size:</strong> Seconds of historical data to keep in memory (default: 10s)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="discovering-streams">
+<h2>Discovering Streams<a class="headerlink" href="#discovering-streams" title="Link to this heading">#</a></h2>
+<p>Before connecting to a specific stream, you can discover what LSL streams are available on your network. This is useful when you’re unsure of the stream name or want to verify your device is broadcasting.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Discover available LSL streams on the network</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne_lsl.lsl</span> <span class="kn">import</span> <span class="n">resolve_streams</span>
+
+<span class="c1"># Find all streams</span>
+<span class="n">streams</span> <span class="o">=</span> <span class="n">resolve_streams</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">streams</span><span class="p">)</span><span class="si">}</span><span class="s2"> stream(s):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">streams</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">stype</span><span class="si">}</span><span class="s2">) @ </span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">sfreq</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+
+<span class="c1"># Or filter by name/type</span>
+<span class="n">eeg_streams</span> <span class="o">=</span> <span class="n">resolve_streams</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">stype</span><span class="o">=</span><span class="s1">&#39;EEG&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">eeg_streams</span><span class="p">)</span><span class="si">}</span><span class="s2"> EEG stream(s)&quot;</span><span class="p">)</span>
+
+<span class="n">dsi_stream</span> <span class="o">=</span> <span class="n">resolve_streams</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;DSI-24&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">dsi_stream</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Found DSI-24 stream: </span><span class="si">{</span><span class="n">dsi_stream</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Troubleshooting Stream Discovery</p>
+<p>If no streams are found:</p>
+<ol class="arabic simple">
+<li><p>Ensure your Wearable Sensing device is streaming via LSL (check <code class="docutils literal notranslate"><span class="pre">dsi2lslGUI</span></code> or equivalent)</p></li>
+<li><p>Check firewall settings - LSL uses UDP multicast</p></li>
+<li><p>Verify devices are on the same network</p></li>
+<li><p>Increase the timeout parameter</p></li>
+</ol>
+</div>
+</section>
+<hr class="docutils" />
+<section id="connecting-to-a-stream-by-name">
+<h2>Connecting to a Stream by Name<a class="headerlink" href="#connecting-to-a-stream-by-name" title="Link to this heading">#</a></h2>
+<p>Once you know your stream name, create a <code class="docutils literal notranslate"><span class="pre">StreamLSL</span></code> object to connect and start buffering data. The buffer stores recent data in memory for retrieval.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Connect to a stream by name and start buffering</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne_lsl.stream</span> <span class="kn">import</span> <span class="n">StreamLSL</span>
+
+<span class="n">stream_name</span> <span class="o">=</span> <span class="s2">&quot;DSI-24&quot;</span>  <span class="c1"># Example: DSI-24, DSI-VR300, WS-default</span>
+
+<span class="c1"># Connect to stream</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamLSL</span><span class="p">(</span><span class="n">bufsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">stream_name</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connected: </span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> @ </span><span class="si">{</span><span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channels: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">ch_names</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bufsize</span></code>: Seconds of data to buffer (default: 10)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: Stream name, or use <code class="docutils literal notranslate"><span class="pre">source_id</span></code> for unique identification</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="accessing-stream-information">
+<h2>Accessing Stream Information<a class="headerlink" href="#accessing-stream-information" title="Link to this heading">#</a></h2>
+<p>After connecting, the stream’s <code class="docutils literal notranslate"><span class="pre">info</span></code> object provides metadata about your device including sampling rate, channel names, and channel types. This information is essential for processing and analysis.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Access stream metadata and information</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get stream metadata</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Device name: </span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sampling frequency: </span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of channels: </span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;nchan&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel names: </span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;ch_names&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get channel types</span>
+<span class="n">channel_types</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_channel_types</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channel types: </span><span class="si">{</span><span class="nb">set</span><span class="p">(</span><span class="n">channel_types</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check buffer status</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">n_buffer</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Samples in buffer: </span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="retrieving-data">
+<h2>Retrieving Data<a class="headerlink" href="#retrieving-data" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_data()</span></code> method retrieves data from the buffer. You can request a specific time window, select channels, or get only new samples since the last call.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Retrieve data from stream buffer</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get recent data</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">timestamps</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">winsize</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>  <span class="c1"># Last 2 seconds</span>
+
+<span class="c1"># Get from specific channels</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">winsize</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Fz&#39;</span><span class="p">,</span> <span class="s1">&#39;Cz&#39;</span><span class="p">,</span> <span class="s1">&#39;Pz&#39;</span><span class="p">])</span>
+
+<span class="c1"># Get only new samples</span>
+<span class="n">n_new</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">n_new_samples</span>
+<span class="k">if</span> <span class="n">n_new</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">n_new</span> <span class="o">/</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="continuous-acquisition-example">
+<h2>Continuous Acquisition Example<a class="headerlink" href="#continuous-acquisition-example" title="Link to this heading">#</a></h2>
+<p>This example demonstrates a continuous acquisition loop that processes new data as it arrives. This pattern is common for real-time applications like BCIs and monitoring systems.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Continuous real-time data acquisition loop</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne_lsl.stream</span> <span class="kn">import</span> <span class="n">StreamLSL</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamLSL</span><span class="p">(</span><span class="n">bufsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DSI-24&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">n_new</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">n_new_samples</span>
+        <span class="k">if</span> <span class="n">n_new</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">n_new</span> <span class="o">/</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received </span><span class="si">{</span><span class="n">n_new</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stopping acquisition&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">stream</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p>Now that you know how to connect to streams:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../visualization/viewer.html"><span class="doc">Visualize data in real-time</span></a> - Use StreamViewer for live monitoring</p></li>
+<li><p><a class="reference internal" href="filter.html"><span class="doc">Apply real-time filtering</span></a> - Clean data as it arrives</p></li>
+<li><p><a class="reference internal" href="epochs.html"><span class="doc">Create epochs</span></a> - Extract event-related data</p></li>
+<li><p><a class="reference internal" href="../classification/bci.html"><span class="doc">Build BCIs</span></a> - Develop neurofeedback and classification systems</p></li>
+</ol>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/api/mne_lsl.stream.StreamLSL.html">Stream API</a> | <a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/tutorials/00_introduction.html">MNE-LSL Tutorial</a></p></li>
+<li><p><a class="reference internal" href="../../../lsl/index.html"><span class="doc">LSL Setup</span></a> | <a class="reference internal" href="../visualization/viewer.html"><span class="doc">Visualization</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MNE-LSL Integration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="filter.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Filtering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Wearable Sensing, LLC. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

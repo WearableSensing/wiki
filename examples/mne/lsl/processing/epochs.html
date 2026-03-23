@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Epoching &amp; Event Handling &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=93a58fdd" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/mne/lsl/processing/epochs';</script>
+    <script src="../../../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Stream Viewer" href="../visualization/viewer.html" />
+    <link rel="prev" title="Filtering" href="filter.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title"> </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsl/index.html">LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/gui.html">GUI Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/tools.html">Command Line Tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MNE</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../python/index.html">MNE-Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">MNE-LSL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="connect.html">Connect a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filter.html">Filtering</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Epoching &amp; Event Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../visualization/viewer.html">Stream Viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../classification/bci.html">Brain-Computer Interfaces</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../mnelab/index.html">MNELAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eeglab/index.html">EEGLAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/gui/index.html">GUI Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/scripting/index.html">Scripting &amp; Command Line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../bci2000/index.html">BCI2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/connect.html">Connect Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/run.html">Run Experiments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../psychopy/index.html">PsychoPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/stimulus.html">Creating Stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/software.html">Software Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/hardware.html">Hardware Triggers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tooling/index.html">Internal Tooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tooling/diode/index.html">Photodiode Experiment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/photodiode.html">Run the experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/offset.html">Determine offset and timing accuracy</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../game-vr/index.html">Game Development &amp; VR</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/best-practices.html">Best Practices &amp; Tooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/unity.html">Unity Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/game-dev.html">Game Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/vr.html">VR Development</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="epoching-event-handling">
+<h1>Epoching &amp; Event Handling<a class="headerlink" href="#epoching-event-handling" title="Link to this heading">#</a></h1>
+<p>Extract event-related time segments from continuous EEG streams from your Wearable Sensing headset. Epoching allows you to analyze brain responses time-locked to specific events like stimuli, responses, or experimental triggers.</p>
+<div class="note admonition">
+<p class="admonition-title">Prerequisites</p>
+<p>Understanding of <a class="reference internal" href="connect.html"><span class="doc">stream connection</span></a> and stimulus markers in your Wearable Sensing LSL stream</p>
+</div>
+<section id="what-is-real-time-epoching">
+<h2>What is Real-Time Epoching?<a class="headerlink" href="#what-is-real-time-epoching" title="Link to this heading">#</a></h2>
+<p>Epoching segments continuous EEG data into fixed-length windows around events of interest. In real-time applications with MNE-LSL, the <code class="docutils literal notranslate"><span class="pre">EpochsStream</span></code> class continuously monitors an LSL stream for trigger events and automatically extracts epochs as events occur.</p>
+<p><strong>Key concepts:</strong></p>
+<ul class="simple">
+<li><p><strong>Event markers:</strong> Digital triggers or codes sent through a dedicated channel</p>
+<ul>
+<li><p><strong>Wearable Sensing devices:</strong> Use ‘Trigger’ or ‘TRG’ channel (DSI-24, DSI-VR300, DSI-7)</p></li>
+</ul>
+</li>
+<li><p><strong>Event ID:</strong> Mapping of event codes to meaningful labels (e.g., <code class="docutils literal notranslate"><span class="pre">{'target':</span> <span class="pre">1,</span> <span class="pre">'nontarget':</span> <span class="pre">2}</span></code>)</p></li>
+<li><p><strong>Time window:</strong> Period before (<code class="docutils literal notranslate"><span class="pre">tmin</span></code>) and after (<code class="docutils literal notranslate"><span class="pre">tmax</span></code>) each event to extract</p></li>
+<li><p><strong>Baseline correction:</strong> Removes DC offset by subtracting pre-stimulus activity. This may not be suitable for all real-time applications.</p></li>
+</ul>
+<p><strong>Common use cases:</strong></p>
+<ul class="simple">
+<li><p><strong>Event-Related Potentials (ERPs):</strong> Average epochs to reveal time-locked brain responses (P300, N170, etc.)</p></li>
+<li><p><strong>Frequency analysis:</strong> Compute time-frequency representations on epochs to study oscillatory activity</p></li>
+<li><p><strong>BCI classification:</strong> Extract features from epochs for real-time machine learning</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="creating-an-epochsstream">
+<h2>Creating an EpochsStream<a class="headerlink" href="#creating-an-epochsstream" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">EpochsStream</span></code> wraps a <code class="docutils literal notranslate"><span class="pre">StreamLSL</span></code> object and monitors it for events in real-time:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Create an EpochsStream to extract event-related data</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne_lsl.stream</span> <span class="kn">import</span> <span class="n">StreamLSL</span><span class="p">,</span> <span class="n">EpochsStream</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Connect to stream and apply filtering</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamLSL</span><span class="p">(</span><span class="n">bufsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DSI-24&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">l_freq</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">h_freq</span><span class="o">=</span><span class="mf">40.0</span><span class="p">)</span>
+
+<span class="c1"># Create epochs stream</span>
+<span class="n">epochs_stream</span> <span class="o">=</span> <span class="n">EpochsStream</span><span class="p">(</span>
+    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>           <span class="c1"># StreamLSL object to monitor</span>
+    <span class="n">bufsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>              <span class="c1"># Maximum number of epochs to store</span>
+    <span class="n">event_id</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;stimulus&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>  <span class="c1"># Event code 1 = &#39;stimulus&#39;</span>
+    <span class="n">event_channels</span><span class="o">=</span><span class="s1">&#39;Trigger&#39;</span><span class="p">,</span>  <span class="c1"># Channel containing event markers</span>
+    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span>               <span class="c1"># Start 200ms before event</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>                <span class="c1"># End 800ms after event</span>
+    <span class="n">baseline</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>      <span class="c1"># Baseline correction period</span>
+<span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch duration: </span><span class="si">{</span><span class="n">epochs_stream</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">epochs_stream</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Parameters explained:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bufsize</span></code>: Number of epochs to keep in memory (older epochs are discarded when full)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">event_id</span></code>: Dictionary mapping event labels to numeric codes in the trigger channel</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tmin/tmax</span></code>: Define the epoch window relative to the event onset (in seconds, negative for pre-stimulus)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">baseline</span></code>: Time period for baseline correction (typically pre-stimulus, e.g., <code class="docutils literal notranslate"><span class="pre">(-0.2,</span> <span class="pre">0)</span></code> for 200ms before event)</p></li>
+</ul>
+<p><strong>Multiple event types:</strong></p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Monitor multiple event types simultaneously</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">epochs_stream</span> <span class="o">=</span> <span class="n">EpochsStream</span><span class="p">(</span>
+    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
+    <span class="n">bufsize</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">event_id</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;left_hand&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;right_hand&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;feet&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="n">event_channels</span><span class="o">=</span><span class="s1">&#39;Trigger&#39;</span><span class="p">,</span>
+    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Artifact rejection:</strong></p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Apply automatic artifact rejection to epochs</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">epochs_stream</span> <span class="o">=</span> <span class="n">EpochsStream</span><span class="p">(</span>
+    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
+    <span class="n">bufsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">event_id</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;stimulus&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">event_channels</span><span class="o">=</span><span class="s1">&#39;Trigger&#39;</span><span class="p">,</span>
+    <span class="n">tmin</span><span class="o">=-</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">tmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">reject</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;eeg&#39;</span><span class="p">:</span> <span class="mf">100e-6</span><span class="p">},</span>  <span class="c1"># Reject epochs with EEG &gt; 100 uV</span>
+<span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="retrieving-epoch-data">
+<h2>Retrieving Epoch Data<a class="headerlink" href="#retrieving-epoch-data" title="Link to this heading">#</a></h2>
+<p>Once epochs are being collected, retrieve them using the <code class="docutils literal notranslate"><span class="pre">get_data()</span></code> method:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Retrieve accumulated epochs from stream</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wait for epochs to accumulate</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for epochs...&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">epochs_stream</span><span class="o">.</span><span class="n">n_new_epochs</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Collected: </span><span class="si">{</span><span class="n">epochs_stream</span><span class="o">.</span><span class="n">n_new_epochs</span><span class="si">}</span><span class="s2"> new epochs&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get all epochs from buffer</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs_stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epochs shape: </span><span class="si">{</span><span class="n">epochs</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (n_epochs, n_channels, n_times)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time points per epoch: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">epochs_stream</span><span class="o">.</span><span class="n">times</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get only the most recent epochs</span>
+<span class="n">new_epochs</span> <span class="o">=</span> <span class="n">epochs_stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">n_epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrieved last 5 epochs: </span><span class="si">{</span><span class="n">new_epochs</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Clean up</span>
+<span class="n">epochs_stream</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>The returned array has shape <code class="docutils literal notranslate"><span class="pre">(n_epochs,</span> <span class="pre">n_channels,</span> <span class="pre">n_times)</span></code>:</p>
+<ul class="simple">
+<li><p><strong>n_epochs:</strong> Number of trials/events</p></li>
+<li><p><strong>n_channels:</strong> Number of EEG channels</p></li>
+<li><p><strong>n_times:</strong> Samples in the epoch time window</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="using-epoch-data">
+<h2>Using Epoch Data<a class="headerlink" href="#using-epoch-data" title="Link to this heading">#</a></h2>
+<p>After retrieving epochs, you can analyze them for ERPs, classification, or other analyses:</p>
+<section id="computing-event-related-potentials-erps">
+<h3>Computing Event-Related Potentials (ERPs)<a class="headerlink" href="#computing-event-related-potentials-erps" title="Link to this heading">#</a></h3>
+<p>Average across trials to reveal consistent brain responses:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Compute ERP from real-time epochs</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Collect 30 stimulus epochs</span>
+<span class="k">while</span> <span class="n">epochs_stream</span><span class="o">.</span><span class="n">n_new_epochs</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs_stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+
+<span class="c1"># Compute ERP (average across trials)</span>
+<span class="n">erp</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Shape: (n_channels, n_times)</span>
+
+<span class="c1"># Find peak response at Pz electrode</span>
+<span class="n">pz_idx</span> <span class="o">=</span> <span class="n">epochs_stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;ch_names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Pz&#39;</span><span class="p">)</span>
+<span class="n">peak_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">erp</span><span class="p">[</span><span class="n">pz_idx</span><span class="p">,</span> <span class="p">:]))</span>
+<span class="n">peak_time</span> <span class="o">=</span> <span class="n">epochs_stream</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">peak_idx</span><span class="p">]</span>
+<span class="n">peak_amplitude</span> <span class="o">=</span> <span class="n">erp</span><span class="p">[</span><span class="n">pz_idx</span><span class="p">,</span> <span class="n">peak_idx</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peak at Pz: </span><span class="si">{</span><span class="n">peak_amplitude</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> uV at </span><span class="si">{</span><span class="n">peak_time</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="advanced-applications">
+<h2>Advanced Applications<a class="headerlink" href="#advanced-applications" title="Link to this heading">#</a></h2>
+<p>For more advanced real-time analysis workflows:</p>
+<ul class="simple">
+<li><p><strong>BCI &amp; Classification:</strong> See <a class="reference internal" href="../classification/bci.html"><span class="doc">Brain-Computer Interfaces</span></a> for complete examples of using epochs for brain-computer interfaces and machine learning</p></li>
+<li><p><strong>Offline Analysis:</strong> For converting epochs to MNE-Python objects and advanced processing, see <a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/tutorials/40_epochs.html">MNE-LSL Epoching Tutorial</a></p></li>
+<li><p><strong>Real-time Evoked Responses:</strong> See the <a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/30_real_time_evoked_responses.html">Real-time Evoked Responses Example</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<p><strong>No epochs are created:</strong></p>
+<ul class="simple">
+<li><p>Verify trigger channel name matches your hardware setup</p>
+<ul>
+<li><p>For Wearable Sensing devices: Common names are <code class="docutils literal notranslate"><span class="pre">'Trigger'</span></code> or <code class="docutils literal notranslate"><span class="pre">'TRG'</span></code> depending on how data were acquired.</p></li>
+</ul>
+</li>
+<li><p>Check event codes match what your stimulus software sends</p></li>
+<li><p>Ensure trigger hub is properly configured using DSI-Streamer</p></li>
+<li><p>Verify triggers are being sent (monitor trigger channel in <a class="reference internal" href="../visualization/viewer.html"><span class="doc">StreamViewer</span></a>) or DSI-Streamer GUI.</p></li>
+</ul>
+<p><strong>Missing epochs:</strong></p>
+<ul class="simple">
+<li><p>Increase <code class="docutils literal notranslate"><span class="pre">bufsize</span></code> in StreamLSL to capture events further back</p></li>
+<li><p>Check that <code class="docutils literal notranslate"><span class="pre">tmin</span></code> doesn’t require data before the event that isn’t buffered</p></li>
+<li><p>Verify event timing aligns with data availability</p></li>
+</ul>
+<p><strong>Memory issues:</strong></p>
+<ul class="simple">
+<li><p>Reduce <code class="docutils literal notranslate"><span class="pre">bufsize</span></code> in EpochsStream to keep fewer epochs in memory</p></li>
+<li><p>Process epochs in smaller batches using <code class="docutils literal notranslate"><span class="pre">get_data(n_epochs=N)</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/api/mne_lsl.stream.EpochsStream.html">EpochsStream API</a> | <a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/tutorials/40_epochs.html">MNE-LSL Epoching Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/30_real_time_evoked_responses.html">Real-time Evoked Responses Example</a></p></li>
+<li><p><a class="reference internal" href="../../python/processing/epochs.html"><span class="doc">MNE-Python Epochs</span></a> | <a class="reference internal" href="filter.html"><span class="doc">Filtering</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="filter.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Filtering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../visualization/viewer.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stream Viewer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Wearable Sensing, LLC. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

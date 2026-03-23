@@ -1,0 +1,878 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Brain-Computer Interfaces &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=93a58fdd" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/mne/lsl/classification/bci';</script>
+    <script src="../../../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="MNELAB" href="../../mnelab/index.html" />
+    <link rel="prev" title="Stream Viewer" href="../visualization/viewer.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title"> </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsl/index.html">LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/gui.html">GUI Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsl/tools.html">Command Line Tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../index.html">MNE</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../python/index.html">MNE-Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../python/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../index.html">MNE-LSL</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../processing/connect.html">Connect a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../processing/epochs.html">Epoching &amp; Event Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../visualization/viewer.html">Stream Viewer</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Brain-Computer Interfaces</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../mnelab/index.html">MNELAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mnelab/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../eeglab/index.html">EEGLAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/gui/index.html">GUI Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../eeglab/scripting/index.html">Scripting &amp; Command Line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../bci2000/index.html">BCI2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/connect.html">Connect Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bci2000/run.html">Run Experiments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../psychopy/index.html">PsychoPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/stimulus.html">Creating Stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/software.html">Software Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../psychopy/hardware.html">Hardware Triggers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../tooling/index.html">Internal Tooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../tooling/diode/index.html">Photodiode Experiment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/photodiode.html">Run the experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tooling/diode/offset.html">Determine offset and timing accuracy</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../game-vr/index.html">Game Development &amp; VR</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/best-practices.html">Best Practices &amp; Tooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/unity.html">Unity Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/game-dev.html">Game Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../game-vr/vr.html">VR Development</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="brain-computer-interfaces">
+<h1>Brain-Computer Interfaces<a class="headerlink" href="#brain-computer-interfaces" title="Link to this heading">#</a></h1>
+<p>Brain-Computer Interfaces (BCIs) enable direct communication between brain activity and external devices. This guide demonstrates how to build real-time BCIs using EEG data from Wearable Sensing headsets.</p>
+<div class="note admonition">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>Wearable Sensing headset streaming via LSL (see <a class="reference internal" href="../../../lsl/index.html"><span class="doc">LSL Setup</span></a>)</p></li>
+<li><p>Understanding of <a class="reference internal" href="../processing/epochs.html"><span class="doc">epochs</span></a> and <a class="reference internal" href="../processing/filter.html"><span class="doc">filtering</span></a></p></li>
+<li><p>MNE-LSL installed (see <a class="reference internal" href="../index.html"><span class="doc">Installation</span></a>)</p></li>
+</ul>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Important Note</p>
+<p><em>The examples are simplified demonstrations for learning purposes.</em> Production BCIs require extensive testing, user-specific calibration, and validation procedures. Many advanced methods (connectivity analysis, adaptive algorithms, specialized signal processing) are beyond the scope of this guide.</p>
+</div>
+<hr class="docutils" />
+<section id="example-bci-applications">
+<h2>Example BCI Applications<a class="headerlink" href="#example-bci-applications" title="Link to this heading">#</a></h2>
+<p>Different BCI applications use different EEG features:</p>
+<ul class="simple">
+<li><p><strong>Alpha neurofeedback (8-13 Hz):</strong> Relaxation training, stress reduction, performance</p></li>
+<li><p><strong>Sensorimotor rhythms (SMR, 12-15 Hz):</strong> Motor control and epilepsy management</p></li>
+<li><p><strong>Motor Imagery:</strong> Classify imagined movements (C3, C4, Cz channels)</p></li>
+<li><p><strong>P300 speller:</strong> Detect attention responses for spelling and selection using N200/P300 components</p></li>
+<li><p><strong>SSVEP:</strong> Steady-state visual evoked potentials</p></li>
+<li><p><strong>Error-related potentials:</strong> Error correction in BCI control using evoked responses to feedback</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="alpha-neurofeedback-example">
+<h2>Alpha Neurofeedback Example<a class="headerlink" href="#alpha-neurofeedback-example" title="Link to this heading">#</a></h2>
+<p>This section provides a complete, working example of a bandpower-based neurofeedback BCI. The system helps users learn to increase alpha wave activity through real-time feedback.</p>
+<div class="tip admonition">
+<p class="admonition-title">Source</p>
+<p>Adapted from the <a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/20_bandpower.html">MNE-LSL bandpower example</a></p>
+</div>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p>This BCI helps users learn to increase alpha wave activity (8-13 Hz) through operant conditioning. The system:</p>
+<ol class="arabic simple">
+<li><p>Connects to the EEG stream and applies filtering</p></li>
+<li><p>Calibrates a personalized threshold based on the resting alpha power</p></li>
+<li><p>Provides real-time feedback when a user exceeds the threshold</p></li>
+<li><p>Tracks the success rate over the session</p></li>
+</ol>
+</section>
+<section id="how-it-works">
+<h3>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<p><strong>Bandpower Computation</strong></p>
+<p>The system uses Welch’s method to estimate the power spectral density (PSD) of the EEG signal. The PSD is then integrated over the alpha frequency band (8-13 Hz) using Simpson’s rule. This provides a robust, noise-resistant measure of alpha oscillatory activity.</p>
+<p><strong>Baseline Calibration</strong></p>
+<p>Before training begins, the system measures the alpha power during a 10-second rest period. It collects 20 samples and uses the 70th percentile as the target threshold.</p>
+<p><strong>Feedback Loop</strong></p>
+<p>During training, the system continuously computes the current alpha power and compares it to the threshold. When the threshold is exceeded, immediate feedback (“SUCCESS!”) is provided, creating a learning signal that enables self-regulation of brain activity through operant conditioning.</p>
+</section>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h3>
+<p><strong>Getting Started</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Start the LSL stream</strong> from the dsi2LSL GUI using a Wearable Sensing device</p></li>
+<li><p><strong>Run the script below</strong> - it will connect and apply filtering</p></li>
+<li><p><strong>Calibration phase (10 seconds)</strong> - relax with eyes closed to establish a baseline</p></li>
+<li><p><strong>Training phase</strong> - try to increase alpha power:</p>
+<ul class="simple">
+<li><p>Close eyes</p></li>
+<li><p>Focus on breathing</p></li>
+<li><p>Relax facial and body muscles</p></li>
+</ul>
+</li>
+<li><p><strong>Monitor feedback</strong> - “SUCCESS” messages indicate the threshold was exceeded</p></li>
+<li><p><strong>Press Ctrl+C</strong> when finished to see the final success rate</p></li>
+</ol>
+<p>The complete code is structured in three main steps: stream setup, baseline calibration, and the training loop.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Alpha neurofeedback</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mne_lsl.stream</span> <span class="kn">import</span> <span class="n">StreamLSL</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">simpson</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">compute_bandpower</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sfreq</span><span class="p">,</span> <span class="n">band</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute power in a frequency band using Welch&#39;s method.</span>
+<span class="sd">    </span>
+<span class="sd">    See MNE-LSL bandpower example:</span>
+<span class="sd">    https://mne.tools/mne-lsl/stable/generated/examples/20_bandpower.html</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array, shape (n_channels, n_samples)</span>
+<span class="sd">        EEG data</span>
+<span class="sd">    sfreq : float</span>
+<span class="sd">        Sampling frequency in Hz</span>
+<span class="sd">    band : tuple</span>
+<span class="sd">        (low_freq, high_freq) in Hz</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    power : array, shape (n_channels,)</span>
+<span class="sd">        Bandpower for each channel in uV²</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">mne.time_frequency</span> <span class="kn">import</span> <span class="n">psd_array_welch</span>
+    
+    <span class="c1"># Compute power spectral density using Welch&#39;s method</span>
+    <span class="c1"># MNE&#39;s psd_array_welch returns (psd, freqs)</span>
+    <span class="n">psd</span><span class="p">,</span> <span class="n">freqs</span> <span class="o">=</span> <span class="n">psd_array_welch</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">,</span> 
+        <span class="n">sfreq</span><span class="o">=</span><span class="n">sfreq</span><span class="p">,</span> 
+        <span class="n">fmin</span><span class="o">=</span><span class="n">band</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+        <span class="n">fmax</span><span class="o">=</span><span class="n">band</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">n_fft</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Integrate PSD over the frequency band using Simpson&#39;s rule</span>
+    <span class="n">freq_res</span> <span class="o">=</span> <span class="n">freqs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">freqs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">bandpower</span> <span class="o">=</span> <span class="n">simpson</span><span class="p">(</span><span class="n">psd</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="n">freq_res</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">bandpower</span>
+
+
+<span class="c1"># Step 1: Connect to Stream and Apply Filters</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connecting to stream...&quot;</span><span class="p">)</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">StreamLSL</span><span class="p">(</span><span class="n">bufsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DSI-24&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="c1"># Apply bandpass filter to remove DC drift and high-frequency noise</span>
+<span class="n">stream</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">l_freq</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">h_freq</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="s1">&#39;eeg&#39;</span><span class="p">)</span>
+
+<span class="c1"># Wait for filter to stabilize and buffer to fill with data</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initializing (2 seconds)...&quot;</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Baseline Calibration</span>
+<span class="c1"># Collect resting alpha power to establish a personalized threshold</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">BASELINE CALIBRATION&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Relax with eyes closed for 10 seconds...&quot;</span><span class="p">)</span>
+
+<span class="n">baseline</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="c1"># Get 2 seconds of data from occipital channels (primary alpha generators)</span>
+    <span class="c1"># DSI-24: O1, O2 | DSI-VR300: Oz, PO7, PO8 | DSI-7: P3, Pz, P4 (closest to occipital)</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">winsize</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">,</span> <span class="s1">&#39;Oz&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># Compute alpha power (8-13 Hz) and store mean across channels</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">compute_bandpower</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+    <span class="n">baseline</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">power</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    
+    <span class="c1"># Show progress every 5 samples</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calibration: </span><span class="si">{</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">20</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">% complete&quot;</span><span class="p">)</span>
+    
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Set threshold at 70th percentile (moderately challenging target)</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">baseline_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">baseline</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Baseline mean: </span><span class="si">{</span><span class="n">baseline_mean</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> uV²&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Target threshold (70th percentile): </span><span class="si">{</span><span class="n">threshold</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> uV²&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Required increase: </span><span class="si">{</span><span class="p">(</span><span class="n">threshold</span><span class="o">/</span><span class="n">baseline_mean</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Neurofeedback Training</span>
+<span class="c1"># Real-time feedback loop to train alpha self-regulation</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">NEUROFEEDBACK TRAINING&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Try to increase your alpha power by relaxing with eyes closed.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You&#39;ll see &#39;SUCCESS&#39; when you exceed the threshold.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Press Ctrl+C to stop.&quot;</span><span class="p">)</span>
+
+<span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Get 2 seconds of recent data from occipital channels</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">winsize</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">,</span> <span class="s1">&#39;Oz&#39;</span><span class="p">])</span>
+        
+        <span class="c1"># Compute current alpha power</span>
+        <span class="n">power</span> <span class="o">=</span> <span class="n">compute_bandpower</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        
+        <span class="c1"># Update trial statistics</span>
+        <span class="n">trials</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">success_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">score</span> <span class="o">/</span> <span class="n">trials</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+        
+        <span class="c1"># Provide immediate feedback</span>
+        <span class="k">if</span> <span class="n">power</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SUCCESS! Power: </span><span class="si">{</span><span class="n">power</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> uV² | Success: </span><span class="si">{</span><span class="n">success_rate</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">trials</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Show how close to threshold</span>
+            <span class="n">progress</span> <span class="o">=</span> <span class="p">(</span><span class="n">power</span> <span class="o">/</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Continue... Power: </span><span class="si">{</span><span class="n">power</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> uV² (</span><span class="si">{</span><span class="n">progress</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">% of target) | Success: </span><span class="si">{</span><span class="n">success_rate</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Update every 0.5 seconds for smooth feedback</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Training session ended.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final success rate: </span><span class="si">{</span><span class="n">success_rate</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">trials</span><span class="si">}</span><span class="s2"> trials)&quot;</span><span class="p">)</span>
+    
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">stream</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stream disconnected.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="customizing-your-bci">
+<h2>Customizing Your BCI<a class="headerlink" href="#customizing-your-bci" title="Link to this heading">#</a></h2>
+<section id="training-different-frequency-bands">
+<h3>Training Different Frequency Bands<a class="headerlink" href="#training-different-frequency-bands" title="Link to this heading">#</a></h3>
+<p>You can modify the BCI to train other brain rhythms by changing the frequency band:</p>
+<p><strong>Different frequency bands:</strong></p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Compute power in different frequency bands</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theta training (4-8 Hz)</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">compute_bandpower</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Beta training (13-30 Hz)</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">compute_bandpower</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># SMR training (12-15 Hz)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">winsize</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="s1">&#39;C4&#39;</span><span class="p">,</span> <span class="s1">&#39;Cz&#39;</span><span class="p">])</span>
+<span class="n">power</span> <span class="o">=</span> <span class="n">compute_bandpower</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="implementing-adaptive-thresholding">
+<h3>Implementing Adaptive Thresholding<a class="headerlink" href="#implementing-adaptive-thresholding" title="Link to this heading">#</a></h3>
+<p>Adaptive thresholding automatically adjusts difficulty based on your performance:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Implement adaptive threshold adjustment</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">power_history</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Get data and compute power</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">winsize</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">picks</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;O2&#39;</span><span class="p">,</span> <span class="s1">&#39;Oz&#39;</span><span class="p">])</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">compute_bandpower</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stream</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;sfreq&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">power_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+    
+    <span class="n">trials</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1"># Update threshold every 50 trials based on recent performance</span>
+    <span class="k">if</span> <span class="n">trials</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">trials</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Use last 50 samples to recalculate threshold</span>
+        <span class="n">recent_power</span> <span class="o">=</span> <span class="n">power_history</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:]</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">recent_power</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Threshold updated: </span><span class="si">{</span><span class="n">threshold</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> uV²</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Feedback logic continues...</span>
+    <span class="k">if</span> <span class="n">power</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SUCCESS! Power: </span><span class="si">{</span><span class="n">power</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> uV² | Success: </span><span class="si">{</span><span class="n">success_rate</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+    
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="advanced-bci-paradigms">
+<h2>Advanced BCI Paradigms<a class="headerlink" href="#advanced-bci-paradigms" title="Link to this heading">#</a></h2>
+<p>For more advanced BCI applications, refer to the MNE-LSL documentation:</p>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/40_decode.html">Motor Imagery Classification</a></strong> - Decode imagined movements using EpochsStream and machine learning</p></li>
+<li><p><strong><a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/30_real_time_evoked_responses.html">P300 Detection</a></strong> - Detect event-related potentials for spelling and selection</p></li>
+<li><p><strong><a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/10_peak_detection.html">Real-time Peak Detection</a></strong> - Real-time detection of peaks in time series data</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/20_bandpower.html">Bandpower Example</a> | <a class="reference external" href="https://mne.tools/mne-lsl/stable/generated/examples/40_decode.html">Decoding Example</a></p></li>
+<li><p><a class="reference external" href="https://mne.tools/mne-lsl/stable/api/index.html">MNE-LSL API Reference</a></p></li>
+<li><p><a class="reference internal" href="../processing/epochs.html"><span class="doc">Epoching</span></a> | <a class="reference internal" href="../processing/filter.html"><span class="doc">Filtering</span></a> | <a class="reference internal" href="../visualization/viewer.html"><span class="doc">Visualization</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../visualization/viewer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stream Viewer</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../mnelab/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MNELAB</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Wearable Sensing, LLC. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

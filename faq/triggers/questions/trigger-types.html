@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>What type of external triggers are supported? &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=93a58fdd" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'faq/triggers/questions/trigger-types';</script>
+    <script src="../../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Warranty FAQ" href="../../warranty/index.html" />
+    <link rel="prev" title="Triggers and Timing FAQ" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title"> </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../general/index.html">   General</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../general/questions/support.html">How do I get support?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../general/questions/delivery-time.html">What is the expected delivery time?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../general/questions/shipping.html">Where can you ship to?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../general/questions/electrode-tips.html">How much do the new electrodes cost and how long is the delivery time?</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../software/index.html">   Software</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../software/questions/signal-quality-dsi-streamer.html">How do I ensure good signal quality from DSI-Streamer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/questions/raw-or-filtered.html">Does the DSI-Streamer output raw or filtered data?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/questions/os-compatibility.html">What operating systems does DSI-Streamer work on?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/questions/output-formats.html">What types of output formats does the DSI-Streamer support?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/questions/real-time-streaming.html">Do these devices support real-time data streaming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../software/questions/api-sdk.html">Do you have a low level API or SDK?</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../hardware/index.html">   Hardware</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/questions/active-electrodes.html">Are your dry electrodes active?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/questions/electrode-lifespan.html">How many times can the electrodes be used before they should be replaced?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/questions/battery-life.html">What is the battery life of the devices?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../hardware/questions/cleaning.html">How do I clean the devices?</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../integrations/index.html">   Integrations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integrations/questions/eye-tracking.html">Do the DSI devices work with Eye-Tracking or other hardware systems?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integrations/questions/stimulus-software.html">Do the DSI devices work with popular Stimulus Presentation Software?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integrations/questions/matlab.html">Can data be imported into MATLAB?</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">   Triggers and Timing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">What type of external triggers are supported?</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../warranty/index.html">   Warranty</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../warranty/questions/warranty-support.html">What is offered in terms of warranty and support?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../warranty/questions/warranty-duration.html">What is the maximum warranty duration available?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../warranty/questions/warranty-coverage.html">What is covered under the warranty?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../warranty/questions/electrode-warranty.html">Are replacement electrodes covered under warranty?</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="what-type-of-external-triggers-are-supported">
+<h1>What type of external triggers are supported?<a class="headerlink" href="#what-type-of-external-triggers-are-supported" title="Link to this heading">#</a></h1>
+<p>DSI devices record triggers as unsigned integers on a dedicated trigger channel. The bit depth varies by device:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Device</p></th>
+<th class="head"><p>Trigger Bits</p></th>
+<th class="head"><p>Value Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DSI-24</strong></p></td>
+<td><p>8-bit</p></td>
+<td><p>0–255</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DSI-EEG+fNIRS</strong></p></td>
+<td><p>8-bit</p></td>
+<td><p>0–255</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DSI-VR300</strong></p></td>
+<td><p>4-bit</p></td>
+<td><p>0–15</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DSI-7</strong></p></td>
+<td><p>4-bit</p></td>
+<td><p>0–15</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DSI-Flex</strong></p></td>
+<td><p>4-bit</p></td>
+<td><p>0–15</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The 8-bit devices are the only ones that use all 8 trigger data lines. The 4-bit devices (DSI-VR300, DSI-7, DSI-Flex) use data lines D1–D4 only.</p>
+<p>Trigger values appear in DSI-Streamer as decimal numbers and are represented visually by diamonds in the lower-left corner of the screen (D1 through D8, left to right).</p>
+<section id="hardware-triggers-mmbt-s">
+<h2>Hardware Triggers (MMBT-S)<a class="headerlink" href="#hardware-triggers-mmbt-s" title="Link to this heading">#</a></h2>
+<p>The <strong>MMBT-S</strong> is the recommended device for sending hardware triggers directly from a stimulus computer. It connects via USB, presents as a serial port, and converts writes to the serial port into TTL pulses recorded on the DSI trigger channel. Your stimulus software (PsychoPy, MATLAB, Unity, custom scripts) writes a trigger value at the moment of stimulus onset.</p>
+</section>
+<section id="trigger-hub">
+<h2>Trigger Hub<a class="headerlink" href="#trigger-hub" title="Link to this heading">#</a></h2>
+<p>The <strong>Trigger Hub</strong> consolidates up to 8 independent trigger sources into a single output connected to the DSI headset — via wired cable or wireless receiver. It is used when you need more than one trigger source or require inputs that the MMBT-S alone does not support.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/triggerhub-input.jpg"><img alt="Trigger Hub input connections" src="../../../_images/triggerhub-input.jpg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Trigger Hub input panel — accepts analog (BNC), audio, switch/photodetector, and parallel port inputs</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Input types:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Connector</p></th>
+<th class="head"><p>Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Analog (Ch-3, Ch-6)</strong></p></td>
+<td><p>BNC</p></td>
+<td><p>Function generators, TTL/CMOS logic, any 0–20V signal</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Analog (Ch-7, Ch-8)</strong></p></td>
+<td><p>3.5mm stereo</p></td>
+<td><p>Two-channel analog input</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Audio (Ch-4)</strong></p></td>
+<td><p>3.5mm stereo</p></td>
+<td><p>Line-level audio — triggers on audio envelope; &lt; 0.5ms latency</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Switch / Photodetector (Ch-1, Ch-5)</strong></p></td>
+<td><p>3.5mm stereo</p></td>
+<td><p>Push-button events or screen flash detection via photodetector</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Parallel Port</strong></p></td>
+<td><p>DB-25</p></td>
+<td><p>Up to 255 trigger values from a PC’s parallel port</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All analog and parallel port inputs accept 0–20V; the threshold is adjustable from 0.63V to 5.8V via a front-panel selector. Trigger outputs are 0–5V, matching DSI headset input requirements.</p>
+<p><strong>Latency:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Connection</p></th>
+<th class="head"><p>Latency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Digital / analog / switch inputs</p></td>
+<td><p>&lt; 100 µs</p></td>
+</tr>
+<tr class="row-odd"><td><p>Audio input</p></td>
+<td><p>&lt; 0.5 ms</p></td>
+</tr>
+<tr class="row-even"><td><p>Wireless transmission</p></td>
+<td><p>12 ms ± 10 µs (compensated automatically in DSI-Streamer)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Other features:</strong></p>
+<ul class="simple">
+<li><p><strong>Wired or wireless:</strong> connects to the headset via a trigger cable (parallel port output) or a wireless receiver that plugs directly into the headset’s trigger port. Wireless range is up to 9m; up to 18m with the included repeater.</p></li>
+<li><p><strong>AutoTrigger:</strong> generates a 1 Hz square wave on all outputs for clock-drift alignment across multiple acquisition systems (e.g., EEG + eye tracking).</p></li>
+<li><p><strong>Multi-device:</strong> a single Trigger Hub can be paired to multiple wireless receivers, enabling synchronized trigger delivery across multiple headsets (hyperscanning).</p></li>
+</ul>
+<p><strong>Minimum pulse specs:</strong> 20ms pulse width; 40ms minimum interval between triggers.</p>
+</section>
+<section id="software-triggers-lsl">
+<h2>Software Triggers (LSL)<a class="headerlink" href="#software-triggers-lsl" title="Link to this heading">#</a></h2>
+<p>Software triggering is supported via <strong>Lab Streaming Layer (LSL)</strong>. LSL markers are time-synchronized with the EEG stream at the recording level, making them suitable for most stimulus presentation workflows.</p>
+<div class="seealso admonition">
+<p class="admonition-title">For full details on trigger methods, timing, and setup</p>
+<p>See the <a class="reference internal" href="../../../help/tutorials/learning/triggers.html"><span class="doc">Learning: Triggers &amp; Event Alignment</span></a> page for a complete guide covering hardware triggers, software (LSL) triggers, serial port triggering for game engines, how to measure timing offsets, and recommended reading order.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Triggers and Timing FAQ</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../warranty/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Warranty FAQ</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Wearable Sensing, LLC. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

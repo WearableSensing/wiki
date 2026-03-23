@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Best Practices &amp; Tooling &#8212; Wearable Sensing Technical Documentation  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=93a58fdd" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=508c89c3"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/game-vr/best-practices';</script>
+    <script src="../../_static/js/gate.js?v=1fdcecb7"></script>
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Unity" href="unity.html" />
+    <link rel="prev" title="Game Development &amp; VR Integration" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title"> </p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/about.html">
+       About
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../api/index.html">
+       API
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+       Integrations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/tutorials/index.html">
+       Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/downloads/index.html">
+       Downloads
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../faq/index.html">
+       FAQ
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/about.html">
+       About
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../help/index.html">
+       Contact
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+       API
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/WearableSensing" title="Code Repository" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Code Repository</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.linkedin.com/company/wearablesensing" title="LinkedIn" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-linkedin fa-fw fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://wearablesensing.com" title="Wearable Sensing" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="../../_static/images/logo2.png" class="icon-link-image" alt="Wearable Sensing"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lsl/index.html">LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lsl/gui.html">GUI Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lsl/tools.html">Command Line Tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mne/index.html">MNE</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mne/python/index.html">MNE-Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mne/python/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/python/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/python/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/python/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/python/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mne/lsl/index.html">MNE-LSL</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mne/lsl/processing/connect.html">Connect a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/lsl/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/lsl/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/lsl/visualization/viewer.html">Stream Viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/lsl/classification/bci.html">Brain-Computer Interfaces</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mne/mnelab/index.html">MNELAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mne/mnelab/core/load.html">Load Wearable Sensing Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/mnelab/core/channels.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/mnelab/processing/filter.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/mnelab/processing/artifacts.html">Artifact Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mne/mnelab/processing/epochs.html">Epoching &amp; Event Handling</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../eeglab/index.html">EEGLAB</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../eeglab/gui/index.html">GUI Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../eeglab/scripting/index.html">Scripting &amp; Command Line</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bci2000/index.html">BCI2000</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bci2000/connect.html">Connect Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bci2000/run.html">Run Experiments</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../psychopy/index.html">PsychoPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../psychopy/stimulus.html">Creating Stimuli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psychopy/software.html">Software Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../psychopy/hardware.html">Hardware Triggers</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tooling/index.html">Internal Tooling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tooling/diode/index.html">Photodiode Experiment</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tooling/diode/photodiode.html">Run the experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tooling/diode/offset.html">Determine offset and timing accuracy</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Game Development &amp; VR</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Best Practices &amp; Tooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity.html">Unity Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="game-dev.html">Game Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vr.html">VR Development</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="best-practices-tooling">
+<h1>Best Practices &amp; Tooling<a class="headerlink" href="#best-practices-tooling" title="Link to this heading">#</a></h1>
+<p>Architecture recommendations, triggering strategy, tooling, and system requirements for running EEG-driven games and VR applications with Wearable Sensing devices.</p>
+<section id="recommended-architecture">
+<h2>Recommended Architecture<a class="headerlink" href="#recommended-architecture" title="Link to this heading">#</a></h2>
+<p>Use a separate backend to handle all EEG signal processing. The game engine should only receive final predictions or send/receive event markers. This keeps rendering performance stable and the two concerns cleanly separated.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌──────────────────────┐
+│      DSI Headset     │  VR-300 / DSI-24
+└──────────┬───────────┘
+           │  EEG data  (USB / Bluetooth)
+           ▼
+┌───────────────────────────────────────────────────────┐
+│                    LSL Stream                         │
+│  ───────────────────────────────────────────────────  │
+│  EEG data channels   (dsi2lslGUI)                     │
+│  Trigger channel     (hardware events embedded here)  │
+└──────────┬────────────────────────────────────────────┘
+           │  pylsl              LSL markers (stim events)
+           │          ┌─────────────────────────────────────────┐
+           ▼          ▼                                         │
+┌──────────────────────────────────┐     ┌──────────────────────┴─────┐
+│         Python Backend           │     │  Game Engine or            │
+│  ──────────────────────────────  │     │  Presentation Software     │
+│  Reads EEG data stream           │     │                            │
+│  Reads event markers             │     │  Sends stim markers (LSL)  │
+│  Parses trigger channel          │     │  Receives predictions to   │
+│  Filter → Feature Ext. → Classify│     │  drive game events         │
+└────────────────┬─────────────────┘     └────────────────────────────┘
+                 │  predictions  (LSL)                 ▲
+                 └─────────────────────────────────────┘
+</pre></div>
+</div>
+<p>The game engine (or presentation software) sends event markers via LSL to the backend during calibration so the backend can extract time-locked EEG windows. The DSI trigger channel in the LSL stream also carries hardware triggers sent from the game engine via serial/MMBT-S. Once the classifier is trained, the backend sends predictions back to the game engine via LSL, which uses them to drive game events.</p>
+</section>
+<section id="triggering">
+<h2>Triggering<a class="headerlink" href="#triggering" title="Link to this heading">#</a></h2>
+<p>There are two distinct trigger flows in the pipeline, each serving a different purpose.</p>
+<p><strong>Stimulus markers (game engine → backend):</strong> During calibration, the game engine marks each stimulus onset so the backend can extract time-locked EEG windows. Two methods are available:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Latency</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>LSL Markers</strong></p></td>
+<td><p>Low</p></td>
+<td><p>Standard software approach; no extra hardware needed</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MMBT-S (Serial)</strong></p></td>
+<td><p>Lowest (~1ms)</p></td>
+<td><p>Hardware trigger embedded directly in EEG trigger channel</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Predictions (backend → game engine):</strong> Once the classifier is trained, the backend sends classification results back to the game engine via LSL. The game engine reads these using LSL4Unity (or equivalent) and maps them to game events.</p>
+<p>See the <a class="reference internal" href="unity.html"><span class="doc">Unity Integration</span></a> guide for code examples, and the <a class="reference internal" href="../../help/tutorials/learning/triggers.html"><span class="doc">Learning: Triggers &amp; Event Alignment</span></a> page for a complete guide on trigger methods, timing offsets, and validation.</p>
+</section>
+<section id="tooling">
+<h2>Tooling<a class="headerlink" href="#tooling" title="Link to this heading">#</a></h2>
+<p>Key tools and libraries organized by their role in the pipeline.</p>
+<section id="data-streaming">
+<h3>Data Streaming<a class="headerlink" href="#data-streaming" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>dsi2lslGUI</strong></p></td>
+<td><p>Stream DSI headset data (EEG + trigger channel) over LSL</p></td>
+<td><p><a class="reference internal" href="../lsl/gui.html"><span class="doc">Guide</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>pylsl</strong></p></td>
+<td><p>Python library for reading LSL streams in the backend</p></td>
+<td><p><a class="reference external" href="https://github.com/labstreaminglayer/pylsl">GitHub</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>LSL4Unity</strong></p></td>
+<td><p>Unity plugin for sending and receiving LSL streams</p></td>
+<td><p><a class="reference external" href="https://github.com/labstreaminglayer/LSL4Unity">GitHub</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="signal-processing-classification">
+<h3>Signal Processing &amp; Classification<a class="headerlink" href="#signal-processing-classification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>bci-essentials-python</strong></p></td>
+<td><p>Python BCI signal processing and classification</p></td>
+<td><p><a class="reference external" href="https://github.com/kirtonBCIlab/bci-essentials-python">GitHub</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MNE-Python</strong></p></td>
+<td><p>Comprehensive EEG analysis library</p></td>
+<td><p><a class="reference external" href="https://mne.tools/stable/index.html">Docs</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NumPy / SciPy</strong></p></td>
+<td><p>Numerical computing and signal processing</p></td>
+<td><p><a class="reference external" href="https://numpy.org/">NumPy</a> / <a class="reference external" href="https://scipy.org/">SciPy</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="game-engine-integration">
+<h3>Game Engine Integration<a class="headerlink" href="#game-engine-integration" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Link</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>bci-essentials-unity</strong></p></td>
+<td><p>Pre-built BCI paradigms and game components for Unity</p></td>
+<td><p><a class="reference external" href="https://github.com/kirtonBCIlab/bci-essentials-unity">GitHub</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Unity</strong></p></td>
+<td><p>Primary documented game engine</p></td>
+<td><p><a class="reference external" href="https://unity.com/">unity.com</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Unreal Engine</strong></p></td>
+<td><p>Supported via LSL backend architecture</p></td>
+<td><p><a class="reference external" href="https://www.unrealengine.com/">unrealengine.com</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Godot</strong></p></td>
+<td><p>Supported via LSL backend architecture</p></td>
+<td><p><a class="reference external" href="https://godotengine.org/">godotengine.org</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Link to this heading">#</a></h2>
+<p>Running EEG acquisition alongside a game engine or VR application is demanding. A machine dedicated to this purpose is strongly recommended: sharing the machine with other software introduces timing variability that can affect both EEG data quality and rendering performance.</p>
+<section id="desktop-game-development">
+<h3>Desktop Game Development<a class="headerlink" href="#desktop-game-development" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Minimum</p></th>
+<th class="head"><p>Recommended</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>OS</strong></p></td>
+<td><p>Windows 10</p></td>
+<td><p>Windows 11</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CPU</strong></p></td>
+<td><p>Intel i5 / AMD Ryzen 5</p></td>
+<td><p>Intel i7 / AMD Ryzen 7 or better</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RAM</strong></p></td>
+<td><p>16 GB</p></td>
+<td><p>32 GB</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GPU</strong></p></td>
+<td><p>NVIDIA GTX 1060 / AMD RX 580</p></td>
+<td><p>NVIDIA RTX 3060 or better</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Storage</strong></p></td>
+<td><p>SSD with 10 GB free</p></td>
+<td><p>NVMe SSD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="vr-development">
+<h3>VR Development<a class="headerlink" href="#vr-development" title="Link to this heading">#</a></h3>
+<p>VR applications are significantly more demanding. The system must render at high frame rates (72-120 Hz) while simultaneously handling EEG data acquisition.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Minimum</p></th>
+<th class="head"><p>Recommended</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>OS</strong></p></td>
+<td><p>Windows 10</p></td>
+<td><p>Windows 11</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CPU</strong></p></td>
+<td><p>Intel i7 / AMD Ryzen 7</p></td>
+<td><p>Intel i9 / AMD Ryzen 9</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RAM</strong></p></td>
+<td><p>32 GB</p></td>
+<td><p>64 GB</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GPU</strong></p></td>
+<td><p>NVIDIA RTX 2070 / AMD RX 6700 XT</p></td>
+<td><p>NVIDIA RTX 4070 or better</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Storage</strong></p></td>
+<td><p>SSD with 20 GB free</p></td>
+<td><p>NVMe SSD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">VR Headset Requirements</p>
+<p>Ensure your system meets the VR headset manufacturer’s recommended specifications in addition to the requirements above. Running EEG acquisition and processing alongside VR adds overhead that the headset specs alone do not account for.</p>
+</div>
+</section>
+</section>
+<section id="performance-optimization">
+<h2>Performance Optimization<a class="headerlink" href="#performance-optimization" title="Link to this heading">#</a></h2>
+<section id="engine">
+<h3>Engine<a class="headerlink" href="#engine" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Minimize garbage collection: avoid allocating new objects in the main loop. Pre-allocate buffers for incoming data.</p></li>
+<li><p>Use asynchronous I/O: read LSL streams on a background thread and pass results to the main thread via a thread-safe queue.</p></li>
+<li><p>Profile regularly: use the engine’s built-in profiler to identify frame rate drops and ensure EEG data handling is not a bottleneck.</p></li>
+<li><p>Reduce draw calls: batch materials, use LOD groups, and optimize shaders, especially for VR.</p></li>
+</ul>
+</section>
+<section id="backend">
+<h3>Backend<a class="headerlink" href="#backend" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Buffer data: process EEG data in fixed-size windows rather than sample-by-sample.</p></li>
+<li><p>Use efficient libraries: NumPy, SciPy, and MNE-Python are optimized for EEG signal processing.</p></li>
+<li><p>Limit output rate: send predictions at a reasonable rate (e.g., 10-30 Hz), not at the EEG sampling rate.</p></li>
+<li><p>Profile memory: long-running backends can accumulate memory usage. Monitor and manage data buffers.</p></li>
+</ul>
+</section>
+<section id="dsi-device-tips">
+<h3>DSI Device Tips<a class="headerlink" href="#dsi-device-tips" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Check impedance before each session. Poor electrode contact leads to noisy data and unreliable predictions.</p></li>
+<li><p>Secure cables to reduce motion artifacts, particularly in VR where head movement is frequent.</p></li>
+</ul>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unity.html"><span class="doc">Unity Integration</span></a></p></li>
+<li><p><a class="reference internal" href="vr.html"><span class="doc">VR Development</span></a></p></li>
+<li><p><a class="reference internal" href="game-dev.html"><span class="doc">Game Development</span></a></p></li>
+<li><p><a class="reference internal" href="../lsl/index.html"><span class="doc">LSL Integration</span></a></p></li>
+<li><p><a class="reference internal" href="../../help/tutorials/learning/triggers.html"><span class="doc">Learning: Triggers &amp; Event Alignment</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Game Development &amp; VR Integration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="unity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unity</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Wearable Sensing, LLC. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
