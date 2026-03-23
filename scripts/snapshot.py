@@ -17,7 +17,6 @@ How to use:
 
 import argparse
 import asyncio
-import img2pdf
 import json
 import shutil
 import sys
@@ -27,6 +26,7 @@ from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 
+import img2pdf
 from playwright.async_api import BrowserContext, async_playwright
 from pypdf import PdfReader, PdfWriter
 from tqdm import tqdm
@@ -39,8 +39,8 @@ HOST = "127.0.0.1"
 PORT = 8765
 CONCURRENCY = 8
 VIEWPORT_HEIGHT = 900
-JPEG_QUALITY = 85     # 0–100. 75 matches streaming-platform quality; raise to 90 for print.
-SCREENSHOT_SCALE = 0.70  # Scales render width before capture. 0.75 cuts pixel area ~44%.
+JPEG_QUALITY = 85      # 0–100
+SCREENSHOT_SCALE = 0.70
 
 SKIP_STEMS = frozenset({"search", "genindex", "py-modindex"})
 
@@ -115,7 +115,7 @@ def _find_pages(build_dir: Path) -> list[Path]:
     """Walk the build directory and return renderable page paths in document order."""
     fragment_names = {p.name for p in GATED_PAGES.values()}
     pages = []
-    for html in sorted(build_dir.rglob("*.html")):
+    for html in build_dir.rglob("*.html"):
         rel = html.relative_to(build_dir)
         if (
             any(p.startswith("_") for p in rel.parts)
@@ -185,7 +185,8 @@ async def _render_page(
             return []
 
         await page.evaluate(
-            f"document.documentElement.setAttribute('data-theme', '{cfg.theme}')"
+            "(theme) => document.documentElement.setAttribute('data-theme', theme)",
+            cfg.theme,
         )
         await page.evaluate(_CLEANUP_JS)
 
@@ -258,7 +259,7 @@ async def main(configs: list[Config]) -> None:
     out_dir = SNAPSHOT_DIR / ts
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"{len(pages)} pages  read, writing to  snapshots/{ts}/")
+    print(f"{len(pages)} pages read, writing to snapshots/{ts}/")
     server = _serve(BUILD_DIR, PORT)
     try:
         await asyncio.gather(*[_render_config(cfg, pages, out_dir) for cfg in configs])
