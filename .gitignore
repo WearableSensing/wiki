@@ -1,4 +1,5 @@
 docs/_build/*
+snapshots/
 *venv*/
 *.pyc
 __pycache__/

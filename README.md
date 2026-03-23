@@ -51,6 +51,57 @@ To edit the help section, you can modify the `docs/help/index.md` file. This fil
 To add or edit FAQ entries, modify the `docs/faq/index.md` file. You can add new questions and answers in markdown format, following the structure of the existing entries.
 
 
+## Snapshots
+
+The `scripts/snapshot.py` script renders the built documentation to PDF capturing each page as a screenshot to produce output files covering desktop and mobile viewports in light and dark themes.
+
+### Setup
+
+The snapshot script has its own dependencies separate from the main docs build:
+
+```sh
+pip install -r scripts/requirements.txt
+playwright install chromium
+```
+
+### Usage
+
+1. Build the docs first:
+   ```sh
+   make build
+   ```
+
+2. Run the script from the repository root:
+   ```sh
+   python scripts/snapshot.py
+   ```
+
+   or using Make:
+   ```sh
+    make snapshot
+    ```
+
+   This generates all four variants (Desktop-light, Desktop-dark, Mobile-light, Mobile-dark) under `snapshots/{timestamp}/`.
+
+3. To generate a subset, pass `--snapshots` with the config ID(s):
+   ```sh
+   python scripts/snapshot.py --snapshots 1 3   # Desktop-light and Mobile-light only
+   ```
+
+   Run with `--help` to see all available config IDs.
+
+### Output
+
+PDFs are written to `snapshots/{timestamp}/`, e.g.:
+
+```
+snapshots/2025-06-01_14-30-00/
+    snapshot-desktop-light.pdf
+    snapshot-desktop-dark.pdf
+    snapshot-mobile-light.pdf
+    snapshot-mobile-dark.pdf
+```
+
 ## Resources
 
 This documentation is built using Sphinx and the PyData Theme. You can find more information about how to use the theme using the following link:
